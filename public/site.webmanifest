@@ -4,8 +4,8 @@
   "description": "모바일 앱·웹·AI 프로그래밍 스튜디오",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#050811",
-  "theme_color": "#050811",
+  "background_color": "#0a0908",
+  "theme_color": "#0a0908",
   "lang": "ko",
   "icons": [
     {

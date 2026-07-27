@@ -11,7 +11,7 @@ const EDU_STYLE = `
   .cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.4rem;margin-top:2rem;}
   .cat-card{display:block;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
     padding:1.6rem;transition:transform .25s,border-color .25s;}
-  .cat-card:hover{transform:translateY(-4px);border-color:rgba(79,209,197,.35);}
+  .cat-card:hover{transform:translateY(-4px);border-color:var(--border-strong);}
   .cat-card h3{font-size:1.15rem;margin-bottom:.5rem;color:var(--text);}
   .cat-card p{font-size:.86rem;color:var(--muted);margin-bottom:1rem;}
   .cat-count{font-family:var(--mono);font-size:.75rem;color:var(--accent);}

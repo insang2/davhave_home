@@ -5,7 +5,7 @@ const PORTFOLIO_STYLE = `
   .case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:2rem;}
   .case-card{display:block;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
     overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s;}
-  .case-card:hover{transform:translateY(-4px);border-color:rgba(79,209,197,.35);box-shadow:0 16px 40px rgba(0,0,0,.4);}
+  .case-card:hover{transform:translateY(-4px);border-color:var(--border-strong);box-shadow:0 16px 40px rgba(0,0,0,.4);}
   .case-card img{width:100%;height:170px;object-fit:cover;object-position:top;display:block;border-bottom:1px solid var(--border);}
   .case-card .body{padding:1.4rem 1.5rem;}
   .case-card .client{font-size:1.05rem;font-weight:600;margin-bottom:.4rem;color:var(--text);}
@@ -14,14 +14,14 @@ const PORTFOLIO_STYLE = `
   .detail-cover{width:100%;border-radius:var(--radius);border:1px solid var(--border);margin-bottom:2rem;
     max-height:420px;object-fit:cover;object-position:top;}
   .stack-row{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.5rem 0;}
-  .stack-chip{font-family:var(--mono);font-size:.75rem;color:var(--accent2);border:1px solid rgba(124,108,248,.3);
-    background:rgba(124,108,248,.08);padding:.3rem .8rem;border-radius:100px;}
+  .stack-chip{font-family:var(--mono);font-size:.75rem;color:var(--accent2);border:1px solid rgba(242,200,121,.3);
+    background:rgba(242,200,121,.08);padding:.3rem .8rem;border-radius:100px;}
   .feature-list{margin:1.5rem 0;padding:0;list-style:none;}
   .feature-list li{padding:.6rem 0;border-bottom:1px solid var(--border);color:var(--text);font-size:.92rem;
     display:flex;gap:.6rem;}
   .feature-list li::before{content:'✓';color:var(--accent);font-weight:700;}
   .visit-btn{display:inline-flex;align-items:center;gap:.5rem;margin-top:1rem;padding:.75rem 1.6rem;
-    background:linear-gradient(135deg,var(--accent),var(--accent2));color:#000;border-radius:10px;font-weight:600;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));color:#17110a;border-radius:10px;font-weight:600;
     font-size:.9rem;}
   .verify-note{margin-top:2rem;padding:1rem 1.2rem;border:1px solid var(--border);border-radius:var(--radius);
     background:var(--surface);color:var(--muted);font-size:.82rem;}
