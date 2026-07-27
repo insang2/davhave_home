@@ -1,0 +1,79 @@
+import { CATEGORIES } from "./education-render.js";
+
+function section(title, lines) {
+  if (!lines.length) return "";
+  return `\n## ${title}\n\n${lines.join("\n")}\n`;
+}
+
+export function renderLlms({ blogPosts = [], educationPosts = [], projects = [] }) {
+  const blogLines = blogPosts
+    .slice(0, 30)
+    .map((p) => `- [${p.title}](https://davhave.com/blog/${p.slug}) — ${p.excerpt || ""}`.trim());
+
+  const eduByCategory = {};
+  for (const p of educationPosts) {
+    if (!eduByCategory[p.category]) eduByCategory[p.category] = [];
+    eduByCategory[p.category].push(p);
+  }
+  const eduLines = Object.entries(CATEGORIES).flatMap(([key, cat]) => {
+    const lessons = (eduByCategory[key] || []).sort((a, b) => a.order_index - b.order_index);
+    if (!lessons.length) return [];
+    return [
+      `- **${cat.label}** (${lessons.length}개 레슨): https://davhave.com/education/${key}`,
+      ...lessons.map((l) => `  - [${l.title}](https://davhave.com/education/${key}/${l.slug})`),
+    ];
+  });
+
+  const portfolioLines = projects.map(
+    (p) => `- **${p.clientName}** (${p.siteUrl}) — ${p.summary} 상세: https://davhave.com/portfolio/${p.slug}`
+  );
+
+  return `# DAVHAVE — Oscar Lee
+
+> 모바일 앱·모바일 웹·AI 프로그래밍 스튜디오
+
+DAVHAVE는 개발자 Oscar Lee가 운영하는 소프트웨어 개발 스튜디오입니다.
+사람들의 삶을 더 나아지게 하는, 긍정적이고 유익한 디지털 경험을 만드는 것을 목표로 합니다.
+
+## 개발자 정보
+
+- **이름**: Oscar Lee
+- **스튜디오**: DAVHAVE (davhave)
+- **역할**: Mobile App / Web / AI Developer
+- **이메일**: useapp.davhave@gmail.com
+- **웹사이트**: https://davhave.com/
+
+## 서비스
+
+### 모바일 앱 개발
+iOS / Android 크로스 플랫폼 모바일 애플리케이션 개발.
+직관적인 UX와 안정적인 퍼포먼스를 갖춘 앱을 설계하고 구현합니다.
+- 기술 스택: Flutter, React Native, Swift, Kotlin
+
+### 모바일 웹 개발
+모바일 최적화 반응형 웹 서비스 개발.
+빠른 로딩과 접근성 높은 인터페이스를 통해 모든 기기에서 최상의 경험을 제공합니다.
+- 기술 스택: React, Next.js, TypeScript, HTML5
+
+### AI 프로그래밍
+최신 AI·LLM 기술을 활용한 지능형 솔루션 개발.
+사용자 맞춤형 인텔리전트 기능을 제품에 통합합니다.
+- 기술 스택: Claude API, OpenAI, LangChain, Python
+${section("포트폴리오 — 실제 개발 사례", portfolioLines)}${section("블로그", blogLines.length ? blogLines : ["아직 발행된 글이 없습니다. 전체 목록: https://davhave.com/blog (RSS: https://davhave.com/rss.xml)"])}${section("교육 콘텐츠", eduLines.length ? eduLines : ["아직 등록된 레슨이 없습니다. 카테고리: AI, Python, Java, 모바일 개발 — https://davhave.com/education"])}
+## 개발 철학
+
+- **Positive Impact**: 사람들의 삶을 더 나은 방향으로 바꾸는 소프트웨어를 만듭니다.
+- **Performance First**: 빠르고 안정적인 앱을 통해 사용자를 존중합니다.
+- **User-Centered**: 사용자의 실제 문제 해결에 집중합니다.
+- **Future-Ready**: AI와 최신 기술로 미래를 먼저 설계합니다.
+
+## 연락처
+
+- 이메일: useapp.davhave@gmail.com
+- 문의는 24시간 이내 답변을 드립니다.
+
+---
+
+이 페이지는 AI 크롤러 및 LLM이 DAVHAVE에 대한 정확한 정보를 수집할 수 있도록 작성된 문서이며, 블로그·교육·포트폴리오 콘텐츠 목록을 실시간으로 반영합니다.
+`;
+}

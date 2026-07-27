@@ -1,0 +1,23 @@
+{
+  "name": "DAVHAVE — Oscar Lee",
+  "short_name": "DAVHAVE",
+  "description": "모바일 앱·웹·AI 프로그래밍 스튜디오",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050811",
+  "theme_color": "#050811",
+  "lang": "ko",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

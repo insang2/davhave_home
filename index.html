@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DAVHAVE — Oscar Lee</title>
+  <meta name="description" content="Davhave — 모바일 앱·웹·AI 프로그래밍을 개발하는 Oscar Lee의 포트폴리오" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#050811" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Reset & Base ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #050811;
+      --surface:  #0b1120;
+      --border:   rgba(99,179,237,.15);
+      --accent:   #4fd1c5;
+      --accent2:  #7c6cf8;
+      --text:     #e2e8f0;
+      --muted:    #718096;
+      --glow:     0 0 24px rgba(79,209,197,.35);
+      --glow2:    0 0 24px rgba(124,108,248,.35);
+      --radius:   14px;
+      --font:     'Space Grotesk', sans-serif;
+      --mono:     'Space Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ─── Grid Overlay ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(79,209,197,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(79,209,197,.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── Noise Texture ─── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      opacity: .4;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    section, nav, footer { position: relative; z-index: 1; }
+
+    /* ─── Navbar ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 5vw;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      background: rgba(5,8,17,.7);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      transition: padding .3s;
+    }
+
+    .logo {
+      font-family: var(--mono);
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      color: var(--accent);
+      text-decoration: none;
+      text-shadow: var(--glow);
+    }
+
+    .logo span { color: var(--accent2); }
+
+    nav ul {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: .9rem;
+      font-weight: 500;
+      letter-spacing: .05em;
+      transition: color .2s;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0; right: 0;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transition: transform .25s;
+    }
+
+    nav a:hover { color: var(--accent); }
+    nav a:hover::after { transform: scaleX(1); }
+
+    .nav-cta {
+      padding: .5rem 1.2rem;
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      color: var(--accent) !important;
+      font-size: .85rem;
+      transition: background .2s, box-shadow .2s;
+    }
+
+    .nav-cta:hover {
+      background: rgba(79,209,197,.12);
+      box-shadow: var(--glow);
+    }
+
+    .nav-cta::after { display: none !important; }
+
+    /* ─── Hamburger ─── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+      transition: transform .3s, opacity .3s;
+    }
+
+    /* ─── Hero ─── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 5vw 4rem;
+      overflow: hidden;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .4rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: .8rem;
+      font-family: var(--mono);
+      color: var(--accent);
+      margin-bottom: 2rem;
+      background: rgba(79,209,197,.06);
+      animation: fadeDown .8s ease both;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 7px; height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: .5; transform: scale(.8); }
+    }
+
+    h1 {
+      font-size: clamp(3rem, 8vw, 7rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -.03em;
+      animation: fadeDown .8s .15s ease both;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      margin-top: 1.5rem;
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      color: var(--muted);
+      max-width: 600px;
+      animation: fadeDown .8s .3s ease both;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .7rem;
+      justify-content: center;
+      margin-top: 2rem;
+      animation: fadeDown .8s .45s ease both;
+    }
+
+    .tag {
+      padding: .35rem .9rem;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: .8rem;
+      font-family: var(--mono);
+      color: var(--muted);
+      background: rgba(255,255,255,.03);
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      margin-top: 3rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeDown .8s .6s ease both;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .85rem 2rem;
+      border-radius: 10px;
+      font-size: .95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all .25s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #000;
+      box-shadow: 0 4px 20px rgba(79,209,197,.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(79,209,197,.45);
+    }
+
+    .btn-ghost {
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: transparent;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(79,209,197,.06);
+    }
+
+    /* Floating orbs */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      animation: drift 12s ease-in-out infinite alternate;
+    }
+
+    .orb-1 {
+      width: 500px; height: 500px;
+      background: rgba(79,209,197,.07);
+      top: -100px; left: -150px;
+    }
+
+    .orb-2 {
+      width: 400px; height: 400px;
+      background: rgba(124,108,248,.08);
+      bottom: -80px; right: -100px;
+      animation-delay: -6s;
+    }
+
+    @keyframes drift {
+      from { transform: translate(0, 0) scale(1); }
+      to   { transform: translate(40px, 30px) scale(1.05); }
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── Section Base ─── */
+    section:not(#hero) {
+      padding: 6rem 5vw;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: .75rem;
+      letter-spacing: .15em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -.02em;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 560px;
+    }
+
+    .section-head { margin-bottom: 4rem; }
+
+    /* ─── Divider ─── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 0 5vw;
+    }
+
+    /* ─── About ─── */
+    #about .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .code-window {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,.5), var(--glow2);
+    }
+
+    .code-topbar {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      padding: .9rem 1.2rem;
+      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,.02);
+    }
+
+    .dot {
+      width: 11px; height: 11px;
+      border-radius: 50%;
+    }
+    .dot-r { background: #ff5f56; }
+    .dot-y { background: #ffbd2e; }
+    .dot-g { background: #27c93f; }
+
+    .code-filename {
+      font-family: var(--mono);
+      font-size: .75rem;
+      color: var(--muted);
+      margin-left: .5rem;
+    }
+
+    .code-body {
+      padding: 1.5rem;
+      font-family: var(--mono);
+      font-size: .82rem;
+      line-height: 1.9;
+    }
+
+    .code-body .kw  { color: #ff79c6; }
+    .code-body .fn  { color: #50fa7b; }
+    .code-body .str { color: #f1fa8c; }
+    .code-body .cm  { color: #6272a4; }
+    .code-body .acc { color: var(--accent); }
+    .code-body .acc2 { color: var(--accent2); }
+
+    .typing-cursor {
+      display: inline-block;
+      width: 2px; height: 1em;
+      background: var(--accent);
+      vertical-align: text-bottom;
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+
+    .about-content p + p { margin-top: 1rem; }
+
+    .stat-row {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .stat-item strong {
+      display: block;
+      font-size: 2.2rem;
+      font-weight: 700;
+      font-family: var(--mono);
+      color: var(--accent);
+    }
+
+    .stat-item span {
+      font-size: .82rem;
+      color: var(--muted);
+      letter-spacing: .05em;
+    }
+
+    /* ─── Services ─── */
+    #services {
+      background: linear-gradient(180deg, transparent, rgba(11,17,32,.8), transparent);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: border-color .3s, transform .3s, box-shadow .3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transform: scaleX(0);
+      transition: transform .35s;
+      transform-origin: left;
+    }
+
+    .service-card:hover {
+      border-color: rgba(79,209,197,.3);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,.4), var(--glow);
+    }
+
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-icon {
+      width: 52px; height: 52px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.4rem;
+      background: rgba(79,209,197,.08);
+      border: 1px solid var(--border);
+    }
+
+    .service-card h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: .7rem;
+    }
+
+    .service-card p {
+      font-size: .9rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .service-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+      margin-top: 1.2rem;
+    }
+
+    .chip {
+      padding: .2rem .65rem;
+      font-family: var(--mono);
+      font-size: .72rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--muted);
+      background: rgba(255,255,255,.02);
+    }
+
+    /* ─── Portfolio ─── */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform .3s, box-shadow .3s, border-color .3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 50px rgba(0,0,0,.5), var(--glow);
+      border-color: rgba(79,209,197,.3);
+    }
+
+    .project-thumb {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-thumb-1 { background: linear-gradient(135deg, #0d1b2a, #1a3a4c); }
+    .project-thumb-2 { background: linear-gradient(135deg, #1a0d2e, #2d1b4e); }
+    .project-thumb-3 { background: linear-gradient(135deg, #0d2b1a, #1a4c2d); }
+    .project-thumb-4 { background: linear-gradient(135deg, #2b1a0d, #4c2d1a); }
+
+    .project-thumb::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, var(--surface), transparent 40%);
+    }
+
+    .project-info { padding: 1.5rem; }
+
+    .project-info .badge {
+      display: inline-block;
+      padding: .2rem .65rem;
+      border-radius: 100px;
+      font-size: .72rem;
+      font-family: var(--mono);
+      margin-bottom: .8rem;
+    }
+
+    .badge-mobile { background: rgba(79,209,197,.12); color: var(--accent); border: 1px solid rgba(79,209,197,.2); }
+    .badge-ai     { background: rgba(124,108,248,.12); color: var(--accent2); border: 1px solid rgba(124,108,248,.2); }
+    .badge-web    { background: rgba(246,173,85,.1);  color: #f6ad55; border: 1px solid rgba(246,173,85,.2); }
+
+    .project-info h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: .5rem; }
+    .project-info p  { font-size: .88rem; color: var(--muted); line-height: 1.6; }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      margin-top: 1rem;
+      font-size: .82rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-family: var(--mono);
+      transition: gap .2s;
+    }
+
+    .project-link:hover { gap: .7rem; }
+
+    /* ─── Philosophy ─── */
+    #philosophy {
+      text-align: center;
+    }
+
+    .philosophy-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .philosophy-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .8rem;
+    }
+
+    .philosophy-icon {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      background: rgba(79,209,197,.05);
+      transition: box-shadow .3s, border-color .3s;
+    }
+
+    .philosophy-item:hover .philosophy-icon {
+      box-shadow: var(--glow);
+      border-color: rgba(79,209,197,.4);
+    }
+
+    .philosophy-item h4 { font-size: 1rem; font-weight: 600; }
+    .philosophy-item p  { font-size: .87rem; color: var(--muted); }
+
+    /* ─── Contact ─── */
+    #contact {
+      text-align: center;
+      padding: 8rem 5vw;
+    }
+
+    #contact .section-desc {
+      margin: 0 auto;
+      max-width: 480px;
+    }
+
+    .contact-card {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+      margin-top: 3rem;
+      padding: 2.5rem 3.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: 0 20px 60px rgba(0,0,0,.3), var(--glow);
+    }
+
+    .contact-label {
+      font-family: var(--mono);
+      font-size: .75rem;
+      letter-spacing: .12em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .contact-email {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      font-family: var(--mono);
+      transition: text-shadow .2s;
+    }
+
+    .contact-email:hover { text-shadow: var(--glow); }
+
+    /* ─── Footer ─── */
+    footer {
+      padding: 2.5rem 5vw;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    footer .logo { font-size: 1rem; }
+
+    .footer-copy {
+      font-size: .82rem;
+      color: var(--muted);
+      font-family: var(--mono);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: .82rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    .footer-links a:hover { color: var(--accent); }
+
+    /* ─── Scroll reveal ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 768px) {
+      nav ul { display: none; }
+      .hamburger { display: flex; }
+
+      nav ul.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        background: rgba(5,8,17,.96);
+        backdrop-filter: blur(18px);
+        border-bottom: 1px solid var(--border);
+        padding: 1.5rem 5vw 2rem;
+        gap: 1.2rem;
+        align-items: flex-start;
+      }
+
+      #about .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .about-visual { order: -1; }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+      }
+
+      .contact-card { padding: 2rem 1.5rem; width: 100%; max-width: 380px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-cta { flex-direction: column; align-items: center; }
+      .btn { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Nav ─── -->
+  <nav id="navbar">
+    <a class="logo" href="#">DAV<span>HAVE</span></a>
+    <ul id="nav-menu">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#philosophy">Philosophy</a></li>
+      <li><a href="#contact" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="메뉴 열기">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ─── Hero ─── -->
+  <section id="hero">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <div class="hero-badge">DAVHAVE · Oscar Lee · Active</div>
+
+    <h1>
+      Build The<br/>
+      <span class="gradient-text">Future</span> Now
+    </h1>
+
+    <p class="hero-sub">
+      모바일 앱, 웹, AI를 아우르는 긍정적이고 유익한 디지털 경험을 만듭니다.
+      사람들의 삶을 더 나아지게 하는 프로그램을 개발합니다.
+    </p>
+
+    <div class="hero-tags">
+      <span class="tag">📱 Mobile App</span>
+      <span class="tag">🌐 Web</span>
+      <span class="tag">🤖 AI</span>
+      <span class="tag">💡 Positive Impact</span>
+    </div>
+
+    <div class="hero-cta">
+      <a href="#portfolio" class="btn btn-primary">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h7"/></svg>
+        포트폴리오 보기
+      </a>
+      <a href="#contact" class="btn btn-ghost">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        문의하기
+      </a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ─── About ─── -->
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-content reveal">
+        <span class="section-label">// about</span>
+        <h2 class="section-title">개발자<br/><span class="gradient-text">Oscar Lee</span></h2>
+        <p>안녕하세요. 저는 <strong>Davhave</strong>를 운영하는 개발자 Oscar Lee입니다. 사람들의 일상을 더 풍요롭고 의미있게 만드는 소프트웨어를 만드는 것이 저의 목표입니다.</p>
+        <p>모바일 앱 개발을 시작으로, 웹 서비스와 AI 솔루션까지 영역을 확장하며 긍정적인 디지털 임팩트를 만들어가고 있습니다.</p>
+        <div class="stat-row">
+          <div class="stat-item">
+            <strong>Mobile</strong>
+            <span>App Dev</span>
+          </div>
+          <div class="stat-item">
+            <strong>Web</strong>
+            <span>Frontend / Full</span>
+          </div>
+          <div class="stat-item">
+            <strong>AI</strong>
+            <span>Integration</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-visual reveal">
+        <div class="code-window">
+          <div class="code-topbar">
+            <span class="dot dot-r"></span>
+            <span class="dot dot-y"></span>
+            <span class="dot dot-g"></span>
+            <span class="code-filename">davhave.config.ts</span>
+          </div>
+          <div class="code-body">
+            <div><span class="kw">const</span> <span class="acc">developer</span> = {</div>
+            <div>&nbsp;&nbsp;<span class="acc2">name</span>: <span class="str">"Oscar Lee"</span>,</div>
+            <div>&nbsp;&nbsp;<span class="acc2">studio</span>: <span class="str">"Davhave"</span>,</div>
+            <div>&nbsp;&nbsp;<span class="acc2">focus</span>: [</div>
+            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"Mobile App"</span>,</div>
+            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"Mobile Web"</span>,</div>
+            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"AI Programming"</span>,</div>
+            <div>&nbsp;&nbsp;],</div>
+            <div>&nbsp;&nbsp;<span class="acc2">mission</span>: <span class="str">"Positive Impact"</span>,</div>
+            <div>&nbsp;&nbsp;<span class="fn">build</span>: () <span class="kw">=></span> {</div>
+            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span> <span class="str">"future"</span> <span class="cm">// 🚀</span></div>
+            <div>&nbsp;&nbsp;}</div>
+            <div>}<span class="typing-cursor"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ─── Services ─── -->
+  <section id="services">
+    <div class="section-head reveal">
+      <span class="section-label">// services</span>
+      <h2 class="section-title">무엇을<br/><span class="gradient-text">만드나요</span></h2>
+      <p class="section-desc">사용자의 삶에 실질적인 가치를 더하는 디지털 프로덕트를 설계하고 개발합니다.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">📱</div>
+        <h3>Mobile App</h3>
+        <p>iOS / Android 크로스 플랫폼 모바일 앱 개발. 직관적인 UX와 안정적인 퍼포먼스로 사용자 경험을 극대화합니다.</p>
+        <div class="service-stack">
+          <span class="chip">Flutter</span>
+          <span class="chip">React Native</span>
+          <span class="chip">Swift</span>
+          <span class="chip">Kotlin</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">🌐</div>
+        <h3>Mobile Web</h3>
+        <p>모바일 최적화 웹 서비스 개발. 빠른 로딩과 반응형 디자인으로 어느 기기에서나 최상의 경험을 제공합니다.</p>
+        <div class="service-stack">
+          <span class="chip">React</span>
+          <span class="chip">Next.js</span>
+          <span class="chip">TypeScript</span>
+          <span class="chip">HTML5</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">🤖</div>
+        <h3>AI Programming</h3>
+        <p>최신 AI 기술을 활용한 스마트 솔루션 개발. 사용자의 요구에 맞춘 인텔리전트 기능을 제품에 통합합니다.</p>
+        <div class="service-stack">
+          <span class="chip">Claude API</span>
+          <span class="chip">OpenAI</span>
+          <span class="chip">LangChain</span>
+          <span class="chip">Python</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ─── Portfolio ─── -->
+  <section id="portfolio">
+    <div class="section-head reveal">
+      <span class="section-label">// portfolio</span>
+      <h2 class="section-title">작업물<br/><span class="gradient-text">Projects</span></h2>
+      <p class="section-desc">긍정적인 영향을 목표로 개발된 프로젝트들을 소개합니다.</p>
+    </div>
+
+    <div class="portfolio-grid">
+      <div class="project-card reveal">
+        <div class="project-thumb project-thumb-1">📱</div>
+        <div class="project-info">
+          <span class="badge badge-mobile">Mobile App</span>
+          <h3>Daily Positive</h3>
+          <p>매일 긍정적인 메시지와 루틴을 제안하는 라이프스타일 앱. 사용자의 멘탈 웰빙을 위한 AI 기반 개인화 콘텐츠를 제공합니다.</p>
+          <a href="#contact" class="project-link">자세히 보기 →</a>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-thumb project-thumb-2">🤖</div>
+        <div class="project-info">
+          <span class="badge badge-ai">AI</span>
+          <h3>Smart Assistant</h3>
+          <p>AI 기반 개인 비서 앱. 일정 관리, 정보 요약, 스마트 알림을 통해 바쁜 일상을 더 효율적으로 관리합니다.</p>
+          <a href="#contact" class="project-link">자세히 보기 →</a>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-thumb project-thumb-3">🌐</div>
+        <div class="project-info">
+          <span class="badge badge-web">Mobile Web</span>
+          <h3>Community Hub</h3>
+          <p>긍정적인 커뮤니티를 위한 모바일 웹 플랫폼. 사람들이 서로 연결되고 성장할 수 있는 공간을 제공합니다.</p>
+          <a href="#contact" class="project-link">자세히 보기 →</a>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-thumb project-thumb-4">💡</div>
+        <div class="project-info">
+          <span class="badge badge-ai">AI + Mobile</span>
+          <h3>Learning Path</h3>
+          <p>AI가 개인에게 최적화된 학습 경로를 설계해주는 교육 앱. 누구나 더 쉽게 성장할 수 있도록 돕습니다.</p>
+          <a href="#contact" class="project-link">자세히 보기 →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ─── Philosophy ─── -->
+  <section id="philosophy">
+    <div class="section-head reveal">
+      <span class="section-label">// philosophy</span>
+      <h2 class="section-title">개발 <span class="gradient-text">철학</span></h2>
+      <p class="section-desc" style="margin:0 auto;">Davhave가 추구하는 가치와 개발 방향입니다.</p>
+    </div>
+
+    <div class="philosophy-items">
+      <div class="philosophy-item reveal">
+        <div class="philosophy-icon">🌱</div>
+        <h4>Positive Impact</h4>
+        <p>사람들의 삶을 더 나은 방향으로 바꾸는 소프트웨어를 만듭니다.</p>
+      </div>
+      <div class="philosophy-item reveal">
+        <div class="philosophy-icon">⚡</div>
+        <h4>Performance First</h4>
+        <p>빠르고 안정적인 앱은 기본. 성능은 곧 사용자 존중입니다.</p>
+      </div>
+      <div class="philosophy-item reveal">
+        <div class="philosophy-icon">🎯</div>
+        <h4>User-Centered</h4>
+        <p>사용자의 실제 문제를 해결하는 데 집중합니다.</p>
+      </div>
+      <div class="philosophy-item reveal">
+        <div class="philosophy-icon">🔮</div>
+        <h4>Future-Ready</h4>
+        <p>AI와 최신 기술로 미래를 먼저 설계합니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ─── Contact ─── -->
+  <section id="contact">
+    <div class="reveal">
+      <span class="section-label">// contact</span>
+      <h2 class="section-title"><span class="gradient-text">함께 만들어요</span></h2>
+      <p class="section-desc">프로젝트 아이디어가 있으신가요? 아이디어를 현실로 만드는 것을 도와드립니다.</p>
+    </div>
+
+    <div class="contact-card reveal">
+      <span class="contact-label">Email</span>
+      <a class="contact-email" href="mailto:useapp.davhave@gmail.com">useapp.davhave@gmail.com</a>
+      <p style="font-size:.82rem;color:var(--muted);margin-top:.8rem;">보통 24시간 이내에 답변드립니다.</p>
+    </div>
+  </section>
+
+  <!-- ─── Footer ─── -->
+  <footer>
+    <a class="logo" href="#">DAV<span>HAVE</span></a>
+    <span class="footer-copy">© 2025 Davhave · Oscar Lee</span>
+    <ul class="footer-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="mailto:useapp.davhave@gmail.com">Contact</a></li>
+    </ul>
+  </footer>
+
+  <script>
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const navMenu   = document.getElementById('nav-menu');
+    hamburger.addEventListener('click', () => navMenu.classList.toggle('open'));
+    navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navMenu.classList.remove('open')));
+
+    // Scroll reveal
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Navbar shrink on scroll
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').style.padding = window.scrollY > 40 ? '.8rem 5vw' : '1.2rem 5vw';
+    });
+  </script>
+</body>
+</html>

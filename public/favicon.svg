@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050811" />
+      <stop offset="100%" stop-color="#0d1527" />
+    </linearGradient>
+
+    <!-- Cyan Gradient for 'D' -->
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#67e8f9" />
+      <stop offset="50%" stop-color="#4fd1c5" />
+      <stop offset="100%" stop-color="#2c7a7b" />
+    </linearGradient>
+
+    <!-- Purple Gradient for 'H' -->
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9333ea" />
+      <stop offset="50%" stop-color="#7c6cf8" />
+      <stop offset="100%" stop-color="#5b21b6" />
+    </linearGradient>
+
+    <!-- Border Gradient -->
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4fd1c5" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#7c6cf8" stop-opacity="0.8" />
+    </linearGradient>
+
+    <!-- Glow Filter -->
+    <filter id="cyanGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="10" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <filter id="purpleGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="10" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background Base with Rounded Radius -->
+  <rect width="512" height="512" rx="112" fill="url(#bgGrad)" />
+
+  <!-- Outer Border Outline -->
+  <rect x="6" y="6" width="500" height="500" rx="106" fill="none" stroke="url(#borderGrad)" stroke-width="8" />
+
+  <!-- Grid overlay lines (subtle tech motif) -->
+  <path d="M 0 170 L 512 170 M 0 342 L 512 342 M 170 0 L 170 512 M 342 0 L 342 512" 
+        stroke="rgba(79,209,197,0.04)" stroke-width="2" />
+
+  <g transform="translate(4, 0)">
+    <!-- Letter 'D' (Cyan) -->
+    <g filter="url(#cyanGlow)">
+      <!-- Vertical Stem of D -->
+      <path d="M 124 135 L 124 377" stroke="url(#cyanGrad)" stroke-width="46" stroke-linecap="round" />
+      <!-- Arch of D -->
+      <path d="M 124 135 L 188 135 C 265 135 265 377 188 377 L 124 377" 
+            fill="none" stroke="url(#cyanGrad)" stroke-width="46" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+
+    <!-- Letter 'H' (Purple) -->
+    <g filter="url(#purpleGlow)">
+      <!-- Left Stem of H -->
+      <path d="M 296 135 L 296 377" stroke="url(#purpleGrad)" stroke-width="46" stroke-linecap="round" />
+      <!-- Right Stem of H -->
+      <path d="M 392 135 L 392 377" stroke="url(#purpleGrad)" stroke-width="46" stroke-linecap="round" />
+      <!-- Crossbar of H -->
+      <path d="M 296 256 L 392 256" stroke="url(#purpleGrad)" stroke-width="46" stroke-linecap="round" />
+    </g>
+
+    <!-- Energy Connection Spark / Dot -->
+    <circle cx="256" cy="256" r="14" fill="#4fd1c5" />
+    <circle cx="256" cy="256" r="7" fill="#ffffff" />
+  </g>
+</svg>

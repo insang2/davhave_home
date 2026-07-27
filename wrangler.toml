@@ -1,0 +1,18 @@
+name = "cold-mode-4364"
+compatibility_date = "2025-01-01"
+main = "src/worker.js"
+
+[assets]
+directory = "./public"
+not_found_handling = "single-page-application"
+binding = "ASSETS"
+run_worker_first = true
+
+[[d1_databases]]
+binding = "DB"
+database_name = "davhave-content"
+database_id = "92a078f6-4a01-468a-a120-076a68a027ec"
+
+[[r2_buckets]]
+binding = "MEDIA"
+bucket_name = "davhave-media"
