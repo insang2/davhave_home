@@ -15,6 +15,7 @@ export function renderSitemap({ blogPosts = [], projects = [], educationPosts = 
     urlEntry("https://davhave.com/blog", { changefreq: "daily", priority: "0.9" }),
     urlEntry("https://davhave.com/portfolio", { changefreq: "monthly", priority: "0.9" }),
     urlEntry("https://davhave.com/education", { changefreq: "weekly", priority: "0.9" }),
+    urlEntry("https://davhave.com/content", { changefreq: "monthly", priority: "0.6" }),
     ...blogPosts.map((p) =>
       urlEntry(`https://davhave.com/blog/${p.slug}`, {
         lastmod: p.updated_at,

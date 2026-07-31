@@ -21,6 +21,7 @@ import {
 import { renderBlogList, renderBlogPost } from "./lib/render.js";
 import { renderAdminPage } from "./lib/admin.js";
 import { renderPortfolioHub, renderPortfolioDetail } from "./lib/portfolio-render.js";
+import { renderContentHub } from "./lib/content-render.js";
 import { renderEducationHub, renderEducationCategory, renderLesson, CATEGORIES } from "./lib/education-render.js";
 import { projects, getProject } from "./lib/projects.js";
 import { renderSitemap } from "./lib/sitemap.js";
@@ -278,6 +279,12 @@ export default {
 
     if (pathname === "/portfolio" || pathname.startsWith("/portfolio/")) {
       return handlePortfolio(pathname.split("/").filter(Boolean));
+    }
+
+    if (pathname === "/content") {
+      return new Response(renderContentHub(), {
+        headers: { "content-type": "text/html; charset=utf-8" },
+      });
     }
 
     if (pathname === "/education" || pathname.startsWith("/education/")) {

@@ -365,7 +365,7 @@
     .p-link:hover { gap: .6rem; }
     .p-link .icon { width: 13px; height: 13px; stroke: var(--accent); }
 
-    .portfolio-more { text-align: left; margin-top: 2.5rem; }
+    .portfolio-more { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2.5rem; }
 
     /* ─── philosophy ─── */
     .philosophy-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 3.2rem 0; }
@@ -457,6 +457,7 @@
       <li><a href="#portfolio">Portfolio</a></li>
       <li><a href="/blog">Blog</a></li>
       <li><a href="/education">Education</a></li>
+      <li><a href="/content">Content</a></li>
       <li><a href="#philosophy">Philosophy</a></li>
     </ul>
     <a href="#contact" class="nav-cta">Contact</a>
@@ -473,8 +474,9 @@
       <li style="--d:3"><a href="#portfolio">Portfolio</a></li>
       <li style="--d:4"><a href="/blog">Blog</a></li>
       <li style="--d:5"><a href="/education">Education</a></li>
-      <li style="--d:6"><a href="#philosophy">Philosophy</a></li>
-      <li style="--d:7"><a href="#contact">Contact</a></li>
+      <li style="--d:6"><a href="/content">Content</a></li>
+      <li style="--d:7"><a href="#philosophy">Philosophy</a></li>
+      <li style="--d:8"><a href="#contact">Contact</a></li>
     </ul>
   </div>
 
@@ -667,6 +669,10 @@
           <span>실제 클라이언트 개발 사례 보기</span>
           <span class="btn-icon"><svg class="icon"><use href="#i-arrow"/></svg></span>
         </a>
+        <a href="/content" class="btn btn-ghost magnetic">
+          <span>클라이언트 사이트 콘텐츠 둘러보기</span>
+          <span class="btn-icon"><svg class="icon"><use href="#i-arrow"/></svg></span>
+        </a>
       </div>
     </section>
 
@@ -729,6 +735,7 @@
         <li><a href="#about">About</a></li>
         <li><a href="/blog">Blog</a></li>
         <li><a href="/education">Education</a></li>
+        <li><a href="/content">Content</a></li>
         <li><a href="mailto:useapp.davhave@gmail.com">Contact</a></li>
       </ul>
     </footer>
