@@ -72,7 +72,8 @@ export function renderAdminPage() {
           </div>
           <div><label>카테고리 (교육용)</label>
             <select id="f-category"><option value="">—</option><option value="ai">AI</option>
-              <option value="python">Python</option><option value="java">Java</option><option value="mobile">모바일 개발</option></select>
+              <option value="python">Python</option><option value="java">Java</option><option value="mobile">모바일 개발</option>
+              <option value="software-engineering">소프트웨어 공학</option></select>
           </div>
           <div><label>상태</label>
             <select id="f-status"><option value="draft">임시저장</option><option value="published">발행</option></select>

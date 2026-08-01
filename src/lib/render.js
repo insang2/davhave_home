@@ -65,6 +65,10 @@ const BASE_STYLE = `
     overflow-x:auto;margin:1.5rem 0;}
   article pre code{background:none;padding:0;}
   article ul,article ol{margin:0 0 1.1rem 1.4rem;color:var(--text);}
+  article table{width:100%;border-collapse:collapse;margin:0 0 1.5rem;font-size:.92rem;}
+  article th,article td{border:1px solid var(--border);padding:.55rem .8rem;text-align:left;}
+  article th{color:var(--muted);font-family:var(--mono);font-size:.78rem;font-weight:600;}
+  article blockquote{margin:0 0 1.1rem;padding:.2rem 1.2rem;border-left:2px solid var(--accent);color:var(--muted);}
   .cover{width:100%;border-radius:var(--radius);margin-bottom:2rem;border:1px solid var(--border);}
   .share-row{display:flex;align-items:center;gap:1rem;margin:2.5rem 0;padding:1.2rem;border:1px solid var(--border);
     border-radius:var(--radius);background:var(--surface);}

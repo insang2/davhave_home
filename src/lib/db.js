@@ -80,6 +80,17 @@ export async function listPosts(db, { kind = "blog", category, tagSlug, includeD
   return { posts, total: countRow?.total || 0, page: Math.max(1, page), pageSize: PAGE_SIZE };
 }
 
+export async function listAllInCategory(db, kind, category) {
+  const { results } = await db
+    .prepare(
+      `SELECT * FROM posts WHERE kind = ? AND category = ? AND status = 'published'
+       ORDER BY order_index ASC, published_at DESC`
+    )
+    .bind(kind, category)
+    .all();
+  return attachTags(db, results);
+}
+
 export async function getPostBySlug(db, slug) {
   const post = await db.prepare("SELECT * FROM posts WHERE slug = ?").bind(slug).first();
   if (!post) return null;

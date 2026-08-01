@@ -5,6 +5,7 @@ export const CATEGORIES = {
   python: { label: "Python", desc: "문법부터 실전 프로젝트까지" },
   java: { label: "Java", desc: "문법, 객체지향, 실무 패턴" },
   mobile: { label: "모바일 개발", desc: "Flutter · React Native · Swift · Kotlin" },
+  "software-engineering": { label: "소프트웨어 공학", desc: "요구사항 분석부터 설계·테스트·프로젝트 관리까지, SE 핵심 이론" },
 };
 
 const EDU_STYLE = `

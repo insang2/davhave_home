@@ -8,6 +8,7 @@ import {
 import { slugify, uniqueSlug } from "./lib/slug.js";
 import {
   listPosts,
+  listAllInCategory,
   getPostBySlug,
   getPostById,
   createPost,
@@ -202,7 +203,7 @@ async function handleEducation(env, parts) {
   if (!CATEGORIES[category]) return notFound();
 
   if (parts.length === 2) {
-    const { posts } = await listPosts(env.DB, { kind: "education", category });
+    const posts = await listAllInCategory(env.DB, "education", category);
     return new Response(renderEducationCategory({ category, posts }), {
       headers: { "content-type": "text/html; charset=utf-8" },
     });
