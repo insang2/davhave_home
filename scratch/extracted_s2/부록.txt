@@ -1,0 +1,56 @@
+=== 부록.pptx ===
+
+--- Slide 1 ---
+파이썬 메모리
+
+--- Slide 2 ---
+stack / 메모리 / heap / 메모리 / 객체 / 리스트 / , / 튜플 / 딕셔너리 / 메소드 / 1 / 함수 / 1 / 함수 / 2 / 함수 또는 / 메소드 / 호출 시 만들어지고 / , / 수행이 종료되면 없어짐 / 레퍼런스 카운트가 / 0 / 인 객체들은  파이썬 / 가상머신이 /  / 가비지 /  / 컬렉터로 / 청소함
+
+--- Slide 3 ---
+Dual Pivot Quick Sort / Vladimir / Yaroslavskiy / , 2009 / Java SE 7, / Arrays.sort / () for primitive types / CUT_SIZE = 27 to call / i / nsertion_sort
+
+--- Slide 4 ---
+p1 < p2 / [ / 핵심 아이디어 / ]
+
+--- Slide 5 ---
+less than / p / greater than / p / p···p / 변수 /  / lt / , / gt / 의 위치 / 현재 원소
+
+--- Slide 6 ---
+p1 < p2 / 가 되도록 / case 1 / case 2 / case 3 / 3 / 부분 각각 / 순환 호출
+
+--- Slide 7 ---
+0 / 1 / 2 / 3 / 4 / 5 / 6 / 7 / 8 / 9 / 10 / 85 / 45 / 10 / 25 / 2 / 1 / 90 / 6 / 35 / low / high / lt / i / gt / 0 / 1 / 2 / 3 / 4 / 5 / 6 / 7 / 8 / 9 / 10 / 6 / 45 / 10 / 25 / 2 / 1 / 90 / 85 / 35 / low / high / lt / i / gt / case 2 / 0 / 1 / 2 / 3 / 4 / 5 / 6 / 7 / 8 / 9 / 10 / 6 / 45 / 10 / 25 / 2 / 1 / 90 / 85 / 35 / low / high / lt / i / gt / case 1 / 0 / 1 / 2 / 3 / 4 / 5 / 6 / 7 / 8 / 9 / 10 / 6 / 90 / 10 / 25 / 2 / 1 / 45 / 85 / 35 / low / high / lt / i / gt / case 2 / 0 / 1 / 2 / 3 / 4 / 5 / 6 / 7 / 8 / 9 / 10 / 6 / 1 / 10 / 25 / 2 / 90 / 45 / 85 / 35 / low / high / lt / i / gt / case 2 /  / a / [ / 예제 / ]
+
+--- Slide 8 ---
+0 / 1 / 2 / 3 / 4 / 5 / 6 / 7 / 8 / 9 / 10 / 6 / 1 / 10 / 25 / 2 / 90 / 45 / 85 / 35 / low / high / lt / i / gt / 0 / 1 / 2 / 3 / 4 / 5 / 6 / 7 / 8 / 9 / 10 / 6 / 1 / 10 / 25 / 2 / 90 / 45 / 85 / 35 / low / high / lt / i / gt / case 1 / 0 / 1 / 2 / 3 / 4 / 5 / 6 / 7 / 8 / 9 / 10 / 6 / 1 / 10 / 25 / 2 / 90 / 45 / 85 / 35 / low / high / lt / i / gt / case 3 / 0 / 1 / 2 / 3 / 4 / 5 / 6 / 7 / 8 / 9 / 10 / 6 / 1 / 10 / 25 / 2 / 90 / 45 / 85 / 35 / low / high / lt / i / gt / case 3 / 0 / 1 / 2 / 3 / 4 / 5 / 6 / 7 / 8 / 9 / 10 / 6 / 1 / 2 / 25 / 10 / 90 / 45 / 85 / 35 / low / high / lt / i / gt / case 1
+
+--- Slide 9 ---
+0 / 1 / 2 / 3 / 4 / 5 / 6 / 7 / 8 / 9 / 10 / 6 / 1 / 2 / 25 / 10 / 90 / 45 / 85 / 35 / low / high / lt / gt / 0 / 1 / 2 / 3 / 4 / 5 / 6 / 7 / 8 / 9 / 2 / 6 / 1 / 10 / 25 / 10 / 35 / 45 / 85 / 90 / low / high / lt / gt / 10 / 보다 /  / 작고 / 35 / 보다 크다 / 10 / 과 / 35 / 사이
+
+--- Slide 10 ---
+0 / 1 / 2 / 3 / 4 / 5 / 6 / 7 / 8 / 9 / 10 / 5 / 10 / 20 / 1 / 70 / 15 / 90 / 6 / 35 / low / high / lt / i / gt / 0 / 1 / 2 / 3 / 4 / 5 / 6 / 7 / 8 / 9 / 10 / 5 / 10 / 20 / 1 / 70 / 15 / 90 / 6 / 35 / low / high / lt / i / case 1 / 0 / 1 / 2 / 3 / 4 / 5 / 6 / 7 / 8 / 9 / 10 / 5 / 10 / 20 / 1 / 70 / 15 / 90 / 6 / 35 / low / high / lt / i / gt / case 3 / 0 / 1 / 2 / 3 / 4 / 5 / 6 / 7 / 8 / 9 / 10 / 5 / 10 / 20 / 1 / 70 / 15 / 90 / 85 / 35 / low / high / lt / i / gt / case 3 / 0 / 1 / 2 / 3 / 4 / 5 / 6 / 7 / 8 / 9 / 10 / 5 / 1 / 20 / 10 / 70 / 15 / 90 / 85 / 35 / low / high / lt / i / gt / case 1 / gt / [ / 예제 / 2]
+
+--- Slide 11 ---
+Tim Sort
+
+--- Slide 12 ---
+If (X ≤ / Y+Z / ) / 이면 / , / Y / 는 / X / 와 / Z / 중 작은 것과 합병 / , / 같으면 / z / 와 합병 / 100 / 60 / 50 / 100 / 110 / 70 / 60 / 80 / 130 / 80 / X / YZ / Z / Y / X / Z / Y / Z / XY / X / Y > Z / 위배 / Y > Z /  / 만족 / 300 / 300 / 300 / 300 / push
+
+--- Slide 13 ---
+… / … / X  > Y + Z / False / 런스택 / run / 0, / 10 / 10, / 7 / 17, / 5 / 10 / 0 / 17 / min_run = 5 / X / Y / Z / 삽입정렬 / 0 / 런 찾기 시작 / YZ /  / 합병 / 0, / 10 / 10, / 12 / Y / Z / push / 22 / … / … / 22 / 17, / 5 / Y > Z / False / YZ /  / 합병 / 0, / 22
+
+--- Slide 14 ---
+ / while /  / stack_size / > 1: / top = stack_size-1 /  / if / top>2 / and / run[top-2]<=run[top-1]+run[top]: / # / 조건 / (1) / 이 위배 /  / if / run[top-2]<run[top]: / merge(top-2,top-1) /  / else / : / merge(top-1,top) /  / elif / run[top-1]<=run[top]: / # / 조건 / (2) / 가 위배 / merge(top-1, top) /  / else / : / # / 두 조건 모두 만족 /  / break / http://cr.openjdk.java.net/~martin/webrevs/openjdk7/timsort/raw_files/new/src/share/classes/java/util/TimSort.java
+
+--- Slide 15 ---
+min_run / 이 / 256 / 이면 너무 크고 / , 8 / 이면 너무 작다 / . / 실험 검증 결과에 따르면 / 32 / 에서 / 65 / 가 좋은 성능을 보인다 / . / 입력 배열 크기인 / N / 의 이진수에서 최상위 / 6 / 비트를 추출한 수에 / r / 을 더한다 / . / 단 / , N / 의 이진수의 최상위 / 6 / 비트를 제외한 나머지 비트에서 적어도 / 1 / 개의 / 1 / 비트가 있으면 / r =1 / 이 된다 / . / def /  / min_run_len / (N): / r = 0 /  / while / N >= 64 : / r = r | (N & 1) / N >>= 1 /  / return / N + r / min_run / 크기 정하기
+
+--- Slide 16 ---
+# / 런스택에 /  / 1 / 개의 항목이 남을 때까지 합병 / def /  / mergeForceCollapse / (): /  / while /  / stack_size / > 1: / s = stack_size-2 /  / if / s > 0 / and /  / run_len / [s-1] < / run_len / [s+1]: / s -= 1 /  / merge_at / (s)
+
+--- Slide 17 ---
+galloping_merge
+
+--- Slide 18 ---
+이진탐색 / y / 20 / y / 16 / y / 8 / y / 4 / x / 1 / y / 1 / y / 2 / y / 32 / 이미 /  / 처리된 부분 / galloping_merge
+

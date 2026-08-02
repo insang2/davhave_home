@@ -9,128 +9,503 @@ order_index: 5
 
 ## 들어가며
 
-고급 OOP 개념는 Python 개발에서 빼놓을 수 없는 핵심 주제다. 이번 장에서는 단순한 개념 설명을 넘어, 실제 프로젝트에서 어떻게 이를 활용하는지, 그리고 흔히 범하는 실수를 어떻게 피할 수 있는지를 중심으로 다룬다.
+고급 OOP 개념들을 통해 더 유연하고 확장성 있는 클래스 설계를 할 수 있습니다. 추상 클래스, 다중 상속, 프로퍼티 등의 개념을 학습합니다.
 
-## 배경: 왜 이것이 중요한가
+## 추상 클래스
 
-많은 개발자들이 고급 OOP 개념을(를) 선택적인 개념이라고 생각한다. 하지만 현실의 프로젝트에서는 이것을 제대로 이해하지 않으면 나중에 큰 문제가 된다. 예를 들어, 처음에는 작동하던 코드가 규모가 커지면서 갑자기 느려지거나, 유지보수가 어려워지는 경험을 한 적이 있을 것이다. 대부분 이 장에서 다루는 개념들을 간과했기 때문이다.
+### 예제 1: ABC를 사용한 추상 클래스
 
-## 기본 개념의 이해
+```python
+from abc import ABC, abstractmethod
 
-고급 OOP 개념을(를) 이해하기 위해서는 먼저 몇 가지 기본 개념을 알아야 한다.
+class Shape(ABC):
+    """도형의 추상 클래스"""
+    
+    @abstractmethod
+    def area(self):
+        """넓이를 계산합니다"""
+        pass
+    
+    @abstractmethod
+    def perimeter(self):
+        """둘레를 계산합니다"""
+        pass
+    
+    def description(self):
+        """구체적인 메서드"""
+        return f"이것은 {self.__class__.__name__}입니다"
 
-### 1. 근본 원리
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+    
+    def area(self):
+        return 3.14159 * self.radius ** 2
+    
+    def perimeter(self):
+        return 2 * 3.14159 * self.radius
 
-이 기술이 작동하는 방식을 이해하려면, 그 뒤에 있는 원리를 알아야 한다. Python 생태계에서 이 개념이 어떤 역할을 하는지, 그리고 어떤 문제를 해결하는지를 먼저 파악하자.
+class Rectangle(Shape):
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+    
+    def area(self):
+        return self.width * self.height
+    
+    def perimeter(self):
+        return 2 * (self.width + self.height)
 
-### 2. 용어와 정의
+# 사용
+circle = Circle(5)
+rect = Rectangle(10, 20)
 
-이 분야의 전문가들이 사용하는 용어들을 정확히 알아두는 것이 중요하다. 같은 개념을 여러 이름으로 부르는 경우도 있기 때문이다. 공식 문서와 커뮤니티에서 가장 많이 사용되는 용어를 기준으로 정리했다.
-
-## 이론과 실제
-
-책에서 배운 이론과 현실의 코드는 다르다. 이 섹션에서는 고급 OOP 개념이 실제로 어떻게 적용되는지를 보여준다.
-
-### 실전 시나리오 1: 기본 활용
-
-가장 간단한 경우부터 시작해보자. 이 단계는 대부분의 프로젝트에서 필요로 하는 기본적인 패턴이다.
-
+for shape in [circle, rect]:
+    print(f"{shape.description()}")
+    print(f"넓이: {shape.area():.2f}, 둘레: {shape.perimeter():.2f}\n")
 ```
-기본 예제 코드
-- 구조 설명
-- 각 부분의 역할
+
+출력:
+```
+이것은 Circle입니다
+넓이: 78.54, 둘레: 31.42
+
+이것은 Rectangle입니다
+넓이: 200.00, 둘레: 60.00
 ```
 
-### 실전 시나리오 2: 복잡성 처리
+## 프로퍼티 (Property)
 
-하지만 실제 프로젝트는 기본 경우만 다루지 않는다. 다양한 엣지 케이스와 제약 조건들이 있다. 이를 어떻게 다루는지 보자.
+### 예제 2: @property 데코레이터
 
+```python
+class Temperature:
+    """온도를 관리하는 클래스"""
+    
+    def __init__(self, celsius):
+        self._celsius = celsius
+    
+    @property
+    def celsius(self):
+        """섭씨 온도 (읽기)"""
+        return self._celsius
+    
+    @property
+    def fahrenheit(self):
+        """화씨 온도 (계산)"""
+        return self._celsius * 9/5 + 32
+    
+    @celsius.setter
+    def celsius(self, value):
+        """섭씨 온도 (쓰기)"""
+        if value < -273.15:
+            raise ValueError("절대영도보다 낮을 수 없습니다")
+        self._celsius = value
+
+temp = Temperature(25)
+print(f"섭씨: {temp.celsius}°C")
+print(f"화씨: {temp.fahrenheit}°F")
+
+temp.celsius = 30
+print(f"\n변경 후:")
+print(f"섭씨: {temp.celsius}°C")
+print(f"화씨: {temp.fahrenheit}°F")
+
+# 잘못된 값 설정 시도
+# temp.celsius = -300  # ValueError!
 ```
-복잡한 예제
-- 고려해야 할 점들
-- 실수하기 쉬운 부분
+
+출력:
+```
+섭씨: 25°C
+화씨: 77.0°F
+
+변경 후:
+섭씨: 30°C
+화씨: 86.0°F
+```
+
+## 다중 상속
+
+### 예제 3: 다중 상속과 MRO
+
+```python
+class Swimmer:
+    def swim(self):
+        return "수영을 합니다"
+
+class Flyer:
+    def fly(self):
+        return "날아갑니다"
+
+class Duck(Swimmer, Flyer):
+    """오리: 헤엄도 치고 날아갑니다"""
+    pass
+
+class Penguin(Swimmer):
+    """펭귄: 헤엄만 칩니다"""
+    pass
+
+# 사용
+duck = Duck()
+print(f"오리: {duck.swim()}, {duck.fly()}")
+
+penguin = Penguin()
+print(f"펭귄: {penguin.swim()}")
+
+# MRO 확인
+print(f"\nDuck의 MRO: {Duck.__mro__}")
+```
+
+출력:
+```
+오리: 수영을 합니다, 날아갑니다
+펭귄: 수영을 합니다
+
+Duck의 MRO: (<class 'Duck'>, <class 'Swimmer'>, <class 'Flyer'>, <class 'object'>)
+```
+
+## 매직 메서드 심화
+
+### 예제 4: 컨테이너 매직 메서드
+
+```python
+class Inventory:
+    """재고 관리 클래스"""
+    
+    def __init__(self, items=None):
+        self.items = items if items else {}
+    
+    def __len__(self):
+        """재고 종류 수"""
+        return len(self.items)
+    
+    def __getitem__(self, key):
+        """items['product'] 형식으로 접근"""
+        return self.items.get(key, 0)
+    
+    def __setitem__(self, key, value):
+        """items['product'] = 10 형식으로 설정"""
+        self.items[key] = value
+    
+    def __contains__(self, key):
+        """'product' in items 형식으로 확인"""
+        return key in self.items
+    
+    def __iter__(self):
+        """for item in inventory 형식으로 순회"""
+        return iter(self.items)
+
+# 사용
+inv = Inventory()
+inv["apple"] = 10
+inv["banana"] = 5
+inv["orange"] = 8
+
+print(f"재고 종류: {len(inv)}")
+print(f"사과 재고: {inv['apple']}")
+print(f"'apple' in inv: {'apple' in inv}")
+print(f"모든 상품: {list(inv)}")
+```
+
+출력:
+```
+재고 종류: 3
+사과 재고: 10
+'apple' in inv: True
+모든 상품: ['apple', 'banana', 'orange']
+```
+
+## 클래스 메서드와 데코레이터
+
+### 예제 5: 싱글톤 패턴
+
+```python
+class Database:
+    """싱글톤 패턴 - 인스턴스가 하나만 존재"""
+    
+    _instance = None
+    
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+        return cls._instance
+    
+    def __init__(self):
+        self.connection = "Database Connection"
+    
+    def query(self, sql):
+        return f"실행: {sql}"
+
+# 사용
+db1 = Database()
+db2 = Database()
+
+print(f"db1 == db2: {db1 is db2}")
+print(f"db1의 connection: {db1.connection}")
+print(f"db2의 connection: {db2.connection}")
+```
+
+출력:
+```
+db1 == db2: True
+db1의 connection: Database Connection
+db2의 connection: Database Connection
+```
+
+## 메타클래스 기초
+
+### 예제 6: 간단한 메타클래스
+
+```python
+class SingletonMeta(type):
+    """싱글톤 메타클래스"""
+    _instances = {}
+    
+    def __call__(cls, *args, **kwargs):
+        if cls not in cls._instances:
+            cls._instances[cls] = super().__call__(*args, **kwargs)
+        return cls._instances[cls]
+
+class Logger(metaclass=SingletonMeta):
+    def __init__(self):
+        self.logs = []
+    
+    def log(self, message):
+        self.logs.append(message)
+        return f"로그: {message}"
+
+# 사용
+logger1 = Logger()
+logger1.log("첫 번째 메시지")
+
+logger2 = Logger()
+logger2.log("두 번째 메시지")
+
+print(f"logger1 == logger2: {logger1 is logger2}")
+print(f"모든 로그: {logger1.logs}")
+```
+
+출력:
+```
+logger1 == logger2: True
+모든 로그: ['첫 번째 메시지', '두 번째 메시지']
 ```
 
 ## 흔한 실수와 해결책
 
-경험 많은 개발자도 이 부분에서 실수한다. 그리고 그 대가는 비용이 크다.
+### 실수 1: 다중 상속에서 충돌
 
-### 실수 1: 너무 일찍 최적화하려고 함
+**틀린 예제:**
+```python
+class A:
+    def method(self):
+        return "A"
 
-고급 OOP 개념을(를) 처음 배울 때는 완벽함을 추구하려고 한다. 하지만 프로젝트 초기에는 동작하는 것이 완벽한 것보다 낫다. 먼저 작동하게 만들고, 필요할 때 개선하는 것이 현명한 전략이다.
+class B:
+    def method(self):
+        return "B"
 
-### 실수 2: 요구사항을 충분히 파악하지 않음
+class C(A, B):
+    pass
 
-많은 버그는 "요구사항을 잘못 이해했을 때" 생긴다. 고급 OOP 개념의 맥락에서도 마찬가지다. 시작하기 전에, 정확히 무엇을 해야 하는지를 팀 전체가 이해하고 있는지 확인해야 한다.
+c = C()
+print(c.method())  # "A" - 의도와 다를 수 있음
+```
 
-### 실수 3: 테스트를 미루기
+**올바른 예제:**
+```python
+class A:
+    def method(self):
+        return "A"
 
-"나중에 테스트할 거야"라고 생각하면, 나중은 절대 오지 않는다. 고급 OOP 개념과 관련된 로직은 반드시 테스트를 작성해야 한다. 특히 엣지 케이스를 중심으로.
+class B:
+    def method(self):
+        return "B"
 
-## 성능 고려사항
+class C(A, B):
+    def method(self):
+        # 명시적으로 어느 부모를 사용할지 지정
+        return f"{super().method()}, C"
 
-규모가 커질수록 성능이 중요해진다.
+c = C()
+print(c.method())  # "A, C"
+```
 
-### 시간 복잡도
+### 실수 2: 프로퍼티와 일반 속성 혼동
 
-고급 OOP 개념과 관련된 작업의 시간 복잡도를 파악해야 한다. O(n)인지, O(n²)인지, 아니면 상수 시간인지에 따라 대규모 데이터셋에서의 성능이 결정된다.
+**틀린 예제:**
+```python
+class Person:
+    @property
+    def age(self):
+        return self._age
+    
+    def __init__(self, age):
+        self.age = age  # age 프로퍼티에 직접 쓰려고 함
 
-### 메모리 사용량
+p = Person(25)  # AttributeError!
+```
 
-메모리는 유한한 자원이다. 큰 데이터를 다룰 때는 메모리 효율성을 고려해야 한다.
+**올바른 예제:**
+```python
+class Person:
+    def __init__(self, age):
+        self._age = age  # 내부 속성에 저장
+    
+    @property
+    def age(self):
+        return self._age
+    
+    @age.setter
+    def age(self, value):
+        self._age = value
 
-### 확장성
+p = Person(25)
+print(p.age)  # 25
+p.age = 26
+print(p.age)  # 26
+```
 
-시스템이 성장했을 때도 잘 작동해야 한다. 이 기술이 스케일링에 어떻게 영향을 미치는지 고려해야 한다.
+### 실수 3: 추상 메서드 구현하지 않음
 
-## 베스트 프랙티스
+**틀린 예제:**
+```python
+from abc import ABC, abstractmethod
 
-업계에서 권장하는 방식들을 정리했다.
+class Base(ABC):
+    @abstractmethod
+    def method(self):
+        pass
 
-### 1. 명확한 인터페이스 설계
+# class Child(Base):  # 에러: 추상 메서드 미구현
+#     pass
+```
 
-어떤 입력을 받고, 어떤 출력을 제공할지를 먼저 정의하라. 이렇게 하면 나중에 구현을 바꾸기 쉬워진다.
+**올바른 예제:**
+```python
+from abc import ABC, abstractmethod
 
-### 2. 테스트 주도 개발
+class Base(ABC):
+    @abstractmethod
+    def method(self):
+        pass
 
-먼저 테스트를 작성하고, 그 테스트를 통과하는 코드를 만든다. 이렇게 하면 요구사항을 명확히 할 수 있고, 나중에 리팩토링할 때도 안전하다.
+class Child(Base):
+    def method(self):
+        return "구현됨"
 
-### 3. 문서화
+c = Child()
+print(c.method())
+```
 
-미래의 당신, 그리고 당신의 팀 동료들에게 이 코드가 왜 이렇게 작성되었는지를 설명해야 한다. 특히 판단 과정과 트레이드오프를 기록해두라.
+## 연습 문제
 
-### 4. 정기적인 리팩토링
+### 문제 1: 학생 성적 관리
+Student 클래스를 만들어 성적을 프로퍼티로 관리하세요.
 
-좋은 코드도 시간이 지나면 기술 부채가 쌓인다. 정기적으로 코드를 검토하고 개선하라.
+### 문제 2: 플러그인 시스템
+추상 클래스를 사용하여 확장 가능한 플러그인 시스템을 설계하세요.
 
-## 관련 개념들과의 연계
+### 문제 3: 설정 관리자
+싱글톤 패턴을 사용한 설정 관리 클래스를 만드세요.
 
-고급 OOP 개념은 고립된 개념이 아니다. 다른 많은 개념과 연결되어 있다.
+## 풀이
 
-- **이전 장**: ch4에서 배운 내용이 기초가 된다
-- **다음 장**: ch6에서는 이를 바탕으로 더 고급 주제를 다룬다
-- **병렬 개념**: 다른 분야의 Python 관련 개념들과도 연계된다
+### 문제 1 풀이
+```python
+class Student:
+    def __init__(self, name):
+        self.name = name
+        self._scores = []
+    
+    @property
+    def scores(self):
+        return self._scores
+    
+    @property
+    def average(self):
+        if not self._scores:
+            return 0
+        return sum(self._scores) / len(self._scores)
+    
+    def add_score(self, score):
+        if 0 <= score <= 100:
+            self._scores.append(score)
+        else:
+            raise ValueError("점수는 0~100 사이여야 합니다")
 
-## 실습 과제
+student = Student("Alice")
+student.add_score(85)
+student.add_score(90)
+student.add_score(78)
 
-이론만으로는 부족하다. 직접 해봐야 익숙해진다.
+print(f"학생: {student.name}")
+print(f"평균 점수: {student.average:.1f}")
+```
 
-### 기본 과제
-- 고급 OOP 개념의 기본 개념을 이용한 간단한 프로젝트 구현
-- 교과서 예제를 자신의 프로젝트에 맞게 수정하기
+### 문제 2 풀이
+```python
+from abc import ABC, abstractmethod
 
-### 심화 과제
-- 성능 측정 및 최적화
-- 엣지 케이스 처리
-- 다른 개발자의 코드 리뷰
+class Plugin(ABC):
+    @abstractmethod
+    def execute(self):
+        pass
+
+class HelloPlugin(Plugin):
+    def execute(self):
+        return "Hello Plugin"
+
+class WorldPlugin(Plugin):
+    def execute(self):
+        return "World Plugin"
+
+class PluginManager:
+    def __init__(self):
+        self.plugins = []
+    
+    def register(self, plugin):
+        self.plugins.append(plugin)
+    
+    def run_all(self):
+        for plugin in self.plugins:
+            print(plugin.execute())
+
+manager = PluginManager()
+manager.register(HelloPlugin())
+manager.register(WorldPlugin())
+manager.run_all()
+```
+
+### 문제 3 풀이
+```python
+class Config(type):
+    _instance = None
+    
+    def __call__(cls, *args, **kwargs):
+        if cls._instance is None:
+            cls._instance = super().__call__(*args, **kwargs)
+        return cls._instance
+
+class Settings(metaclass=Config):
+    def __init__(self):
+        self.settings = {}
+    
+    def set(self, key, value):
+        self.settings[key] = value
+    
+    def get(self, key):
+        return self.settings.get(key)
+
+s1 = Settings()
+s1.set("debug", True)
+
+s2 = Settings()
+print(f"debug: {s2.get('debug')}")
+print(f"s1 is s2: {s1 is s2}")
+```
 
 ## 마무리
 
-고급 OOP 개념을(를) 이해했다면, 당신은 Python 개발에서 한 단계 더 나아갔다. 하지만 진짜 학습은 여기서부터 시작된다. 실제 프로젝트에 적용하고, 문제에 부딪히고, 해결하는 과정을 거치면서 진정한 이해가 생긴다.
-
-다음 장으로 넘어가기 전에:
-1. 이 장의 개념을 다시 한 번 정리해보자
-2. 작은 프로젝트로 실습해보자
-3. 막히는 부분이 있으면 커뮤니티에 질문해보자
-
-좋은 개발자가 되는 길은 지식의 양이 아니라, 깊이와 실전 경험이다. 이 장의 내용을 제대로 이해하고 활용할 수 있다면, 당신의 코드의 품질이 눈에 띄게 개선될 것이다.
+고급 OOP 개념을 이해하면 더 우아하고 유지보수하기 쉬운 코드를 작성할 수 있습니다.

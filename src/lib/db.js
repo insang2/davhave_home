@@ -55,8 +55,8 @@ export async function listPosts(db, { kind = "blog", category, tagSlug, searchTe
   }
   if (searchTerm) {
     const term = `%${searchTerm}%`;
-    conditions.push("(posts.title LIKE ? OR posts.excerpt LIKE ?)");
-    params.push(term, term);
+    conditions.push("(posts.title LIKE ? OR posts.excerpt LIKE ? OR posts.content_md LIKE ?)");
+    params.push(term, term, term);
   }
   let joinClause = "";
   if (tagSlug) {

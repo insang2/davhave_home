@@ -1,0 +1,239 @@
+=== 제16장 전처리및 다중소스파일(강의).pptx ===
+
+--- Slide 1 ---
+제 / 16 / 장 / 전처리 / 및 다중소스 파일 / C / 언어 / Express( / 개정 / 4 / 판 / )
+
+--- Slide 2 ---
+이번 장에서 학습할 내용 / 전처리 지시어 / 분할 컴파일 / 명령어 라인의 매개변수 / 디버깅 방법 / 전처리와 기타 중요한 테마에 대하여 학습한다 / .
+
+--- Slide 3 ---
+전처리기란 / ? / 전처리기 / (preprocessor / ) / 는 컴파일하기에 앞서서 소스 파일을 처리하는 컴파일러의 한 부분
+
+--- Slide 4 ---
+전처리기의 요약 / 지시어 / 의미 / #define / 매크로 정의 / #include / 파일 포함 / #undef / 매크로 정의 해제 / #if / 조건이 참일 경우 / #else / 조건이 거짓일 경우 / #endif / 조건 처리 문장 종료 / #ifdef / 매크로가 정의되어 있는 경우 / #ifndef / 매크로가 정의되어 있지 않은 경우 / #line / 행번호 / 출력 / #pragma / 시스템에 따라 의미가 다름
+
+--- Slide 5 ---
+단순 매크로
+
+--- Slide 6 ---
+단순 매크로 / 전처리기 / 
+
+--- Slide 7 ---
+단순 매크로의 장점 / 프로그램의 가독성을 높인다 / . / 상수의 변경이 용이하다 / .
+
+--- Slide 8 ---
+단순 매크로의 예 / #define / PI 	3.141592 / // / 원주율 / #define / EOF 	(-1) / // / 파일의 / 끝표시 / #define / EPS 	1.0e-9 / // / 실수의 계산 한계 / #define / DIGITS / "0123456789" /  / // / 문자 상수 정의 / #define / BRACKET / "(){}[]" /  / // / 문자 상수 정의 / #define /  / getchar / () / getc / (stdin) / // / stdio.h / 에 정의 / #define /  / putchar / () / putc / ( / stdout / ) / // / stdio.h / 에 정의
+
+--- Slide 9 ---
+예제 / #define / 지시자를 사용하여 연산자 / && / 를 / AND / 로 바꾸어서 사용해보자 / . /  / int /  / i / = 0; /  / while / ( / i / < n / AND / list[ / i / ] != key ) /  / i / ++; /  / if / ( / i /  / IS / n ) /  / return / -1; /  / else /  /  / return /  / i / ; / 어떻게 전처리기를 정의해야 할까요 / ?
+
+--- Slide 10 ---
+예제 / #include /  / < / stdio.h / > / #define / AND		&& / #define / OR 		|| / #define / NOT		! / #define / IS		== / #define / ISNOT	!= / int / search( / int / list[], / int / n, / int / key) / { /  / int /  / i / = 0; /  / while / ( / i / < n / AND / list[ / i / ] != key ) /  / i / ++; /  / if / ( / i /  / IS / n ) /  / return / -1; /  / else /  /  / return /  / i / ; / }
+
+--- Slide 11 ---
+예제 / int / main( / void / ) / { /  / int / m[] = { 1, 2, 3, 4, 5, 6, 7 }; /  / printf / ( / " / 배열에서 / 5 / 의 위치 / =%d\n" / , search(m, / sizeof / (m) / / sizeof / (m[0]), 5)); /  / return / 0; / } / 배열에서 / 5 / 의 위치 / =4
+
+--- Slide 12 ---
+중간 점검 / 1. #define / 을 이용하여서 / 1234 / 를 / KEY / 로 정의하여 보라 / . / 2. #define / 을 이용하여서 / scanf / 를 / INPUT / 으로 정의하여 보라 / .
+
+--- Slide 13 ---
+함수 매크로 / 함수 매크로 / (function-like macro / ) / 란 매크로가 함수처럼 매개 변수를 가지는 것
+
+--- Slide 14 ---
+함수 매크로
+
+--- Slide 15 ---
+함수 매크로의 예 / #define /  / SUM / (x, y)               ((x) + (y)) / #define /  / AVERAGE / (x, y, z)   (( (x) + (y) + (z) ) / 3 ) / #define /  / MAX / (x,y)                ( (x) > (y) ) ? (x) : (y) / #define /  / MIN / (x,y)                ( (x) < (y) ) ? (x) : (y)
+
+--- Slide 16 ---
+주의할 점 / #define SQUARE(x)     x*x / // / 위험 / !! /  / v = SQUARE( / a+b / ); /  / v = a + b*a + b; / 함수 매크로에서는 매개 변수를 괄호로 둘러싸는 것이 좋습니다 / . / #define SQUARE(x) 	(x)*(x) / // / 올바른 형태 / 
+
+--- Slide 17 ---
+함수 매크로의 장단점 / 함수 매크로의 장단점 / 함수 호출 단계가 / 필요없어 / 실행 속도가 빠르다 / . / 소스 코드의 길이가 길어진다 / . / 간단한 기능은 매크로를 사용 / #define MIN(x, y)	((x) < (y) ? (x) : (y)) / 매크로를 한 줄 이상 연장하는 방법 / #define PRINT(x) if( debug==1 && \ /  / mode==1 ) \ /  / printf / (“%d”, x);
+
+--- Slide 18 ---
+주의할 점
+
+--- Slide 19 ---
+예제 / #1 / // / 매크로 /  / 예제 / #include /  / < / stdio.h / > / #define / SQUARE(x)  ((x) * (x)) /  / int / main( / void / ) / { /  / int / x = 2; /  /  / printf / ( / "%d\n" / , SQUARE(x)); /  / printf / ( / "%d\n" / , SQUARE(3)); /  / printf / ( / "%f\n" / , SQUARE(1.2)); / // / 실수에도 /  / 적용 /  / 가능 /  /  / printf / ( / "%d\n" / , SQUARE(x+3)); /  / printf / ( / "%d\n" / , 100/SQUARE(x)); /  / printf / ( / "%d\n" / , SQUARE(++x)); / // / 논리 /  / 오류 /  /  / return / 0; / } / 4 / 9 / 1.440000 / 25 / 25 / 16
+
+--- Slide 20 ---
+# / 연산자 / PRINT(x) / 와 /  / 같이 호출하면 / “x=5” / 와 같이 / 변수의 이름과 값을 동시에 출력하는 매크로 / PRINT() / 를 작성해보자 / . / 다음과 /  / 같이 작성하면 잘못된 결과가 나온다 / . / #define / PRINT(exp) / printf / ( / "exp=%d\n" / , exp); /  / x=5 / exp=5
+
+--- Slide 21 ---
+# / 은 / 문자열 변환 연산자 / ( / Stringizing / Operator) / 라고 불린다 / . / 매크로 정의에서 매개 변수 앞에 / # / 가 위치하면 매크로 호출에 의하여 전달되는 실제 인수는 큰따옴표로 감싸지고 문자열로 변환된다 / . / #define PRINT( / exp / ) / printf / (# / exp / " = %d\n", / exp / ); / PRINT(x); / x=5 / x=5
+
+--- Slide 22 ---
+예제 / #include /  / < / stdio.h / > / #define /  / PRINT / (exp) / printf / (#exp / "=%d\n" / , exp); / int / main( / void / ) / { /  / int / x = 5; /  / PRINT / (x); /  / return / 0; / } / x=5
+
+--- Slide 23 ---
+내장 매크로 / 내장 매크로 / : / 미리 정의된 매크로 / 내장 매크로 / 설명 / __DATE__ / 이 매크로를 만나면 현재의 날짜 / ( / 월 일 년 / ) / 로 치환된다 / . / __TIME__ / 이 매크로를 만나면 현재의 시간 / ( / 시 / : / 분 / : / 초 / ) / 으로 치환된다 / . / __LINE__ / 이 매크로를 만나면 소스 파일에서의 현재의 라인 번호로 치환된다 / . / __FILE__ / 이 매크로를 만나면 소스 파일 이름으로 치환된다 / . / printf / ( / " / 컴파일 날짜 / =%s\n" / , / __DATE__ / ); / printf / ( / " / 치명적 에러 발생 파일 이름 / =%s / 라인 번호 / = %d\n" / , / __FILE__ / , / __LINE__ / ); / 컴파일 날짜 / =Aug 23 2021 / 치명적 에러 발생 파일 이름 / =C:\Users\kim\source\repos\Project14\Project14\ / 소스 / .c / 라인 번호 / = 6
+
+--- Slide 24 ---
+Lab: ASSERT / 매크로 / 프로그램을 디버깅할 때 자주 사용되는 / ASSERT / 매크로를 작성해보자 / . / 가정 / (sum == 0) / 이 소스 파일 / C:\Users\chun\source\repos\Project21\Project21\macro4.c / 12 / 번째 줄에서 실패 / .
+
+--- Slide 25 ---
+예제 / : ASSERT / 매크로 / #include /  / < / stdio.h / > / #define / ASSERT( / exp / ) 	{ / if / (!( / exp / )) \ / { / printf / ( / " / 가정 / (" / # / exp /  / ")이 / 소스 /  / 파일 / %s % / d번째 /  / 줄에서 /  / 실패 / .\n"\ / ,__FILE__, __LINE__), exit(1);}} / int / main( / void / ) / { /  / int / sum=100; / // / 지역 /  / 변수의 /  / 초기값은 / 0 / 이 /  / 아님 / ASSERT(sum == 0); / // / sum / 의 /  / 값은 / 0 / 이 /  / 되어야 /  / 함 / . /  / return / 0; / } / 매크로를 다음 줄로 연장할 때 사용 / 가정 / (sum == 0) / 이 소스 파일 / c:\user\igchun\documents\visual studio 2017\projects / 12 / 번째 줄에서 실패
+
+--- Slide 26 ---
+함수 매크로와 함수 / 장점은 함수 매크로는 함수에 비하여 수행 속도가 빠르다는 것이다 / . / 매크로는 호출이 아니라 코드가 그 위치에 삽입되는 것이기 때문에 함수 호출의 복잡한 단계를 거칠 필요가 없다 / . / 코드의 길이를 어느 한도 이상 길게 할 수 없다 / . / 많은 경우 한 줄이고 두세 줄 까지가 한계이다 / . / 매크로를 사용하면 소스 파일의 크기가 커진다 / .
+
+--- Slide 27 ---
+Lab: / 비트 관련 매크로 / 일반적으로 / 아두이노와 / 같은 하드웨어를 제어하기 위해서는 하드웨어가 가지고 있는 특정한 비트를 / 1 / 로 만들거나 / 0 / 로 만들게 된다 / . / 일반적으로 하드웨어 비트들을 통하여 제어합니다 / . / 
+
+--- Slide 28 ---
+비트 관련 매크로 / 매크로들은 변수를 받아서 특정 / 비트값을 / 반환하거나 설정한다 / . / #define /  / GET_BIT / (w, k)	(((w) >> (k)) & 0x01) / #define /  / SET_BIT_ON / (w, k) 	((w) |= (0x01 << (k))) / #define /  / SET_BIT_OFF / (w, k) 	((w) &= ~(0x01 << (k))) / k / 번째 비트를 가져온다 / . / k / 번째 비트가 / 1 / 인지를 검사 / k / 번째 비트가 / 0 / 인지를 검사
+
+--- Slide 29 ---
+예제 / #include /  / < / stdio.h / > / #define / GET_BIT(w, k) (((w) >> (k)) & 0x01) / #define / SET_BIT_ON(w, k) ((w) |= (0x01 << (k))) / #define / SET_BIT_OFF(w, k) ((w) &= ~(0x01 << (k))) / int / main( / void / ) / { /  / int / data=0; /  / SET_BIT_ON(data, 2); /  / printf / ( / "%08X\n" / , data); /  /  / printf / ( / "%d\n" / , GET_BIT(data, 2)); /  / SET_BIT_OFF(data, 2); /  / printf / ( / "%08X\n" / , data); /  / printf / ( / "%d\n" / , GET_BIT(data, 2)); /  / return / 0; / } / 00000004 / 1 / 00000000 / 0
+
+--- Slide 30 ---
+중간 점검 / 함수 매크로와 함수 중에서 속도 면에서 유리한 것은 / ? / 주어진 수의 / 3 / 제곱을 수행하는 함수 매크로를 정의하여 보자 / .
+
+--- Slide 31 ---
+#ifdef
+
+--- Slide 32 ---
+#ifdef / 의 예 /  / DEBUG / 가 선언되었을 때만 출력문을 포함시킵니다 / .
+
+--- Slide 33 ---
+매크로 선언 위치
+
+--- Slide 34 ---
+Lab: / 여러 /  / 가지 /  / 버전 정의하기 / 어떤 회사에서 / DELUXE / 버전과 / STANDARD / 버전의 / 프 /  / 로그램을 / 개발하였다고 하자 / . / 딜럭스 / 버전입니다 / .
+
+--- Slide 35 ---
+예제 / #include /  / < / stdio.h / > / #define / DELUXE / int / main( / void / ) / { / # / ifdef / DELUXE /  / printf / ( / " / 딜럭스 / 버전입니다 / . \n"); / # / endif /  / return / 0; / } / 딜럭스 / 버전입니다 / .
+
+--- Slide 36 ---
+Lab: / 리눅스 버전과 윈도우 버전 분리 / 예를 들면 어떤 회사에서 리눅스와 / 윈도우즈 / 버전의 프로그램을 개발하였다고 하자 / 리눅스 버전입니다 / .
+
+--- Slide 37 ---
+예제 / #include /  / < / stdio.h / > / #define / LINUX / int / main( / void / ) / { / # / ifdef / LINUX /  / printf / (“ / 리눅스 버전입니다 / . \n”); / #else /  / printf / (“ / 윈도우 버전입니다 / . \n”); / # / endif /  / return / 0; / } / LINUX / 버전 / WINDOWS / 버전
+
+--- Slide 38 ---
+비주얼 스튜디오에서 /  / 설정하는 방법
+
+--- Slide 39 ---
+# / ifndef / , # / undef / # / ifndef / 어떤 매크로가 정의되어 있지 않으면 컴파일에 포함된다 / . / # / undef / 매크로의 정의를 취소한다 / .
+
+--- Slide 40 ---
+중간 점검 / 1. / 전처리기 / 지시자 / # / ifdef / 을 사용하여 / TEST / 가 정의되어 있는 경우에만 화면에 “ / TEST" / 라고 출력하는 문장을 작성하여 보자 / .
+
+--- Slide 41 ---
+#if / 기호가 참으로 계산되면 컴파일 / 조건은 상수이어야 하고 논리 / , / 관계 연산자 사용 가능
+
+--- Slide 42 ---
+#if-#else-#endif / #define /  / NATION / 1 / #if /  / NATION / == 1 /  / printf / ( / " / 안녕하세요 / ?" / ); / #elif / NATION == 2 /  / printf / ( / " / 你好吗 / ?" / ); / #else /  / printf / ( / "Hello World!" / ); / #endif
+
+--- Slide 43 ---
+다양한 예 / #if /  / (AUTHOR == KIM) / // / 가능 / !! KIM / 은 다른 매크로 / #if / (VERSION*10 > 500 && LEVEL == BASIC) / // / 가능 / !! / #if /  / (VERSION > 3.0) / // / 오류 / !! / 버전 번호는 / 300 / 과 같은 정수로 표시 / #if / (AUTHOR == / "CHULSOO" / ) / // / 오류 / !!
+
+--- Slide 44 ---
+다수의 라인을 주석처리 / #if /  / 0 / // / 여기서부터 시작하여 / void test() / { / /* / 여기에 주석이 있다면 코드 전체를 주석 처리하는 것이 쉽지 않다 / . */ / sub(); / } / # / endif /  / // / 여기까지 주석 처리된다 / .
+
+--- Slide 45 ---
+예제 / 정렬 알고리즘을 선택 / #define / SORT_METHOD 3 /  / #if / (SORT_METHOD == 1) / ... /  / // / 선택정렬구현 / #elif / (SORT_METHOD == 2) / ... /  / // / 버블정렬구현 / #else / ... /  / // / 퀵정렬구현 / #endif
+
+--- Slide 46 ---
+중간 점검 / 1. #if / 를 사용하여 / DEBUG / 가 / 2 / 일 경우에만 “ / DEBUG" / 가 나오도록 문장을 작성하라 / . / 2. #if / 를 사용하여 / DEBUG / 가 / 2 / 이고 / LEVEL / 이 / 3 / 인 경우에만 “ / DEBUG" / 가 나오도록 문장을 작성하라 / .
+
+--- Slide 47 ---
+다중 소스 파일 / 단일 소스 파일 / 파일의 크기가 너무 커진다 / . / 소스 파일을 다시 사용하기가 어려움 / 다중 소스 파일 / 서로 관련된 코드만을 모아서 하나의 소스 파일로 할 수 있음 / 소스 파일을 재사용하기가 간편함
+
+--- Slide 48 ---
+다중 소스 파일
+
+--- Slide 49 ---
+예제 / : / 거듭 제곱을 구하는 함수 / power() / 를 만들고 이것을 / power.c / 에 저장하여 보자 / . / 그리고 / main.c /  / 를 만들고 여기에 / main() / 함수를 정의한 다음 / , main() / 에서 / power() / 를 호출한다 / . / x / 의 값을 / 입력하시오 / : 2 / y / 의 값을 / 입력하시오 / : 3 / 2 / 의 / 3 / 제곱은 / 8.00 / 입니다 / .
+
+--- Slide 50 ---
+예제 / // / main.c / #include /  / < / stdio.h / > / #include /  / " / power.h / " / int / main( / void / ) / { /  / int / x, y; /  / printf / ( / "x / 의 값을 / 입력하시오 / :" / ); /  / scanf / ( / "%d" / , &x); /  / printf / ( / "y / 의 값을 / 입력하시오 / :" / ); /  / scanf / ( / "%d" / , &y); /  / printf / ( / "%d / 의 / %d / 제곱값은 /  / %f\n" / , x, y, power(x, y)); /  / return / 0; / }
+
+--- Slide 51 ---
+예제 / // / power.c / #include /  / " / power.h / " / double / power( / int /  / x / , / int /  / y / ) / { /  / double / result = 1.0; / // / 초기값은 / 1.0 /  / int /  / i / ; /  / for / (i = 0; i < / y / ; i++) / result *= / x / ; /  / return / result; / }
+
+--- Slide 52 ---
+예제 / #pragma /  / once / // power. /  / h / double / power( / int /  / x / , / int /  / y / ); / // / 함수 원형 정의
+
+--- Slide 53 ---
+비주얼 / 스튜디오에서의 다중 소스 파일
+
+--- Slide 54 ---
+비주얼 / 스튜디오에서의 다중 소스 파일
+
+--- Slide 55 ---
+헤더 파일을 사용하지 않으면
+
+--- Slide 56 ---
+헤더 파일을 사용하면
+
+--- Slide 57 ---
+다중 소스 파일에서 외부 변수
+
+--- Slide 58 ---
+예제 / 다음과 같은 프로그램을 다중 소스로 작성해보자 / .
+
+--- Slide 59 ---
+rect.h / #pragma /  / once / struct /  / rect / { / int / x, y, w, h; / }; / typedef /  / struct /  / rect /  / RECT / ; / void /  / draw_rect / ( / const /  / RECT / *); / double /  / calc_area / ( / const /  / RECT / *); / void /  / move_rect / ( / RECT / *, / int / , / int / );
+
+--- Slide 60 ---
+rect.c / 1/2 / #include /  / < / stdio.h / > / #include /  / " / rect.h / " / #define /  / DEBUG / void /  / draw_rect / ( / const /  / RECT / * / r / ) / { / #ifdef /  / DEBUG / printf( / "draw_ / rect / (x=%d, y=%d, w=%d, h=%d) \n" / , / r / ->x, / r / ->y, / r / ->w, / r / ->h); / #endif / }
+
+--- Slide 61 ---
+rect.c / 2/2 / double /  / calc_area / ( / const /  / RECT / * / r / ) / { /  / double / area; / area = / r / ->w * / r / ->h; / #ifdef /  / DEBUG /  / printf / ( / " / calc_area / ()=%f \n" / , area); / #endif /  / return / area; / } / void /  / move_rect / ( / RECT / * / r / , / int /  / dx / , / int /  / dy / ) / { / #ifdef /  / DEBUG /  / printf / ( / " / move_rect / (%d, %d) \n" / , / dx / , / dy / ); / #endif /  / r / ->x += / dx / ; /  / r / ->y += / dy / ; / }
+
+--- Slide 62 ---
+main.c / #include /  / < / stdio.h / > / #include /  / " / rect.h / " / int / main( / void / ) / { /  / RECT / r = { 10,10, 20, 20 }; /  / double / area = 0.0; /  / draw_rect / (&r); /  / move_rect / (&r, 10, 20); /  / draw_rect / (&r); / area = / calc_area / (&r); /  / draw_rect / (&r); /  / return / 0; / }
+
+--- Slide 63 ---
+실행 결과 / draw_rect / (x=10, y=10, w=20, h=20) / move_rect / (10, 20) / draw_rect / (x=20, y=30, w=20, h=20) / calc_area / ()=400.00 / draw_rect / (x=20, y=30, w=20, h=20)
+
+--- Slide 64 ---
+Lab: / 헤더파일 /  / 중복막기 / 구조체 정의가 들어 있는 헤더 파일을 소스 파일에 / 2 / 번 포함시키면 컴파일 오류가 발생한다 / . / 이것을 막기 위하여 / # / ifndef /  / 지시어를 사용할 수 있다 / #ifndef / STUDENT_H / #define /  / STUDENT_H / struct /  / STUDENT / { /  / int / number; /  / char / name[10]; / }; / #endif / 소스 /  / 파일에서 여러 번 포함시켜도 컴파일 오류가 발생하지 않음 / 교재 오타 / !
+
+--- Slide 65 ---
+TIP / 최근의 / C / 언어에서는 다음과 같은 문장을 헤더 파일의 첫 부분에 추가하여도 동일한 효과를 낸다 / . / 비주얼 스튜디오에서 헤더 파일을 추가하면 자동으로 첫 부분에 추가된다 / . / #pragma once
+
+--- Slide 66 ---
+중간 점검 / 다음 문장의 참 거짓을 말하라 / . “ / 여러 소스 파일을 이용하는 것보다 하나의 소스 파일로 만드는 편이 여러모로 유리하다 / .” /  / 팩토리얼을 / 구하는 함수가 포함된 소스 파일과 관련 헤더 파일을 제작하여 보자 / . / 2 / 차원 공간에서 하나의 점을 나타내는 / point / 구조체를 정의하는 헤더 파일을 작성하여 보자 / .
+
+--- Slide 67 ---
+비트 필드 구조체 / 멤버가 비트 단위로 나누어져 있는 구조체 / struct /  / 태그이름 / { /  / 자료형 멤버이름 / 1: / 비트수 / ; /  / 자료형 멤버이름 / 2: / 비트수 / ; / ... / }; / struct / product { /  / unsigned / style : 3; /  / unsigned / size  : 2; /  / unsigned / color : 1; / };
+
+--- Slide 68 ---
+bit_field.c / // / 비트 필드 구조체 / #include /  / < / stdio.h / > /  / struct / product { /  / unsigned / style : 3; /  / unsigned / size  : 2; /  / unsigned / color : 1; / }; /  / int / main( / void / ) / { /  / struct / product p1; /  / p1.style = 5; / p1.size = 3; / p1.color = 1; /  /  / printf / ( / "style=%d size=%d color=%d\n" / , p1.style, p1.size, p1.color); /  / printf / ( / " / sizeof / (p1)=%d\n" / , / sizeof / (p1)); /  / printf / ( / "p1=%x\n" / , p1); /  /  / return / 0; / } / style=5 size=3 color=1 / sizeof / (p1)=4 / p1= / ccccccfd
+
+--- Slide 69 ---
+비트 필드 사용시에 주의점 / struct / product { /  / long /  / code; /  / // ① /  / 일반 /  / 멤버도 /  / 가능하다 / . /  / unsigned / style	: 3; /  / unsigned /  / : 5; /  / // ② / 자리만 /  / 차지한다 / . /  / unsigned / size  	: 2; /  / unsigned / color 	: 1; /  / unsigned /  / : 0; /  / // ③ / 현재 /  / 워드의 /  / 남아있는 /  / 비트를 /  / 버린다 / . /  / unsigned / state	: 3; / // / 여기서부터는 /  / 다음 /  / 워드에서 /  / 할당된다 / . / };
+
+--- Slide 70 ---
+비트 필드의 장점 / 메모리가 절약된다 / . / ON / 또는 / OFF / 의 상태만 가지는 변수를 저장할 때 / 32 / 비트의 / int / 형 변수를 사용하는 것보다는 / 1 / 비트 크기의 비트 필드를 사용하는 편이 훨씬 메모리를 절약한다 / .
+
+--- Slide 71 ---
+비트 /  / 필드 응용 분야 / 비트 필드가 많이 사용되는 분야는 하드웨어 제어를 하기 위해서다 / . / 컴퓨터에 연결되는 하드웨어 장치들은 메모리 주소에 / 매핑되는 / 하드웨어 포트를 이용하여 제어하는 경우가 많다 / . / 이런 하드웨어 장치들은 비트 단위로 제어하도록 되어 있다 / . / 이런 경우에 하드웨어 포트를 비트 필드로 정의하여 사용한다 / .
+
+--- Slide 72 ---
+Lab: / 비트 필드와 공용체를 이용한 하드웨어 제어 / 엠베디드 / 시스템에서 / 0xE002C000 / 번지에 / LED / 제어 모듈이 있다면 다음과 같은 코드로 / LED / 중 하나를 켤 수 있다 / . / #include /  / < / stdio.h / > / typedef /  / union / { /  / struct / { /  / unsigned /  / char / b1 : 1; /  / unsigned /  / char / b2 : 1; /  / unsigned /  / char / b3 : 1; /  / unsigned /  / char / b4 : 1; /  / unsigned /  / char / reserved : 4; / } bits; /  / unsigned /  / char / byte; / } / HW_Register / ; / int / main( / void / ) / { /  / volatile /  / HW_Register / * reg = ( / volatile /  / HW_Register / *)0xE002C000; / reg->bits.b2 = 1; / // LED / 를 켠다 / . /  / return / 0; / }
+
+--- Slide 73 ---
+Mini /  / Project: / 전처리기 / 사용하기 / 원의 면적을 구하는 프로그램을 / 미국 /  / 버전과 /  / 한국 /  / 버전 / 으로 / 작성한다 / . / 미국 /  / 버전에서는 /  / 모든 /  / 메시지가 /  / 영어로 /  / 출력되고 /  / 단위도 /  / 인치가 /  / 된다 / . / 한국 /  / 버전에서는 /  / 모든 /  / 메시지가 /  / 한글로 /  / 출력되고 /  / 단위도 /  / cm가 /  / 된다 / . / SQUARE() / 함수 /  / 매크로도 /  / 억지로 /  / 사용하여 /  / 보자 / .
+
+--- Slide 74 ---
+실행 결과 / exp / =5 / Please enter radius of a circle(inch) : 100 / area(100.000000) is called / area of the circle is 31415.920000 / 원의 반지름을 / 입력하시오 / (cm): 100 / area(100.000000) / 가 호출되었음 / 원의 면적은 / 31415.920000 / 입니다 / .
+
+--- Slide 75 ---
+solution / #include /  / < / stdio.h / > / #define / USA / #define / DEBUG / # / ifndef / PI / #define / PI 3.141592 / # / endif / # / ifndef / SQUARE / #define / SQUARE(r)	(r)*(r) / # / endif / double / area( / double / radius) / { /  / double / result=0.0; / # / ifdef / DEBUG / # / ifdef / USA /  / printf / ( / "area(%f) is called \n" / , radius); / #else /  / printf / ("area(%f) / 가호출되었음 / radius); / # / endif / # / endif / result = PI*SQUARE(radius); /  / return / result; / }
+
+--- Slide 76 ---
+solution / int / main( / void / ) / { /  / double / radius; / # / ifdef / USA /  / printf / ( / "Please enter radius of a circle(inch) : " / ); / #else /  /  / printf / (" / 원의 반지름을 입력하시오 / "); / # / endif /  / scanf / ( / "%lf" / , &radius); / # / ifdef / USA /  / printf / ( / "area of the circle is %f \n" / , area(radius)); / #else /  / printf / (" / 원의 면적은 / %f / 입니다 / \n", area(radius)); / # / endif /  / return / 0; / }
+
+--- Slide 77 ---
+도전문제 / 중국어 버전도 추가해보자 / . / 메시지를 중국어로 번역하는 작업은 구글 번역기를 이용하자 / . / 버전을 나타내는 매크로를 정의하고 버전이 / 100 / 이하이면 원의 면적을 계산할 수 없다는 메시지를 출력하고 종료하게끔 / , / 위의 프로그램을 수정하여 보자 / . / __DATE__ / 와 / __LINE__ / 을 출력하여 보자 / .
+
+--- Slide 78 ---
+중간 점검 / 1. / 구조체의 일종으로 멤버들의 크기가 비트 단위로 나누어져 있는 구조체는 / _____ / 이다 / . / 2. / 비트 필드 구조체를 정의하는 경우 / , / 자료형은 /  / ______ / 이나 / ______ / 을 사용하여야 / 한다 / .
+
+--- Slide 79 ---
+Q & A
+

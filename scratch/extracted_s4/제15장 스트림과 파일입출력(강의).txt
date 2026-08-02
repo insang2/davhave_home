@@ -1,0 +1,245 @@
+=== 제15장 스트림과 파일입출력(강의).pptx ===
+
+--- Slide 1 ---
+제 / 15 / 장 파일 입출력 / C / 언어 / Express( / 개정 / 4 / 판 / )
+
+--- Slide 2 ---
+이번 장에서 학습할 내용 / 스트립의 개념 / 표준 입출력 / 파일 입출력 / 입출력 관련 함수 / 입출력에 관련된 개념들과 함수들에 대하여 학습한다 / .
+
+--- Slide 3 ---
+스트림의 개념 / 스트림 / (stream / ): / 입력과 출력을 바이트 / (byte) / 들의 흐름으로 생각하는 것
+
+--- Slide 4 ---
+스트림과 / 버퍼 / 스트림에는 / 기본적으로 버퍼가 포함되어 있다 / .
+
+--- Slide 5 ---
+표준 입출력 / 스트림 /  / 
+
+--- Slide 6 ---
+입출력 함수의 분류
+
+--- Slide 7 ---
+중간 점검 / 1. C / 에서의 모든 입력과 출력을 / ______ / 형식으로 처리된다 / . / 2. / 스트림은 모든 입력과 출력을 / _____ / 들의 흐름으로 간주한다 / . / 3. / 스트림의 최대 장점은 / __________ / 이다 / . / 4. / 입력을 위한 표준적인 스트림은 / _________ / 이고 기본적으로 / ______ / 장치와 연결된다 / . / 5. / 출력을 위한 표준적인 스트림은 / _________ / 이고 기본적으로 / ______ / 장치와 연결된다 / .
+
+--- Slide 8 ---
+파일이 필요한 이유
+
+--- Slide 9 ---
+파일의 개념 / C / 에서의 파일은 일련의 연속된 바이트 / 모든 파일 데이터들은 결국은 바이트로 바뀌어서 파일에 저장 / 이들 바이트들을 어떻게 해석하느냐는 전적으로 프로그래머의 책임
+
+--- Slide 10 ---
+파일 / 파일에 / 4 / 개의 바이트가 들어 있을 때 이것을 / int / 형의 정수 데이터로도 해석할 수 있고 아니면 / float / 형 실수 데이터로도 해석할 수 있다 / 파일 / 0x36 / 0x34 / 0x31 / 0x0 / 하나의 정수 / ? / 하나의 실수 / ? / 4 / 개의 문자 / ?
+
+--- Slide 11 ---
+텍스트 파일 / (text file) / 텍스트 파일은 사람이 읽을 수 있는 텍스트가 들어 있는 파일 / ( / 예 / ) C / 프로그램 소스 파일이나 메모장 파일 / 텍스트 파일은 아스키 코드를 이용하여 저장 / 텍스트 파일은 연속적인 라인들로 구성
+
+--- Slide 12 ---
+텍스트 파일 / (text file) / 운영체제마다 / 줄바꿈을 / 표시하는 방법이 다르다 / .
+
+--- Slide 13 ---
+윈도우에서 텍스트 파일 / 예를 들어서 / 윈도우즈에서는 / 텍스트 파일이 그림 / 15-7 / 과 같이 저장된다 / .
+
+--- Slide 14 ---
+이진 파일 / (binary file) / 이진 파일은 사람이 읽을 수는 없으나 컴퓨터는 읽을 수 있는 파일 / 이진 데이터가 직접 저장되어 있는 파일 / 이진 파일은 텍스트 파일과는 달리 라인들로 분리되지 않는다 / . / 모든 데이터들은 문자열로 변환되지 않고 입출력 / 이진 파일은 특정 프로그램에 의해서만 판독이 가능 / ( / 예 / ) C / 프로그램 실행 파일 / , / 사운드 파일 / , / 이미지 파일
+
+--- Slide 15 ---
+파일 처리의 개요 / 파일을 다룰 때는 반드시 다음과 같은 순서를 지켜야 한다 / . / 디스크 파일은 / FILE / 구조체를 이용하여 접근 / FILE / 구조체를 가리키는 포인터를 파일 포인터 / (file pointer)
+
+--- Slide 16 ---
+파일 열기
+
+--- Slide 17 ---
+FILE / 구조체 / fopen / ( ) / 은 주어진 파일 이름을 가지고 파일을 생성하여 / FILE / 포인터를 반환한다 / . / struct / _ / iobuf / { / char / *_ / ptr / ; / int / _ / cnt / ; / char / *_base; / int / _flag; / int / _file; / int / _ / charbuf / ; / int / _ / bufsiz / ; / char / *_ / tmpfname / ; / }; / typedef /  / struct / _ / iobuf / FILE;
+
+--- Slide 18 ---
+파일 모드
+
+--- Slide 19 ---
+기본적인 파일 모드
+
+--- Slide 20 ---
+주의할 점 / 기본적인 파일 모드에 / "t" / 나 / "b" / 를 붙일 수 있다 / . / "a" / 나 / "a+" / 모드는 / 추가 모드 / (append mode) / 라고 한다 / . / 추가 모드로 파일이 열리면 / , / 모든 쓰기 동작은 파일의 끝에서 일어난다 / . / 따라서 파일 안에 있었던 기존의 데이터는 절대 지워지지 않는다 / . / "r+", "w+", "a+" / 파일 모드가 지정되면 읽고 쓰기가 모두 가능하다 / . / 이러한 모드를 / 수정 모드 / (update mode) / 라고 한다 / . / 읽기 모드에서 쓰기 모드로 / , / 또는 쓰기 모드에서 읽기 모드로 전환하려면 반드시 / fflush / (), / fsetpos / (), / fseek / (), rewind() / 중의 하나를 호출하여야 한다 / .
+
+--- Slide 21 ---
+파일 닫기
+
+--- Slide 22 ---
+예제 / #include /  / < / stdio.h / > / int / main( / void / ) / { / FILE * / fp / = NULL; /  /  / fp / = / fopen / ( / "sample.txt" / , / "w" / ); /  /  / if / ( / fp / == NULL ) /  / printf / ( / " / 파일 /  / 열기 /  / 실패 / \n" / ); /  / else /  /  / printf / ( / " / 파일 /  / 열기 /  / 성공 / \n" / ); /  /  / fclose / ( / fp / ); /  /  / return / 0; / } / sample.txt / 파일 열기 성공
+
+--- Slide 23 ---
+파일 삭제 예제 / #include /  / < / stdio.h / > / int / main( / void / ) / { /  / if / (remove( / "sample.txt" / ) == -1) /  / printf / ( / "sample.txt / 를 삭제할 수 없습니다 / .\n" / ); /  / else /  / printf / ( / "sample.txt / 를 삭제하였습니다 / .\n" / ); /  / return / 0; / } / sample.txt / 를 삭제하였습니다 / .
+
+--- Slide 24 ---
+기타 유용한 함수들
+
+--- Slide 25 ---
+중간 점검 / 1. / 파일은 일련의 연속된 / ______ / 라고 생각할 수 있다 / . / 2. / 파일에는 사람이 읽을 수 있는 텍스트가 들어 있는 / _____ / 파일과 사람은 읽을 수 없으나 컴퓨터는 읽을 수 있는 / ______ / 파일이 있다 / . / 3. / 파일을 여는 라이브러리 함수는 / ______ / 이다 / . / 4. / fopen / () / 은 / ________ / 을 가리키는 포인터를 반환한다 / .
+
+--- Slide 26 ---
+파일 입출력 함수 / 크게 나누면 텍스트 입출력 함수와 이진 데이터 입출력으로 나눌 수 있습니다 / .
+
+--- Slide 27 ---
+문자 단위 입출력 / #include /  / < / stdio.h / > / int / main( / void / ) / { / FILE * / fp / = NULL; /  /  / fp / = / fopen / ( / "sample.txt" / , / "w" / ); /  / if / ( / fp / == NULL ) /  / printf / ( / " / 파일 /  / 열기 /  / 실패 / \n" / ); /  / else /  /  / printf / ( / " / 파일 /  / 열기 /  / 성공 / \n" / ); /  / fputc / ('a', / fp / ); /  / fputc / ('b', / fp / ); /  / fputc / ('c', / fp / ); /  / fclose / ( / fp / ); /  / return / 0; / } /  /  / 파일 열기 성공
+
+--- Slide 28 ---
+문자 단위 입출력 / #include /  / < / stdio.h / > / int / main( / void / ) / { / FILE * / fp / = NULL; /  / int / c; /  / fp / = / fopen / ( / "sample.txt" / , / "r" / ); /  / if / ( / fp / == NULL ) /  / printf / ( / " / 파일 /  / 열기 /  / 실패 / \n"); /  / else /  /  / printf / ( / " / 파일 /  / 열기 /  / 성공 / \n"); /  /  / while / ((c = / fgetc / ( / fp / )) != EOF ) /  / putchar / (c); /  / fclose / ( / fp / ); /  / return / 0; / } /  /  / 파일 열기 성공 / abc / 정수형 변수로 선언하여야 한다 / . / 그 이유는 다음 슬라이드에서 설명한다 / .
+
+--- Slide 29 ---
+EOF / EOF(End Of File): / 파일의 끝을 나타내는 특수한 기호 / EOF / 프로그램 / … / fgetc / ()
+
+--- Slide 30 ---
+fgetc / () / 의 / 반환값이 /  / 정수형인 / 이유 / fgetc / ( ) / 의 반환형이 / int / 형인 것은 파일 /  / 안의 바이트와 / EOF / 와 구별하기 위해서이다 / . / 반환값을 /  / 32 / 비트 / int / 형으로 하면 파일 안의 바이트 / (0x000000000 / 에서 / 0x000000FF) / 와 / 32 / 비트 / int / 형 / -1 / 인 / EOF(0xFFFFFFFF) / 와 확실하게 구분할 수 있다 / . / 반환값을 /  / 8 / 비트를 하면 불가능하다 / . / 바이트 / (32 / 비트 중에서 하위 / 8 / 비트만 사용 / ) / fgetc / () / 0xFFFFFFFF(-1) / 00000000 / 에서 / 0x000000FF / EOF
+
+--- Slide 31 ---
+문자열 단위 입출력
+
+--- Slide 32 ---
+문자열 단위 입출력 / #include /  / < / stdio.h / > / #include /  / < / stdlib.h / > /  / int / main( / void / ) / { / FILE *fp1, *fp2; /  / char / file1[100], file2[100]; /  / char / buffer[100]; /  /  / printf / ( / " / 원본 /  / 파일 /  / 이름 / :  " / ); /  / scanf / ( / "%s" / , file1); /  /  / printf / ( / " / 복사 /  / 파일 /  / 이름 / :  " / ); /  / scanf / ( / "%s" / , file2); /  /  / // / 첫번째 /  / 파일을 /  / 읽기 /  / 모드로 /  / 연다 / . /  / if / ( (fp1 = / fopen / (file1, / "r" / )) == NULL ) / { /  / fprintf / ( / stderr / , / " / 원본 /  / 파일 / % / s을 / 열 수 / 없습니다 / .\n" / , file1); / exit(1); / }
+
+--- Slide 33 ---
+문자열 단위 입출력 /  / // / 두번째 /  / 파일을 /  / 쓰기 /  / 모드로 /  / 연다 / . /  / if / ( (fp2 = / fopen / (file2, / "w" / )) == NULL ) / { /  / fprintf / ( / stderr / , / " / 복사 /  / 파일 / % / s을 / 열 수 / 없습니다 / .\n" / , file2); / exit(1); / } /  /  / // / 첫번째 /  / 파일을 /  / 두번째 /  / 파일로 /  / 복사한다 / . /  / while / ( / fgets / (buffer, 100, fp1) != NULL ) /  / fputs / (buffer, fp2); /  /  / fclose / (fp1); /  / fclose / (fp2); /  /  / return / 0; / } / 원본 파일 이름:  a.txt / 복사 파일 이름:  b.txt
+
+--- Slide 34 ---
+Lab: / 파일에서 특정 문자열 탐색 / 텍스트 파일에서 특정 문자열을 탐색하는 프로그램을 작성하여 보자 / . / 사용자로부터 입력 텍스트 파일 이름과 탐색할 문자열을 받는다 / 입력 파일 이름을 / 입력하시오 / : proverbs.txt / 탐색할 단어를 / 입력하시오 / : man / proverbs.txt: 16 Behind every good man is a good woman. / proverbs.txt: 41 A dog is a man’s best friend. / proverbs.txt: 57 Early to bed and early to rise makes a man healthy, wealthy, and / wise.
+
+--- Slide 35 ---
+#include /  / < / stdio.h / > / #include /  / < / string.h / > / int / main( / void / ) / { /  / FILE / * / fp / ; /  / char /  / fname / [128],    buffer[256], word[256]; /  / int /  / line_num / = 0; /  / printf / ( / " / 입력 파일 이름을 / 입력하시오 / :  " / ); /  / scanf / ( / "%s" / , / fname / ); /  / printf / ( / " / 탐색할 단어를 / 입력하시오 / :  " / ); /  / scanf / ( / "%s" / , word);
+
+--- Slide 36 ---
+ / // / 파일을 읽기 모드로 연다 / . /  / if / (( / fp / = / fopen / ( / fname / , / "r" / )) == / NULL / ) /  / { /  / fprintf / ( / stderr / , / " / 파일 / %s / 을 열 수 없습니다 / .\n" / , / fname / ); / exit(1); /  / } /  / while / ( / fgets / (buffer, 256, / fp / )) { /  / line_num / ++; /  / if / ( / strstr / (buffer, word)) { /  / printf / ( / "%s: %d / 단어 / %s / 이 발견되었습니다 / .\n" / , / fname / , / line_num / , word); /  / } /  / } /  / fclose / ( / fp / ); /  / return / 0; / }
+
+--- Slide 37 ---
+형식화된 입출력
+
+--- Slide 38 ---
+예제 / int / main( / void / ) / { / FILE * / fp / ; /  / char /  / fname / [100]; /  / int / number, count = 0; /  / char / name[20]; /  / float / score, total = 0.0; /  / printf / ( / " / 성적 /  / 파일 /  / 이름을 /  / 입력하시오 / :  " / ); /  / scanf / ( / "%s" / , / fname / ); /  / // / 성적 /  / 파일을 /  / 쓰기 /  / 모드로 /  / 연다 / . /  / if / ( ( / fp / = / fopen / ( / fname / , / "w" / )) == NULL ) / { /  / fprintf / ( / stderr / , / " / 성적 /  / 파일 / % / s을 / 열 수 / 없습니다 / .\n" / , / fname / ); / exit(1); / }
+
+--- Slide 39 ---
+예제 /  / // / 사용자로부터 /  / 학번 / , / 이름 / , / 성적을 /  / 입력받아서 /  / 파일에 /  / 저장한다 / . /  / while / ( 1 ) / { /  / printf / ( / " / 학번 / , / 이름 / , / 성적을 /  / 입력하시요 / : ( / 음수이면 /  / 종료 / )" / ); /  / scanf / ( / "%d" / , &number); /  / if / ( number < 0 ) / break /  / scanf / ( / "%s %f" / , name, &score); /  / fprintf / ( / fp / , / " %d %s %f" / , number, name, score); / } /  / fclose / ( / fp / ); /  / // / 성적 /  / 파일을 /  / 읽기 /  / 모드로 /  / 연다 / . /  / if / ( ( / fp / = / fopen / ( / fname / , / "r" / )) == NULL ) / { /  / fprintf / ( / stderr / , / " / 성적 /  / 파일 / % / s을 / 열 수 / 없습니다 / .\n" / , / fname / ); / exit(1); / } / 
+
+--- Slide 40 ---
+예제 /  / // / 파일에서 /  / 성적을 /  / 읽어서 /  / 평균을 /  / 구한다 / . /  / while / ( ! / feof / ( / fp / ) ) / { /  / fscanf / ( / fp / , / "%d %s %f" / , &number, name, &score); / total += score; / count++; / } /  / printf / ( / " / 평균 / = %f\n" / , total/count); /  / fclose / ( / fp / ); /  / return / 0; / } / 성적 파일 이름을 / 입력하시오 / : scores.txt / 학번 / , / 이름 / , / 성적을 입력하시요 / : ( / 음수이면 종료 / )1 KIM 10.0 / 학번 / , / 이름 / , / 성적을 입력하시요 / : ( / 음수이면 종료 / )2 PARK 20.0 / 학번 / , / 이름 / , / 성적을 입력하시요 / : ( / 음수이면 종료 / )3 LEE 30.0 / 학번 / , / 이름 / , / 성적을 입력하시요 / : ( / 음수이면 종료 / )-1 / 평균 / = 20.000000
+
+--- Slide 41 ---
+중간 점검 / 1. / fgetc / () / 의 반환형은 / _____ / 형이다 / . / 2. / 파일에서 하나의 라인을 읽어서 반환하는 함수는 / ______ / 이다 / . / 3. / 텍스트 파일에 실수나 정수를 문자열로 변경하여 저장할 때 사용하는 함수는 / _____ / 이다 / . / 4. / 텍스트 파일에서 실수나 정수를 읽는 함수는 / _____ / 이다 / .
+
+--- Slide 42 ---
+이진 파일 쓰기와 읽기 / 텍스트 파일과 이진 파일의 차이점 / 텍스트 파일 / : / 모든 데이터가 아스키 코드로 변환되어서 저장됨 / 이진 파일 / : / 컴퓨터에서 데이터를 표현하는 방식 그대로 저장
+
+--- Slide 43 ---
+이진 파일의 예 / 이미지 파일이나 사운드 파일
+
+--- Slide 44 ---
+이진 파일 쓰기 / #include /  / < / stdio.h / > / #define /  / SIZE / 5 / int / main( / void / ) / { /  / int / buffer[ / SIZE / ] = { 10, 20, 30, 40, 50 }; /  / FILE / * / fp / = / NULL / ; /  / fp / = / fopen / ( / " / binary.bin / " / , / " / wb / " / ); / // ① /  / if / ( / fp / == / NULL / ) /  / { /  / fprintf / ( / stderr / , / " / binary.bin /  / 파일을열수없습니다 / ." / ); /  / return / 1; /  / } /  / fwrite / (buffer, / sizeof / ( / int / ), / SIZE / , / fp / ); / // ② /  / fclose / ( / fp / ); /  / return / 0; / }
+
+--- Slide 45 ---
+이진 파일 모드
+
+--- Slide 46 ---
+이진 파일 쓰기 / buffer / 는 파일에 기록할 데이터를 가지고 있는 메모리 블록의 시작 주소이다 / . / size / 는 저장되는 항목의 크기로서 단위는 바이트이다 / . / count / 는 저장하려고 하는 항목의 개수이다 / . / 만약 / int / 형의 데이터 / 10 / 개를 쓰려고 하면 항목의 크기는 / 4 / 가 되고 항목의 개수는 / 10 / 이 될 것이다 / . /  / fp / 는 / FILE / 포인터이다 / . / fwrite / (buffer, size, count, / fp / )
+
+--- Slide 47 ---
+이진 파일 읽기 / #include /  / < / stdio.h / > / #define /  / SIZE / 5 / int / main( / void / ) / { /  / int /  / i / ; /  / int / buffer[ / SIZE / ]; /  / FILE / * / fp / = / NULL / ; /  / fp / = / fopen / ( / " / binary.bin / " / , / " / rb / " / ); /  / if / ( / fp / == / NULL / ) /  / { /  / fprintf / ( / stderr / , / " / binary.bin /  / 파일을 열 수 없습니다 / ." / ); /  / return / 1; /  / } /  / fread / (buffer, / sizeof / ( / int / ), / SIZE / , / fp / ); /  / for / (i = 0; i < / SIZE / ; i++) /  / printf / ( / "%d " / , buffer[ / i / ]); /  / fclose / ( / fp / ); /  / return / 0; / } / 10 20 30 40 50
+
+--- Slide 48 ---
+이진 파일 읽기 / buffer / 는 파일에 기록할 데이터를 가지고 있는 메모리 블록의 시작 주소이다 / . / size / 는 저장되는 항목의 크기로서 단위는 바이트이다 / . / count / 는 저장하려고 하는 항목의 개수이다 / . / 만약 / int / 형의 데이터 / 10 / 개를 쓰려고 하면 항목의 크기는 / 4 / 가 되고 항목의 개수는 / 10 / 이 될 것이다 / . /  / fp / 는 / FILE / 포인터이다 / . / fread / (buffer, size, count, / fp / )
+
+--- Slide 49 ---
+버퍼링 / 버퍼는 파일로부터 읽고 쓰는 데이터의 임시 저장 장소로 이용되는 메모리의 블록 / 디스크 드라이브는 블록 단위 장치이기 때문에 블록 단위로 입출력을 해야만 가장 효율적으로 동작 / 1024 / 바이트의 블록이 일반적 / 디스크 / 파일 / 버퍼
+
+--- Slide 50 ---
+버퍼링 / fflush / ( / fp / ); / 버퍼의 내용이 디스크 파일에 써진다 / . / setbuf / ( / fp / , NULL); / setbuf / () / 는 / 스트림의 / 버퍼를 직접 지정하는 함수로서 만약 버퍼 자리에 / NULL / 을 써주면 버퍼를 제거하겠다는 것을 의미한다 / .
+
+--- Slide 51 ---
+Lab: / 이진 파일에 학생 정보 저장하기 / 학생들의 정보를 이진 파일에 저장하고 다시 읽어서 화면에 출력하는 프로그램을 작성하여 보자 / . / 학번 / = 1, / 이름 / = Kim, / 평점 / = 3.99 / 학번 / = 2, / 이름 / = Min, / 평점 / = 2.68 / 학번 / = 3, / 이름 / = Lee, / 평점 / = 4.01
+
+--- Slide 52 ---
+예제 / #define / SIZE 3 / struct / student { /  / int / number; / // / 학번 /  / char / name[20]; / // / 이름 /  / double /  / gpa / ; / // / 평점 / }; / int / main( / void / ) / { /  / struct / student table[SIZE] = { / { 1, / "Kim" / , 3.99 }, / { 2, / "Min" / , 2.68 }, / { 3, / "Lee" / , 4.01 } / }; /  / struct / student s; / FILE * / fp / = NULL; /  / int /  / i / ; /  / // / 이진 /  / 파일을 /  / 쓰기 /  / 모드로 /  / 연다 / . /  / if / ( ( / fp / = / fopen / ( / "student.dat" / , / " / wb / " / )) == NULL ) / { /  / fprintf / ( / stderr / , / " / 출력을 /  / 위한 /  / 파일을 / 열 수 / 없습니다 / .\n" / ); / exit(1); / } / 
+
+--- Slide 53 ---
+예제 /  / // / 배열을 /  / 파일에 /  / 저장한다 / . /  / fwrite / (table, / sizeof / ( / struct / student), SIZE, / fp / ); /  / fclose / ( / fp / ); /  / // / 이진 /  / 파일을 /  / 읽기 /  / 모드로 /  / 연다 / . /  / if / ( ( / fp / = / fopen / ( / "student.dat" / , / " / rb / " / )) == NULL ) / { /  / fprintf / ( / stderr / , / " / 입력을 /  / 위한 /  / 파일을 / 열 수 / 없습니다 / .\n" / ); / exit(1); / } /  / for / ( / i / = 0;i < SIZE; / i / ++) / { /  / fread / (&s, / sizeof / ( / struct / student), 1, / fp / ); /  / printf / ( / " / 학번 / = %d, / 이름 / = %s, / 평점 / = % / .2 / f\n" / , / s.number / , s.name, / s.gpa / ); / } /  / fclose / ( / fp / ); /  / return / 0; / } / 학번 / = 1, / 이름 / = Kim, / 평점 / = 3.99 / 학번 / = 2, / 이름 / = Min, / 평점 / = 2.68 / 학번 / = 3, / 이름 / = Lee, / 평점 / = 4.01
+
+--- Slide 54 ---
+Lab: / 이미지 /  / 파일 복사하기 / 여기서는 이진 파일을 복사하는 프로그램을 작성하여 보자 / . / 이미지 파일 이름 / : dog.jpg / copy.jpg / 로 이미지 파일이 복사됨
+
+--- Slide 55 ---
+힌트 / 이진 파일을 읽거나 쓰려면 / fopen / () / 을 호출할 때 파일 모드에 “ / b" / 를 붙이면 된다 / . / 쓰기 전용 파일을 열려면 ” / wb / " / 로 / , / 읽기 전용 파일을 열려면 “ / rb / " / 로 하여야 한다 / . / src_file / = / fopen / ("pome.jpg", " / rb / "); / dst_file / = / fopen / ("copy.jpg", " / wb / "); / 이진 파일에서 데이터를 읽으려면 / fread / () / 를 사용한다 / . / fread / (buffer, 1, / sizeof / (buffer), / src_file / ); / 이진 파일에 데이터를 쓰려면 / fwrite / () / 를 사용한다 / . / fwrite / (buffer, 1, / sizeof / (buffer), / dst_file / ); / fread / () / 는 성공적으로 읽은 항목의 개수를 반환한다 / . / 따라서 / 0 / 이 반환되면 파일의 끝에 도달한 것으로 볼 수 있다 / .
+
+--- Slide 56 ---
+예제 / #include /  / < / stdio.h / > / int / main( / void / ) / { /  / FILE / * / src_file / , * / dst_file / ; /  / char / filename[100]; /  / char / buffer[1024]; /  / int /  / r_count / ; /  / printf / ( / " / 이미지 파일 이름 / : " / ); /  / scanf / ( / "%s" / , filename); / src_file = fopen(filename, / "rb" / ); /  / dst_file / = / fopen / ( / "copy.jpg" / , / " / wb / " / ); /  / if / ( / src_file / == / NULL / || / dst_file / == / NULL / ) { /  / fprintf / ( / stderr / , / " / 파일 열기 오류 / \n" / ); /  / return / 1; /  / }
+
+--- Slide 57 ---
+예제 /  / while / (( / r_count / = / fread / (buffer, 1, / sizeof / (buffer), / src_file / )) > 0) { /  / int /  / w_count / = / fwrite / (buffer, 1, / r_count / , / dst_file / ); /  / if / ( / w_count / < 0) { /  / fprintf / ( / stderr / , / " / 파일 쓰기 오류 / \n" / ); /  / return / 1; /  / } /  / if / ( / w_count / < / r_count / ) { /  / fprintf / ( / stderr / , / " / 미디어 쓰기 오류 / \n" / ); /  / return / 1; /  / } /  / } /  / printf / ( / "copy.jpg / 로 이미지 파일이 복사됨 / \n" / ); /  / fclose / ( / src_file / ); /  / fclose / ( / dst_file / ); /  / return / 0; / }
+
+--- Slide 58 ---
+Lab: / 파일 압축 / (RLE) / 입력 문자열이 주어지면 이것을 / RLE / 알고리즘으로 압축하여 파일에 기록하는 프로그램을 작성해보자 / . / 예를 들어 입력 문자열이 “ / aaaaaacccccyxx / ” / 이면 프로그램은 “ / 6a5c1y2x” / 를 파일에 기록한다
+
+--- Slide 59 ---
+예제 / #include /  / < / stdio.h / > / #include /  / < / stdlib.h / > / int / main( / void / ) / { /  / FILE / * / fp1 = / fopen / ( / "test.txt" / , / "r" / );	// / 텍스트 파일을 가정한다 / . /  / FILE / * fp2 = / fopen / ( / "result.txt" / , / "w" / ); /  / char /  / curr_ch / = 0, / prev_ch / = 0;	// / 현재 문자와 이전 문자 /  / int / count = 0; /  / while / (1) { /  / int /  / i / = / fread / (& / curr_ch / , / sizeof / ( / char / ), 1, fp1); /  / if /  / ( / feof / (fp1)) {	// / 파일의 끝이면 /  / fprintf / (fp2, / “% / d%c / " / , / count, / prev_ch / ); /  / break / ; /  / } /  / if /  / ( / prev_ch / != / curr_ch / && / prev_ch / !=0) {  // / 이전 문자와 현재 문자가 다르면 /  / fprintf / (fp2, / "% / d%c / " / , / count, / prev_ch / ); / count = 1; /  / } /  / else / count++; /  / prev_ch / = / curr_ch / ; /  / } /  / fclose / (fp1); /  / fclose / (fp2); /  / return 0; / } / 교재 /  / 오타 입니다 / . / 교재 /  / 오타 입니다 / .
+
+--- Slide 60 ---
+Lab: / 파일 암호화 / (XOR) / XOR / 암호화 방법을 사용하여 파일을 암호화해보자 / . / 이 알고리즘에서는 파일 안의 모든 문자에 대하여 암호키와 비트 / XOR / 연산자를 적용한다 / . / 예를 들어서 암호화키 ” / 0123456789“ / 를 이용하여 왼쪽의 텍스트 파일을 암호화하면 오른쪽 파일처럼 된다 / .
+
+--- Slide 61 ---
+예제 / #include / < / stdio.h / > / #include / < / stdlib.h / > / #define /  / SIZE / 10000 / char / * key = / "0123456789" / ; / int / main( / void / ) / { /  / char / name[256], name1[256]; /  / char /  / p[ / SIZE / ]; / // / 파일은 / 10000 / 바이트 미만이어야 한다 / . /  / printf / ( / " / 입력 파일 이름 / : " / ); /  / scanf / ( / "%s" / , name); /  / printf / ( / " / 출력 파일 이름 / : " / ); /  / scanf / ( / "%s" / , name1); /  / FILE / * f1 = / fopen / (name, / " / r+b / " / ); /  / FILE / * f2 = / fopen / (name1, / " / w+b / " / ); /  / int / length = / fread / (p, / sizeof / ( / char / ), 10000, f1); // / 실제로 읽은 바이트 수가 반환된다 / . /  / for / ( / unsigned /  / long /  / i / = 0; / i / < length; / i / ++) { / p[ / i / ] ^= key[ / i / % 10];	// XOR / 연산 /  / } /  / fwrite / (p, / sizeof / ( / char / ), length, f2); /  / fclose / (f1); /  / fclose / (f2); /  / return / 0; / }
+
+--- Slide 62 ---
+중간 점검 / 1. / 문자 데이터가 아니고 이진 데이터가 저장되어 있는 파일을 / _____ / 파일이고 한다 / . / 2. / 이진 파일을 생성할 때 사용하는 함수는 / _____ / 이다 / . / 3. / 읽기 전용 이진 파일을 생성할 때 사용하는 파일 모드는 / _____ / 이다 / .
+
+--- Slide 63 ---
+임의 접근 파일 / 순차 접근 / (sequential access) /  / 방법 / : / 데이터를 파일의 처음부터 순차적으로 읽거나 기록하는 방법 / 임의 접근 / (random access) /  / 방법 / : / 파일의 어느 / 위치에서든지 / 읽기와 쓰기가 가능한 방법
+
+--- Slide 64 ---
+임의 접근 파일의 원리 / 파일 포인터 / : / 읽기와 쓰기 동작이 현재 어떤 위치에서 이루어지는 지를 나타낸다 / . / 강제적으로 파일 포인터를 이동시키면 임의 접근이 가능 / 파일 /  / 포인터
+
+--- Slide 65 ---
+fseek / ()
+
+--- Slide 66 ---
+fseek / () / rewind / ( / fp / ): / 파일 포인터를 첫 부분으로 초기화한다 / .
+
+--- Slide 67 ---
+ftell / (), / feof / () / 파일 포인터의 현재의 위치를 반환한다 / . / 파일의 끝에 도달하였는지 여부를 반환한다 / .
+
+--- Slide 68 ---
+예제 / 텍스트 파일에 / "ABCDEFGHIJKLMNOPQRSTUVWXYZ" / 을 기록한 후에 이 파일을 다시 읽기 모드로 연다 / . / fseek / () / 에 적절한 값을 넣어서 호출한 후에 / fgetc / () / 를 호출하여 / 반환값을 / 화면에 출력한다 / . / fseek / ( / fp / , 3, SEEK_SET) = D / fseek / ( / fp / , -1, SEEK_END) = Z
+
+--- Slide 69 ---
+예제 / #include /  / < / stdio.h / > / int / main( / void / ) / { /  / FILE / * / fp / ; /  / char / buffer[100]; /  / fp / = / fopen / ( / "sample.txt" / , / " / wt / " / ); /  / fputs / ( / "ABCDEFGHIJKLMNOPQRSTUVWXYZ" / , / fp / ); /  / fclose / ( / fp / ); /  / fp / = / fopen / ( / "sample.txt" / , / "rt" / ); /  / fseek / ( / fp / , 3, / SEEK_SET / ); /  / printf / ( / " / fseek / ( / fp / , 3, SEEK_SET) = %c \n" / , / fgetc / ( / fp / )); /  / fseek / ( / fp / , -1, / SEEK_END / ); /  / printf / ( / " / fseek / ( / fp / , -1, SEEK_END) = %c \n" / , / fgetc / ( / fp / )); /  / fclose / ( / fp / ); /  / return / 0; / }
+
+--- Slide 70 ---
+예제 / fseek / ( / fp / , 3, SEEK_SET) = D / fseek / ( / fp / , -1, SEEK_END) = Z
+
+--- Slide 71 ---
+중간 점검 / 1. / 파일의 처음부터 순차적으로 읽거나 쓰는 방법을 / _____ / 이라고 한다 / . / 2. / 파일의 어느 위치에서나 읽고 쓰기가 가능한 방법을 / ________ / 이라고 한다 / . / 3. / 파일에서 읽기나 쓰기가 수행되면 파일의 현재의 위치를 표시하는 / ___________ / 가 갱신된다 / . / 4. / 파일의 파일 /  / 포인터를 알아내는 함수는 / _____ / 이다 / .
+
+--- Slide 72 ---
+Mini /  / Project: / 주소록 만들기 / 자신과 친한 사람들의 정보를 저장하고 업데이트할 수 있는 간단한 프로그램을 작성하여 보자 / . / 입력하거나 업데이트한 데이터는 파일로 저장된다 / . / 저장된 데이터에 대하여 검색할 수 있다 / . / 자기에게 필요한 여러 가지 사항들을 저장할 수 있도록 하자 / . / 즉 자신만의 간단한 데이터베이스 시스템을 작성하여 보자 / .
+
+--- Slide 73 ---
+실행 결과 / ==================== / 1. / 추가 / 2. / 수정 / 3. / 검색 / 4. / 종료 / ==================== / 정수값을 /  / 입력하시오 / : 1 / 이름 / : / 홍길동 / 주소 / : / 서울시 종로구 / 1 / 번지 / 휴대폰 / : 010-1234-5678 / 특징 / : / 초능력 슈퍼 히어로
+
+--- Slide 74 ---
+힌트 / 적합한 것은 “ / a+" / 모드이다 / . / 주로 추가 / , / 탐색 할 예정 / 파일에서 읽기 전에 무조건 / fseek / () / 를 해주어야 한다 / . / 수정할 때는 차라리 새로운 파일을 생성하여서 거기에 전체를 다시 기록하는 것이 낫다 / .
+
+--- Slide 75 ---
+예제 / #include /  / < / stdio.h / > / #include /  / < / string.h / > / #define / SIZE 100 / typedef /  / struct / person { / // / 연락처를 구조체로 표현한다 / . /  / char / name[SIZE]; / // / 이름 /  / char / address[SIZE]; / // / 주소 /  / char /  / mobilephone / [SIZE]; / // / 휴대폰 /  / char /  / desc / [SIZE]; / // / 특징 / } PERSON; / void / menu(); / PERSON / get_record / (); / void /  / print_record / (PERSON data); / void /  / add_record / (FILE * / fp / ); / void /  / search_record / (FILE * / fp / ); / void /  / update_record / (FILE * / fp / );
+
+--- Slide 76 ---
+제 / int / main( / void / ) / { / FILE * / fp / ; /  / int / select; /  / // / 이진 파일을 추가 모드로 / 오픈한다 / . /  / if / ( ( / fp / = / fopen / ( / "address.dat" / , / "a+" / )) == NULL ) { /  / fprintf / ( / stderr / , / " / 입력을 위한 파일을 열 수 없습니다 / ); /  / exit(1); / } /  / while / (1) 	{ / menu(); / // / 메뉴를 표시한다 /  / printf / ( / " / 정수값을 / 입력하시오 / : " / ); /  / // / 사용자로부터 정수를 받는다 /  / scanf / ( / "% / d" / ,&select / ); /  / switch / (select) { /  / case / 1: / add_record / ( / fp / ); / break; /  / // / 데이터를 추가한다 /  / case / 2: / update_record / ( / fp / ); / break; /  / // / 데이터를 수정한다 /  / case / 3: / search_record / ( / fp / ); / break; /  / // / 데이터를 탐색한다 /  / case / 4: / return / 0; / } / } /  / fclose / ( / fp / ); / // / 이진 파일을 닫는다 /  / return / 0; / }
+
+--- Slide 77 ---
+// / 사용자로부터 데이터를 받아서 구조체로 반환한다 / PERSON / get_record / () / { / PERSON data; /  / fflush / ( / stdin / ); / // / 표준 입력의 버퍼를 비운다 /  / printf / ( / " / 이름 / ); /  / gets(data.name); / // / 이름을 / 입력받는다 /  / printf / ( / " / 주소 / ); /  / gets( / data.address / ); / // / 주소를 / 입력받는다 /  / printf / ( / " / 휴대폰 / ); /  / gets( / data.mobilephone / ); / // / 휴대폰 번호를 / 입력받는다 /  / printf / ( / " / 특징 / ); /  / gets( / data.desc / ); / // / 특징을 입력 받는다 /  / return / data; / } / // / 구조체 데이터를 화면에 출력한다 / . / void /  / print_record / (PERSON data) / { /  / printf / ( / " / 이름 / \n" / , data.name); / printf / ( / " / 주소 / \n" / , / data.address / ); /  / printf / ( / " / 휴대폰 / \n" / , / data.mobilephone / ); / printf / ( / " / 특징 / \n" / , / data.desc / ); / }
+
+--- Slide 78 ---
+// / 메뉴를 화면에 표시하는 함수 / void /  / menu() / { /  / printf / ( / "====================\n" / ); /  /  / printf / ( / " 1. / 추가 / \n 2. / 수정 / \n 3. / 검색 / \n 4. / 종료 / \n" / ); /  / printf / ( / "====================\n" / ); / } / // / 데이터를 추가한다 / void /  / add_record / (FILE * / fp / ) / { /  / PERSON data; /  / data = / get_record / (); /  / // / 사용자로부터 데이터를 받아서 구조체에 저장 /  / fseek / ( / fp / , 0, SEEK_END); /  / // / 파일의 끝으로 간다 /  /  / fwrite / (&data, / sizeof / (data), 1, / fp / ); /  / // / 구조체 데이터를 파일에 쓴다 / }
+
+--- Slide 79 ---
+// / 데이터를 탐색한다 / void /  / search_record / (FILE * / fp / ) / { /  / char / name[SIZE]; / PERSON data; /  / fseek / ( / fp / , 0, SEEK_SET); / // / 파일의 처음으로 간다 /  / fflush / ( / stdin / ); /  / printf / ( / " / 탐색하고자 하는 사람의 이름 / " / ); /  / gets(name); / // / 이름을 / 입력받는다 /  / while / (! / feof / ( / fp / )){ / // / 파일의 끝까지 반복한다 /  / fread / (&data, / sizeof / (data), 1, / fp / ); /  / if / ( / strcmp / (data.name, name) == 0 ){ / // / 이름을 비교한다 /  / print_record / (data); /  /  /  / break; / } / } / } / // / 데이터를 수정한다 / void /  / update_record / (FILE * / fp / ) / { /  / //... / }
+
+--- Slide 80 ---
+도전문제 / search_record / () / 에서 탐색이 실패했으면 에러 메시지를 출력하도록 코드를 추가하여 보라 / . / update_record / () / 함수를 구현하여 보자 / . / 앞에서 언급한 대로 수정된 부분만 파일에 덮어쓰는 것은 상당히 어렵다 / . / 따라서 수정된 전체 내용을 읽어서 새로운 파일에 쓰도록 해보자 / .
+
+--- Slide 81 ---
+Q & A
+

@@ -1,0 +1,83 @@
+=== HTML5_3e_new_06장_다양한 입력 폼_수정_202212.pptx ===
+
+--- Slide 1 ---
+6 / 장 / . / 다양한 입력 폼 / HTML5 / 웹 프로그래밍 입문 / ( / 개정 / 3 / 판 / )-2
+
+--- Slide 2 ---
+목차 / 6.1 / 폼 이해하기 / 6.2 / 기본 형식으로 입력하기 / 6.3 / 고급 형식으로 입력하기 / 2 / 소스코드 실행 사이트 / 주소 / : / http://webclass.me/html5_3e / 메뉴 / ch02/ ~ ch13/ / 에 각 장의 예제가 있어서 실행결과 확인 및 소스보기가 가능합니다 / . / 다양한 입력 폼
+
+--- Slide 3 ---
+6.1 / 폼 이해하기 / 3 / 다양한 입력 폼
+
+--- Slide 4 ---
+<form> / 요소 / 의 / 사용 / 폼 요소 / 의 / 사용 / 회원가입 / , / 상품구매 / , / 키워드 검색 /  / 등 / 사용자로부터 정보를 받을 때 / 사용자와 애플리케이션이 상호작용 / 사용 / 자 / 입력 /  / ⇒ / 전송버튼 /  / ⇒ /  / 애플리케이션 / 에 / 전달 /  / ⇒ /  / 실행결과 / 반환 / <form> / 요소 / 의 역할 / 사용자가 입력하는 정보를 하나로 묶어서 애플리케이션에 전달 / 다양한 입력 양식을 그룹핑하고 전송방법을 설정 / <form> / 요소 / 내 / 사용자의 정보 입력 양식 / <input>, <textarea>, <select>, <button> / 등의 입력 요소를 이용 / 4 / 다양한 입력 폼
+
+--- Slide 5 ---
+다양한 입력 폼 예제 / 5 / <h3> / 다양한 입력 폼 / </h3> / <form method="get" action="form_app.js"> /  / 성명 / : / < / input / type="text" name="person"/> / < / br / > /  / 성별 / : / < / input / type="radio" name=“gender" value="male"/> / 남성 /  / < / input / type="radio" name=“gender" value="female"/> / 여성 / < / br / > /  / 직업 / : / < / select / name="job"  size="1"> / <option> / 학생 / </option> <option> / 회사원 / </option> / <option> / 공무원 / </option> <option> / 기타 / </option> / </select> / <p> / 구입희망분야 / ( / 복수선택 가능 / )< / br / > / - / 분야 / : / < / input / type="checkbox" name="books" value="computer"/> / 컴퓨터 /  / < / input / type="checkbox" name="books" value="economy"/> / 경제 /  / < / input / type="checkbox" name="books" value="common"/> / 상식 / < / br / > /  / 비고 / : < / br / > /  / < / textarea / name="comments" rows="4" cols="40"/></ / textarea / > / </p> <hr> /  / < / input / type="submit" value=" / 신청 / "/> /  / < / input / type="reset" value=" / 취소 / "/> / </form> / 다양한 입력 폼
+
+--- Slide 6 ---
+<form> / 요소의 주요 속성 / <form name=” / 이름 / ” method=”get/post” action=” / 애플리케이 / 션 /  / 주소 / ”> / method / 속성 / : / 데이터 전송 방식 /  / 지정 / get / 방식 / : / 전송할 데이터를 / URL / 주소 /  / 뒤 / 에 포함 / , / 예 / ,  http://… ch04/ / app.js?person / =%C8%AB%B1%E6&sex=male& jobs=… / 간단한 데이터에는 편리 / , / 그러나 / 보안에 취약 / post / 방식 / : / 프 / 로그램의 입출력 방식을 사용 / , / 데이터 양에 제한 없 / 다 / action / 속성 / : / 데이터 처리할 애플리케이션 주소 / ( / 웹서버 / 경우 / URL) / name / 속성 / : / 폼 요소에 대한 이름 / HTML / 문서에서 / <form> / 의 역할 / 다양한 / <input> / 요소 / 에 대해 / 데이터 / 입력 / ⇒ / 전달 / ⇒ / 반환 / 6 / 웹서버 / 애플리케이션 / (ASP, JSP, PHP) / GET/POST / 방식 / 요청 / ( / 데이터 전송 / ) / 응답 / ( / 실행결과 / ) / 다양한 입력 폼
+
+--- Slide 7 ---
+6.2.1 / 텍스트 입력 / 6.2.2 / 선택항목의 입력 / 6.2.3 / 버튼 입력 / 6.2.4 / 기타 입력 필드 / 6.2.5 / 입력 필드의 / 그룹핑 / 6.2 / 기본 형식으로 입력하기 / 7 / 다양한 입력 폼
+
+--- Slide 8 ---
+입력 폼의 형태 / 기본적인 입력 폼의 형태 / <form> / 요소 안에 / <input>, < / textarea / >, <select>, <button> / 등 요소 / <input> / 요소의 속성 / <input type=” / 입력 형식 / ” name=” / 변수명 / ”, value=” / 입력 값 / ”/> / name / 속성 / , value / 속성 / type / 속성은 입력 폼의 유형 / 텍스트 관련 / : text, password / 선택 관련 / : radio, checkbox / 버튼 / : submit, reset, button, image / 기타 / : file, hidden / 8 / 다양한 입력 폼
+
+--- Slide 9 ---
+텍스트 입력 / 문자열 입력 필드 / ( / 한 줄 / ) / <input type=”text” name=” / 변수명 / ” value=” / 초기값 / ”/> / name / 속성 / : / 애플리케이션에 전달될 변수명 / value / 속성 / : / 입력 받은 값을 /  / 전달 / ( / 입력창 / 초기문자 / ) /  / 암호 입력 필드 / <input type=”password” name=” / 변수명 / ”/> / 보안이 필요한 문자 입력 / ,  ‘•’ / 으로 표시 / ( / 더 이상 보호 기능 /  / 없음 / ) / 텍스트 영역 필드 / ( / 여러 줄 / ): <textarea> / 요소 / <textarea  name=” / 이름 / ”  cols=” / 열의 수 / ”  rows=” / 행의 수 / ”> /  / 텍스트 영역에 표시되는 초기 문장 / </textarea> / 표시 영역보다 많은 텍스트를 입 / 력하면 / 스크롤바 /  / 9 / 다양한 입력 폼
+
+--- Slide 10 ---
+ / 아이디와 비밀번호 / , / 요청사항 입력 / 10 / <h3> / 문자열 / , / 암호 입력 및 텍스트 영역 / </h3> / <form method="post" action="form_app.js"> /  / 아이디 / : & / nbsp / ; / <input type="text" name ="id" value="...ID / 입력 / ..."> / < / br / > /  / 비밀번호 / : / <input type="password" name=" / pwd / "> / <p> / 요청사항 / : < / br / > /  / < / textarea / name="comment" cols="40" rows="5"> / 전달하실 내용을 적으세요 / : / </ / textarea / > / </form> / 다양한 입력 폼
+
+--- Slide 11 ---
+선택항목의 입력 / 라디오 버튼 / <input type=”radio” name=” / 변수명 / ” value=” / 선택값 / ” checked /> / name / 속성값이 같은 그룹에서 / value / 값을 / 하나만 선택 / 하여 전달 / 예 / , “member= / yes&sex / =male” / 의 형태로 / 전달 /  / 체크박스 선택 / <input type=”checkbox” name=” / 변수명 / ” value=” / 선택값 / ” checked /> / 체크박스에 표시된 / 모든 / value / 속성값 들이 애플리케이션으로 전송 / 11 / 회원여부 / : <input type="radio" / name="member" / value="yes" checked/> / 회원 / <input type="radio" / name="member" / value="no"/> / 비회원 / < / br / > / 성별 / : <input type="radio" / name="sex" / value="male"/> / 남성 / <input type="radio" / name="sex" / value="female"/> / 여성 / 취미 / ( / 중복선택 / ) : / <input type="checkbox" name="hobby" value="read"/> / 독서 / <input type="checkbox" name="hobby" value="movie" checked/> / 영화 / <input type="checkbox" name="hobby" value="music"/> / 음악 / <input type="checkbox" name="hobby" value="sports"/> / 스포츠 / 다양한 입력 폼
+
+--- Slide 12 ---
+선택목록에서 선택 / : <select> / 요소 내에 / <option> / 항목 / 드롭다운 /  / 형태 / (size= /  / 1), / 혹은 스크롤 박스 /  / 형태 / (size /  / > 1) / multiple / 속성 / : / 다중 /  / 선택 / 각 항목은 / <select> / 요소 내에서 / <option> / 요소 / 로 / 정의 /  / 12 / <select name="job" size="1" > / <option / value=”student” / selected> / 학생 / </option> / <option / value=”company” / > / 회사원 / </option> / <option / value=”teacher” / > / 교사 / </option> / <option / value=”sales” / > / 자영업 / </option> / <option / value=”others” / > / 기타 / </option> / </select> / <select size=”4” multiple> / 다양한 입력 폼
+
+--- Slide 13 ---
+버튼 입력 / 전송 버튼 / : / 입력 데이터 전달 / <input  type=”submit”  value=” / 버튼라벨 / ”/> / <form> / 요소에 있는 모든 입력 데이터가 / <form> / 의 / action / 속성에서 지정한 애플리케이션 프로그램으로 전송 / 초기화 버튼 /  / <input  type=”reset”  value=” / 버튼라벨 / ”/> / 일반 버튼 / : / 다양한 용도로 사용 / <input  type=”button”  value=” / 버튼라벨 / ”/> / 이미지 버튼 /  / <input  type=”image” src=” / 이미지 파일 / ”  alt=” / 대체 / 문자열 / ”/> / <button> / 요소 / : <button /  / type=“submit”> / 버튼 라벨 / </button> / 13 / 다양한 입력 폼
+
+--- Slide 14 ---
+14 / <form method="get" action="form_app.js"> / <p> / 취미 / ( / 중복선택 / ) : / <input type="checkbox" name="hobby" value="read"/> / 독서 / <input type="checkbox" name="hobby" value="movie" checked/> / 영화 / … / </p> /  / 직업 / : /  / <select name="job" size="4" multiple> / <option value="student" selected> / 학생 / </option> / <option value="company"> / 회사원 / </option> / <option value="teacher"> / 교사 / </option> / … / </select> / <hr> /  / <input type="submit" value=" / 전송하기 / "/> / & / nbsp / ; /  / <input type="reset" value=" / 초기화 / "/> / & / nbsp / ; / <input type="button" value=" / 확인하기 / " / onClick / ="alert(' / 입력값 / 확인 / ')"/> / & / nbsp / ; / <input type="image" / src / ="help.gif" alt=" / 전송 버튼 / "/> / </form> / 다양한 입력 폼
+
+--- Slide 15 ---
+기타 입력 필드 / 파일 선택하기 / : <input type=”file”/> / 데이터 숨김 / <input type=”hidden” name=” / 변수명 / ” value= / 값 / ”/> / 시스템에서 특정 데이터 / 를 /  / 처리하고 싶 / 을 때 / , / 예 / : / 사용자 / IP / 주소 / 텍스트 라벨 / : / 특정 입력 필드 / 에 / 연결 / <label for=” / 입력아이디 / ”> / 데이터 전달에는 영향이 없다 / 15 / 파일 / 업로드하기 /  / < / br / > / <input type="file" name=" / myfile / "/> /  / 성별 / : <label for="male"> / 남성 / </label> /  / <input type="radio" name=“gender" id="male" value="male"> / <label for="female"> / 여성 / </label> /  / <input type="radio" name=“gender" id="female" value="female"> / 다양한 입력 폼
+
+--- Slide 16 ---
+입력 필드의 그룹핑 / 그룹핑 / : <fieldset> / 요소 / 폼 양식을 / 그룹핑하는 / 범위를 지정 / 사용자의 시각적 편의를 위해서 제공 / 입력 필드의 그룹 주위에 기본 스타일로 / 테두리 / 선 / name / 속성 / : / 그룹의 이름을 지정하는 / form / 속성 / : / 폼과 연결 / disabled / 속성 / : / 그룹 내의 모든 하위 입력 요소들을 비활성화 / 그룹의 라벨 / : <legend> / 요소 / 그룹을 구분하기 위한 / 그룹의 / 제목 라벨 / <fieldset> / 요소에 포함되는 첫 번째 자식 요소로서 한번만 사용 / 그룹 라벨의 스타일은 그룹을 구분하는 선의 중간에 걸쳐서 표시 / 16 / 다양한 입력 폼
+
+--- Slide 17 ---
+도서 검색 예제 / 17 / <form method="post" action="form_app.js"> /  / < / fieldset / > /  / <legend> / 로그인 / </legend> /  / <label for=" / user_id / "> / 아이디 / : </label> / <input / type="text" / name="id" size="20" id=" / user_id / "> < / br / > /  / <label for=" / user_pw / "> / 비밀번호 / :</label> / <input / type="password" / name="pw" size="20" id=" / user_pw / "> /  / </ / fieldset / > / < / br / > /  / < / fieldset / > /  / <legend> / 통합 검색 / </legend> /  / <label for=" / book_name / "> / 도서명 / : </label> / <input type="text" name=" / book_search / " size="50" id=" / book_name / "> / < / br / > / 검색범위 / : /  / <input type="radio" name=" / s_type / " value="keyword" id="keyword"> /  / <label for="keyword"> / 키워드 / </label> … / < / br / > / 자료유형 / : /  / <input type="checkbox" name=" / d_type / " value="all"> / 전체 / … / </fieldset> / < / br / >  … /  / <button type="submit"> / 검색 / </button> / <button type="reset"> / 지우기 / </button> / </form> / 다양한 입력 폼
+
+--- Slide 18 ---
+6.3.1 / 서식이 있는 텍스트 입력 / 6.3.2 / 날짜와 시간 입력 / 6.3.3 / 색상 및 숫자 입력 / 6.3.4 / 데이터 목록에서 선택 / 6.3 / 고급 형식으로 입력하기 / 18 / 다양한 입력 폼
+
+--- Slide 19 ---
+<input> / 요소에 추가된 입력 형식 / text, password, radio, checkbox, button / 외에 새로운 양식 / 텍스트 관련 / : email, URL, / tel / , search ( / 검색창 / ) / 날짜와 시간 / : date, month, week, /  / time, / datetime / , / datetime / -local / 색상 및 숫자 / : number, range, color / <input> / 요소에 / 새로운 / 속성 / Autocomplete / , placeholder, required, autofocus, step / 속성 / <input> / 요소 이외에 /  / 추가된 입력 요소 / <output> / 요소 / , < / datalist / > / 요소 / , < / keygen / > / 요소 / 유효성 검사 / 예 / , / 이메일 입력 /  / 필드 / , / 필수적으로 입력해야 하는 필드 /  / 검사 대상 / : <input>, <select>, < / textarea / >, <button> / 에서 / submit / 일 때 / required / 속성 / , / novalidate /  / 속성 / 19 / 다양한 입력 폼
+
+--- Slide 20 ---
+서식이 있는 텍스트 입력 / 이메일 주소 입력 / : <input type=”email”/> / 이메일 / 주소의 / 형식이 / ****@***.*** / 에 맞게 작성되었는지 확인 / multiple / 속성 / : / 여러 개의 이메일 주소 / , / 콤마로 구분 /  / URL / 주소 입력 / : <input type=” / url / ”/> / 인터넷 주소 표기에 맞는 / ‘http://’ / 형식으로 입력되었는지 확인 / value / 속성에 / “http://” / 를 지정하여 미리 / 표시 / 20 / 다양한 입력 폼
+
+--- Slide 21 ---
+전화번호 입력 / : <input type=” / tel / ” /> / pattern / 속성 / : / 원하는 전화번호와 / 자리수에 / 유효한 패턴을 지정 / 정규 / 표현식으로 / 정의 / , / 자바스크립트에서 사용하는 패턴과 /  / 동일 / pattern=”[A- / Za / -z]{no}” , pattern=”[0-9]{no}” , pattern=”[0-9]+” , pattern=”[A-Za-z0-9]{min, max}” / placeholder / 속성 / : / 입력할 / 자리수 / 표시 / ( / 단순히 표시만 / ) / 검색창 / 입력 / : <input type=”search”/> / 21 / Tel : <input  type=" / tel / "  placeholder="00*-000*-0000" / pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}" /> / 다양한 입력 폼
+
+--- Slide 22 ---
+날짜와 시간 입력 / 날짜 입력 / ( / 일 / , / 월 / , / 주 / ) / <input type=”date”/> / 연 / - / 월 / - / 일 / <input type=”month”/> / 연 / - / 월 / <input type=”week”/> / 연 / - / 주 / ( / 번호순서 / 1 / 월 첫 주 / 가 /  / ‘W01’) / min / 속성 / , max / 속성 / , value / 속성 / 속성값은 / ‘ / 연 / - / 월 / - / 일 / ’ / 형식으로 날짜 입력 / (a) type=”date”	           (b) type=”month”	            (c) type=”week” / 22 / 다양한 입력 폼
+
+--- Slide 23 ---
+시간 입력 /  / <input type=“time”/> : /  / “ / 위 / / / 아래 / ( )” / 버튼 / 으로 시간 조정 / <input type=“ / datetime / ”/>	UTC / 국제표준 시간대 / <input type=“ / datetime / -local”/> / 현지 시간 / time, / datetime / , / datetime / -local / 형식의 예 / 23 / 다양한 입력 폼
+
+--- Slide 24 ---
+날짜와 시간 입력 예제 / 초기상태 /  / 입력오류 / 24 / <form method="get" action="form_app.js"> /  / 성명 / : / <input  type="text" name=" / p_name / "/> / < / br / > /  / 전화 / : / <input  type=" / tel / " name=" / p_tel / " placeholder="00*-000*-0000" / pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}" /> / < / br / > /  / 이메일 / : / <input type="email" name=" / p_mail / " placeholder="***@***.***"/> / <p> /  / 도서명 / : / <input type="text" size="25" name=" / book_title / "/> / < / br / > /  / 예약 희망일 / : / <input type="date" name=" / last_date / " min="2013-01-30"> / < / br / > /  / 수령 시간 / : / <input type="time" name=" / time_from / " min="09:00" max="18:00"> /  / 에서 / <input type="time" name=" / time_until / " min="09:00" max="18:00"> / 사이 / < / br / > / <hr> / <input type="submit" value=" / 예약하기 / "/> / </form> / 다양한 입력 폼
+
+--- Slide 25 ---
+색상 및 숫자 입력 / 색상 입력 / : <input type=”color”/> / 사용자가 직접 색상을 선택 / 숫자 입력 / : <input type=”number”/> / 화살표 / min / 속성 / , max / 속성 / , value / 속성 / , step / 속성 /  / 예 / , <input type="number" min="0" max="100" step="10" value="20"/> / 범위 입력 / : <input type=”range”/> / 스크롤바 / min / 속성 / , max / 속성 / , step / 속성 / 예 / ,  0.1mm <input type="range" min="1" max="5" value="3" /> 0.5mm / 25 / 다양한 입력 폼
+
+--- Slide 26 ---
+데이터 목록에서 선택 / 데이터 목록 기능 / : < / datalist / > / 요소 / <input> / 요소의 / list / 속성 / 에 /  / < / datalist / > / 요소의 / id / 속성을 지정 / 검색어 /  / 자동완성 혹은 제시어 기능 구현 /  / 가능 /  / 입력 창에 포커스가 들어오면 옵션 목록 / 이 /  / 등장 /  / 26 / 참가국 / : / <input type="text" / list=“titles" / name=“book" / /> / < / datalist / id=“titles"> /  / <option value=" / 멀티미디어배움터 / " label="30,000"/> / <option value=" / 인터넷배움터 / " label="34,000"/> / <option value=" / 컴퓨터와 / IT / 기술의 이해 / " label="28,000"/> / </ / datalist / > / 다양한 입력 폼
+
+--- Slide 27 ---
+도서 구입 요청 예제 / 27 / <form> / <h3> / 도서 구입 요청 / </h3> /  / 도서명 / : / <input type="text" / list="book" / /> /  / < / datalist / id="book"> / <option value=" / 멀티미디어배움터 / " label="30,000"/> / <option value=" / 인터넷배움터 / " label="34,000"/> / <option value=" / 컴퓨터와 / IT / 기술의 이해 / " label="28,000"/> / </ / datalist / > /  / <p> / 선호도 / : 1 / <input type="range" min="1" max="5" value="3" /> / 5 / <p> / 가격 / : / <input type="number" name="price" min="0" step="100" value="10000"/> / 원 / <p> / 권수 / : / <input type="number" name="num" min="0" step="1" value="0" /> / 권 / <p><input type="submit" value=" / 구입 / "/> / </form> / 다양한 입력 폼
+

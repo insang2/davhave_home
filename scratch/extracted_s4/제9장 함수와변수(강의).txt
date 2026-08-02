@@ -1,0 +1,182 @@
+=== 제9장 함수와변수(강의).pptx ===
+
+--- Slide 1 ---
+제 / 9 / 장 함수와 변수 / C / 언어 / Express( / 개정 / 4 / 판 / )
+
+--- Slide 2 ---
+이번 장에서 학습할 내용 / 반복의 개념 이해 / 변수의 속성 / 전역 / , / 지역 변수 / 자동 변수와 정적 변수 / 재귀 호출 / 이번 장에서는 함수와 변수와의 관계를 집중적으로 살펴볼 것이다 / . / 또한 함수가 자기 자신을 호출하는 재귀 호출에 대하여 살펴본다 / .
+
+--- Slide 3 ---
+변수의 속성 / 변수의 속성 / : / 이름 / , / 타입 / , / 크기 / , / 값 / + / 범위 / , / 생존 시간 / , / 연결 / 범위 / (scope) / : / 변수가 사용 가능한 범위 / , / 가시성 / 생존 시간 / (lifetime) / : / 메모리에 존재하는 시간 / 연결 / (linkage) / : / 다른 영역에 있는 변수와의 연결 상태
+
+--- Slide 4 ---
+변수의 범위 / 함수 / 함수 / 지역 변수 / 지역 변수 / 전역 변수
+
+--- Slide 5 ---
+전역 /  / 변수와 지역 변수
+
+--- Slide 6 ---
+지역 변수 / 지역 변수 / (local variable) / 는 블록 안에 선언되는 변수
+
+--- Slide 7 ---
+지역 변수 선언 위치 / 최신 /  / 버전의 / C / 에서는 블록 안의 어떤 위치에서도 선언 가능 / !!
+
+--- Slide 8 ---
+이름이 같은 지역 변수
+
+--- Slide 9 ---
+지역 변수의 생존 기간
+
+--- Slide 10 ---
+#include /  / < / stdio.h / > /  / int / main( / void / ) /  / { /  / int /  / i / ; /  / for / ( / i / = 0;i < 5; / i / ++) / { /  / int / temp = 1; /  / printf / ( / "temp = %d\n" / , temp); / temp++; / } /  / return / 0; / } /  / 지역 변수 예제 / 블록이 시작할 때 마다 / 생성되어 초기화된다 / . / temp = 1 / temp = 1 / temp = 1 / temp = 1 / temp = 1
+
+--- Slide 11 ---
+#include /  / < / stdio.h / > / int / main( / void / ) / { /  / int / temp; /  / printf / ( / "temp = %d\n" / , temp); /  / return / 0; / } / 초기화 되지 않았으므로 쓰레기 값을 가진다 / . / 지역 변수의 초기값
+
+--- Slide 12 ---
+int /  / inc / ( / int / counter) / { / counter++; /  / return / counter; / } / 함수의 매개 변수 / 함수의 헤더 부분에 정의되어 있는 매개 변수도 일종의 지역 변수이다 / . / 즉 지역 변수가 지니는 모든 특징을 가지고 있다 / . / 지역 변수와 다른 점은 함수 호출시의 인수 값으로 초기화되어 있다는 점이다 / . / 매개 변수도 일종의 지역 변수
+
+--- Slide 13 ---
+함수의 매개 변수 / #include /  / < / stdio.h / > /  / int /  / inc / ( / int / counter); /  / int / main( / void / ) /  / { /  / int /  / i / ; /  / i / = 10; /  / printf / ( / " / 함수 / 호출전 /  / i / =%d\n" / , / i / ); /  / inc / ( / i / ); /  / printf / ( / " / 함수 / 호출후 /  / i / =%d\n" / , / i / ); /  / return / 0; / } / void /  /  / inc / ( / int / counter) / { / counter++; / } / 매개 변수도 일종의 지역 변수임 / 값에 의한 호출 / (call by value) / 함수 / 호출전 /  / i / =10 / 함수 / 호출후 /  / i / =10
+
+--- Slide 14 ---
+전역 변수 / 전역 변수 / (global variable) / 는 함수 외부에서 선언되는 변수이다 / . / 전역 변수의 범위는 소스 파일 전체이다 / . / 함수 / 함수 / 지역 변수 / 지역 변수 / 전역 변수
+
+--- Slide 15 ---
+전역 변수의 초기값과 생존 기간 / #include / <stdio.h> / int / A; / int / B; / int / add() / { /  / return / A + B; / } / int / main( / void / ) / { /  / int / answer; / A = 5; / B = 7; / answer = add(); /  / printf / (“ % d + % d = % d\n”, A, B, answer); /  / return / 0; / } / 전역 변수의 범위 / 전역 변수 / 초기값은 / 0 / 5 + 7 = 12
+
+--- Slide 16 ---
+전역 /  / 변수의 초기값 / #include /  / < / stdio.h / > / int / counter; / int / main( / void / ) / { /  / printf / ( / "counter = % d\n" / , counter); /  / return / 0; / } / counter =  0 / 전역 변수는 컴파일러가 프로그램 실행시에 / 0 / 으로 초기화한다 / .
+
+--- Slide 17 ---
+전역 변수의 사용 / #include /  / < / stdio.h / > / int / x; / void / sub(); / int / main( / void / ) / { /  / for / (x = 0; x < 10; x++) / sub(); / } / void / sub() / { /  / for / (x = 0; x < 10; x++) /  / printf / ( / "*" / ); / } / 출력은 어떻게 될까요 / ? / **********
+
+--- Slide 18 ---
+전역 변수의 사용 / 거의 모든 함수에서 사용하는 공통적인 데이터는 전역 변수로 한다 / . / 일부의 함수들만 사용하는 데이터는 전역 변수로 하지 말고 함수의 인수로 전달한다 / .
+
+--- Slide 19 ---
+같은 이름의 전역 변수와 지역 변수 / #include /  / < / stdio.h / > /  / int /  / sum / = 1; / // / 전역 변수 /  / int / main( / void / ) /  / { /  /  / int /  / sum / = 0; / // / 지역 변수 /  /  / printf / ( / "sum = %d\n" / , sum); /  / return / 0; / } / 전역 변수와 지역 변수가 동일한 이름으로 선언된다 / . / sum = 0
+
+--- Slide 20 ---
+중간 점검 / 변수의 범위는 대개 무엇으로 결정되는가 / ? / 변수의 범위에는 몇 가지의 종류가 있는가 / ? / 파일 범위를 가지는 변수를 무엇이라고 하는가 / ? / 블록 범위를 가지는 변수를 무엇이라고 하는가 / ? / 지역 변수를 블록의 중간에서 정의할 수 있는가 / ? / 똑같은 이름의 지역 변수가 서로 다른 함수 안에 정의될 수 있는가 / ? / 지역 변수가 선언된 블록이 종료되면 지역 변수는 어떻게 되는가 / ? / 지역 변수의 초기값은 얼마인가 / ? / 함수의 매개 변수도 지역 변수인가 / ? / 전역 변수는 어디에 선언되는가 / ? /  / 전역 변수의 생존 기간과 초기값은 / ? /  / 똑같은 이름의 전역 변수와 지역 변수가 동시에 존재하면 어떻게 되는가 / ?
+
+--- Slide 21 ---
+생존 기간 / 정적 할당 / (static allocation): / 프로그램 실행 시간 동안 계속 유지 / 자동 할당 / (automatic allocation): / 블록에 들어갈 때 생성 /  / 블록에서 나올 때 소멸
+
+--- Slide 22 ---
+생존 기간 / 생존 기간을 결정하는 요인 / 변수가 선언된 위치 / 저장 유형 지정자 / 저장 유형 지정자 / auto / register / static / extern
+
+--- Slide 23 ---
+저장 유형 지정자 / auto /  / 변수를 선언한 위치에서 자동으로 만들어지고 블록을 벗어나게 되며 자동으로 소멸되는 저장 유형을 지정 / 지역 변수는 / auto / 가 생략되어도 자동 변수가 된다 / . / int / main( / void / ) / { /  / auto int / sum = 0; /  / int / i = 0; / ... / ... / } / 전부 자동 변수로서 함수가 시작되면 생성되고 끝나면 소멸된다 / .
+
+--- Slide 24 ---
+저장 유형 지정자 / static / #include /  / < / stdio.h / > / void / sub() { /  / static /  / int /  / scount / = 0; /  / int /  / acount / = 0; /  / printf / ( / " / scount / = %d\t" / , / scount / ); /  / printf / ( / " / acount / = %d\n" / , / acount / ); /  / scount / ++; /  / acount / ++; / } / int / main( / void / ) { / sub(); / sub(); / sub(); /  / return / 0; / } / 정적 지역 변수로서 / static / 을 붙이면 / 지역 변수가 정적 변수로 된다 / . / scount / = 0 / acount / = 0 / scount / = 1 / acount / = 0 / scount / = 2 / acount / = 0
+
+--- Slide 25 ---
+저장 유형 지정자 / register / 레지스터 / (register) / 에 변수를 저장 / . / register int / i; / for / (i = 0;i < 100; i++) / sum += i; / CPU / 안의 레지스터에 변수가 저장됨
+
+--- Slide 26 ---
+volatile /  / volatile / 지정자는 하드웨어가 수시로 변수의 값을 변경하는 경우에 사용된다 / volatile /  / int /  / io_port / ; / // / 하드웨어와 연결된 변수 / void / wait( / void / ) { /  / io_port / = 0; /  / while / ( / io_port / != 255) /  / ; / } / volatile / 로 지정하면 / 컴 / 파일러는 / 최적화를 중지하게 됩니다 / .
+
+--- Slide 27 ---
+중간 점검 / 저장 유형 지정자에는 어떤 것들이 있는가 / ? / 지역 변수를 정적 변수로 만들려면 어떤 지정자를 붙여야 하는가 / ? / 변수를 / CPU / 내부의 레지스터에 저장시키는 지정자는 / ? / 컴파일러에게 변수가 외부에 선언되어 있다고 알리는 지정자는 / ? / static / 지정자를 변수 앞에 붙이면 무엇을 의미하는가 / ?
+
+--- Slide 28 ---
+Lab: / 은행 /  / 계좌 구현하기 / 돈만 생기면 저금하는 사람을 가정하자 / . / 이 사람을 위한 함수 / save( / int / amount) / 를 작성하여  보자 / . / 이 함수는 저금할 금액을 나타내는 인수 / amount / 만을 받으며 / save(100) / 과 같이 호출된다 / . save() / 는 정적 변수를 사용하여 현재까지 저축된 총액을 기억하고 있으며 한번 호출될 때마다 총 / 저축액을 / 다음과 같이 화면에 출력한다 / . / ============================== / 입금    출금     잔고 / ============================== / 10000           10000 / 50000           60000 / 10000  50000 / 30000           80000 / ==============================
+
+--- Slide 29 ---
+소스 / #include /  / < / stdio.h / > / // amount / 가 양수이면 입금이고 음수이면 출금으로 생각한다 / . / void / save( / int /  / amount / ) / { /  / static /  / long / balance = 0; /  / if / ( / amount / >= 0) / printf( / "%d \t\t" / , / amount / ); /  / else / printf( / "\t %d \t" / , - / amount / ); / balance += / amount / ; /  / printf / ( / "%d \n" / , balance); / }
+
+--- Slide 30 ---
+소스 / int / main( / void / ) { /  / printf / ( / "==============================\n" / ); /  / printf / ( / " / 입금 / \t / 출금 / \t / 잔고 / \n" / ); /  / printf / ( / "==============================\n" / ); / save(10000); / save(50000); / save(-10000); / save(30000); /  / printf / ( / "==============================\n" / ); /  / return / 0; / }
+
+--- Slide 31 ---
+Lab: / 한번만 초기화하기 / 정적 변수는 한번만 초기화하고 싶은 경우에도 사용된다 / hw_init / ( ): / 네트워크 장치를 초기화합니다 / . / hw_init / ( ): / 이미 초기화되었으므로 초기화하지 않습니다 / . / hw_init / ( ): / 이미 초기화되었으므로 초기화하지 않습니다 / .
+
+--- Slide 32 ---
+소스 / #include /  / < / stdio.h / > / #include /  / < / stdlib.h / > / void /  / hw_init / (); / int / main( / void / ) / { /  / hw_init / (); /  / hw_init / (); /  / hw_init / (); /  / return / 0; / } / void /  / hw_init / () / { /  / static /  / int /  / inited / = 0; / if( / inited / == 0 ){ /  / printf / (" / hw_init / (): / 네트워크 장치를 초기화합니다 / . \n"); /  / inited / = 1; /  / } / else { /  / printf / (" / hw_init / (): / 이미 초기화되었으므로 초기화하지 않습니다 / . \n"); /  / } / } / 오타 / ! / 수정해주세요 / .
+
+--- Slide 33 ---
+연결 / 연결 / (linkage): /  / 다른 범위에 속하는 변수들을 서로 연결하는 것 / 외부 연결 / 내부 연결 / 무연결 / 전역 변수만이 연결을 가질 수 있다 / .
+
+--- Slide 34 ---
+외부 연결 / 전역 변수를 / extern / 을 이용하여서 서로 연결
+
+--- Slide 35 ---
+연결 예제 / 10
+
+--- Slide 36 ---
+함수앞의 / static / f2( ) / 가 호출되었습니다 / .
+
+--- Slide 37 ---
+블록에서 / extern / 을 이용한 전역 변수 참조 / extern / 은 블록에서 전역 변수에 접근할 때도 사용된다 / . / #include /  / < / stdio.h / > / int / x = 50; / int / main( / void / ) / { /  / int / x = 100; /  / { /  / extern /  / int / x; / printf( / "x= %d\n" / , x); /  / } /  / return / 0; / } / x= 50
+
+--- Slide 38 ---
+어떤 저장 유형을 사용하여 하는가 / ? / 일반적으로는 / 자동 저장 유형 / 사용 권장 / 변수의 값이 함수 호출이 끝나도 그 값을 유지하여야 할 필요가 있다면 / 지역 정적 / 만약 많은 함수에서 공유되어야 하는 변수라면 / 외부 참조 변수
+
+--- Slide 39 ---
+Lab: / 난수 / 발생기 / 자체적인 / 난수 / 발생기 작성 / 이전에 만들어졌던 / 난수를 / 이용하여 새로운 / 난수를 / 생성함을 알 수 있다 / . / 따라서 함수 호출이 종료되더라도 이전에 만들어졌던 / 난수를 / 어딘가에 저장하고 있어야 한다
+
+--- Slide 40 ---
+실행 /  / 결과 / 다음과 같은 함수를 작성하여 사용해 보자 / . / 0 / 에서 / M-1 / 사이의 난수를 생성하는 / random_i / () / 0.0 / 에서 / 1.0 / 사이의 난수를 생성하는 / random_f / () / 0 / 부터 / 100 / 사이의 난수를 몇 개 생성해보자 / . / 19 85 58 63 17 67 6 7 12 42
+
+--- Slide 41 ---
+예제 /  / #define /  / SEED / 17 / int / MULT = 25173; / int / INC = 13849; / int / MOD = 65536; / static /  / unsigned /  / int / seed = / SEED / ; / // / 난수 생성 / 시드값 / // / 정수 난수 생성 함수 / unsigned /  / random_i / ( / void / ) / { / seed = (MULT * seed + INC) % MOD; / // / 난수의 / 시드값 / 설정 /  / return / seed; / } / // / 실수 난수 생성 함수 / double /  / random_f / ( / void / ) / { / seed = (MULT * seed + INC) % MOD; / // / 난수의 / 시드값 / 설정 /  / return / seed / ( / double / )MOD; / // 0.0 / 에서 / 1.0 / 사이로 제한 / } / random.c
+
+--- Slide 42 ---
+예제 /  / #include /  / < / stdio.h / > / extern /  / unsigned /  / random_i / ( / void / ); / extern /  / double /  / random_f / ( / void / ); / extern /  / int / MOD; / int / main( / void / ) / { /  / int /  / i / ; / MOD = 32767; /  / for / (i = 0; i < 10; i++) /  / printf / ( / "%d " / , / random_i / ()); /  / return / 0; / } / main.c
+
+--- Slide 43 ---
+가변 매개 변수 / 매개 변수의 개수가 가변적으로 변할 수 있는 기능 / int / sum / ( / int /  / num / , ... / ) / 호출 때 마다 매개 변수의 개수가 변경될 수 있다 / .
+
+--- Slide 44 ---
+가변 매개 변수 / #include /  / < / stdio.h / > / #include /  / < / stdarg.h / > / int / sum( / int / , ... ); / int / main( / void / ) / { /  / int / answer = sum( 4, 4, 3, 2, 1 ); /  / printf / ( / " / 합은 / %d / 입니다 / .\n" / , answer ); /  / return / ( 0 ); / } / int / sum( / int /  / num / , ... ) / { /  / int / answer = 0; /  / va_list /  / argptr / ; /  / va_start / ( / argptr / , / num / ); /  / for / ( ; / num / > 0; / num / -- ) / answer += / va_arg / ( / argptr / , / int / ); /  / va_end / ( / argptr / ); /  / return / ( answer ); / } / 매개 변수의 개수 / 합은 / 10 / 입니다 / .
+
+--- Slide 45 ---
+순환 / (recursion) / 이란 / ? / 함수는 자기 자신을 호출할 수도 있다 / . / 이것을 순환 / (recursion) / 라고 부른다 / .
+
+--- Slide 46 ---
+팩토리얼 / 구하기 / 팩토리얼 / 프로그래밍 / : (n-1)! / 팩토리얼을 / 현재 작성중인 함수를 다시 호출하여 계산 / ( / 순환 호출 / ) / int / factorial( / int / n) / { /  / if / ( n <= 1 ) / return / (1); /  / else /  / return / (n * factorial(n-1) ); / } / 3 / n
+
+--- Slide 47 ---
+순환 함수의 구조 / 순환 알고리즘은 그림 / 9-9 / 와 같이 자기 자신을 순환적으로 호출하는 부분과 순환 호출을 멈추는 부분으로 구성되어 있다 / .
+
+--- Slide 48 ---
+팩토리얼 / 구하기 / 팩토리얼의 / 호출 순서 / factorial(3) = 3 * factorial(2) / = 3 * 2 * factorial(1) / = 3 * 2 * 1 / = 3 * 2 / = 6 / factorial(2) / { / if( 2 >= 1 ) return 1; /  / else return (2 * factorial(2-1) ); / } / factorial(1) / { /  / if( 1 >= 1 ) return 1; /  / ..... / } / ① / ② / ③ / ④ / factorial(3) / { / if( 3 >= 1 ) return 1; /  / else return (3 * factorial(3-1) ); / }
+
+--- Slide 49 ---
+팩토리얼 / 계산 / // / 재귀적인 / 팩토리얼 / 함수 계산 / #include /  / < / stdio.h / > / long / factorial( / int /  / n / ) / { / printf( / "factorial(%d)\n" / , / n / ); /  / if / ( / n / <= 1) / return / 1; /  / else /  / return /  / n / * factorial( / n / - 1); / } / int / main( / void / ) / { /  / int / x = 0; /  / long / f; /  / printf / ( / " / 정수를 / 입력하시오 / :" / ); /  / scanf / (“ % d”, &n); /  / printf / (“ % d! / 은 / % d / 입니다 / . \n”, n, factorial(n)); /  / return / 0; / } / 정수를 / 입력하시오 / :5 / factorial(5) / factorial(4) / factorial(3) / factorial(2) / factorial(1) / 5! / 은 / 120 / 입니다 / .
+
+--- Slide 50 ---
+2 / 진수 형식으로 출력하기 / C / 에는 정수를 / 2 / 진수로 출력하는 기능이 없다 / . / 이 기능을 순환 호출을 이용하여 구현하여 보자 / .
+
+--- Slide 51 ---
+2 / 진수 형식으로 출력하기 / // 2 / 진수 형식으로 출력 / #include /  / < / stdio.h / > / void /  / print_binary / ( / int /  / x / ); / int / main( / void / ) / { /  / print_binary / (9); /  / printf / (“\n”); / return /  / 0; / } / void /  / print_binary / ( / int /  / x / ) / { /  / if / ( / x / > 0) /  / { /  / print_binary / ( / x / / 2); / // / 재귀 호출 /  / printf / ( / "%d" / , / x /  / % 2); / // / 나머지를 출력 /  / } / } / 1001
+
+--- Slide 52 ---
+최대 공약수 구하기 / 최대 공약수를 구하는 방법으로 유클리드의 호제법이라는 방법이 있다 / . / 이 방법은 두 수 / x / 와 / y / 의 최대 공약수는 / y / 와 / (x % y) / 의 최대 공약수와 같으며 / x / 와 / 0 / 의 최대 공약수는 / x / 라는 것이다
+
+--- Slide 53 ---
+최대 공약수 구하기 / // / 최대 공약수 구하기 / #include /  / < / stdio.h / > / int / gcd( / int /  / x / , / int /  / y / ); / int / main( / void / ) / { / printf( / "%d\n" / , gcd(30, 20)); / } / // x / 는 / y / 보다 커야 한다 / . / int / gcd( / int /  / x / , / int /  / y / ) / { /  / if / ( / y / == 0) /  / return /  / x / ; /  / else /  / return / gcd( / y / , / x / % / y / ); / } / 10
+
+--- Slide 54 ---
+Mini Project: / 하노이 탑 문제 / 문제는 막대 / A / 에 쌓여있는 원판 / 3 / 개를 막대 / C / 로 옮기는 것이다 / . / 단 다음의 조건을 지켜야 한다 / . / 한 번에 하나의 원판만 이동할 수 있다 / 맨 위에 있는 원판만 이동할 수 있다 / 크기가 작은 원판 위에 큰 원판이 쌓일 수 없다 / . / 중간의 막대를 임시적으로 이용할 수 있으나 앞의 조건들을 지켜야 한다 / . / A / B / C
+
+--- Slide 55 ---
+A / B / C / A / B / C / A / B / C / A / B / C / 3 / 개의 원판인 경우의 해답 / A / B / C / A / B / C / A / B / C / A / B / C
+
+--- Slide 56 ---
+n / 개의 원판인 경우 / n-1 / 개의 원판을 / A / 에서 / B / 로 옮기고 / n / 번째 원판을 / A / 에서 / C / 로 옮긴 다음 / , n-1 / 개의 원판을 / B / 에서 / C / 로 옮기면 된다 / . / A / B / C / n-1 / 개의 원판 / 1 / 개의 원판 / A / B / C / A / B / C / A / B / C
+
+--- Slide 57 ---
+하노이탑 / 알고리즘 / // / 막대 / from / 에 쌓여있는 / n / 개의 원판을 막대 / tmp / 를 사용하여 막대 / to / 로 옮긴다 / . / void / hanoi_tower / ( / int / n, char from, char / tmp / , char to) / { / if (n == 1) / { / from / 에서 / to / 로 원판을 옮긴다 / . /  / } /  / else / { /  / hanoi_tower / (n-1, from, to, / tmp / ); / from / 에 있는 한 개의 원판을 / to / 로 옮긴다 / . /  / hanoi_tower / (n-1, / tmp / , from, to); / } / }
+
+--- Slide 58 ---
+하노이탑 /  / 프로그램 / #define /  / _CRT_SECURE_NO_WARNINGS / // / 하노이의 탑 문제 / #include /  / < / stdio.h / > / void /  / hanoi_tower / ( / int /  / n / , / char /  / from / , / char /  / tmp / , / char /  / to / ); / int / main( / void / ) / { /  / hanoi_tower / (4, / 'A' / , / 'B' / , / 'C' / ); / } / void /  / hanoi_tower / ( / int /  / n / , / char /  / from / , / char /  / tmp / , / char /  / to / ) / { /  / if / ( / n / == 1) /  / printf / ( / " / 원판 / 1 / 을 / %c / 에서 / %c / 으로 옮긴다 / .\n" / , / from / , / to / ); /  / else /  / { /  / hanoi_tower / ( / n / - 1, / from / , / to / , / tmp / ); /  / printf / ( / " / 원판 / %d / 을 / %c / 에서 / %c / 으로 옮긴다 / .\n" / , / n / , / from / , / to / ); /  / hanoi_tower / ( / n / - 1, / tmp / , / from / , / to / ); /  / } / }
+
+--- Slide 59 ---
+하노이탑 /  / 실행 결과 / 원판 / 1 / 을 / A / 에서 / B / 으로 옮긴다 / . / 원판 / 2 / 을 / A / 에서 / C / 으로 옮긴다 / . / 원판 / 1 / 을 / B / 에서 / C / 으로 옮긴다 / . / 원판 / 3 / 을 / A / 에서 / B / 으로 옮긴다 / . / 원판 / 1 / 을 / C / 에서 / A / 으로 옮긴다 / . / 원판 / 2 / 을 / C / 에서 / B / 으로 옮긴다 / . / 원판 / 1 / 을 / A / 에서 / B / 으로 옮긴다 / . / 원판 / 4 / 을 / A / 에서 / C / 으로 옮긴다 / . / 원판 / 1 / 을 / B / 에서 / C / 으로 옮긴다 / . / 원판 / 2 / 을 / B / 에서 / A / 으로 옮긴다 / . / 원판 / 1 / 을 / C / 에서 / A / 으로 옮긴다 / . / 원판 / 3 / 을 / B / 에서 / C / 으로 옮긴다 / . / 원판 / 1 / 을 / A / 에서 / B / 으로 옮긴다 / . / 원판 / 2 / 을 / A / 에서 / C / 으로 옮긴다 / . / 원판 / 1 / 을 / B / 에서 / C / 으로 옮긴다 / .
+
+--- Slide 60 ---
+Q & A
+

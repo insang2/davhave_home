@@ -1,0 +1,89 @@
+=== HTML5_3e_new_07장_웹사이트제작실습_202212.pptx ===
+
+--- Slide 1 ---
+7 / 장 / . / 웹사이트제작실습 / HTML5 / 웹 프로그래밍 입문 / ( / 개정 / 3 / 판 / )-2
+
+--- Slide 2 ---
+목차 / 7.1 / 웹사이트 설계 / 7.2 / 페이지 별 구현 / 7.3 CSS3 / 를 이용한 웹사이트 스타일 설계 / 2 / 소스코드 실행 사이트 / 주소 / : / http://webclass.me/html5_3e / 메뉴 / ch02/ ~ ch13/ / 에 각 장의 예제가 있어서 실행결과 확인 및 소스보기가 가능합니다 / . / 웹사이트제작실습
+
+--- Slide 3 ---
+7.1.1 / 웹사이트 전체 구성 / 7.1.2 / 인터넷 서점 사이트 기능과 페이지 구상 / 7.1 / 웹사이트 설계 / 3 / 웹사이트제작실습
+
+--- Slide 4 ---
+웹사이트 전체 구상 / 웹사이트 전체 기능 구상 / 웹사이트를 제작하기 위해서는 웹사이트 전체의 구성과 메뉴 구성 / , / 그리고 각 메뉴의 기능은 어떻게 구현할지에 대한 설계를 미리 수행해야 한다 / 웹사이트 제작 / 웹사이트 디자인과 웹 프로그래밍 등 눈에 보여지는 부분이나 동작의 구현에 앞서 전체적인 구성에 대한 설계를 구체적으로 할 수록 실제 구현 단계에서의 시행 착오를 줄일 수 있다 / 4 / 웹사이트제작실습
+
+--- Slide 5 ---
+웹사이트 제작 단계 / 5 / [ / 그림 / 7-1] / 웹사이트의 제작 단계 /  / CSS / 스타일을 적용하여 웹문서에 레이아웃 및 표현을 적용한다 / . / 각 요소의 크기 / , / 색상 및 배치 형태를 조절하게 된다 / . / 웹사이트 디자인을 적용하는 단계 / 나열된 기능과 메뉴를 웹페이지별로 할당 / 이때 웹페이지 구현은 스타일이나 레이아웃 / , / 꾸미기 등은 고려하지 않고 / HTML / 태그와 콘텐츠만으로 구조화된 웹 문서를 작성하여 구현 / 웹사이트가 수행해야 하는 기능들을 나열 / 웹사이트의 메뉴들 / , / 기능들 / , / 화면에 표시해야 할 정보들에 대해 나열하고 필요한 입력 데이터나 외부 자원에 대해 파악 / 기능 / / / 메뉴 나열 필요한 자원 파악 / 기능과 메뉴를 페이지별로 할당 / HTML / 문서작성 / CSS / 스타일 적용 / 웹사이트 디자인 / 웹사이트제작실습
+
+--- Slide 6 ---
+인터넷 서점 사이트의 기능 / 기능 / 설명 / 구현형태 / / / 페이지 / 메인 화면 / 인터넷 서점 웹사이트의 첫 메인화면이다 / . / 로고 / , / 메뉴 및 로그인 / / / 회원가입 메뉴등이 보여진다 / . / main.html / 로그인 / 로그인 화면을 보여준다 / . / 로그인 화면은 새로운 화면으로 이동하지 않고 메인화면의 중간에 보여진다 / . / login.html / 회원 가입 / 폼 위젯을 이용하여 제작된 회원가입 양식을 보인다 / . / 새로운 화면으로 이동하여 보여준다 / . / signup.html / 메뉴 / / / 국내도서 / 국내도서 서적 리스트를 이미지와 함께 보여준다 / . / 새로운 화면으로 이동하지 않고 메인화면의 중간에 보인다 / . / domestic_books.html / 메뉴 / / / 해외번역도서 / 해외번역 서적 리스트를 이미지와 함께 보여준다 / . / 새로운 화면으로 이동하지 않고 메인화면의 중간에 보인다 / . / foreign_books.html / 메뉴 / / / 음반 / /DVD / 오디오 / , / 비디오 자료를 이미지와 함께 보여준다 / . / 미리듣기 / , / 미리보기 기능을 제공한다 / . / music.html / 주문하기 / 서적 주문을 위한 폼을 보인다 / . / 주문한 서적에 대한 합계를 보일 수 있도록 테이블 형태의 주문 양식을 사용한다 / . / order.html / 6 / 웹사이트제작실습
+
+--- Slide 7 ---
+메뉴와 기능 별 페이지 할당 / 7 / 웹사이트제작실습
+
+--- Slide 8 ---
+7.2.1 / 메인 페이지 / 7.2.2 / 로그인 및 회원가입 페이지 / 7.2.3 / 도서 목록 페이지 / 7.2.4 / 주문 페이지 / 7.2 / 페이지 별 구현 / 8 / 웹사이트제작실습
+
+--- Slide 9 ---
+메인 페이지 / (main.html) / 구현 / HTML / 태그 만을 이용해서 구현 / 처음에는 / 스타일이나 레이아웃 / , / 배치 등은 고려하지 않고 문서 구조와 콘텐츠만을 기술하기 위해 / HTML / 태그를 이용하여 각 페이지를 구현 / HTML5 / 기본 문서 구조 이용 / 9 / 웹사이트제작실습
+
+--- Slide 10 ---
+메인 페이지 / (main.html) / 구현 / 헤더 / <header> / 인터넷 서점의 이름 / , / 로그인 관련 메뉴 / 내비게이션 메뉴 / < / nav / > / 국내도서 / , / 해외번역도서 / , / 음반 / /DVD, / 주문하기 메뉴 / 아티클 / <article> / 메인페이지에서 보여주고자 하는 주요 내용을 표시 / 내비게이션 메뉴 중 하나를 누르면 해당 내용이 아티클에 나타는 방식으로 동작하고자 한다 / 어사이드 / <aside> / 추가 메뉴 구현 / 각주 / <footer> / 연락처 / , / 저작권 / , / 기타 정보 등 부수적인 정보를웹사이트에 추가하고자 할 때 사용 /  / 10 / 웹사이트제작실습
+
+--- Slide 11 ---
+메인 페이지 실행결과 / CSS / 스타일 미적용 / 11 / 웹사이트제작실습
+
+--- Slide 12 ---
+로그인 / (login.html) / 페이지 / 1 / 2 / 3 / 4 / 5 / 6 / 7 / 8 / 9 / 10 / 11 / 12 / 13 / 14 / 15 / <body id="login"> / <form> / <a> / 회원가입 / </a> / <a> / 아이디 / / / 비밀번호찾기 / </a> /  / < / fieldset / > / <span> / 사용자 아이디 / </span> / <input id="username" type="text"/>< / br / /> / <span> / 비밀번호 / </span> / <input id="password" type="password">< / br / /> / <span></span> / <input id=" / login_button / " type="submit" value=" / 로그인 / " disabled/> / <input id="reset" type="button" value=" / 취소 / " disabled/> /  / </ / fieldset / > / </form> / </body> / 12 / 웹사이트제작실습
+
+--- Slide 13 ---
+회원가입 / (signup.html) / 페이지 / 13 / 웹사이트제작실습
+
+--- Slide 14 ---
+도서 목록 페이지 / 국내도서 목록 페이지 / domestic_books.html / 도서목록을 그림 / (thumbnail) / 과 함께 나열 / 나열식 태그인 / < / ul / > / 태그 / 를 주로 사용 / 해외번역도서 페이지도 동일하게 구현 / CSS / 스타일 미적용 상태이므로 도서 목록의 배치가 순차적임 / 추후 / CSS / 스타일 적용하여 배치 형태 변경 예정 / 14 / 웹사이트제작실습
+
+--- Slide 15 ---
+국내도서 목록 페이지 / 15 / 1 / 2 / 3 / 4 / 5 / 6 / 7 / 8 / 9 / ㆍ / ㆍ / ㆍ / 22 / 23 / <body class="booklist"> / <div class="head"> / 국내 /  / 도서 / </div> / < / ul / > /  / <li> < / img /  / src / ="images/book1.jpg"/>< / br / /> /  / 컴퓨터와 / IT / 기술의 이해 / [ / 개정판 / -2 / 판 / ]< / br / /> / 최윤철 / , / 임순범 / , / 한탁돈 / < / br / /> / 생능출판사 /  / | 27,000 / 원 /  / </li> / <li> < / img /  / src / ="images/book2.jpg"/>< / br / /> / ( / 알기 /  / 쉬운 / ) / 알고리즘 / < / br / /> / 양성봉 / < / br / /> / 생능출판사 / | 24,000 / 원 / </li> / ㆍ / ㆍ / ㆍ / </ / ul / > / </body> / 웹사이트제작실습
+
+--- Slide 16 ---
+음반 / /DVD (music.html) / 페이지 / 오디오와 비디오 등 멀티미디어 자료를 보여주기 위한 페이지 / <audio>, <video> / 태그 이용 / 16 / 웹사이트제작실습
+
+--- Slide 17 ---
+주문 / (order.html) / 페이지 / 폼의 여러 위젯과 테이블 태그를 이용해서 작성 / CSS / 스타일시트 미적용으로 테이블의 테두리는 나타나지 않음 / 17 / 웹사이트제작실습
+
+--- Slide 18 ---
+7.3.1 / 요소의 크기 설정 / 7.3.2 / 요소의 배치 / 7.3.3 / 스타일 효과 추가하기 / 7.3 CSS3 / 를 이용한 웹사이트 스타일 설계 / 18 / 웹사이트제작실습
+
+--- Slide 19 ---
+CSS3 / 를 이용한 웹사이트 스타일 설계 / 웹사이트 스타일 설계 이전에 / 기본적인 웹페이지 / 를 구현 / HTML / 태그들을 이용해서 문서를 구성하고 콘텐츠를 채 / 움 / CSS / 스타일을 적용하여 웹페이지에 /  / 스타일 적용 / 요소들의 배치 / , / 레이아웃 및 표현을 적용 / 각 요소의 / 크기 / , / 배치 방법 / , / 위치 / , / 스타일 / , / 색상 등을 조절 / CSS / 스타일을 적용하는 단계에서는 웹문서의 구조나 콘텐츠 자체는 변경되지 않는다 / . / 웹사이트의 디자인을 결정하는 단계 / 19 / <link / rel / =" / stylesheet / " type="text/ / css / " / href / ="style-size.css"/> / <link / rel / =" / stylesheet / " type="text/ / css / " / href / ="style-layout.css"/> / <link / rel / =" / stylesheet / " type="text/ / css / " / href / ="style-presentation.css"/> / 웹사이트제작실습
+
+--- Slide 20 ---
+요소의 크기 조절 / 요소의 크기 조절을 위한 대표적인 / CSS / 스타일 속성 / 20 / width, height, min-height / 웹사이트제작실습
+
+--- Slide 21 ---
+요소 크기 지정을 위한 스타일시트 / ch07/style-size.css / 21 / .wrap { width:715px; min-height:600px; } / header { height: 80px; } / nav { width: 715px; } / nav / a { height:20px; } / footer { height:70px; } / #login / fieldset / span { width: 80px; } / #signup / fieldset / span { width: 90px; } / #order table td, / th / { width: 150px; height: 30px; } / .booklist { height: 462px; } / .booklist / ul / li { width: 150px; height: 180px; } / . / musiclist /  / ul / li { width: 530px; } / .booklist / ul / li / img / { height: 120px; } / { / width: 330px; } / .booklist / ul / li video { height: 120px; } / 빈칸채우기 / [ / 실습 / 7-4] / 웹사이트제작실습
+
+--- Slide 22 ---
+요소의 배치 / 요소들을 배치하기 위 / 한 대표적인 / CSS / 스타일 / 속성들 / 22 / position, left, top, text-align, margin, padding, float, vertical-align / 웹사이트제작실습
+
+--- Slide 23 ---
+요소 위치 지정을 위한 스타일시트 / ch07/style-layout.css / 23 / body { margin:0; padding:0; line-height: 1.2em; font-size: 0.75em; line-height: / 1.2em / ; } / .wrap { margin:0; margin-right: auto; margin-left: auto; } / header { vertical-align: middle; } / .left { float: left; } / .right { float: right; } / #logo { float: left; vertical-align: middle; margin:30px 0 0 20px; } / : / : / #login / fieldset / span { display: inline-block; } / #signup { margin: 30px; } / #signup / fieldset / span { display: inline-block; vertical-align: middle; } / #signup / fieldset / input { vertical-align: middle; } / #order { margin: 30px; } / .booklist { margin: 10px; padding: 5px; } / .booklist .head { margin: 15px 0 0 10px; } / .booklist / ul / li { / 빈칸 채우기 / [ / 실습 / 7-5] / list-style-type: none; / 빈칸채우기 / [ / 실습 / 7-5] / 웹사이트제작실습
+
+--- Slide 24 ---
+요소의 크기와 배치 스타일 적용 / 24 / 메인 화면 / ( / main.html / ) / 국내도서 화면 / ( / domestic_books.html / ) / 웹사이트제작실습
+
+--- Slide 25 ---
+요소의 크기와 배치 스타일 적용 / 25 / 음반 / /DVD / 화면 / (music.html) / 로그인 화면 / ( / login.html / ) / 회원가입 화면 / ( / signup.html / ) / 웹사이트제작실습
+
+--- Slide 26 ---
+스타일 효과 추가하기 / 표현 / (presentation) / 에 관련된 / CSS / 스타일시트를 지정 / 글자의 폰트 / , / 색상 / , / 꾸미기 효과 등 / 배경 색상 / , / 배경 이미지 지정 등 / 대표적인 / CSS / 꾸미기 스타일 속성 / 26 / font-family, font- / weight,font / -size, color, text-decoration, / border, border-color, border-style, border-width, / background-color, background-image, background-position, / list-style-type / 웹사이트제작실습
+
+--- Slide 27 ---
+요소 표현을 위한 스타일시트 / ch07/style-presentation.css / 예제 / 27 / body { / background-color: gray; / font-size: 0.75em; / line-height: 1.2em; / } / nav / a { /  / text-decoration:none / ; / color:#000000; / border-style: hidden / hidden / solid hidden; / border-color: transparent; / } /  / .booklist { / font-family: / arial / ; / background-color: #f0f0f0; / background-image: /  / url / (./images/cloud.jpg); / background-repeat: no-repeat; / background-position: 0px / 0px / ; /  / border:solid / 3px / steelblue / ; / border-radius:10px; / } / .booklist / ul / li { / font-size: 12px; / list-style-type: none; / } / 웹사이트제작실습
+
+--- Slide 28 ---
+CSS / 스타일을 적용한 웹사이트 실행결과 / (1/2) / 28 / 메인 화면 / ( / main.html / ) / 해외번역도서 화면 / ( / foreign_books.html / ) / 웹사이트제작실습
+
+--- Slide 29 ---
+CSS / 스타일을 적용한 웹사이트 실행결과 / (2/2) / 29 / 음반 / /DVD / 화면 / (music.html) / 주문하기 화면 / (order.html) / 웹사이트제작실습
+

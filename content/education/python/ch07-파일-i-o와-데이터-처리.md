@@ -9,128 +9,428 @@ order_index: 7
 
 ## 들어가며
 
-파일 I/O와 데이터 처리는 Python 개발에서 빼놓을 수 없는 핵심 주제다. 이번 장에서는 단순한 개념 설명을 넘어, 실제 프로젝트에서 어떻게 이를 활용하는지, 그리고 흔히 범하는 실수를 어떻게 피할 수 있는지를 중심으로 다룬다.
+파일 입출력과 데이터 처리는 실제 애플리케이션 개발에 필수적입니다. 텍스트 파일, CSV, JSON 등 다양한 형식의 데이터를 효율적으로 다루세요.
 
-## 배경: 왜 이것이 중요한가
+## 기본 파일 I/O
 
-많은 개발자들이 파일 I/O와 데이터 처리을(를) 선택적인 개념이라고 생각한다. 하지만 현실의 프로젝트에서는 이것을 제대로 이해하지 않으면 나중에 큰 문제가 된다. 예를 들어, 처음에는 작동하던 코드가 규모가 커지면서 갑자기 느려지거나, 유지보수가 어려워지는 경험을 한 적이 있을 것이다. 대부분 이 장에서 다루는 개념들을 간과했기 때문이다.
+### 예제 1: 파일 읽기와 쓰기
 
-## 기본 개념의 이해
+```python
+# 파일 쓰기
+with open("hello.txt", "w") as file:
+    file.write("Hello, World!\n")
+    file.write("Python File I/O\n")
 
-파일 I/O와 데이터 처리을(를) 이해하기 위해서는 먼저 몇 가지 기본 개념을 알아야 한다.
+print("파일 쓰기 완료")
 
-### 1. 근본 원리
+# 파일 읽기 (전체 내용)
+with open("hello.txt", "r") as file:
+    content = file.read()
+    print(f"전체 내용:\n{content}")
 
-이 기술이 작동하는 방식을 이해하려면, 그 뒤에 있는 원리를 알아야 한다. Python 생태계에서 이 개념이 어떤 역할을 하는지, 그리고 어떤 문제를 해결하는지를 먼저 파악하자.
+# 파일 읽기 (한 줄씩)
+print("\n한 줄씩 읽기:")
+with open("hello.txt", "r") as file:
+    for line in file:
+        print(f"  {line.rstrip()}")
 
-### 2. 용어와 정의
-
-이 분야의 전문가들이 사용하는 용어들을 정확히 알아두는 것이 중요하다. 같은 개념을 여러 이름으로 부르는 경우도 있기 때문이다. 공식 문서와 커뮤니티에서 가장 많이 사용되는 용어를 기준으로 정리했다.
-
-## 이론과 실제
-
-책에서 배운 이론과 현실의 코드는 다르다. 이 섹션에서는 파일 I/O와 데이터 처리이 실제로 어떻게 적용되는지를 보여준다.
-
-### 실전 시나리오 1: 기본 활용
-
-가장 간단한 경우부터 시작해보자. 이 단계는 대부분의 프로젝트에서 필요로 하는 기본적인 패턴이다.
-
+# 파일 읽기 (모든 줄을 리스트로)
+with open("hello.txt", "r") as file:
+    lines = file.readlines()
+    print(f"\n리스트로 읽기: {lines}")
 ```
-기본 예제 코드
-- 구조 설명
-- 각 부분의 역할
+
+출력:
+```
+파일 쓰기 완료
+전체 내용:
+Hello, World!
+Python File I/O
+
+한 줄씩 읽기:
+  Hello, World!
+  Python File I/O
+
+리스트로 읽기: ['Hello, World!\n', 'Python File I/O\n']
 ```
 
-### 실전 시나리오 2: 복잡성 처리
+### 예제 2: 파일 모드와 위치 조작
 
-하지만 실제 프로젝트는 기본 경우만 다루지 않는다. 다양한 엣지 케이스와 제약 조건들이 있다. 이를 어떻게 다루는지 보자.
+```python
+# 파일 모드 예제
+# 'w': 쓰기 (기존 파일 덮어쓰기)
+# 'a': 추가 (파일 끝에 추가)
+# 'r': 읽기 (기본값)
+# 'b': 바이너리 모드
 
+# 파일에 텍스트 추가
+with open("data.txt", "w") as file:
+    file.write("Line 1\n")
+    file.write("Line 2\n")
+
+# 파일에 텍스트 추가
+with open("data.txt", "a") as file:
+    file.write("Line 3\n")
+
+# 파일 포인터 조작
+with open("data.txt", "r") as file:
+    print("처음 5자: ", file.read(5))
+    print("현재 위치: ", file.tell())
+    file.seek(0)  # 처음으로 이동
+    print("seek(0) 후: ", file.read(5))
 ```
-복잡한 예제
-- 고려해야 할 점들
-- 실수하기 쉬운 부분
+
+출력:
+```
+처음 5자:  Line 
+현재 위치:  5
+seek(0) 후:  Line 
+```
+
+## CSV 파일 처리
+
+### 예제 3: CSV 읽기와 쓰기
+
+```python
+import csv
+
+# CSV 쓰기
+data = [
+    ["이름", "나이", "직업"],
+    ["Alice", "25", "Engineer"],
+    ["Bob", "30", "Designer"],
+    ["Charlie", "28", "Manager"]
+]
+
+with open("people.csv", "w", newline='') as file:
+    writer = csv.writer(file)
+    writer.writerows(data)
+
+print("CSV 파일 작성 완료")
+
+# CSV 읽기
+with open("people.csv", "r") as file:
+    reader = csv.reader(file)
+    print("\nCSV 파일 내용:")
+    for row in reader:
+        print(f"  {row}")
+
+# CSV 읽기 (딕셔너리로)
+print("\n딕셔너리로 읽기:")
+with open("people.csv", "r") as file:
+    reader = csv.DictReader(file)
+    for row in reader:
+        print(f"  {row}")
+```
+
+출력:
+```
+CSV 파일 작성 완료
+
+CSV 파일 내용:
+  ['이름', '나이', '직업']
+  ['Alice', '25', 'Engineer']
+  ['Bob', '30', 'Designer']
+  ['Charlie', '28', 'Manager']
+
+딕셔너리로 읽기:
+  {'이름': 'Alice', '나이': '25', '직업': 'Engineer'}
+  {'이름': 'Bob', '나이': '30', '직업': 'Designer'}
+  {'이름': 'Charlie', '나이': '28', '직업': 'Manager'}
+```
+
+## JSON 처리
+
+### 예제 4: JSON 직렬화와 역직렬화
+
+```python
+import json
+
+# Python 객체를 JSON으로 변환 (직렬화)
+person = {
+    "name": "Alice",
+    "age": 25,
+    "email": "alice@example.com",
+    "hobbies": ["reading", "gaming", "cooking"]
+}
+
+# 문자열로 변환
+json_str = json.dumps(person, ensure_ascii=False, indent=2)
+print("JSON 문자열:")
+print(json_str)
+
+# 파일에 저장
+with open("person.json", "w", encoding='utf-8') as file:
+    json.dump(person, file, ensure_ascii=False, indent=2)
+
+print("\n파일에 저장 완료")
+
+# 파일에서 읽기 (역직렬화)
+with open("person.json", "r", encoding='utf-8') as file:
+    loaded_person = json.load(file)
+    print(f"로드된 데이터: {loaded_person}")
+    print(f"이름: {loaded_person['name']}")
+    print(f"취미: {loaded_person['hobbies']}")
+```
+
+출력:
+```
+JSON 문자열:
+{
+  "name": "Alice",
+  "age": 25,
+  "email": "alice@example.com",
+  "hobbies": [
+    "reading",
+    "gaming",
+    "cooking"
+  ]
+}
+
+파일에 저장 완료
+로드된 데이터: {'name': 'Alice', 'age': 25, 'email': 'alice@example.com', 'hobbies': ['reading', 'gaming', 'cooking']}
+이름: Alice
+취미: ['reading', 'gaming', 'cooking']
+```
+
+## 텍스트 데이터 처리
+
+### 예제 5: 텍스트 필터링 및 정렬
+
+```python
+# 대량의 텍스트 데이터 생성
+text = """Python is amazing
+Python is powerful
+Java is popular
+Python is easy to learn
+JavaScript is flexible"""
+
+# 파일에 저장
+with open("languages.txt", "w") as file:
+    file.write(text)
+
+# 읽기 및 처리
+with open("languages.txt", "r") as file:
+    lines = file.readlines()
+
+print("1. 원본 파일:")
+for line in lines:
+    print(f"  {line.rstrip()}")
+
+# Python 관련 줄만 필터링
+python_lines = [line for line in lines if "Python" in line]
+print(f"\n2. Python 관련 줄 ({len(python_lines)}개):")
+for line in python_lines:
+    print(f"  {line.rstrip()}")
+
+# 줄을 알파벳순으로 정렬
+sorted_lines = sorted(lines)
+print(f"\n3. 정렬된 줄:")
+for line in sorted_lines:
+    print(f"  {line.rstrip()}")
+
+# 단어 빈도 계산
+from collections import Counter
+words = " ".join(lines).split()
+word_count = Counter(words)
+print(f"\n4. 단어 빈도 (상위 5개):")
+for word, count in word_count.most_common(5):
+    print(f"  {word}: {count}")
+```
+
+출력:
+```
+1. 원본 파일:
+  Python is amazing
+  Python is powerful
+  Java is popular
+  Python is easy to learn
+  JavaScript is flexible
+
+2. Python 관련 줄 (3개):
+  Python is amazing
+  Python is powerful
+  Python is easy to learn
+
+3. 정렬된 줄:
+  Java is popular
+  JavaScript is flexible
+  Python is amazing
+  Python is easy to learn
+  Python is powerful
+
+4. 단어 빈도 (상위 5개):
+  is: 5
+  Python: 3
+  amazing: 1
+  powerful: 1
+  Java: 1
+```
+
+## 바이너리 파일 처리
+
+### 예제 6: 바이너리 파일 읽고 쓰기
+
+```python
+import pickle
+
+# 객체를 바이너리로 저장
+data = {
+    "name": "Alice",
+    "scores": [85, 90, 78],
+    "active": True
+}
+
+# pickle을 사용한 직렬화
+with open("data.pkl", "wb") as file:
+    pickle.dump(data, file)
+
+print("바이너리 파일 저장 완료")
+
+# 바이너리에서 읽기 (역직렬화)
+with open("data.pkl", "rb") as file:
+    loaded_data = pickle.load(file)
+    print(f"로드된 데이터: {loaded_data}")
+    print(f"이름: {loaded_data['name']}")
+    print(f"점수: {loaded_data['scores']}")
+```
+
+출력:
+```
+바이너리 파일 저장 완료
+로드된 데이터: {'name': 'Alice', 'scores': [85, 90, 78], 'active': True}
+이름: Alice
+점수: [85, 90, 78]
 ```
 
 ## 흔한 실수와 해결책
 
-경험 많은 개발자도 이 부분에서 실수한다. 그리고 그 대가는 비용이 크다.
+### 실수 1: 파일을 명시적으로 닫지 않음
 
-### 실수 1: 너무 일찍 최적화하려고 함
+**틀린 예제:**
+```python
+file = open("data.txt")
+content = file.read()
+# 파일이 닫혀지지 않음 - 리소스 누수!
+```
 
-파일 I/O와 데이터 처리을(를) 처음 배울 때는 완벽함을 추구하려고 한다. 하지만 프로젝트 초기에는 동작하는 것이 완벽한 것보다 낫다. 먼저 작동하게 만들고, 필요할 때 개선하는 것이 현명한 전략이다.
+**올바른 예제:**
+```python
+with open("data.txt") as file:
+    content = file.read()
+# 자동으로 파일이 닫힘
+```
 
-### 실수 2: 요구사항을 충분히 파악하지 않음
+### 실수 2: 인코딩 문제
 
-많은 버그는 "요구사항을 잘못 이해했을 때" 생긴다. 파일 I/O와 데이터 처리의 맥락에서도 마찬가지다. 시작하기 전에, 정확히 무엇을 해야 하는지를 팀 전체가 이해하고 있는지 확인해야 한다.
+**틀린 예제:**
+```python
+# 한글 파일을 기본 인코딩으로 읽음 - 오류 가능
+with open("korean.txt") as file:
+    content = file.read()
+```
 
-### 실수 3: 테스트를 미루기
+**올바른 예제:**
+```python
+# 명시적으로 인코딩 지정
+with open("korean.txt", encoding='utf-8') as file:
+    content = file.read()
+```
 
-"나중에 테스트할 거야"라고 생각하면, 나중은 절대 오지 않는다. 파일 I/O와 데이터 처리과 관련된 로직은 반드시 테스트를 작성해야 한다. 특히 엣지 케이스를 중심으로.
+### 실수 3: CSV 작성 시 newline 누락
 
-## 성능 고려사항
+**틀린 예제:**
+```python
+with open("data.csv", "w") as file:
+    writer = csv.writer(file)  # newline 지정 안 함
+    writer.writerow(["a", "b", "c"])
+```
 
-규모가 커질수록 성능이 중요해진다.
+**올바른 예제:**
+```python
+with open("data.csv", "w", newline='') as file:
+    writer = csv.writer(file)
+    writer.writerow(["a", "b", "c"])
+```
 
-### 시간 복잡도
+## 연습 문제
 
-파일 I/O와 데이터 처리과 관련된 작업의 시간 복잡도를 파악해야 한다. O(n)인지, O(n²)인지, 아니면 상수 시간인지에 따라 대규모 데이터셋에서의 성능이 결정된다.
+### 문제 1: 학생 성적 통계
+CSV 파일에서 학생 성적을 읽어 평균과 최고점을 계산하세요.
 
-### 메모리 사용량
+### 문제 2: JSON 데이터 변환
+JSON 파일을 읽어 CSV로 변환하세요.
 
-메모리는 유한한 자원이다. 큰 데이터를 다룰 때는 메모리 효율성을 고려해야 한다.
+### 문제 3: 대량 파일 처리
+텍스트 파일 여러 개를 읽어 모든 파일의 단어 수를 세세요.
 
-### 확장성
+## 풀이
 
-시스템이 성장했을 때도 잘 작동해야 한다. 이 기술이 스케일링에 어떻게 영향을 미치는지 고려해야 한다.
+### 문제 1 풀이
+```python
+import csv
 
-## 베스트 프랙티스
+# 샘플 CSV 생성
+with open("grades.csv", "w", newline='') as f:
+    writer = csv.DictWriter(f, fieldnames=['name', 'score'])
+    writer.writeheader()
+    writer.writerows([
+        {'name': 'Alice', 'score': 85},
+        {'name': 'Bob', 'score': 90},
+        {'name': 'Charlie', 'score': 78}
+    ])
 
-업계에서 권장하는 방식들을 정리했다.
+# 성적 계산
+with open("grades.csv", "r") as f:
+    reader = csv.DictReader(f)
+    scores = []
+    for row in reader:
+        scores.append(int(row['score']))
 
-### 1. 명확한 인터페이스 설계
+avg = sum(scores) / len(scores)
+max_score = max(scores)
 
-어떤 입력을 받고, 어떤 출력을 제공할지를 먼저 정의하라. 이렇게 하면 나중에 구현을 바꾸기 쉬워진다.
+print(f"평균: {avg:.1f}")
+print(f"최고점: {max_score}")
+```
 
-### 2. 테스트 주도 개발
+### 문제 2 풀이
+```python
+import json
+import csv
 
-먼저 테스트를 작성하고, 그 테스트를 통과하는 코드를 만든다. 이렇게 하면 요구사항을 명확히 할 수 있고, 나중에 리팩토링할 때도 안전하다.
+# JSON 읽기
+with open("data.json", "r", encoding='utf-8') as f:
+    data = json.load(f)
 
-### 3. 문서화
+# CSV로 변환
+if isinstance(data, list):
+    with open("output.csv", "w", newline='', encoding='utf-8') as f:
+        if data:
+            writer = csv.DictWriter(f, fieldnames=data[0].keys())
+            writer.writeheader()
+            writer.writerows(data)
+```
 
-미래의 당신, 그리고 당신의 팀 동료들에게 이 코드가 왜 이렇게 작성되었는지를 설명해야 한다. 특히 판단 과정과 트레이드오프를 기록해두라.
+### 문제 3 풀이
+```python
+import os
 
-### 4. 정기적인 리팩토링
+def count_words_in_files(directory):
+    total_words = 0
+    for filename in os.listdir(directory):
+        if filename.endswith('.txt'):
+            with open(os.path.join(directory, filename)) as f:
+                words = len(f.read().split())
+                print(f"{filename}: {words} words")
+                total_words += words
+    return total_words
 
-좋은 코드도 시간이 지나면 기술 부채가 쌓인다. 정기적으로 코드를 검토하고 개선하라.
-
-## 관련 개념들과의 연계
-
-파일 I/O와 데이터 처리은 고립된 개념이 아니다. 다른 많은 개념과 연결되어 있다.
-
-- **이전 장**: ch6에서 배운 내용이 기초가 된다
-- **다음 장**: ch8에서는 이를 바탕으로 더 고급 주제를 다룬다
-- **병렬 개념**: 다른 분야의 Python 관련 개념들과도 연계된다
-
-## 실습 과제
-
-이론만으로는 부족하다. 직접 해봐야 익숙해진다.
-
-### 기본 과제
-- 파일 I/O와 데이터 처리의 기본 개념을 이용한 간단한 프로젝트 구현
-- 교과서 예제를 자신의 프로젝트에 맞게 수정하기
-
-### 심화 과제
-- 성능 측정 및 최적화
-- 엣지 케이스 처리
-- 다른 개발자의 코드 리뷰
+# 사용
+# total = count_words_in_files("./text_files")
+# print(f"총 단어 수: {total}")
+```
 
 ## 마무리
 
-파일 I/O와 데이터 처리을(를) 이해했다면, 당신은 Python 개발에서 한 단계 더 나아갔다. 하지만 진짜 학습은 여기서부터 시작된다. 실제 프로젝트에 적용하고, 문제에 부딪히고, 해결하는 과정을 거치면서 진정한 이해가 생긴다.
-
-다음 장으로 넘어가기 전에:
-1. 이 장의 개념을 다시 한 번 정리해보자
-2. 작은 프로젝트로 실습해보자
-3. 막히는 부분이 있으면 커뮤니티에 질문해보자
-
-좋은 개발자가 되는 길은 지식의 양이 아니라, 깊이와 실전 경험이다. 이 장의 내용을 제대로 이해하고 활용할 수 있다면, 당신의 코드의 품질이 눈에 띄게 개선될 것이다.
+다양한 파일 형식을 효율적으로 처리하는 것은 데이터 분석과 애플리케이션 개발의 핵심입니다.
