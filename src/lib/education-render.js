@@ -6,6 +6,10 @@ export const CATEGORIES = {
   java: { label: "Java", desc: "문법, 객체지향, 실무 패턴" },
   mobile: { label: "모바일 개발", desc: "Flutter · React Native · Swift · Kotlin" },
   "software-engineering": { label: "소프트웨어 공학", desc: "요구사항 분석부터 설계·테스트·프로젝트 관리까지, SE 핵심 이론" },
+  algorithm: { label: "알고리즘", desc: "자료구조 기초부터 정렬·탐색·DP·탐욕법·백트래킹까지, 핵심 알고리즘 및 문제 해결 기법" },
+  "data-structure": { label: "자료구조", desc: "선형 자료구조(리스트·스택·큐)부터 트리의 균형(AVL)·해시 테이블·그래프 알고리즘까지, 파이썬 기반 핵심 자료구조의 이론과 실전 코드" },
+  "c-basics": { label: "C 언어 기초", desc: "프로그래밍 입문부터 변수·연산자·제어문·함수·포인터·구조체·파일 입출력·동적 메모리 할당까지, 초보자 눈높이에 맞춘 완벽 C 프로그래밍 가이드" },
+  "html5-web": { label: "HTML5 웹 프로그래밍", desc: "웹의 기초부터 HTML5 시맨틱 태그·CSS3 스타일링·자바스크립트 DOM 제어·반응형 웹·HTML5 API까지, 웹 개발 입문자를 위한 실전 가이드" },
 };
 
 const EDU_STYLE = `
@@ -27,6 +31,10 @@ const EDU_STYLE = `
   .lesson-nav a{font-size:.85rem;color:var(--muted);max-width:45%;}
   .lesson-nav a:hover{color:var(--accent);}
   .lesson-nav .dir{display:block;font-family:var(--mono);font-size:.7rem;color:var(--faint,var(--muted));margin-bottom:.2rem;}
+  .search-box{display:flex;gap:.5rem;margin:1.5rem 0;align-items:center;}
+  .search-box input{flex:1;max-width:300px;font-family:inherit;font-size:.9rem;padding:.5rem .8rem;border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:var(--radius);}
+  .search-box button{font-family:inherit;font-size:.9rem;padding:.5rem 1rem;border:1px solid var(--accent);background:transparent;color:var(--accent);border-radius:var(--radius);cursor:pointer;}
+  .search-box button:hover{background:rgba(79,209,197,.1);}
 `;
 
 export function renderEducationHub(counts) {
@@ -90,7 +98,36 @@ export function renderEducationCategory({ category, posts }) {
     <span class="eyebrow">// education</span>
     <h1>${escapeHtml(cat.label)}</h1>
     <p class="desc">${escapeHtml(description)}</p>
-    <div>${items}</div>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="레슨 검색..." />
+      <button id="searchBtn">검색</button>
+    </div>
+    <div id="lessonList">${items}</div>
+    <script>
+      const searchInput = document.getElementById('searchInput');
+      const searchBtn = document.getElementById('searchBtn');
+      const lessonList = document.getElementById('lessonList');
+      async function search() {
+        const q = searchInput.value.trim();
+        if (!q) {
+          location.reload();
+          return;
+        }
+        const res = await fetch('/api/search?q=' + encodeURIComponent(q) + '&kind=education');
+        const data = await res.json();
+        if (!data.posts.length) {
+          lessonList.innerHTML = '<div class="empty">검색 결과가 없습니다.</div>';
+          return;
+        }
+        lessonList.innerHTML = data.posts.map((p, i) => \`
+          <a class="lesson-row" href="/education/\${p.category}/\${p.slug}" style="text-decoration:none;">
+            <span class="lesson-num">\${String(i + 1).padStart(2, '0')}</span>
+            <span class="lesson-title">\${p.title}</span>
+          </a>\`).join('');
+      }
+      searchBtn.addEventListener('click', search);
+      searchInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') search(); });
+    </script>
   </div>
   <footer>© ${new Date().getFullYear()} DAVHAVE · Oscar Lee</footer>
 </body>

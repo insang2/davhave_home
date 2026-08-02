@@ -95,6 +95,14 @@ async function handleApi(request, env, url) {
     return json(data);
   }
 
+  if (pathname === "/api/search" && method === "GET") {
+    const q = url.searchParams.get("q") || "";
+    const kind = url.searchParams.get("kind") || "education";
+    if (!q) return json({ posts: [], total: 0, page: 1, pageSize: 10 });
+    const data = await listPosts(env.DB, { kind, searchTerm: q, includeDrafts: false, page: 1 });
+    return json(data);
+  }
+
   if (pathname === "/api/posts" && method === "POST") {
     const denied = await requireAdmin(request, env);
     if (denied) return denied;

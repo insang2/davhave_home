@@ -45,13 +45,18 @@ async function attachTags(db, posts) {
   return posts.map((p) => ({ ...p, tags: byPost.get(p.id) || [] }));
 }
 
-export async function listPosts(db, { kind = "blog", category, tagSlug, includeDrafts = false, page = 1 } = {}) {
+export async function listPosts(db, { kind = "blog", category, tagSlug, searchTerm, includeDrafts = false, page = 1 } = {}) {
   const conditions = ["kind = ?"];
   const params = [kind];
   if (!includeDrafts) conditions.push("status = 'published'");
   if (category) {
     conditions.push("category = ?");
     params.push(category);
+  }
+  if (searchTerm) {
+    const term = `%${searchTerm}%`;
+    conditions.push("(posts.title LIKE ? OR posts.excerpt LIKE ?)");
+    params.push(term, term);
   }
   let joinClause = "";
   if (tagSlug) {
