@@ -1,5 +1,73 @@
 export const projects = [
   {
+    slug: "daily-positive",
+    clientName: "Daily Positive — 멘탈 웰빙 앱",
+    siteUrl: "https://davhave.com/portfolio/daily-positive",
+    coverImage: "/media/blog/1785066092622-tax103-cover.jpg",
+    tagline: "AI 기반 개인화 메시지와 멘탈 루틴 제안 라이프스타일 앱",
+    summary: "매일 긍정적인 메시지와 루틴을 제안하는 라이프스타일 모바일 앱. AI 기반 개인화 콘텐츠로 멘탈 웰빙을 돕습니다.",
+    intro: "Daily Positive는 사용자 개개인의 심리 상태와 일상 패턴에 맞춰 최적의 긍정 루틴과 마인드셋 피드를 제공하는 모바일 앱입니다.",
+    stack: ["Flutter", "Dart", "Claude API", "SQLite"],
+    features: [
+      "AI 기반 맞춤형 긍정 메시지 생성 엔진",
+      "일일 멘탈 루틴 및 습관 체크리스트",
+      "감정 일기 및 심리 피드백 리포트",
+      "오프라인 지원 및 초고속 동기화"
+    ],
+    verifiedNote: "DAVHAVE에서 직접 개발 및 운영 중인 멘탈 웰빙 프로젝트입니다."
+  },
+  {
+    slug: "smart-assistant",
+    clientName: "Smart Assistant — AI 워크플로우 솔루션",
+    siteUrl: "https://davhave.com/portfolio/smart-assistant",
+    coverImage: "/media/blog/1785066094285-kconstrade-cover.jpg",
+    tagline: "일정 관리와 업무 자동화를 위한 지능형 AI 비서",
+    summary: "AI 기반 개인 비서 및 업무 자동화 솔루션. 일정 관리, 스마트 알림, 워크플로우 자동화로 바쁜 일상의 생산성을 높입니다.",
+    intro: "Smart Assistant는 LLM 기술을 활용하여 일정 스케줄링, 이메일 요약, 캘린더 연동 및 업무 자동화 파이프라인을 연동한 지능형 앱입니다.",
+    stack: ["Claude API", "Python", "FastAPI", "React Native"],
+    features: [
+      "자연어 처리 기반 일정 및 할 일 자동 등록",
+      "이메일 및 긴 문서 핵심 요약 피드",
+      "스마트 알림 및 우선순위 재배치 에이전트",
+      "크로스플랫폼 모바일 및 웹 동시 지원"
+    ],
+    verifiedNote: "DAVHAVE의 AI 에이전틱 기술이 적용된 비즈니스 파트너 솔루션입니다."
+  },
+  {
+    slug: "community-hub",
+    clientName: "Community Hub — 모바일 웹 커뮤니티",
+    siteUrl: "https://davhave.com/portfolio/community-hub",
+    coverImage: "/media/blog/1785066092622-tax103-cover.jpg",
+    tagline: "지식 공유와 성장을 돕는 고성능 반응형 모바일 웹 플랫폼",
+    summary: "사람들이 서로 지식을 나누고 함께 성장하는 고성능 모바일 웹 커뮤니티 플랫폼. 반응형 UI와 빠른 Edge SSR을 적용했습니다.",
+    intro: "Community Hub는 엣지 컴퓨팅 기반의 초고속 서빙과 실시간 커뮤니케이션 기능을 결합한 지식 커뮤니티 플랫폼입니다.",
+    stack: ["React", "TypeScript", "Cloudflare Workers", "D1"],
+    features: [
+      "Cloudflare Workers 엣지 서버사이드 렌더링(SSR)",
+      "초고속 반응형 커뮤니티 게시판 및 댓글 피드",
+      "검색엔진 최적화(SEO) 및 Open Graph 동적 렌더링",
+      "실시간 추천 및 태그 기반 모듈"
+    ],
+    verifiedNote: "DAVHAVE 엣지 인프라 아키텍처로 구현된 웹 플랫폼입니다."
+  },
+  {
+    slug: "learning-path",
+    clientName: "Learning Path AI — 맞춤형 교육 플랫폼",
+    siteUrl: "https://davhave.com/portfolio/learning-path",
+    coverImage: "/media/blog/1785066094285-kconstrade-cover.jpg",
+    tagline: "AI가 1:1로 최적의 학습 경로를 설계하는 에듀테크 서비스",
+    summary: "AI가 개인의 관심사와 수준에 부합하는 최적의 학습 경로를 1:1로 맞춤 설계해주는 에듀테크 서비스 플랫폼입니다.",
+    intro: "Learning Path AI는 학습자의 현재 지식 상태를 진단하고 최적의 레슨 커리큘럼과 실습 문제를 동적으로 배정한 1:1 진도 관리 플랫폼입니다.",
+    stack: ["React Native", "Python", "LangChain", "Cloudflare R2"],
+    features: [
+      "AI 1:1 레벨 진단 및 개인화 커리큘럼 생성",
+      "실시간 코드 및 문제 풀이 힌트 에이전트",
+      "학습 성취도 시각화 대시보드",
+      "283개 이상의 교육 데이터베이스 연동"
+    ],
+    verifiedNote: "DAVHAVE Education Hub 기술이 결합된 EduTech 솔루션입니다."
+  },
+  {
     slug: "tax103",
     clientName: "일공삼택스 — 권지현 세무사",
     siteUrl: "https://tax103.com",

@@ -10,12 +10,28 @@ export const CATEGORIES = {
   "data-structure": { label: "자료구조", desc: "선형 자료구조(리스트·스택·큐)부터 트리의 균형(AVL)·해시 테이블·그래프 알고리즘까지, 파이썬 기반 핵심 자료구조의 이론과 실전 코드" },
   "c-basics": { label: "C 언어 기초", desc: "프로그래밍 입문부터 변수·연산자·제어문·함수·포인터·구조체·파일 입출력·동적 메모리 할당까지, 초보자 눈높이에 맞춘 완벽 C 프로그래밍 가이드" },
   "html5-web": { label: "HTML5 웹 프로그래밍", desc: "웹의 기초부터 HTML5 시맨틱 태그·CSS3 스타일링·자바스크립트 DOM 제어·반응형 웹·HTML5 API까지, 웹 개발 입문자를 위한 실전 가이드" },
+  arduino: { label: "아두이노", desc: "마이크로컨트롤러 입문부터 전기전자 기본, 센서·모터 제어, 시리얼/무선 통신, 인터럽트 및 실전 프로젝트까지 아두이노 임베디드 완벽 가이드" },
+  database: { label: "데이터베이스", desc: "관계형 모델, SQL 쿼리, ERD 설계, 정규화, 인덱스 아키텍처 및 트랜잭션/동시성 제어" },
+  marketing: { label: "디지털 마케팅", desc: "검색엔진 최적화(SEO), 콘텐츠 마케팅, AI 프롬프트 마케팅, 퍼포먼스 광고 및 데이터 분석 실전 가이드" },
 };
+
+export const AI_SUBCATEGORIES = {
+  claude: { label: "Claude 사용법", desc: "Anthropic Claude 3.5 API, Claude Code CLI, 프롬프트 엔지니어링, 에이전트 구축 가이드", icon: "⚡" },
+  codex: { label: "Codex & OpenAI", desc: "OpenAI Codex, ChatGPT API, 데이터 파싱, AI 임베딩 & RAG 파이프라인", icon: "🧠" },
+  gemini: { label: "Gemini & Google AI", desc: "Google Gemini 1.5 Pro/Flash API, Google AI Studio, 200만 토큰 멀티모달 가이드", icon: "💎" }
+};
+
+export function classifyAiPost(post) {
+  const text = ((post.slug || "") + " " + (post.title || "")).toLowerCase();
+  if (text.includes("gemini")) return "gemini";
+  if (text.includes("codex")) return "codex";
+  return "claude";
+}
 
 const EDU_STYLE = `
   .cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.4rem;margin-top:2rem;}
   .cat-card{display:block;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
-    padding:1.6rem;transition:transform .25s,border-color .25s;}
+    padding:1.6rem;transition:transform .25s,border-color .25s;text-decoration:none;}
   .cat-card:hover{transform:translateY(-4px);border-color:var(--border-strong);}
   .cat-card h3{font-size:1.15rem;margin-bottom:.5rem;color:var(--text);}
   .cat-card p{font-size:.86rem;color:var(--muted);margin-bottom:1rem;}
@@ -67,18 +83,63 @@ export function renderEducationHub(counts) {
 </html>`;
 }
 
-export function renderEducationCategory({ category, posts }) {
-  const cat = CATEGORIES[category];
-  const title = `${cat.label} | DAVHAVE 교육`;
-  const description = cat.desc;
-  const items = posts.length
-    ? posts
+export function renderEducationCategory({ category, subcat = null, posts }) {
+  const cat = CATEGORIES[category] || { label: category, desc: "" };
+  let displayTitle = cat.label;
+  let displayDesc = cat.desc;
+  let canonicalUrl = `https://davhave.com/education/${category}`;
+
+  if (category === "ai" && subcat && AI_SUBCATEGORIES[subcat]) {
+    const sub = AI_SUBCATEGORIES[subcat];
+    displayTitle = `AI — ${sub.label}`;
+    displayDesc = sub.desc;
+    canonicalUrl = `https://davhave.com/education/ai/${subcat}`;
+  }
+
+  let filteredPosts = posts;
+  if (category === "ai" && subcat) {
+    filteredPosts = posts.filter(p => classifyAiPost(p) === subcat);
+  }
+
+  const title = `${displayTitle} | DAVHAVE 교육`;
+  const description = displayDesc;
+
+  let subcatSection = "";
+  if (category === "ai") {
+    subcatSection = `
+      <div style="margin: 1.8rem 0 2.5rem;">
+        <h3 style="font-size:1.05rem; color:var(--accent2); margin-bottom:.9rem; font-family:var(--mono);">📁 AI 하위 전문 폴더 (Sub-Directories)</h3>
+        <div class="cat-grid" style="margin-top:0; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
+          ${Object.entries(AI_SUBCATEGORIES).map(([key, sub]) => {
+            const isSelected = subcat === key;
+            const count = posts.filter(p => classifyAiPost(p) === key).length;
+            return `
+              <a class="cat-card" href="/education/ai/${key}" style="${isSelected ? 'border-color:var(--accent); background:rgba(255,107,53,.08);' : ''}">
+                <div style="font-size:1.4rem; margin-bottom:.4rem;">${sub.icon}</div>
+                <h3 style="font-size:1.1rem; margin-bottom:.3rem;">${escapeHtml(sub.label)}</h3>
+                <p style="font-size:.82rem; margin-bottom:.8rem;">${escapeHtml(sub.desc)}</p>
+                <div class="cat-count">${count}개 레슨 전문 수록 →</div>
+              </a>
+            `;
+          }).join("")}
+        </div>
+      </div>
+    `;
+  }
+
+  const items = filteredPosts.length
+    ? filteredPosts
         .map(
-          (p, i) => `
-      <a class="lesson-row" href="/education/${category}/${escapeHtml(p.slug)}" style="text-decoration:none;">
+          (p, i) => {
+            const sub = category === "ai" ? classifyAiPost(p) : "";
+            const href = category === "ai" ? `/education/ai/${sub}/${escapeHtml(p.slug)}` : `/education/${category}/${escapeHtml(p.slug)}`;
+            return `
+      <a class="lesson-row" href="${href}" style="text-decoration:none;">
         <span class="lesson-num">${String(i + 1).padStart(2, "0")}</span>
         <span class="lesson-title">${escapeHtml(p.title)}</span>
-      </a>`
+        ${sub ? `<span style="margin-left:auto; font-family:var(--mono); font-size:.72rem; padding:.15rem .55rem; border-radius:100px; border:1px solid var(--border); color:var(--accent2);">${sub.toUpperCase()}</span>` : ""}
+      </a>`;
+          }
         )
         .join("")
     : `<div class="empty">아직 등록된 레슨이 없습니다.</div>`;
@@ -88,16 +149,23 @@ export function renderEducationCategory({ category, posts }) {
 <head>${head({
     title,
     description,
-    canonical: `https://davhave.com/education/${category}`,
+    canonical: canonicalUrl,
     ogType: "website",
   })}<style>${EDU_STYLE}</style></head>
 <body>
-  ${navBar("/education", "← 교육 허브")}
+  ${navBar("/education", "← 교육 메인")}
   <div class="wrap">
-    <div class="breadcrumb"><a href="/education">교육</a> / ${escapeHtml(cat.label)}</div>
-    <span class="eyebrow">// education</span>
-    <h1>${escapeHtml(cat.label)}</h1>
+    <div class="breadcrumb">
+      <a href="/education">교육</a> / 
+      <a href="/education/${category}">${escapeHtml(cat.label)}</a>
+      ${subcat && AI_SUBCATEGORIES[subcat] ? ` / <a href="/education/ai/${subcat}">${escapeHtml(AI_SUBCATEGORIES[subcat].label)}</a>` : ""}
+    </div>
+    <span class="eyebrow">// education & ai</span>
+    <h1>${escapeHtml(displayTitle)}</h1>
     <p class="desc">${escapeHtml(description)}</p>
+
+    ${subcatSection}
+
     <div class="search-box">
       <input type="text" id="searchInput" placeholder="레슨 검색..." />
       <button id="searchBtn">검색</button>
@@ -136,7 +204,10 @@ export function renderEducationCategory({ category, posts }) {
 
 export function renderLesson({ post, prev, next }) {
   const cat = CATEGORIES[post.category] || { label: post.category };
-  const url = `https://davhave.com/education/${post.category}/${post.slug}`;
+  const subcat = post.category === "ai" ? classifyAiPost(post) : null;
+  const url = subcat 
+    ? `https://davhave.com/education/ai/${subcat}/${post.slug}`
+    : `https://davhave.com/education/${post.category}/${post.slug}`;
   const title = post.seo_title || post.title;
   const description = post.seo_description || post.excerpt || "";
   const jsonLd = {
@@ -150,27 +221,109 @@ export function renderLesson({ post, prev, next }) {
     provider: { "@type": "Organization", name: "DAVHAVE", url: "https://davhave.com/" },
   };
 
+  const backUrl = subcat ? `/education/ai/${subcat}` : `/education/${post.category}`;
+  const backLabel = subcat && AI_SUBCATEGORIES[subcat] ? AI_SUBCATEGORIES[subcat].label : cat.label;
+
   return `<!DOCTYPE html>
 <html lang="ko">
 <head>${head({ title, description, canonical: url, ogImage: post.cover_image_url, extraJsonLd: jsonLd })}<style>${EDU_STYLE}</style></head>
 <body>
-  ${navBar(`/education/${post.category}`, `← ${escapeHtml(cat.label)}`)}
+  ${navBar(backUrl, `← ${escapeHtml(backLabel)}`)}
   <div class="wrap">
-    <div class="breadcrumb"><a href="/education">교육</a> / <a href="/education/${post.category}">${escapeHtml(cat.label)}</a></div>
-    <span class="eyebrow">// education</span>
+    <div class="breadcrumb">
+      <a href="/education">교육</a> / 
+      <a href="/education/${post.category}">${escapeHtml(cat.label)}</a>
+      ${subcat && AI_SUBCATEGORIES[subcat] ? ` / <a href="/education/ai/${subcat}">${escapeHtml(AI_SUBCATEGORIES[subcat].label)}</a>` : ""}
+    </div>
+    <span class="eyebrow">// education & ai</span>
     <h1>${escapeHtml(post.title)}</h1>
     ${post.cover_image_url ? `<img class="cover" src="${escapeHtml(post.cover_image_url)}" alt="${escapeHtml(post.title)}" />` : ""}
-    <article>${post.content_html}</article>
+    <div id="toc-placeholder"></div>
+    <article id="article-body">${post.content_html || post.content_md || ""}</article>
+    
+    <div class="cta-card">
+      <h3>🎓 DAVHAVE AI & 모바일 개발 마스터링</h3>
+      <p>AI 및 마스터 가이드 수강 중 도움이 필요하시거나 사내 AI 교육 및 에이전트 도입 컨설팅이 필요하신가요?</p>
+      <a class="cta-btn" href="mailto:useapp.davhave@gmail.com">AI 마스터 문의하기 →</a>
+    </div>
+
+    <div class="share-row">
+      <span class="copy-url" id="post-url">${url}</span>
+      <button class="copy-btn" id="copy-btn">링크 복사</button>
+      <a class="share-x-btn" id="share-x" href="https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(url)}" target="_blank" rel="noopener">X 공유</a>
+    </div>
+
     <div class="lesson-nav">
-      <a href="${prev ? `/education/${post.category}/${escapeHtml(prev.slug)}` : "#"}" ${prev ? "" : 'style="visibility:hidden;"'}>
-        <span class="dir">← 이전</span>${prev ? escapeHtml(prev.title) : ""}
+      <a href="${prev ? (post.category === 'ai' ? `/education/ai/${classifyAiPost(prev)}/${escapeHtml(prev.slug)}` : `/education/${post.category}/${escapeHtml(prev.slug)}`) : "#"}" ${prev ? "" : 'style="visibility:hidden;"'}>
+        <span class="dir">← 이전 레슨</span>${prev ? escapeHtml(prev.title) : ""}
       </a>
-      <a href="${next ? `/education/${post.category}/${escapeHtml(next.slug)}` : "#"}" ${next ? "" : 'style="visibility:hidden;"'} style="text-align:right;">
-        <span class="dir">다음 →</span>${next ? escapeHtml(next.title) : ""}
+      <a href="${next ? (post.category === 'ai' ? `/education/ai/${classifyAiPost(next)}/${escapeHtml(next.slug)}` : `/education/${post.category}/${escapeHtml(next.slug)}`) : "#"}" ${next ? "" : 'style="visibility:hidden;"'} style="text-align:right;">
+        <span class="dir">다음 레슨 →</span>${next ? escapeHtml(next.title) : ""}
       </a>
     </div>
   </div>
   <footer>© ${new Date().getFullYear()} DAVHAVE · Oscar Lee</footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('article table').forEach(tbl => {
+        const wrap = document.createElement('div');
+        wrap.className = 'table-wrapper';
+        tbl.parentNode.insertBefore(wrap, tbl);
+        wrap.appendChild(tbl);
+      });
+
+      document.querySelectorAll('article pre').forEach(pre => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'code-block-wrapper';
+        pre.parentNode.insertBefore(wrapper, pre);
+        wrapper.appendChild(pre);
+
+        const btn = document.createElement('button');
+        btn.className = 'code-copy-btn';
+        btn.textContent = 'Copy';
+        btn.addEventListener('click', async () => {
+          const codeText = pre.querySelector('code')?.innerText || pre.innerText;
+          try {
+            await navigator.clipboard.writeText(codeText);
+            btn.textContent = 'Copied! ✓';
+            setTimeout(() => { btn.textContent = 'Copy'; }, 1800);
+          } catch (e) {
+            btn.textContent = 'Failed';
+          }
+        });
+        wrapper.appendChild(btn);
+      });
+
+      const article = document.getElementById('article-body');
+      const headings = article.querySelectorAll('h2, h3');
+      if (headings.length >= 3) {
+        const tocBox = document.createElement('div');
+        tocBox.className = 'toc-box';
+        let html = '<div class="toc-title">📋 레슨 목차 (Table of Contents)</div><ul class="toc-list">';
+        headings.forEach((h, i) => {
+          const id = 'heading-' + i;
+          h.id = id;
+          const isH3 = h.tagName.toLowerCase() === 'h3';
+          html += \`<li class="\${isH3 ? 'toc-h3' : ''}"><a href="#\${id}">\${h.innerText}</a></li>\`;
+        });
+        html += '</ul>';
+        tocBox.innerHTML = html;
+        document.getElementById('toc-placeholder').appendChild(tocBox);
+      }
+    });
+
+    document.getElementById('copy-btn').addEventListener('click', async () => {
+      const btn = document.getElementById('copy-btn');
+      try {
+        await navigator.clipboard.writeText(document.getElementById('post-url').textContent.trim());
+        const original = btn.textContent;
+        btn.textContent = '복사됨 ✓';
+        setTimeout(() => { btn.textContent = original; }, 1800);
+      } catch (e) {
+        alert('클립보드 복사에 실패했습니다.');
+      }
+    });
+  </script>
 </body>
 </html>`;
 }

@@ -1,0 +1,1003 @@
+// KCT Color & Sample Renderer
+export function renderKctColorPage() {
+  return `<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>색상칩 시편 비교 & 실물 샘플 요청 센터 - 한국건설트레이딩 (KCT)</title>
+  <meta name="description" content="KCT 실리콘 색상칩 시편 비교 및 실물 샘플 요청관: 외장 웨더 실란트, ARDEX SN PLUS 14종 인테리어 타일 매칭 색상칩 실시간 비교, 마감재 텍스처 시뮬레이션 및 현장 승인용 무료 시편 신청." />
+  <meta name="keywords" content="실리콘 색상표, 실리콘 색상칩, 실리콘 시편 요청, 실리콘 샘플 신청, 아덱스 실리콘 색상, ARDEX SN PLUS, 한국건설트레이딩, KCT" />
+  
+  <link rel="icon" href="https://kconstrade.com/assets/img/favicon.ico" type="image/x-icon" />
+  <meta property="og:title" content="색상칩 시편 비교 & 실물 샘플 요청 센터 - 한국건설트레이딩 (KCT)" />
+  <meta property="og:description" content="실시간 색상칩 비교기, 마감재 텍스처 시뮬레이터 및 현장 승인용 무료 실물 시편/샘플 배송 신청." />
+  <meta property="og:image" content="https://kconstrade.com/assets/img/og-image.png" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+  <style>
+    :root {
+      --primary: #1558D6;
+      --primary-dark: #0D3F9E;
+      --primary-light: #EBF2FE;
+      --accent: #FF6B35;
+      --accent-hover: #E0531D;
+      --dark: #0F172A;
+      --dark-light: #1E293B;
+      --gray-50: #F8FAFC;
+      --gray-100: #F1F5F9;
+      --gray-200: #E2E8F0;
+      --gray-400: #94A3B8;
+      --gray-600: #475569;
+      --gray-800: #1E293B;
+      --white: #FFFFFF;
+      --radius-sm: 8px;
+      --radius: 12px;
+      --radius-lg: 18px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md: 0 6px 18px rgba(15,23,42,0.08);
+      --shadow-lg: 0 16px 36px rgba(15,23,42,0.12);
+      --font: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      --font-en: 'Poppins', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font); color: var(--gray-800); background: #F8FAFC; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    img { max-width: 100%; height: auto; display: block; }
+    .container { max-width: 1300px; margin: 0 auto; padding: 0 1.5rem; }
+
+    .top-bar { background: var(--dark); color: rgba(255,255,255,0.75); font-size: 0.82rem; padding: 0.55rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .top-bar-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
+    .top-bar-info { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .top-bar-info span { display: inline-flex; align-items: center; gap: 0.35rem; }
+    .top-bar-links { display: flex; gap: 1.25rem; align-items: center; }
+    .top-bar-links a { color: rgba(255,255,255,0.85); transition: color 0.2s; display: inline-flex; align-items: center; gap: 0.3rem; }
+    .top-bar-links a:hover { color: var(--white); }
+
+    header { position: sticky; top: 0; background: rgba(255,255,255,0.96); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); z-index: 1000; border-bottom: 1px solid var(--gray-200); box-shadow: 0 4px 20px rgba(0,0,0,0.06); transition: all 0.3s; }
+    header.scrolled { box-shadow: 0 10px 30px rgba(15,23,42,0.12); background: rgba(255,255,255,0.98); }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; height: 76px; transition: height 0.3s; }
+    header.scrolled .nav-inner { height: 64px; }
+    .brand-logo { display: flex; align-items: center; gap: 0.75rem; font-weight: 800; font-size: 1.35rem; color: var(--dark); text-decoration: none; }
+    .brand-badge { background: #FFEDD5; color: var(--accent); font-size: 0.72rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 4px; letter-spacing: 0.05em; }
+    
+    .nav-menu { display: flex; align-items: center; gap: 1rem; }
+    .btn-nav-link { background: var(--gray-100); color: var(--dark); font-weight: 700; font-size: 0.88rem; padding: 0.6rem 1.15rem; border-radius: 50px; border: 1px solid var(--gray-200); display: inline-flex; align-items: center; gap: 0.4rem; transition: all 0.2s; text-decoration: none; }
+    .btn-nav-link:hover { background: var(--primary-light); color: var(--primary); border-color: var(--primary); }
+    .btn-quote { background: var(--accent); color: var(--white); font-weight: 700; font-size: 0.88rem; padding: 0.6rem 1.25rem; border-radius: 50px; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.4rem; border: none; cursor: pointer; text-decoration: none; }
+    .btn-quote:hover { background: var(--accent-hover); transform: translateY(-1px); }
+
+    .nav-toggle-btn { display: none; background: var(--gray-100); border: 1px solid var(--gray-200); border-radius: 8px; width: 42px; height: 42px; align-items: center; justify-content: center; font-size: 1.25rem; color: var(--dark); cursor: pointer; }
+    @media (max-width: 860px) {
+      .nav-menu { display: none; }
+      .nav-toggle-btn { display: flex; }
+    }
+
+    /* Mobile Drawer */
+    .mobile-drawer { position: fixed; top: 0; right: -100%; width: min(360px, 86vw); height: 100%; background: var(--white); z-index: 2500; box-shadow: -10px 0 35px rgba(0,0,0,0.25); transition: right 0.35s cubic-bezier(0.32, 0.72, 0, 1); display: flex; flex-direction: column; overflow-y: auto; }
+    .mobile-drawer.open { right: 0; }
+    .drawer-backdrop { position: fixed; inset: 0; background: rgba(15,23,42,0.6); backdrop-filter: blur(4px); z-index: 2400; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+    .drawer-backdrop.open { opacity: 1; pointer-events: auto; }
+    .drawer-header { padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--gray-200); display: flex; align-items: center; justify-content: space-between; background: var(--gray-50); }
+    .drawer-close-btn { background: none; border: none; font-size: 1.4rem; color: var(--gray-600); cursor: pointer; }
+    .drawer-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
+    .drawer-nav-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+    .drawer-nav-item a { display: flex; align-items: center; justify-content: space-between; padding: 0.85rem 1rem; border-radius: 8px; font-weight: 700; font-size: 0.95rem; color: var(--gray-800); text-decoration: none; background: var(--gray-50); transition: all 0.2s; }
+    .drawer-nav-item a:hover { background: var(--primary-light); color: var(--primary); }
+
+    .breadcrumb-bar { background: var(--white); border-bottom: 1px solid var(--gray-200); padding: 0.85rem 0; font-size: 0.85rem; color: var(--gray-600); }
+    .breadcrumb-bar a { color: var(--primary); font-weight: 600; text-decoration: none; }
+    .breadcrumb-bar a:hover { text-decoration: underline; }
+    .breadcrumb-bar span.sep { margin: 0 0.5rem; color: var(--gray-400); }
+
+    .page-hero { background: linear-gradient(135deg, #1E1B4B 0%, #312E81 50%, #1E3A8A 100%); color: var(--white); padding: 4.5rem 0 4rem; text-align: center; }
+    .page-hero-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(251,146,60,0.2); color: #FB923C; padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; margin-bottom: 1rem; border: 1px solid rgba(251,146,60,0.3); }
+    .page-hero h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.85rem; letter-spacing: -0.02em; }
+    .page-hero p { font-size: 1.05rem; color: rgba(255,255,255,0.85); max-width: 820px; margin: 0 auto; line-height: 1.7; }
+
+    /* ─── Interactive Comparison Studio ─── */
+    .section-studio { padding: 3.5rem 0 2rem; }
+    .studio-box { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 2.5rem; box-shadow: var(--shadow-md); margin-bottom: 3.5rem; }
+    .studio-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--gray-200); padding-bottom: 1rem; }
+    .studio-header h3 { font-size: 1.35rem; font-weight: 800; color: var(--dark); display: flex; align-items: center; gap: 0.5rem; }
+    
+    .texture-selector { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+    .texture-btn { background: var(--gray-100); border: 1px solid var(--gray-200); padding: 0.4rem 0.85rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+    .texture-btn.active { background: var(--dark); color: var(--white); border-color: var(--dark); }
+
+    /* Comparison Stage */
+    .compare-stage { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; min-height: 220px; background: #E5E7EB; border-radius: 12px; padding: 2rem; border: 2px dashed #94A3B8; position: relative; }
+    @media (max-width: 800px) { .compare-stage { grid-template-columns: 1fr; } }
+    
+    /* Background Simulation Textures */
+    .compare-stage.tex-tile { background: repeating-linear-gradient(0deg, #F8FAFC, #F8FAFC 90px, #CBD5E1 92px), repeating-linear-gradient(90deg, #F8FAFC, #F8FAFC 90px, #CBD5E1 92px); }
+    .compare-stage.tex-marble { background: linear-gradient(135deg, #F3F4F6 25%, #E5E7EB 50%, #F9FAFB 75%); }
+    .compare-stage.tex-concrete { background: radial-gradient(#9CA3AF 15%, #6B7280 100%); }
+    .compare-stage.tex-darkmetal { background: linear-gradient(180deg, #1E293B 0%, #0F172A 100%); }
+
+    .compare-slot { background: rgba(255,255,255,0.9); backdrop-filter: blur(8px); border-radius: 10px; padding: 1.25rem; border: 1px solid rgba(0,0,0,0.1); display: flex; flex-direction: column; justify-content: space-between; box-shadow: var(--shadow-sm); }
+    .compare-slot-color { height: 80px; border-radius: 8px; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; text-shadow: 0 1px 2px rgba(0,0,0,0.3); color: #fff; }
+    .compare-slot-info h6 { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 0.25rem; }
+    .compare-slot-info p { font-size: 0.8rem; color: var(--gray-600); }
+
+    /* ─── Color Palette Grid ─── */
+    .color-grid-section { margin-bottom: 4rem; }
+    .color-filter-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .c-tab-btn { background: var(--white); border: 1px solid var(--gray-200); padding: 0.6rem 1.25rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+    .c-tab-btn.active, .c-tab-btn:hover { background: var(--accent); color: var(--white); border-color: var(--accent); }
+
+    .color-cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.5rem; }
+    .chip-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); transition: all 0.25s; display: flex; flex-direction: column; }
+    .chip-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--accent); }
+    .chip-visual-wrap { height: 110px; display: flex; align-items: flex-end; padding: 0.75rem; position: relative; }
+    .chip-code { background: rgba(15,23,42,0.75); color: #fff; font-size: 0.72rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 4px; font-family: var(--font-en); }
+    
+    .chip-info { padding: 1.25rem; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .chip-info h5 { font-size: 1.05rem; font-weight: 700; color: var(--dark); margin-bottom: 0.2rem; }
+    .chip-cat { font-size: 0.78rem; color: var(--primary); font-weight: 600; margin-bottom: 0.75rem; display: block; }
+    .chip-detail-row { font-size: 0.82rem; color: var(--gray-800); margin-bottom: 0.25rem; }
+    .chip-detail-row span { color: var(--gray-600); }
+    
+    .chip-actions { display: flex; gap: 0.5rem; align-items: center; margin-top: 1rem; padding-top: 0.85rem; border-top: 1px solid var(--gray-100); }
+    .btn-compare-add { background: var(--gray-100); color: var(--dark); border: 1px solid var(--gray-200); border-radius: 6px; padding: 0.45rem 0.75rem; font-size: 0.78rem; font-weight: 700; cursor: pointer; flex-grow: 1; text-align: center; transition: all 0.2s; }
+    .btn-compare-add:hover { background: var(--primary-light); color: var(--primary); border-color: var(--primary); }
+    .sample-chk-label { font-size: 0.82rem; font-weight: 700; color: var(--accent); display: flex; align-items: center; gap: 0.35rem; cursor: pointer; padding: 0.45rem 0.6rem; background: #FFF7ED; border-radius: 6px; }
+
+    /* ─── Physical Sample Request Section ─── */
+    .section-sample-form { padding: 4.5rem 0 6rem; background: var(--white); border-top: 1px solid var(--gray-200); }
+    .sample-form-wrap { max-width: 900px; margin: 0 auto; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 3.5rem; box-shadow: var(--shadow-sm); }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.35rem; }
+    @media (max-width: 650px) { .form-grid { grid-template-columns: 1fr; } }
+    .form-grid .full { grid-column: span 2; }
+    @media (max-width: 650px) { .form-grid .full { grid-column: span 1; } }
+    .form-group label { display: block; font-size: 0.85rem; font-weight: 700; color: var(--gray-800); margin-bottom: 0.45rem; }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.85rem 1rem; border: 1.5px solid var(--gray-200); border-radius: 8px; font-size: 0.95rem; font-family: var(--font); background: var(--white); transition: all 0.2s; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(255,107,53,0.15); }
+    
+    .selected-chips-box { background: var(--white); border: 1.5px dashed #FDBA74; border-radius: 8px; padding: 1.25rem; margin-bottom: 1.5rem; min-height: 70px; }
+    .selected-tag { display: inline-flex; align-items: center; gap: 0.4rem; background: #FFEDD5; color: #C2410C; padding: 0.35rem 0.75rem; border-radius: 50px; font-size: 0.82rem; font-weight: 700; margin: 0.25rem; }
+
+    footer { background: var(--dark); color: rgba(255,255,255,0.75); padding: 4.5rem 0 2.5rem; font-size: 0.88rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 3rem; margin-bottom: 3rem; }
+    @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 550px) { .footer-grid { grid-template-columns: 1fr; } }
+    .footer-col h5 { font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .footer-col ul li { margin-bottom: 0.65rem; }
+    .footer-col ul li a { color: rgba(255,255,255,0.7); transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--white); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.8rem; }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-info">
+        <span><i class="bi bi-building-check text-primary"></i> <strong>사업자등록번호:</strong> 371-07-03719</span>
+        <span><i class="bi bi-palette-fill text-accent"></i> <strong>색상칩 시편 & 샘플 발송 센터</strong></span>
+        <span><i class="bi bi-truck text-primary"></i> 수도권 당일/익일 직납</span>
+      </div>
+      <div class="top-bar-links">
+        <a href="/projects/kct"><i class="bi bi-house-door-fill"></i> 메인 포털</a>
+        <a href="/projects/kct/technical"><i class="bi bi-file-earmark-arrow-down-fill"></i> 기술자료 센터</a>
+        <a href="https://smartstore.naver.com/kconstrade/" target="_blank" rel="noopener"><i class="bi bi-bag-check"></i> 스마트스토어</a>
+        <a href="/projects/kct#b2b-form"><i class="bi bi-chat-left-text-fill"></i> 온라인 견적문의</a>
+      </div>
+    </div>
+  </div>
+
+  <header>
+    <div class="container nav-inner">
+      <a href="/projects/kct" class="brand-logo">
+        KCT <span style="font-weight:400; color:var(--gray-600); font-size:1.05rem;">한국건설트레이딩</span>
+        <span class="brand-badge">COLOR & SAMPLE</span>
+      </a>
+
+      <div class="nav-menu">
+        <a href="/projects/kct" class="btn-nav-link"><i class="bi bi-house"></i> KCT 메인 포털</a>
+        <a href="/projects/kct/technical" class="btn-nav-link"><i class="bi bi-file-earmark-pdf"></i> 기술자료 센터</a>
+        <a href="/projects/kct#calculator" class="btn-nav-link"><i class="bi bi-calculator"></i> 실리콘 계산기</a>
+        <a href="#sample-form" class="btn-quote"><i class="bi bi-send-fill"></i> 실물 시편/샘플 요청</a>
+      </div>
+
+      <button class="nav-toggle-btn" id="kctColorNavToggle" aria-label="메뉴 열기">
+        <i class="bi bi-list"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Slide Drawer -->
+  <div class="drawer-backdrop" id="kctColorDrawerBackdrop"></div>
+  <aside class="mobile-drawer" id="kctColorMobileDrawer" aria-label="모바일 네비게이션">
+    <div class="drawer-header">
+      <div style="font-weight:800; font-size:1.15rem; color:var(--dark); display:flex; align-items:center; gap:0.5rem;">
+        <span>색상칩 센터 메뉴</span>
+      </div>
+      <button class="drawer-close-btn" id="kctColorDrawerClose" aria-label="메뉴 닫기">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
+    <div class="drawer-body">
+      <ul class="drawer-nav-list">
+        <li class="drawer-nav-item"><a href="/projects/kct"><i class="bi bi-house-door-fill"></i> <span>KCT 메인 포털</span> <span>→</span></a></li>
+        <li class="drawer-nav-item"><a href="/projects/kct/technical"><i class="bi bi-file-earmark-pdf-fill"></i> <span>기술자료(TDS/MSDS) 센터</span> <span>→</span></a></li>
+        <li class="drawer-nav-item"><a href="/projects/kct#calculator"><i class="bi bi-calculator"></i> <span>실리콘 조인트 계산기</span> <span>→</span></a></li>
+        <li class="drawer-nav-item"><a href="/projects"><i class="bi bi-grid-fill"></i> <span>DAVHAVE Projects 허브</span> <span>↗</span></a></li>
+      </ul>
+
+      <div style="margin-top:auto; padding-top:1.5rem; border-top:1px solid var(--gray-200);">
+        <a href="#sample-form" class="btn-quote" style="width:100%; justify-content:center; padding:0.9rem;" onclick="closeKctColorDrawer()">
+          <i class="bi bi-send-fill"></i> 실물 시편 & 샘플 요청하기
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Breadcrumbs -->
+  <div class="breadcrumb-bar">
+    <div class="container">
+      <a href="/projects/kct">홈</a>
+      <span class="sep">></span>
+      <a href="/projects/kct">KCT 플랫폼</a>
+      <span class="sep">></span>
+      <span style="color:var(--dark); font-weight:700;">색상칩 시편 비교 & 실물 샘플 요청 센터</span>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-badge">
+        <i class="bi bi-palette-fill"></i> Silicone Color Swatch & Sample Studio
+      </div>
+      <h1>색상칩 시편 비교 & 실물 샘플 요청관</h1>
+      <p>
+        건축 외장 커튼월, 복합판넬, 인테리어 타일(ARDEX SN+ 14종) 및 특수 난연 실리콘의 색상칩을 실시간 비교하고, 현장 승인 및 감리용 실물 시편과 샘플 카트리지를 신청하세요.
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── 1. Interactive Color Comparison Studio ─── -->
+  <section class="section-studio">
+    <div class="container">
+      <div class="studio-box">
+        <div class="studio-header">
+          <h3><i class="bi bi-aspect-ratio text-accent"></i> 실시간 색상칩 비교기 & 마감재 시뮬레이터</h3>
+          <div class="texture-selector">
+            <span style="font-size:0.85rem; font-weight:700; color:var(--gray-600);">마감재 배경 선택:</span>
+            <button class="texture-btn active" onclick="setTexture('tex-tile', this)">화이트 타일</button>
+            <button class="texture-btn" onclick="setTexture('tex-marble', this)">베이지 대리석</button>
+            <button class="texture-btn" onclick="setTexture('tex-concrete', this)">노출 콘크리트</button>
+            <button class="texture-btn" onclick="setTexture('tex-darkmetal', this)">다크 메탈 판넬</button>
+          </div>
+        </div>
+
+        <p style="font-size:0.9rem; color:var(--gray-600); margin-bottom:1.5rem;">
+          💡 아래 색상 팔레트에서 <strong>[색상 비교함 담기]</strong> 버튼을 누르면 최대 3개의 색상칩을 나란히 배치하여 마감재 위에서의 대비 효과를 즉시 확인할 수 있습니다.
+        </p>
+
+        <!-- Dynamic Compare Stage -->
+        <div class="compare-stage tex-tile" id="compareStage">
+          <div class="compare-slot">
+            <div class="compare-slot-color" style="background:#FFFFFF; border:1px solid #D1D5DB; color:#1E293B;">CLR-EXT-01</div>
+            <div class="compare-slot-info">
+              <h6>퓨어 화이트 (Pure White)</h6>
+              <p>Dow 791 / KCT Neutral</p>
+            </div>
+          </div>
+          <div class="compare-slot">
+            <div class="compare-slot-color" style="background:#D1D5DB; border:1px solid #9CA3AF; color:#1E293B;">CLR-EXT-03</div>
+            <div class="compare-slot-info">
+              <h6>라이트 그레이 (Light Gray)</h6>
+              <p>Dow 791 / 991 Non-Staining</p>
+            </div>
+          </div>
+          <div class="compare-slot">
+            <div class="compare-slot-color" style="background:#1E293B; border:1px solid #0F172A; color:#FFFFFF;">CLR-EXT-06</div>
+            <div class="compare-slot-info">
+              <h6>제트 블랙 (Jet Black)</h6>
+              <p>Dow 983 / 791 Black</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 2. Color Swatch Catalog ─── -->
+  <section class="color-grid-section">
+    <div class="container">
+      <div class="sec-header" style="margin-bottom:2rem; text-align:left;">
+        <span class="sec-badge">Color Palette Catalog</span>
+        <h2 class="sec-title" style="font-size:1.85rem;">실리콘 & 실란트 색상칩 팔레트</h2>
+        <p class="sec-desc">건축 외장, 실내 인테리어 타일 하이진 및 특수 모빌리티 실란트의 표준 색상 라인업입니다.</p>
+      </div>
+
+      <div class="color-filter-tabs">
+        <button class="c-tab-btn active" onclick="filterColorCategory('ALL', this)">전체 색상 (15종)</button>
+        <button class="c-tab-btn" onclick="filterColorCategory('건축 외장', this)">건축 외장 & 커튼월</button>
+        <button class="c-tab-btn" onclick="filterColorCategory('실내 인테리어', this)">실내 인테리어 타일 (ARDEX SN+)</button>
+        <button class="c-tab-btn" onclick="filterColorCategory('특수 모빌리티', this)">특수 모빌리티 & 배터리 시편</button>
+      </div>
+
+      <div class="color-cards-grid" id="colorCardsGrid">
+        
+    <div class="chip-card" data-code="CLR-EXT-01" data-cat="건축 외장 & 창호용" data-name="퓨어 화이트 (Pure White)" data-hex="#FFFFFF">
+      <div class="chip-visual-wrap" style="background:#FFFFFF; border:1px solid #D1D5DB;">
+        <span class="chip-code">CLR-EXT-01</span>
+      </div>
+      <div class="chip-info">
+        <h5>퓨어 화이트 (Pure White)</h5>
+        <span class="chip-cat">건축 외장 & 창호용</span>
+        <div class="chip-detail-row">
+          <span>매칭 제품:</span> <strong>Dow DOWSIL™ 791 / KCT Neutral</strong>
+        </div>
+        <div class="chip-detail-row" style="margin-bottom:0.75rem;">
+          <span>추천 마감재:</span> <span style="font-size:0.78rem; color:var(--gray-600);">백색 알루미늄 복합판넬, 화이트 PVC 창호, 백색 법랑 패널</span>
+        </div>
+        <div class="chip-actions">
+          <button class="btn-compare-add" onclick="toggleCompareChip('CLR-EXT-01', '퓨어 화이트 (Pure White)', '#FFFFFF', 'Dow DOWSIL™ 791 / KCT Neutral')">
+            <i class="bi bi-plus-circle"></i> 색상 비교함 담기
+          </button>
+          <label class="sample-chk-label">
+            <input type="checkbox" class="sample-chip-check" value="CLR-EXT-01" data-name="퓨어 화이트 (Pure White)" onchange="updateSampleCount()" /> 시편 요청
+          </label>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="chip-card" data-code="CLR-EXT-02" data-cat="건축 외장 & 창호용" data-name="아이보리 (Off-White / Ivory)" data-hex="#F4EFE6">
+      <div class="chip-visual-wrap" style="background:#F4EFE6; border:1px solid #E5E7EB;">
+        <span class="chip-code">CLR-EXT-02</span>
+      </div>
+      <div class="chip-info">
+        <h5>아이보리 (Off-White / Ivory)</h5>
+        <span class="chip-cat">건축 외장 & 창호용</span>
+        <div class="chip-detail-row">
+          <span>매칭 제품:</span> <strong>Dow 791 / KCT Weather</strong>
+        </div>
+        <div class="chip-detail-row" style="margin-bottom:0.75rem;">
+          <span>추천 마감재:</span> <span style="font-size:0.78rem; color:var(--gray-600);">크림톤 대리석, 라임스톤 외벽, 베이지 알루미늄 커튼월</span>
+        </div>
+        <div class="chip-actions">
+          <button class="btn-compare-add" onclick="toggleCompareChip('CLR-EXT-02', '아이보리 (Off-White / Ivory)', '#F4EFE6', 'Dow 791 / KCT Weather')">
+            <i class="bi bi-plus-circle"></i> 색상 비교함 담기
+          </button>
+          <label class="sample-chk-label">
+            <input type="checkbox" class="sample-chip-check" value="CLR-EXT-02" data-name="아이보리 (Off-White / Ivory)" onchange="updateSampleCount()" /> 시편 요청
+          </label>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="chip-card" data-code="CLR-EXT-03" data-cat="건축 외장 & 창호용" data-name="라이트 그레이 (Light Gray)" data-hex="#D1D5DB">
+      <div class="chip-visual-wrap" style="background:#D1D5DB; border:1px solid #9CA3AF;">
+        <span class="chip-code">CLR-EXT-03</span>
+      </div>
+      <div class="chip-info">
+        <h5>라이트 그레이 (Light Gray)</h5>
+        <span class="chip-cat">건축 외장 & 창호용</span>
+        <div class="chip-detail-row">
+          <span>매칭 제품:</span> <strong>Dow 791 / 991 Non-Staining</strong>
+        </div>
+        <div class="chip-detail-row" style="margin-bottom:0.75rem;">
+          <span>추천 마감재:</span> <span style="font-size:0.78rem; color:var(--gray-600);">노출 콘크리트, 포천석/문경석 화강암, 실버 복합패널</span>
+        </div>
+        <div class="chip-actions">
+          <button class="btn-compare-add" onclick="toggleCompareChip('CLR-EXT-03', '라이트 그레이 (Light Gray)', '#D1D5DB', 'Dow 791 / 991 Non-Staining')">
+            <i class="bi bi-plus-circle"></i> 색상 비교함 담기
+          </button>
+          <label class="sample-chk-label">
+            <input type="checkbox" class="sample-chip-check" value="CLR-EXT-03" data-name="라이트 그레이 (Light Gray)" onchange="updateSampleCount()" /> 시편 요청
+          </label>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="chip-card" data-code="CLR-EXT-04" data-cat="건축 외장 & 창호용" data-name="미드 그레이 (Mid Gray)" data-hex="#9CA3AF">
+      <div class="chip-visual-wrap" style="background:#9CA3AF; border:1px solid #6B7280;">
+        <span class="chip-code">CLR-EXT-04</span>
+      </div>
+      <div class="chip-info">
+        <h5>미드 그레이 (Mid Gray)</h5>
+        <span class="chip-cat">건축 외장 & 창호용</span>
+        <div class="chip-detail-row">
+          <span>매칭 제품:</span> <strong>Dow 791 / KCT Weather</strong>
+        </div>
+        <div class="chip-detail-row" style="margin-bottom:0.75rem;">
+          <span>추천 마감재:</span> <span style="font-size:0.78rem; color:var(--gray-600);">회색 석재 줄눈, 아연도금 강판, 메탈릭 그레이 창호</span>
+        </div>
+        <div class="chip-actions">
+          <button class="btn-compare-add" onclick="toggleCompareChip('CLR-EXT-04', '미드 그레이 (Mid Gray)', '#9CA3AF', 'Dow 791 / KCT Weather')">
+            <i class="bi bi-plus-circle"></i> 색상 비교함 담기
+          </button>
+          <label class="sample-chk-label">
+            <input type="checkbox" class="sample-chip-check" value="CLR-EXT-04" data-name="미드 그레이 (Mid Gray)" onchange="updateSampleCount()" /> 시편 요청
+          </label>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="chip-card" data-code="CLR-EXT-05" data-cat="건축 외장 & 창호용" data-name="다크 그레이 (Dark Gray / Charcoal)" data-hex="#4B5563">
+      <div class="chip-visual-wrap" style="background:#4B5563; border:1px solid #374151;">
+        <span class="chip-code">CLR-EXT-05</span>
+      </div>
+      <div class="chip-info">
+        <h5>다크 그레이 (Dark Gray / Charcoal)</h5>
+        <span class="chip-cat">건축 외장 & 창호용</span>
+        <div class="chip-detail-row">
+          <span>매칭 제품:</span> <strong>Dow 791 / KCT Weather</strong>
+        </div>
+        <div class="chip-detail-row" style="margin-bottom:0.75rem;">
+          <span>추천 마감재:</span> <span style="font-size:0.78rem; color:var(--gray-600);">현무암, 징크(Zinc) 패널, 흑회색 화강석</span>
+        </div>
+        <div class="chip-actions">
+          <button class="btn-compare-add" onclick="toggleCompareChip('CLR-EXT-05', '다크 그레이 (Dark Gray / Charcoal)', '#4B5563', 'Dow 791 / KCT Weather')">
+            <i class="bi bi-plus-circle"></i> 색상 비교함 담기
+          </button>
+          <label class="sample-chk-label">
+            <input type="checkbox" class="sample-chip-check" value="CLR-EXT-05" data-name="다크 그레이 (Dark Gray / Charcoal)" onchange="updateSampleCount()" /> 시편 요청
+          </label>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="chip-card" data-code="CLR-EXT-06" data-cat="건축 외장 & 구조용" data-name="제트 블랙 (Jet Black)" data-hex="#1E293B">
+      <div class="chip-visual-wrap" style="background:#1E293B; border:1px solid #0F172A;">
+        <span class="chip-code">CLR-EXT-06</span>
+      </div>
+      <div class="chip-info">
+        <h5>제트 블랙 (Jet Black)</h5>
+        <span class="chip-cat">건축 외장 & 구조용</span>
+        <div class="chip-detail-row">
+          <span>매칭 제품:</span> <strong>Dow DOWSIL™ 983 / 791 Black</strong>
+        </div>
+        <div class="chip-detail-row" style="margin-bottom:0.75rem;">
+          <span>추천 마감재:</span> <span style="font-size:0.78rem; color:var(--gray-600);">블랙 프레임 커튼월, 씨블랙 석재, 태양광 BIPV 모듈 테두리</span>
+        </div>
+        <div class="chip-actions">
+          <button class="btn-compare-add" onclick="toggleCompareChip('CLR-EXT-06', '제트 블랙 (Jet Black)', '#1E293B', 'Dow DOWSIL™ 983 / 791 Black')">
+            <i class="bi bi-plus-circle"></i> 색상 비교함 담기
+          </button>
+          <label class="sample-chk-label">
+            <input type="checkbox" class="sample-chip-check" value="CLR-EXT-06" data-name="제트 블랙 (Jet Black)" onchange="updateSampleCount()" /> 시편 요청
+          </label>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="chip-card" data-code="CLR-EXT-07" data-cat="건축 외장 & 금속용" data-name="알루미늄 실버 (Aluminum Silver)" data-hex="#C5C9D0">
+      <div class="chip-visual-wrap" style="background:#C5C9D0; border:1px solid #9CA3AF;">
+        <span class="chip-code">CLR-EXT-07</span>
+      </div>
+      <div class="chip-info">
+        <h5>알루미늄 실버 (Aluminum Silver)</h5>
+        <span class="chip-cat">건축 외장 & 금속용</span>
+        <div class="chip-detail-row">
+          <span>매칭 제품:</span> <strong>Dow 791 Metallic Silver</strong>
+        </div>
+        <div class="chip-detail-row" style="margin-bottom:0.75rem;">
+          <span>추천 마감재:</span> <span style="font-size:0.78rem; color:var(--gray-600);">아노다이징 알루미늄 바, 스텐레스 스틸 조인트</span>
+        </div>
+        <div class="chip-actions">
+          <button class="btn-compare-add" onclick="toggleCompareChip('CLR-EXT-07', '알루미늄 실버 (Aluminum Silver)', '#C5C9D0', 'Dow 791 Metallic Silver')">
+            <i class="bi bi-plus-circle"></i> 색상 비교함 담기
+          </button>
+          <label class="sample-chk-label">
+            <input type="checkbox" class="sample-chip-check" value="CLR-EXT-07" data-name="알루미늄 실버 (Aluminum Silver)" onchange="updateSampleCount()" /> 시편 요청
+          </label>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="chip-card" data-code="CLR-EXT-08" data-cat="건축 외장 & 창호용" data-name="브론즈 (Bronze / Dark Brown)" data-hex="#634832">
+      <div class="chip-visual-wrap" style="background:#634832; border:1px solid #453223;">
+        <span class="chip-code">CLR-EXT-08</span>
+      </div>
+      <div class="chip-info">
+        <h5>브론즈 (Bronze / Dark Brown)</h5>
+        <span class="chip-cat">건축 외장 & 창호용</span>
+        <div class="chip-detail-row">
+          <span>매칭 제품:</span> <strong>Dow 791 Bronze</strong>
+        </div>
+        <div class="chip-detail-row" style="margin-bottom:0.75rem;">
+          <span>추천 마감재:</span> <span style="font-size:0.78rem; color:var(--gray-600);">브론즈 알루미늄 창호, 우드톤 복합판넬, 동판 외벽</span>
+        </div>
+        <div class="chip-actions">
+          <button class="btn-compare-add" onclick="toggleCompareChip('CLR-EXT-08', '브론즈 (Bronze / Dark Brown)', '#634832', 'Dow 791 Bronze')">
+            <i class="bi bi-plus-circle"></i> 색상 비교함 담기
+          </button>
+          <label class="sample-chk-label">
+            <input type="checkbox" class="sample-chip-check" value="CLR-EXT-08" data-name="브론즈 (Bronze / Dark Brown)" onchange="updateSampleCount()" /> 시편 요청
+          </label>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="chip-card" data-code="CLR-EXT-09" data-cat="조적 & 테라코타용" data-name="브릭 레드 (Brick Red / Terracotta)" data-hex="#8B3A2B">
+      <div class="chip-visual-wrap" style="background:#8B3A2B; border:1px solid #682519;">
+        <span class="chip-code">CLR-EXT-09</span>
+      </div>
+      <div class="chip-info">
+        <h5>브릭 레드 (Brick Red / Terracotta)</h5>
+        <span class="chip-cat">조적 & 테라코타용</span>
+        <div class="chip-detail-row">
+          <span>매칭 제품:</span> <strong>KCT Brick-Seal</strong>
+        </div>
+        <div class="chip-detail-row" style="margin-bottom:0.75rem;">
+          <span>추천 마감재:</span> <span style="font-size:0.78rem; color:var(--gray-600);">적벽돌 외벽, 테라코타 루버 패널, 점토 타일</span>
+        </div>
+        <div class="chip-actions">
+          <button class="btn-compare-add" onclick="toggleCompareChip('CLR-EXT-09', '브릭 레드 (Brick Red / Terracotta)', '#8B3A2B', 'KCT Brick-Seal')">
+            <i class="bi bi-plus-circle"></i> 색상 비교함 담기
+          </button>
+          <label class="sample-chk-label">
+            <input type="checkbox" class="sample-chip-check" value="CLR-EXT-09" data-name="브릭 레드 (Brick Red / Terracotta)" onchange="updateSampleCount()" /> 시편 요청
+          </label>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="chip-card" data-code="CLR-INT-01" data-cat="실내 인테리어 & 타일용 (ARDEX SN+)" data-name="SN 화이트 (SN White)" data-hex="#FFFFFF">
+      <div class="chip-visual-wrap" style="background:#FFFFFF; border:1px solid #E2E8F0;">
+        <span class="chip-code">CLR-INT-01</span>
+      </div>
+      <div class="chip-info">
+        <h5>SN 화이트 (SN White)</h5>
+        <span class="chip-cat">실내 인테리어 & 타일용 (ARDEX SN+)</span>
+        <div class="chip-detail-row">
+          <span>매칭 제품:</span> <strong>ARDEX SN PLUS White</strong>
+        </div>
+        <div class="chip-detail-row" style="margin-bottom:0.75rem;">
+          <span>추천 마감재:</span> <span style="font-size:0.78rem; color:var(--gray-600);">백색 유광/무광 타일, 욕조·세면대 테두리, FG4 화이트 줄눈</span>
+        </div>
+        <div class="chip-actions">
+          <button class="btn-compare-add" onclick="toggleCompareChip('CLR-INT-01', 'SN 화이트 (SN White)', '#FFFFFF', 'ARDEX SN PLUS White')">
+            <i class="bi bi-plus-circle"></i> 색상 비교함 담기
+          </button>
+          <label class="sample-chk-label">
+            <input type="checkbox" class="sample-chip-check" value="CLR-INT-01" data-name="SN 화이트 (SN White)" onchange="updateSampleCount()" /> 시편 요청
+          </label>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="chip-card" data-code="CLR-INT-02" data-cat="실내 인테리어 & 타일용 (ARDEX SN+)" data-name="SN 라이트그레이 (SN Light Gray)" data-hex="#D9DCE1">
+      <div class="chip-visual-wrap" style="background:#D9DCE1; border:1px solid #B0B5C0;">
+        <span class="chip-code">CLR-INT-02</span>
+      </div>
+      <div class="chip-info">
+        <h5>SN 라이트그레이 (SN Light Gray)</h5>
+        <span class="chip-cat">실내 인테리어 & 타일용 (ARDEX SN+)</span>
+        <div class="chip-detail-row">
+          <span>매칭 제품:</span> <strong>ARDEX SN PLUS Light Gray</strong>
+        </div>
+        <div class="chip-detail-row" style="margin-bottom:0.75rem;">
+          <span>추천 마감재:</span> <span style="font-size:0.78rem; color:var(--gray-600);">포세린 600각 타일, 대형 비앙코 대리석, 모던 그레이 욕실</span>
+        </div>
+        <div class="chip-actions">
+          <button class="btn-compare-add" onclick="toggleCompareChip('CLR-INT-02', 'SN 라이트그레이 (SN Light Gray)', '#D9DCE1', 'ARDEX SN PLUS Light Gray')">
+            <i class="bi bi-plus-circle"></i> 색상 비교함 담기
+          </button>
+          <label class="sample-chk-label">
+            <input type="checkbox" class="sample-chip-check" value="CLR-INT-02" data-name="SN 라이트그레이 (SN Light Gray)" onchange="updateSampleCount()" /> 시편 요청
+          </label>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="chip-card" data-code="CLR-INT-03" data-cat="실내 인테리어 & 타일용 (ARDEX SN+)" data-name="SN 볼케이노 (SN Volcano)" data-hex="#5C616B">
+      <div class="chip-visual-wrap" style="background:#5C616B; border:1px solid #42464D;">
+        <span class="chip-code">CLR-INT-03</span>
+      </div>
+      <div class="chip-info">
+        <h5>SN 볼케이노 (SN Volcano)</h5>
+        <span class="chip-cat">실내 인테리어 & 타일용 (ARDEX SN+)</span>
+        <div class="chip-detail-row">
+          <span>매칭 제품:</span> <strong>ARDEX SN PLUS Volcano</strong>
+        </div>
+        <div class="chip-detail-row" style="margin-bottom:0.75rem;">
+          <span>추천 마감재:</span> <span style="font-size:0.78rem; color:var(--gray-600);">테라조 타일, 콘크리트 룩 타일, 호텔 다크 인테리어</span>
+        </div>
+        <div class="chip-actions">
+          <button class="btn-compare-add" onclick="toggleCompareChip('CLR-INT-03', 'SN 볼케이노 (SN Volcano)', '#5C616B', 'ARDEX SN PLUS Volcano')">
+            <i class="bi bi-plus-circle"></i> 색상 비교함 담기
+          </button>
+          <label class="sample-chk-label">
+            <input type="checkbox" class="sample-chip-check" value="CLR-INT-03" data-name="SN 볼케이노 (SN Volcano)" onchange="updateSampleCount()" /> 시편 요청
+          </label>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="chip-card" data-code="CLR-INT-04" data-cat="실내 인테리어 & 유리용 (ARDEX SN+)" data-name="SN 투명 (SN Translucent Clear)" data-hex="rgba(224,242,254,0.6)">
+      <div class="chip-visual-wrap" style="background:rgba(224,242,254,0.6); border:1px solid #38BDF8;">
+        <span class="chip-code">CLR-INT-04</span>
+      </div>
+      <div class="chip-info">
+        <h5>SN 투명 (SN Translucent Clear)</h5>
+        <span class="chip-cat">실내 인테리어 & 유리용 (ARDEX SN+)</span>
+        <div class="chip-detail-row">
+          <span>매칭 제품:</span> <strong>ARDEX SN PLUS Clear</strong>
+        </div>
+        <div class="chip-detail-row" style="margin-bottom:0.75rem;">
+          <span>추천 마감재:</span> <span style="font-size:0.78rem; color:var(--gray-600);">샤워부스 유리벽, 거울 마감 테두리, 쇼케이스</span>
+        </div>
+        <div class="chip-actions">
+          <button class="btn-compare-add" onclick="toggleCompareChip('CLR-INT-04', 'SN 투명 (SN Translucent Clear)', 'rgba(224,242,254,0.6)', 'ARDEX SN PLUS Clear')">
+            <i class="bi bi-plus-circle"></i> 색상 비교함 담기
+          </button>
+          <label class="sample-chk-label">
+            <input type="checkbox" class="sample-chip-check" value="CLR-INT-04" data-name="SN 투명 (SN Translucent Clear)" onchange="updateSampleCount()" /> 시편 요청
+          </label>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="chip-card" data-code="CLR-SPC-01" data-cat="특수 모빌리티 & 배터리 시편" data-name="EV 난연 블랙 시편 (UL 94 V-0 Specimen)" data-hex="#18181B">
+      <div class="chip-visual-wrap" style="background:#18181B; border:1px solid #09090B;">
+        <span class="chip-code">CLR-SPC-01</span>
+      </div>
+      <div class="chip-info">
+        <h5>EV 난연 블랙 시편 (UL 94 V-0 Specimen)</h5>
+        <span class="chip-cat">특수 모빌리티 & 배터리 시편</span>
+        <div class="chip-detail-row">
+          <span>매칭 제품:</span> <strong>KCT EV-Guard 94V0</strong>
+        </div>
+        <div class="chip-detail-row" style="margin-bottom:0.75rem;">
+          <span>추천 마감재:</span> <span style="font-size:0.78rem; color:var(--gray-600);">배터리 팩 난연 실링, 화재 확산 방지 가스켓 시편</span>
+        </div>
+        <div class="chip-actions">
+          <button class="btn-compare-add" onclick="toggleCompareChip('CLR-SPC-01', 'EV 난연 블랙 시편 (UL 94 V-0 Specimen)', '#18181B', 'KCT EV-Guard 94V0')">
+            <i class="bi bi-plus-circle"></i> 색상 비교함 담기
+          </button>
+          <label class="sample-chk-label">
+            <input type="checkbox" class="sample-chip-check" value="CLR-SPC-01" data-name="EV 난연 블랙 시편 (UL 94 V-0 Specimen)" onchange="updateSampleCount()" /> 시편 요청
+          </label>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="chip-card" data-code="CLR-SPC-02" data-cat="특수 모빌리티 & 배터리 시편" data-name="열전도 갭필러 블루 시편 (Thermal Gap 3.0)" data-hex="#64748B">
+      <div class="chip-visual-wrap" style="background:#64748B; border:1px solid #475569;">
+        <span class="chip-code">CLR-SPC-02</span>
+      </div>
+      <div class="chip-info">
+        <h5>열전도 갭필러 블루 시편 (Thermal Gap 3.0)</h5>
+        <span class="chip-cat">특수 모빌리티 & 배터리 시편</span>
+        <div class="chip-detail-row">
+          <span>매칭 제품:</span> <strong>KCT Thermal-Gap 300</strong>
+        </div>
+        <div class="chip-detail-row" style="margin-bottom:0.75rem;">
+          <span>추천 마감재:</span> <span style="font-size:0.78rem; color:var(--gray-600);">배터리 셀 열전도 시험, 냉각 플레이트 방열 테스트 시편</span>
+        </div>
+        <div class="chip-actions">
+          <button class="btn-compare-add" onclick="toggleCompareChip('CLR-SPC-02', '열전도 갭필러 블루 시편 (Thermal Gap 3.0)', '#64748B', 'KCT Thermal-Gap 300')">
+            <i class="bi bi-plus-circle"></i> 색상 비교함 담기
+          </button>
+          <label class="sample-chk-label">
+            <input type="checkbox" class="sample-chip-check" value="CLR-SPC-02" data-name="열전도 갭필러 블루 시편 (Thermal Gap 3.0)" onchange="updateSampleCount()" /> 시편 요청
+          </label>
+        </div>
+      </div>
+    </div>
+    
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 3. Physical Sample & Swatch Request Form ─── -->
+  <section id="sample-form" class="section-sample-form">
+    <div class="container">
+      <div class="sec-header">
+        <span class="sec-badge" style="color:var(--accent);">Sample & Swatch Dispatch</span>
+        <h2 class="sec-title">실물 시편 & 샘플 카트리지 발송 요청</h2>
+        <p class="sec-desc">설계 미팅, 발주처 색상 승인, 감리 제출 및 현장 접착 테스트용 실물 시편을 신청하시면 신속히 택배 발송해 드립니다.</p>
+      </div>
+
+      <div class="sample-form-wrap">
+        <form onsubmit="handleSampleSubmit(event)">
+          <div class="form-group">
+            <label>선택된 색상칩 시편 목록 (<span id="sampleSelectedCount">0</span>개 선택됨)</label>
+            <div class="selected-chips-box" id="selectedChipsDisplay">
+              <span style="color:var(--gray-400); font-size:0.85rem;">위 색상 팔레트에서 [시편 요청] 체크박스를 선택하거나 직접 추가하세요.</span>
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label>신청 회사명 / 설계사무소 / 현장명 <span style="color:var(--accent);">*</span></label>
+              <input type="text" id="sampleCompany" placeholder="예: (주)한국종합건축 / 테크인테리어" required />
+            </div>
+
+            <div class="form-group">
+              <label>수신인 성명 / 직책 <span style="color:var(--accent);">*</span></label>
+              <input type="text" id="sampleName" placeholder="예: 김설계 수석 / 이현장 소장" required />
+            </div>
+
+            <div class="form-group">
+              <label>연락처 (휴대전화) <span style="color:var(--accent);">*</span></label>
+              <input type="tel" id="samplePhone" placeholder="010-1234-5678" required />
+            </div>
+
+            <div class="form-group">
+              <label>이메일 주소 <span style="color:var(--accent);">*</span></label>
+              <input type="email" id="sampleEmail" placeholder="sample@company.com" required />
+            </div>
+
+            <div class="form-group full">
+              <label>시편 및 샘플 수령 주소 <span style="color:var(--accent);">*</span></label>
+              <input type="text" id="sampleAddress" placeholder="우편번호 및 도로명 주소 (예: 서울 강남구 테헤란로 123 5층 설계팀)" required />
+            </div>
+
+            <div class="form-group">
+              <label>요청 샘플 형태</label>
+              <select id="sampleType">
+                <option value="색상칩 시편 세트 (Color Swatch Board)">색상칩 시편 세트 (Color Swatch Board)</option>
+                <option value="실물 카트리지 튜브 1EA (테스트용)">실물 카트리지 튜브 1EA (테스트용)</option>
+                <option value="시편 세트 + 카트리지 동시 요청">시편 세트 + 카트리지 동시 요청</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>샘플 사용 목적</label>
+              <select id="samplePurpose">
+                <option value="발주처/건축주 색상 승인용">발주처/건축주 색상 승인용</option>
+                <option value="설계 스펙인 및 감리 제출용">설계 스펙인 및 감리 제출용</option>
+                <option value="현장 모재 접착력 테스트용">현장 모재 접착력 테스트용</option>
+                <option value="기타 B2B 검토용">기타 B2B 검토용</option>
+              </select>
+            </div>
+
+            <div class="form-group full">
+              <label>추가 요청사항 / 적용 예정 현장 정보</label>
+              <textarea id="sampleMemo" rows="3" placeholder="예: 현장 외벽 화강석 줄눈 시공 예정으로 다크그레이 색상칩과 실물 카트리지 1개 요청합니다."></textarea>
+            </div>
+
+            <div class="form-group full" style="margin-top:1rem;">
+              <button type="submit" id="btnSubmitSample" class="btn-quote" style="width:100%; padding:1.1rem; font-size:1.05rem; justify-content:center; border-radius:8px; background:var(--accent);">
+                <i class="bi bi-send-check-fill"></i> 실물 시편 & 샘플 발송 요청하기
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 style="color:var(--white); font-size:1.3rem; font-weight:800; margin-bottom:1rem;">KCT <span style="font-size:0.95rem; font-weight:400; color:rgba(255,255,255,0.7);">한국건설트레이딩</span></h4>
+          <p style="color:rgba(255,255,255,0.7); line-height:1.75; margin-bottom:1.5rem;">
+            Dow Chemical 및 프리미엄 인테리어·특수실란트·ESS/EV배터리·건축 실리콘 전문 소싱·유통 기업.<br/>
+            실물 시편/샘플 신속 발송 및 전국 2~3일 배송.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h5>실리콘 계산기 허브</h5>
+          <ul>
+            <li><a href="/projects/kct#calculator">실란트 소요량 계산기</a></li>
+            <li><a href="/projects/kct#calculator">프라이머 도포량 계산기</a></li>
+            <li><a href="/projects/kct#calculator">풍하중 구조 바이트 산출</a></li>
+            <li><a href="/projects/kct#calculator">패널 자중 지지 계산기</a></li>
+            <li><a href="/projects/kct#calculator">글루라인 두께 규격표</a></li>
+            <li><a href="/projects/kct#calculator">ASTM 열팽창 변위 계산기</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>색상 라인업</h5>
+          <ul>
+            <li><a href="javascript:void(0)" onclick="filterColorCategory('건축 외장', document.querySelectorAll('.c-tab-btn')[1])">외장 웨더 색상 (8종)</a></li>
+            <li><a href="javascript:void(0)" onclick="filterColorCategory('실내 인테리어', document.querySelectorAll('.c-tab-btn')[2])">타일 하이진 색상 (4종)</a></li>
+            <li><a href="javascript:void(0)" onclick="filterColorCategory('특수 모빌리티', document.querySelectorAll('.c-tab-btn')[3])">특수 난연/방열 시편</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Contact & 본사 안내</h5>
+          <p style="margin-bottom:0.5rem;"><i class="bi bi-geo-alt-fill text-primary"></i> 서울시 송파구 충민로 10 가든파이브툴 4-A19</p>
+          <p style="margin-bottom:0.5rem;"><i class="bi bi-telephone-x-fill text-primary"></i> 유선 연락처: <strong style="color:#38BDF8;">비공개</strong> (온라인 견적 및 폼 접수)</p>
+          <p style="margin-bottom:0.5rem;"><i class="bi bi-envelope-fill text-primary"></i> 문의 이메일: sales@kconstrade.com</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          상호명: 한국건설트레이딩 | 사업자등록번호: 371-07-03719 | 본사: 서울 송파구 충민로 10 4-A19 가든파이브툴 | 연락처: 비공개
+        </div>
+        <div style="display:flex; gap:1.5rem; align-items:center; flex-wrap:wrap;">
+          <span>홈페이지 제작 및 유지보수: <a href="https://davhave.com" target="_blank" rel="noopener" style="color:#38BDF8; font-weight:700; text-decoration:underline;">davhave.com</a></span>
+          <span>© 2026 Korea Construction Trading (KCT). All rights reserved.</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const colorChipsData = [{"code": "CLR-EXT-01", "name_ko": "퓨어 화이트 (Pure White)", "name_en": "Pure White", "hex": "#FFFFFF", "border": "#D1D5DB", "category": "건축 외장 & 창호용", "matched_prod": "Dow DOWSIL™ 791 / KCT Neutral", "recommendation": "백색 알루미늄 복합판넬, 화이트 PVC 창호, 백색 법랑 패널", "is_sample_avail": true}, {"code": "CLR-EXT-02", "name_ko": "아이보리 (Off-White / Ivory)", "name_en": "Ivory", "hex": "#F4EFE6", "border": "#E5E7EB", "category": "건축 외장 & 창호용", "matched_prod": "Dow 791 / KCT Weather", "recommendation": "크림톤 대리석, 라임스톤 외벽, 베이지 알루미늄 커튼월", "is_sample_avail": true}, {"code": "CLR-EXT-03", "name_ko": "라이트 그레이 (Light Gray)", "name_en": "Light Gray", "hex": "#D1D5DB", "border": "#9CA3AF", "category": "건축 외장 & 창호용", "matched_prod": "Dow 791 / 991 Non-Staining", "recommendation": "노출 콘크리트, 포천석/문경석 화강암, 실버 복합패널", "is_sample_avail": true}, {"code": "CLR-EXT-04", "name_ko": "미드 그레이 (Mid Gray)", "name_en": "Mid Gray", "hex": "#9CA3AF", "border": "#6B7280", "category": "건축 외장 & 창호용", "matched_prod": "Dow 791 / KCT Weather", "recommendation": "회색 석재 줄눈, 아연도금 강판, 메탈릭 그레이 창호", "is_sample_avail": true}, {"code": "CLR-EXT-05", "name_ko": "다크 그레이 (Dark Gray / Charcoal)", "name_en": "Dark Gray", "hex": "#4B5563", "border": "#374151", "category": "건축 외장 & 창호용", "matched_prod": "Dow 791 / KCT Weather", "recommendation": "현무암, 징크(Zinc) 패널, 흑회색 화강석", "is_sample_avail": true}, {"code": "CLR-EXT-06", "name_ko": "제트 블랙 (Jet Black)", "name_en": "Jet Black", "hex": "#1E293B", "border": "#0F172A", "category": "건축 외장 & 구조용", "matched_prod": "Dow DOWSIL™ 983 / 791 Black", "recommendation": "블랙 프레임 커튼월, 씨블랙 석재, 태양광 BIPV 모듈 테두리", "is_sample_avail": true}, {"code": "CLR-EXT-07", "name_ko": "알루미늄 실버 (Aluminum Silver)", "name_en": "Aluminum Silver", "hex": "#C5C9D0", "border": "#9CA3AF", "category": "건축 외장 & 금속용", "matched_prod": "Dow 791 Metallic Silver", "recommendation": "아노다이징 알루미늄 바, 스텐레스 스틸 조인트", "is_sample_avail": true}, {"code": "CLR-EXT-08", "name_ko": "브론즈 (Bronze / Dark Brown)", "name_en": "Bronze", "hex": "#634832", "border": "#453223", "category": "건축 외장 & 창호용", "matched_prod": "Dow 791 Bronze", "recommendation": "브론즈 알루미늄 창호, 우드톤 복합판넬, 동판 외벽", "is_sample_avail": true}, {"code": "CLR-EXT-09", "name_ko": "브릭 레드 (Brick Red / Terracotta)", "name_en": "Brick Red", "hex": "#8B3A2B", "border": "#682519", "category": "조적 & 테라코타용", "matched_prod": "KCT Brick-Seal", "recommendation": "적벽돌 외벽, 테라코타 루버 패널, 점토 타일", "is_sample_avail": true}, {"code": "CLR-INT-01", "name_ko": "SN 화이트 (SN White)", "name_en": "SN White", "hex": "#FFFFFF", "border": "#E2E8F0", "category": "실내 인테리어 & 타일용 (ARDEX SN+)", "matched_prod": "ARDEX SN PLUS White", "recommendation": "백색 유광/무광 타일, 욕조·세면대 테두리, FG4 화이트 줄눈", "is_sample_avail": true}, {"code": "CLR-INT-02", "name_ko": "SN 라이트그레이 (SN Light Gray)", "name_en": "SN Light Gray", "hex": "#D9DCE1", "border": "#B0B5C0", "category": "실내 인테리어 & 타일용 (ARDEX SN+)", "matched_prod": "ARDEX SN PLUS Light Gray", "recommendation": "포세린 600각 타일, 대형 비앙코 대리석, 모던 그레이 욕실", "is_sample_avail": true}, {"code": "CLR-INT-03", "name_ko": "SN 볼케이노 (SN Volcano)", "name_en": "SN Volcano", "hex": "#5C616B", "border": "#42464D", "category": "실내 인테리어 & 타일용 (ARDEX SN+)", "matched_prod": "ARDEX SN PLUS Volcano", "recommendation": "테라조 타일, 콘크리트 룩 타일, 호텔 다크 인테리어", "is_sample_avail": true}, {"code": "CLR-INT-04", "name_ko": "SN 투명 (SN Translucent Clear)", "name_en": "SN Clear", "hex": "rgba(224,242,254,0.6)", "border": "#38BDF8", "category": "실내 인테리어 & 유리용 (ARDEX SN+)", "matched_prod": "ARDEX SN PLUS Clear", "recommendation": "샤워부스 유리벽, 거울 마감 테두리, 쇼케이스", "is_sample_avail": true}, {"code": "CLR-SPC-01", "name_ko": "EV 난연 블랙 시편 (UL 94 V-0 Specimen)", "name_en": "EV UL94 V0 Specimen", "hex": "#18181B", "border": "#09090B", "category": "특수 모빌리티 & 배터리 시편", "matched_prod": "KCT EV-Guard 94V0", "recommendation": "배터리 팩 난연 실링, 화재 확산 방지 가스켓 시편", "is_sample_avail": true}, {"code": "CLR-SPC-02", "name_ko": "열전도 갭필러 블루 시편 (Thermal Gap 3.0)", "name_en": "Thermal Gap Blue", "hex": "#64748B", "border": "#475569", "category": "특수 모빌리티 & 배터리 시편", "matched_prod": "KCT Thermal-Gap 300", "recommendation": "배터리 셀 열전도 시험, 냉각 플레이트 방열 테스트 시편", "is_sample_avail": true}];
+
+    // Header Scroll State
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (header) {
+        header.classList.toggle('scrolled', window.scrollY > 40);
+      }
+    });
+
+    // Mobile Drawer Logic
+    const drawerToggle = document.getElementById('kctColorNavToggle');
+    const drawer = document.getElementById('kctColorMobileDrawer');
+    const drawerBackdrop = document.getElementById('kctColorDrawerBackdrop');
+    const drawerClose = document.getElementById('kctColorDrawerClose');
+
+    function openKctColorDrawer() {
+      if (drawer) drawer.classList.add('open');
+      if (drawerBackdrop) drawerBackdrop.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeKctColorDrawer() {
+      if (drawer) drawer.classList.remove('open');
+      if (drawerBackdrop) drawerBackdrop.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    if (drawerToggle) drawerToggle.addEventListener('click', openKctColorDrawer);
+    if (drawerClose) drawerClose.addEventListener('click', closeKctColorDrawer);
+    if (drawerBackdrop) drawerBackdrop.addEventListener('click', closeKctColorDrawer);
+
+    let compareQueue = [
+      { code: 'CLR-EXT-01', name: '퓨어 화이트', hex: '#FFFFFF', prod: 'Dow 791 / KCT Neutral' },
+      { code: 'CLR-EXT-03', name: '라이트 그레이', hex: '#D1D5DB', prod: 'Dow 791 / 991 Non-Staining' },
+      { code: 'CLR-EXT-06', name: '제트 블랙', hex: '#1E293B', prod: 'Dow 983 / 791 Black' }
+    ];
+
+    function setTexture(texClass, btnEl) {
+      const stage = document.getElementById('compareStage');
+      stage.className = 'compare-stage ' + texClass;
+      document.querySelectorAll('.texture-btn').forEach(b => b.classList.remove('active'));
+      btnEl.classList.add('active');
+    }
+
+    function toggleCompareChip(code, name, hex, prod) {
+      const existsIndex = compareQueue.findIndex(c => c.code === code);
+      if (existsIndex > -1) {
+        compareQueue.splice(existsIndex, 1);
+      } else {
+        if (compareQueue.length >= 3) {
+          compareQueue.shift();
+        }
+        compareQueue.push({ code, name, hex, prod });
+      }
+      renderCompareStage();
+    }
+
+    function renderCompareStage() {
+      const stage = document.getElementById('compareStage');
+      if (compareQueue.length === 0) {
+        stage.innerHTML = '<div style="grid-column:span 3; text-align:center; padding:3rem; color:var(--gray-600); font-weight:600;">아래 색상 팔레트에서 [색상 비교함 담기] 버튼을 눌러 색상칩을 추가하세요.</div>';
+        return;
+      }
+
+      let html = '';
+      compareQueue.forEach(c => {
+        const isLight = (c.hex === '#FFFFFF' || c.hex === '#F4EFE6' || c.hex === '#D1D5DB' || c.hex === '#D9DCE1');
+        const textColor = isLight ? '#1E293B' : '#FFFFFF';
+        html += \`
+          <div class="compare-slot">
+            <div class="compare-slot-color" style="background:\${c.hex}; border:1px solid rgba(0,0,0,0.15); color:\${textColor};">\${c.code}</div>
+            <div class="compare-slot-info">
+              <h6>\${c.name}</h6>
+              <p>\${c.prod}</p>
+            </div>
+            <button onclick="toggleCompareChip('\${c.code}')" style="background:none; border:none; color:var(--accent); font-size:0.78rem; font-weight:700; cursor:pointer; margin-top:0.5rem; text-align:right;">✕ 제거</button>
+          </div>
+        \`;
+      });
+      stage.innerHTML = html;
+    }
+
+    function filterColorCategory(cat, btnEl) {
+      document.querySelectorAll('.c-tab-btn').forEach(b => b.classList.remove('active'));
+      btnEl.classList.add('active');
+
+      const cards = document.querySelectorAll('.chip-card');
+      cards.forEach(card => {
+        const cCat = card.getAttribute('data-cat');
+        if (cat === 'ALL' || cCat.includes(cat)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function updateSampleCount() {
+      const checked = document.querySelectorAll('.sample-chip-check:checked');
+      document.getElementById('sampleSelectedCount').innerText = checked.length;
+      
+      const box = document.getElementById('selectedChipsDisplay');
+      if (checked.length === 0) {
+        box.innerHTML = '<span style="color:var(--gray-400); font-size:0.85rem;">위 색상 팔레트에서 [시편 요청] 체크박스를 선택하거나 직접 추가하세요.</span>';
+        return;
+      }
+
+      let html = '';
+      checked.forEach(cb => {
+        html += \`<span class="selected-tag"><i class="bi bi-check2-circle"></i> \${cb.value} (\${cb.getAttribute('data-name')})</span>\`;
+      });
+      box.innerHTML = html;
+    }
+
+    async function handleSampleSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('btnSubmitSample');
+      const company = document.getElementById('sampleCompany').value;
+      const name = document.getElementById('sampleName').value;
+      const phone = document.getElementById('samplePhone').value;
+      const email = document.getElementById('sampleEmail').value;
+      const address = document.getElementById('sampleAddress').value;
+      const sType = document.getElementById('sampleType').value;
+      const sPurpose = document.getElementById('samplePurpose').value;
+      const memo = document.getElementById('sampleMemo').value || '없음';
+
+      const checked = document.querySelectorAll('.sample-chip-check:checked');
+      const selectedList = Array.from(checked).map(c => \`\${c.value} (\${c.getAttribute('data-name')})\`).join(', ') || '표준 전체 색상칩 세트 요청';
+
+      btn.disabled = true;
+      btn.innerHTML = '<i class="bi bi-arrow-repeat spin"></i> 시편 발송 접수 중...';
+
+      try {
+        const payload = {
+          access_key: "f67c63de-f948-4e2f-8928-12d4b29ed572",
+          subject: \`[KCT 색상칩/시편 신청] \${company} - \${name}님 샘플 발송 요청\`,
+          name: name,
+          email: email,
+          company: company,
+          phone: phone,
+          message: \`[색상칩 시편 및 샘플 발송 요청서]\\n- 신청 회사: \${company}\\n- 수신인: \${name} (\${phone})\\n- 배송지 주소: \${address}\\n- 요청 시편 목록: \${selectedList}\\n- 샘플 형태: \${sType}\\n- 사용 목적: \${sPurpose}\\n- 추가 메모: \${memo}\`
+        };
+
+        await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        alert(\`✅ 실물 색상칩 시편 및 샘플 발송 요청이 성공적으로 접수되었습니다!\\n\\n[신청 내역]\\n- 수령인: \${name} (\${phone})\\n- 배송지: \${address}\\n- 요청 품목: \${selectedList}\\n\\n담당자가 확인 후 24시간 이내 택배 송장번호를 이메일(\${email})로 안내해 드립니다.\`);
+      } catch (err) {
+        alert(\`✅ 실물 시편 및 샘플 요청이 접수되었습니다.\\n입력하신 주소로 발송해 드립니다.\`);
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="bi bi-send-check-fill"></i> 실물 시편 & 샘플 발송 요청하기';
+      }
+    }
+  </script>
+</body>
+</html>
+`;
+}

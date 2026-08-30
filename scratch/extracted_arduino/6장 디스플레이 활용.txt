@@ -1,0 +1,41 @@
+=== 6장 디스플레이 활용.pptx ===
+
+--- Slide 1 ---
+8. / 디스플레이 / 활용하기
+
+--- Slide 2 ---
+디스플레이 활용하기 / FND(Flexible Numerical Display) / LCD(Liquid Crystal Display)
+
+--- Slide 3 ---
+다양한 / FND / FND / 에 보이는 점 / (dot) / 을 제외하고 / 7 / 개의 / LED / 로 숫자를 표시하기 때문에 / 7- / 세그먼트라고도 한다 / . / 그림처럼 / FND / 의 모양과 방식 / , / 크기 등의 차이가 있다 / . FND / 는 / 그림와 / 같이 세그먼트라고 불리는 / 8 / 개의 / LED / 가 그라운드에 공통으로 연결된 / Common Cathode / 형과 전원에 공통으로 연결된 / Common Anode / 형으로 두 가지 방식이 있다 / . / 이것은 외형으로 구분할 수 없으므로 어떤 방식인지 데이터시트를 확인해야 한다 / . / FND(Flexible Numerical Display)
+
+--- Slide 4 ---
+공통 / 캐소드 / 형과 공통 / 애노드 / 형의 세그먼트 회로 / 공통 / 애노드 / 형의 경우 각 세그먼트는 / LOW(0 V) / 신호에 세그먼트 / LED / 가 켜진다 / . / 공통 / 캐소드 / 형의 경우 반대로 그라운드에 세그먼트들이 연결되어 있으므로 각 세그먼트는 / HIGH(5 V) / 신호에 켜진다 / . / FND(Flexible Numerical Display)
+
+--- Slide 5 ---
+공통 / 애노드 / 형 / FND / 코드값과 /  / 아두이노 / 보드 핀 연결 방법 / FND(Flexible Numerical Display)
+
+--- Slide 6 ---
+FND / 에 숫자 / 3 / 표시하기 / FND(Flexible Numerical Display)
+
+--- Slide 7 ---
+0 / 에서 / 9 / 까지 숫자 카운터 표시하기 / FND(Flexible Numerical Display)
+
+--- Slide 8 ---
+LCD / 란 / ? / LCD / 란 / Liquid Crystal Display / 의 약자로 액정 표시 장치를 말한다 / . LCD / 는 얇고 가벼우며 소비 전력이 적은 장점은 있지만 / , / 시야각이 제한적이고 어두운 곳에서는 선명함이 떨어지는 단점이 있다 / . / LCD / 를 이용해 숫자 및 문자를 출력할 수 있기 때문에 손목 시계부터 / TV / 에 이르기까지 광범위하게 사용되고 있다 / . / LCD(Liquid Crystal Display)
+
+--- Slide 9 ---
+LCD / 출력 원리 / 액정 / (Liquid Crystal) / 이란 액체처럼 유체의 성질을 가지면서 고체처럼 광학적 성질을 가지는 물체이다 / . / 또한 액정은 전기적 신호를 가해 원하는 방향으로 배열할 수 있다 / . LCD / 는 이러한 액정의 성질을 이용하며 / , / 각 픽셀에 대한 액정 배열을 조절하여 투과하는 빛의 양을 제어해 다양한 문자와 숫자 출력 등이 가능하다 / . / LCD(Liquid Crystal Display)
+
+--- Slide 10 ---
+C-LCD / 모듈의 핀 배열과 기능 / RS, RW / 신호에 따른 명령어와 데이터 모드 선택 / LCD(Liquid Crystal Display)
+
+--- Slide 11 ---
+16×2 / 문자형 / LCD / 연결 / LCD(Liquid Crystal Display)
+
+--- Slide 12 ---
+C-LCD / 에 사용자 정의 문자 표시하기 / C-LCD / 에 읽기 동작을 만들어 사용자가 원하는 문자 또는 숫자 패턴을 생성하여 표시할 수 있다 / . 16×2 / 문자 / LCD / 모듈은 / 5×10 / 도트 / (dot) / 또는 / 5×8 / 도트의 폰트를 만들 수 있으나 / LiquidCrystal /  / 라이브러리에서 / 5×8 / 폰트로 / 지정해뒀기 / 때문에 / 8 / 개의 사용자 정의 문자를 / CGRAM / 주소에 정의해서 사용할 수 있다 / . / LCD(Liquid Crystal Display)
+
+--- Slide 13 ---
+사용자 정의 문자 ‘한’ / , ‘ / 국’의 / 데이터 / 사용자 정의 문자와 관련된 함수는 / createChar /  / 함수와 / write / 함수이다 / . / createChar / () / LCD / 에 사용자 정의 문자를 / 0 / 에서 / 7 / 까지 생성한다 / . / 생성된 사용자 정의 문자는 / write / 함수로 출력한다 / . / 사용자 정의 문자 / 0 / 은 다른 주소와 달리 호출할 때 변수가 없으면 / 아두이노 / 컴파일러에서 오류가 / 발생할 수 있으므로 / lcd.write / (byte (0)) / 과같이 / byte / 형으로 캐스팅해야 한다 / . / LCD(Liquid Crystal Display)
+

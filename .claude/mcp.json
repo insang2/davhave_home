@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "korean-law": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "korean-law-mcp"
+      ],
+      "env": {
+        "LAW_OC": "openlaw_insang2"
+      }
+    }
+  }
+}

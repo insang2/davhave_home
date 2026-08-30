@@ -1,0 +1,10 @@
+{
+  "name": "korean-law",
+  "version": "1.0.0",
+  "description": "대한민국 국가법령정보센터 Open API 기반 법령, 대법원 판례, 행정규칙, 조례 조회 및 법률 AI 어시스턴트 플러그인",
+  "author": "chrisryugj",
+  "license": "MIT",
+  "skills": [
+    "skills/korean-law-search"
+  ]
+}

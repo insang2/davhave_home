@@ -1,0 +1,651 @@
+26. 3. 12.
+
+오후 10:17
+
+클로드 코드(Claude Code) 설치 가이드 - 윤자동
+
+YUNAISOLUTION
+
+Claude Code
+설치 가이드
+AI 코딩 어시스턴트의 시작
+설치부터 첫 실행까지 완벽 가이드
+
+윤자동 AI 자동화 교육자료 | 최종 업데이트: 2026년 3월
+www.yunaisolution.com | www.yunjadong.com
+
+file:///C:/yunjadong/01_%EA%B5%90%EC%9C%A1%EC%82%AC%EC%97%85/%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%E…
+
+1/17
+
+26. 3. 12.
+
+오후 10:17
+
+클로드 코드(Claude Code) 설치 가이드 - 윤자동
+
+목차
+01 클로드 코드란?
+02 요구 사항 확인
+03 요금제 선택
+04 설치하기
+05 설치 확인
+06 로그인 및 인증
+07 첫 실행 해보기
+08 IDE 연동 (VS Code / JetBrains)
+09 자주 발생하는 문제 해결
+10 유용한 명령어 모음
+
+file:///C:/yunjadong/01_%EA%B5%90%EC%9C%A1%EC%82%AC%EC%97%85/%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%E…
+
+2/17
+
+26. 3. 12.
+
+오후 10:17
+
+클로드 코드(Claude Code) 설치 가이드 - 윤자동
+
+01. 클로드 코드란?
+클로드 코드(Claude Code)는 Anthropic이 만든 공식 AI 코딩 어시스턴트 CLI(명령줄 도구)입니다.
+터미널에서 claude 라고 입력하면 AI가 여러분의 프로젝트를 분석하고, 코드를 작성하고, 파일을 수정하고, 명령어를 실행해
+줍니다. 코딩을 모르는 분도 자연어(한국어)로 지시하면 됩니다.
+
+클로드 코드로 할 수 있는 것들은 다음과 같습니다.
+기능
+
+예시
+
+코드 작성
+
+"로그인 페이지 만들어줘"
+
+코드 수정
+
+"이 함수에서 버그 찾아서 고쳐줘"
+
+파일 관리
+
+"폴더 정리해줘"
+
+Git 관리
+
+"변경사항 커밋해줘"
+
+프로젝트 분석
+
+"이 프로젝트 구조 설명해줘"
+
+웹 검색
+
+"최신 React 버전 알려줘"
+
+자동화
+
+"CSV 파일을 JSON으로 변환하는 스크립트 만들어줘"
+
+file:///C:/yunjadong/01_%EA%B5%90%EC%9C%A1%EC%82%AC%EC%97%85/%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%E…
+
+3/17
+
+26. 3. 12.
+
+오후 10:17
+
+클로드 코드(Claude Code) 설치 가이드 - 윤자동
+
+02. 요구 사항 확인
+운영체제
+OS
+
+최소 버전
+
+Windows
+
+Windows 10 (1809) 이상, Windows 11
+
+macOS
+
+macOS 13.0 (Ventura) 이상
+
+Linux
+
+Ubuntu 20.04+ / Debian 10+ / Alpine 3.19+
+
+하드웨어 & 기타
+RAM: 4GB 이상
+인터넷 연결 필수
+Anthropic 지원 국가에 위치 (한국 지원됨)
+
+Windows 사용자 필수 사전 설치
+Git for Windows가 반드시 설치되어 있어야 합니다!
+
+1. https://git-scm.com/downloads/win 접속
+2. 다운로드 후 설치
+3. 설치 중 "Add to PATH" 옵션 반드시 체크
+
+03. 요금제 선택
+무료 계정으로는 클로드 코드를 사용할 수 없습니다!
+아래 중 하나의 유료 플랜이 필요합니다.
+
+file:///C:/yunjadong/01_%EA%B5%90%EC%9C%A1%EC%82%AC%EC%97%85/%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%E…
+
+4/17
+
+26. 3. 12.
+
+오후 10:17
+
+클로드 코드(Claude Code) 설치 가이드 - 윤자동
+
+플랜
+
+가격
+
+추천 대상
+
+Claude Pro
+
+$20/월
+
+개인 사용자 (입문)
+
+Claude Max
+
+$100/월 또는 $200/월
+
+헤비 유저, 개발자
+
+Claude for Teams
+
+$30/유저/월
+
+소규모 팀
+
+Claude for Enterprise
+
+별도 문의
+
+기업
+
+Console (API)
+
+사용량 기반
+
+API 기반 과금 원하는 분
+
+가입 방법
+1. https://claude.ai/pricing 접속
+2. 원하는 플랜 선택 후 결제
+3. 이메일 인증 완료
+
+file:///C:/yunjadong/01_%EA%B5%90%EC%9C%A1%EC%82%AC%EC%97%85/%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%E…
+
+5/17
+
+26. 3. 12.
+
+오후 10:17
+
+클로드 코드(Claude Code) 설치 가이드 - 윤자동
+
+04. 설치하기
+방법 1: 공식 설치 스크립트 (권장)
+가장 간단하고 자동 업데이트가 지원되는 방법입니다.
+
+Windows (PowerShell)
+
+PowerShell을 관리자 권한으로 실행한 후:
+irm https://claude.ai/install.ps1 | iex
+
+Windows (CMD)
+curl -fsSL https://claude.ai/install.cmd -o install.cmd && install.cmd && del install.cmd
+
+macOS / Linux
+터미널을 열고:
+
+curl -fsSL https://claude.ai/install.sh | bash
+
+안정 버전(stable)으로 설치하기
+
+최신 버전이 불안정할 수 있으므로, 안정 버전을 원하면:
+# macOS / Linux
+curl -fsSL https://claude.ai/install.sh | bash -s stable
+
+방법 2: Homebrew (macOS / Linux)
+brew install --cask claude-code
+
+file:///C:/yunjadong/01_%EA%B5%90%EC%9C%A1%EC%82%AC%EC%97%85/%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%E…
+
+6/17
+
+26. 3. 12.
+
+오후 10:17
+
+클로드 코드(Claude Code) 설치 가이드 - 윤자동
+
+참고: 이 방법은 자동 업데이트가 안 됩니다.
+업데이트: brew upgrade claude-code
+
+방법 3: WinGet (Windows)
+winget install Anthropic.ClaudeCode
+
+참고: 이 방법은 자동 업데이트가 안 됩니다.
+업데이트: winget upgrade Anthropic.ClaudeCode
+
+설치 방법 비교
+방법
+
+자동 업데이트
+
+난이도
+
+추천
+
+공식 스크립트
+
+✅ 지원
+
+쉬움
+
+⭐ 가장 추천
+
+Homebrew
+
+❌ 미지원
+
+쉬움
+
+macOS 사용자
+
+WinGet
+
+❌ 미지원
+
+쉬움
+
+Windows 사용자
+
+05. 설치 확인
+버전 확인
+claude --version
+
+아래와 같이 버전 번호가 나오면 성공:
+claude v1.x.x
+
+file:///C:/yunjadong/01_%EA%B5%90%EC%9C%A1%EC%82%AC%EC%97%85/%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%E…
+
+7/17
+
+26. 3. 12.
+
+오후 10:17
+
+클로드 코드(Claude Code) 설치 가이드 - 윤자동
+
+종합 진단
+claude doctor
+
+이 명령어는 다음 항목들을 자동으로 점검합니다:
+설치 상태 및 버전
+검색 기능 정상 작동 여부
+자동 업데이트 상태
+설정 파일 유효성
+MCP 서버 설정
+키바인딩 오류
+💡 TIP
+
+모든 항목에 ✅ 표시가 나오면 정상입니다!
+
+06. 로그인 및 인증
+최초 로그인
+claude
+
+1. 1
+2. 2
+3. 3
+4. 4
+
+터미널에서 claude 입력
+브라우저가 자동으로 열림 (로그인 페이지)
+Claude 계정으로 로그인
+인증 완료 후 터미널로 돌아옴
+
+💡 브라우저가 자동으로 안 열리면?
+
+터미널에서 c 키를 누르면 URL이 클립보드에 복사됩니다. 브라우저에 붙여넣기 하세요.
+
+file:///C:/yunjadong/01_%EA%B5%90%EC%9C%A1%EC%82%AC%EC%97%85/%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%E…
+
+8/17
+
+26. 3. 12.
+
+오후 10:17
+
+클로드 코드(Claude Code) 설치 가이드 - 윤자동
+
+로그인 정보 저장
+macOS: Keychain에 암호화 저장
+Windows: 디스크에 안전하게 저장
+한 번 로그인하면 다시 할 필요 없음
+
+로그아웃
+클로드 코드 실행 중에:
+/logout
+
+file:///C:/yunjadong/01_%EA%B5%90%EC%9C%A1%EC%82%AC%EC%97%85/%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%E…
+
+9/17
+
+26. 3. 12.
+
+오후 10:17
+
+클로드 코드(Claude Code) 설치 가이드 - 윤자동
+
+07. 첫 실행 해보기
+Step 1: 프로젝트 폴더로 이동
+cd C:\내프로젝트
+
+Step 2: 클로드 코드 시작
+claude
+
+Step 3: 대화하기
+아래처럼 자연어로 말하면 됩니다:
+> 이 폴더에 어떤 파일들이 있는지 알려줘
+> 간단한 파이썬 스크립트 하나 만들어줘
+> index.html 파일을 분석해줘
+
+Step 4: 종료하기
+/exit
+
+또는 Ctrl + C 두 번 누르기
+
+file:///C:/yunjadong/01_%EA%B5%90%EC%9C%A1%EC%82%AC%EC%97%85/%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%…
+
+10/17
+
+26. 3. 12.
+
+오후 10:17
+
+클로드 코드(Claude Code) 설치 가이드 - 윤자동
+
+08. IDE 연동
+VS Code 연동
+요구 사항
+
+VS Code 1.98.0 이상
+
+설치 방법
+
+1. VS Code 실행
+2. Ctrl + Shift + X (확장 마켓플레이스 열기)
+3. "Claude Code" 검색
+4. Install 클릭
+
+사용 방법
+
+좌측 사이드바 또는 에디터 우측 상단의 Spark(✨) 아이콘 클릭
+채팅 패널에서 프롬프트 입력
+코드 변경 시 side-by-side diff로 비교 가능
+승인/거부/수정 요청 가능
+
+주요 단축키
+단축키
+
+기능
+
+Alt + K
+
+@멘션 참조 삽입
+
+Ctrl + Esc
+
+에디터 ↔ 클로드 포커스 전환
+
+Ctrl + N
+
+새 대화 시작
+
+JetBrains IDE 연동 (IntelliJ, PyCharm 등)
+설치 방법
+
+1. Settings → Plugins 이동
+2. "Claude Code" 검색
+3. Install 후 IDE 재시작
+
+file:///C:/yunjadong/01_%EA%B5%90%EC%9C%A1%EC%82%AC%EC%97%85/%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%…
+
+11/17
+
+26. 3. 12.
+
+오후 10:17
+
+클로드 코드(Claude Code) 설치 가이드 - 윤자동
+
+사용 방법
+
+통합 터미널에서 claude 실행
+Ctrl + Esc 로 클로드 실행
+변경사항이 IDE의 diff 뷰어에 표시
+
+file:///C:/yunjadong/01_%EA%B5%90%EC%9C%A1%EC%82%AC%EC%97%85/%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%…
+
+12/17
+
+26. 3. 12.
+
+오후 10:17
+
+클로드 코드(Claude Code) 설치 가이드 - 윤자동
+
+09. 자주 발생하는 문제 해결
+"command not found: claude"
+설치 후 claude 명령어를 못 찾는 경우, PATH 설정이 필요합니다.
+
+Windows (PowerShell)
+$currentPath = [Environment]::GetEnvironmentVariable('PATH', 'User')
+[Environment]::SetEnvironmentVariable('PATH', "$currentPath;$env:USERPROFILE\.local\bin",
+'User')
+
+그 후 터미널을 껐다가 다시 열기
+
+macOS (Zsh)
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+
+Linux (Bash)
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+
+설치 스크립트가 HTML을 반환하는 경우
+네트워크 또는 지역 문제입니다. 대안으로 설치하세요:
+# macOS/Linux
+brew install --cask claude-code
+# Windows
+winget install Anthropic.ClaudeCode
+
+file:///C:/yunjadong/01_%EA%B5%90%EC%9C%A1%EC%82%AC%EC%97%85/%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%…
+
+13/17
+
+26. 3. 12.
+
+오후 10:17
+
+클로드 코드(Claude Code) 설치 가이드 - 윤자동
+
+TLS/SSL 연결 오류
+# Windows PowerShell - TLS 1.2 설정
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+irm https://claude.ai/install.ps1 | iex
+
+# Ubuntu/Debian - 인증서 업데이트
+sudo apt-get update && sudo apt-get install ca-certificates
+
+403 Forbidden 오류 (로그인 후)
+유료 구독이 활성화되어 있는지 확인: https://claude.ai/settings
+Console 사용자: "Claude Code" 또는 "Developer" 역할이 부여되었는지 확인
+VPN 사용 중이라면 끄고 다시 시도
+
+Windows에서 Git Bash 경로를 못 찾는 경우
+~/.claude/settings.json
+
+파일에 아래 내용 추가:
+
+{
+"env": {
+"CLAUDE_CODE_GIT_BASH_PATH": "C:\\Program Files\\Git\\bin\\bash.exe"
+}
+}
+
+메모리 부족 (Linux에서 "Killed" 오류)
+sudo fallocate -l 2G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+
+file:///C:/yunjadong/01_%EA%B5%90%EC%9C%A1%EC%82%AC%EC%97%85/%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%…
+
+14/17
+
+26. 3. 12.
+
+오후 10:17
+
+클로드 코드(Claude Code) 설치 가이드 - 윤자동
+
+10. 유용한 명령어 모음
+터미널 명령어 (클로드 코드 밖에서)
+명령어
+
+설명
+
+claude
+
+대화형 모드 시작
+
+claude "할 일 "
+
+한 줄 명령 실행
+
+claude -p "질 문 "
+
+질문 후 바로 종료
+
+claude -c
+
+가장 최근 대화 이어하기
+
+claude -r
+
+이전 대화 목록에서 선택하여 이어하기
+
+claude commit
+
+Git 커밋 생성
+
+claude --version
+
+버전 확인
+
+claude doctor
+
+종합 진단
+
+claude update
+
+수동 업데이트
+
+file:///C:/yunjadong/01_%EA%B5%90%EC%9C%A1%EC%82%AC%EC%97%85/%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%…
+
+15/17
+
+26. 3. 12.
+
+오후 10:17
+
+클로드 코드(Claude Code) 설치 가이드 - 윤자동
+
+클로드 코드 안에서 사용하는 명령어
+명령어
+
+설명
+
+/help
+
+도움말 보기
+
+/exit
+
+종료
+
+/logout
+
+로그아웃
+
+/config
+
+설정 변경
+
+/compact
+
+대화 내용 압축 (토큰 절약)
+
+/clear
+
+대화 내용 초기화
+
+빠른 설치 체크리스트
+☐ 운영체제 요구사항 확인 (Windows 10+, macOS 13+, Ubuntu 20.04+)
+☐ Git for Windows 설치 (Windows 사용자만)
+☐ Claude 유료 플랜 가입 (Pro $20/월 이상)
+☐ 공식 설치 스크립트 실행
+☐
+
+claude --version
+
+☐
+
+claude doctor
+
+☐
+
+claude
+
+으로 설치 확인
+
+로 종합 진단
+
+실행 후 브라우저에서 로그인
+
+☐ 프로젝트 폴더에서 첫 대화 테스트
+
+file:///C:/yunjadong/01_%EA%B5%90%EC%9C%A1%EC%82%AC%EC%97%85/%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%…
+
+16/17
+
+26. 3. 12.
+
+오후 10:17
+
+클로드 코드(Claude Code) 설치 가이드 - 윤자동
+
+☐ (선택) VS Code 또는 JetBrains 확장 설치
+
+윤자동 YUNAISOLUTION
+
+문의 및 교육 신청
+📞 010-7337-1122 | ✉️ ceo@yunjadong.com
+🌐 www.yunjadong.com | www.yunaisolution.com
+🎬 유튜브: 윤자동
+
+file:///C:/yunjadong/01_%EA%B5%90%EC%9C%A1%EC%82%AC%EC%97%85/%ED%81%B4%EB%A1%9C%EB%93%9C%EC%BD%94%…
+
+17/17
+
+
