@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>공학 시편제작 센터 | ASTM D638 고분자 인장 시편 & ASTM C1401 구조 실리콘 시험체 - KCT 한국건설트레이딩</title>
+  <title>공학 시편제작 센터 | ASTM D638 고분자 인장 시편 & ASTM C1401 구조 실리콘 시험체 종합 기술 백서 - KCT 한국건설트레이딩</title>
   <meta name="description" content="ASTM D638 Type I~V 고분자 3D 프린팅 정밀 인장 시편, ASTM C1401/C1135 구조용 실리콘 H-Block 접착 시험체, ASTM D412 Die C 엘라스토머 덤벨 시편 제작 및 DIC(Digital Image Correlation) 광학 변형률 분석 지원.">
-  <meta name="keywords" content="ASTM D638, ASTM C1401, ASTM D412, ASTM C1135, 인장 시편 제작, 3D프린팅 시편, PLA시편, DIC 변형률분석, 인스트론, 만능재료시험기, 구조용 실리콘 H-Block, KCT">
+  <meta name="keywords" content="ASTM D638, ASTM C1401, ASTM D412, ASTM C1135, ASTM C719, 인장 시편 제작, 3D프린팅 시편, PLA시편, DIC 변형률분석, 인스트론, 만능재료시험기, 구조용 실리콘 H-Block, KCT">
   
   <link rel="canonical" href="https://davhave.com/projects/kct/specimens">
   <meta property="og:type" content="website">
@@ -47,7 +47,7 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: var(--font); color: var(--gray-800); background: var(--gray-50); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--font); color: var(--gray-800); background: var(--gray-50); line-height: 1.7; -webkit-font-smoothing: antialiased; }
     a { color: inherit; text-decoration: none; }
     .container { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 1.5rem; }
 
@@ -79,7 +79,7 @@
     .spec-hero {
       background: linear-gradient(135deg, #0B132B 0%, #1C2541 50%, #0F172A 100%);
       color: var(--white);
-      padding: 4.5rem 0 5rem;
+      padding: 5rem 0 5.5rem;
       position: relative;
       overflow: hidden;
       border-bottom: 1px solid rgba(255,255,255,0.1);
@@ -88,8 +88,8 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 80% 20%, rgba(234,88,12,0.15) 0%, transparent 60%),
-                  radial-gradient(circle at 20% 80%, rgba(59,130,246,0.15) 0%, transparent 60%);
+      background: radial-gradient(circle at 80% 20%, rgba(234,88,12,0.18) 0%, transparent 60%),
+                  radial-gradient(circle at 20% 80%, rgba(59,130,246,0.18) 0%, transparent 60%);
       pointer-events: none;
     }
     .hero-eyebrow {
@@ -99,25 +99,25 @@
       background: rgba(255,255,255,0.1);
       border: 1px solid rgba(255,255,255,0.2);
       backdrop-filter: blur(8px);
-      padding: 0.4rem 0.9rem;
+      padding: 0.45rem 1rem;
       border-radius: 100px;
-      font-size: 0.82rem;
+      font-size: 0.84rem;
       font-weight: 700;
       color: #93C5FD;
       margin-bottom: 1.25rem;
       font-family: var(--mono);
     }
-    .hero-title { font-size: 2.6rem; font-weight: 900; line-height: 1.2; letter-spacing: -0.03em; margin-bottom: 1.2rem; }
+    .hero-title { font-size: 2.75rem; font-weight: 900; line-height: 1.2; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
     .hero-title span { color: #F97316; }
-    .hero-desc { font-size: 1.12rem; color: #CBD5E1; max-width: 820px; line-height: 1.7; margin-bottom: 2rem; font-weight: 400; }
+    .hero-desc { font-size: 1.15rem; color: #CBD5E1; max-width: 860px; line-height: 1.75; margin-bottom: 2rem; font-weight: 400; }
     
-    .hero-badges { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2.5rem; }
+    .hero-badges { display: flex; flex-wrap: wrap; gap: 0.65rem; margin-bottom: 2.5rem; }
     .hero-badge {
-      background: rgba(15,23,42,0.7);
+      background: rgba(15,23,42,0.75);
       border: 1px solid rgba(255,255,255,0.15);
-      padding: 0.45rem 0.9rem;
+      padding: 0.5rem 1rem;
       border-radius: 8px;
-      font-size: 0.82rem;
+      font-size: 0.84rem;
       font-weight: 600;
       color: #F1F5F9;
       display: inline-flex;
@@ -126,25 +126,69 @@
     }
 
     .hero-quick-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn-hero-primary { background: linear-gradient(135deg, #EA580C, #C2410C); color: #fff; font-weight: 800; padding: 0.9rem 1.8rem; border-radius: 10px; font-size: 1rem; box-shadow: 0 10px 25px rgba(234,88,12,0.4); display: inline-flex; align-items: center; gap: 0.5rem; transition: transform 0.2s; }
+    .btn-hero-primary { background: linear-gradient(135deg, #EA580C, #C2410C); color: #fff; font-weight: 800; padding: 0.95rem 1.9rem; border-radius: 10px; font-size: 1rem; box-shadow: 0 10px 25px rgba(234,88,12,0.4); display: inline-flex; align-items: center; gap: 0.5rem; transition: transform 0.2s; }
     .btn-hero-primary:hover { transform: translateY(-2px); color: #fff; }
-    .btn-hero-secondary { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); color: #fff; font-weight: 700; padding: 0.9rem 1.6rem; border-radius: 10px; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.2s; backdrop-filter: blur(8px); }
+    .btn-hero-secondary { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); color: #fff; font-weight: 700; padding: 0.95rem 1.7rem; border-radius: 10px; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.2s; backdrop-filter: blur(8px); }
     .btn-hero-secondary:hover { background: rgba(255,255,255,0.2); color: #fff; }
 
     /* Section Styles */
-    section { padding: 4.5rem 0; }
-    .section-header { text-align: center; max-width: 800px; margin: 0 auto 3.5rem; }
+    section { padding: 5rem 0; }
+    .section-header { text-align: center; max-width: 860px; margin: 0 auto 3.5rem; }
     .section-tag { font-family: var(--mono); font-size: 0.82rem; font-weight: 800; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
-    .section-title { font-size: 2.1rem; font-weight: 900; color: var(--dark); letter-spacing: -0.02em; margin-bottom: 0.8rem; }
-    .section-subtitle { font-size: 1.05rem; color: var(--gray-600); line-height: 1.65; }
+    .section-title { font-size: 2.25rem; font-weight: 900; color: var(--dark); letter-spacing: -0.02em; margin-bottom: 0.9rem; }
+    .section-subtitle { font-size: 1.05rem; color: var(--gray-600); line-height: 1.7; }
+
+    /* White Paper Technical Box */
+    .whitepaper-box {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 3.5rem;
+    }
+    .wp-header { display: flex; align-items: center; gap: 1rem; border-bottom: 2px solid var(--gray-100); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+    .wp-icon-ring { width: 54px; height: 54px; border-radius: 12px; background: rgba(30,58,138,0.08); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; flex: none; }
+    .wp-title-wrap h3 { font-size: 1.45rem; font-weight: 800; color: var(--dark); margin-bottom: 0.25rem; }
+    .wp-title-wrap p { font-size: 0.88rem; color: var(--gray-600); }
+
+    .wp-content h4 { font-size: 1.18rem; font-weight: 800; color: var(--primary-dark); margin: 1.8rem 0 0.8rem; display: flex; align-items: center; gap: 0.5rem; }
+    .wp-content p { font-size: 0.95rem; color: var(--gray-700); line-height: 1.75; margin-bottom: 1rem; }
+    
+    .formula-callout {
+      background: #0F172A;
+      color: #E2E8F0;
+      border-left: 4px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 1.25rem 1.6rem;
+      margin: 1.2rem 0 1.6rem;
+      font-family: var(--mono);
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+    .formula-callout strong { color: #F97316; }
+
+    .alert-box-info {
+      background: #EFF6FF;
+      border: 1px solid #BFDBFE;
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      color: #1E40AF;
+      font-size: 0.92rem;
+      line-height: 1.65;
+      margin: 1.5rem 0;
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
 
     /* Card Grid */
-    .spec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.8rem; }
+    .spec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 2rem; }
     .spec-card {
       background: var(--white);
       border: 1px solid var(--gray-200);
       border-radius: var(--radius);
-      padding: 1.8rem;
+      padding: 2rem;
       box-shadow: var(--shadow-sm);
       transition: all 0.3s ease;
       display: flex;
@@ -167,46 +211,46 @@
       background: var(--accent);
       color: var(--white);
       font-family: var(--mono);
-      font-size: 0.72rem;
+      font-size: 0.74rem;
       font-weight: 800;
-      padding: 0.25rem 0.75rem;
+      padding: 0.3rem 0.85rem;
       border-radius: 100px;
-      box-shadow: 0 4px 10px rgba(234,88,12,0.3);
+      box-shadow: 0 4px 12px rgba(234,88,12,0.35);
     }
     .spec-card-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
-    .spec-type-tag { font-family: var(--mono); font-size: 0.8rem; font-weight: 800; color: var(--primary); background: var(--gray-100); padding: 0.25rem 0.6rem; border-radius: 4px; }
-    .spec-title { font-size: 1.25rem; font-weight: 800; color: var(--dark); margin-bottom: 0.35rem; }
-    .spec-subtitle { font-size: 0.85rem; color: var(--gray-600); margin-bottom: 1rem; }
+    .spec-type-tag { font-family: var(--mono); font-size: 0.82rem; font-weight: 800; color: var(--primary); background: var(--gray-100); padding: 0.3rem 0.65rem; border-radius: 4px; }
+    .spec-title { font-size: 1.3rem; font-weight: 800; color: var(--dark); margin-bottom: 0.35rem; }
+    .spec-subtitle { font-size: 0.86rem; color: var(--gray-600); margin-bottom: 1.2rem; }
     
     .spec-metrics {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 0.6rem;
+      gap: 0.65rem;
       background: var(--gray-50);
       border: 1px solid var(--gray-200);
       border-radius: 8px;
-      padding: 0.9rem;
+      padding: 1rem;
       margin-bottom: 1.2rem;
     }
     .metric-item { display: flex; flex-direction: column; }
     .metric-label { font-size: 0.72rem; color: var(--gray-600); font-weight: 600; margin-bottom: 0.15rem; }
-    .metric-val { font-family: var(--mono); font-size: 0.95rem; font-weight: 800; color: var(--dark); }
+    .metric-val { font-family: var(--mono); font-size: 0.98rem; font-weight: 800; color: var(--dark); }
     .metric-val.accent { color: var(--accent); }
 
-    .spec-dim-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin-bottom: 1.2rem; }
-    .spec-dim-table th, .spec-dim-table td { padding: 0.4rem 0.5rem; border-bottom: 1px solid var(--gray-200); }
+    .spec-dim-table { width: 100%; border-collapse: collapse; font-size: 0.84rem; margin-bottom: 1.2rem; }
+    .spec-dim-table th, .spec-dim-table td { padding: 0.45rem 0.5rem; border-bottom: 1px solid var(--gray-200); }
     .spec-dim-table th { color: var(--gray-600); font-weight: 600; text-align: left; }
     .spec-dim-table td { font-family: var(--mono); font-weight: 600; text-align: right; color: var(--dark); }
 
-    .spec-desc { font-size: 0.88rem; color: var(--gray-700); line-height: 1.6; margin-bottom: 1.4rem; flex: 1; }
+    .spec-desc { font-size: 0.9rem; color: var(--gray-700); line-height: 1.65; margin-bottom: 1.5rem; flex: 1; }
     .spec-btn-action {
       margin-top: auto;
       background: var(--gray-100);
       color: var(--primary);
       border: 1px solid var(--gray-300);
       font-weight: 700;
-      font-size: 0.85rem;
-      padding: 0.7rem 1rem;
+      font-size: 0.88rem;
+      padding: 0.75rem 1rem;
       border-radius: 8px;
       text-align: center;
       transition: all 0.2s;
@@ -222,14 +266,14 @@
 
     /* Comparison Table Section */
     .table-container { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); overflow-x: auto; box-shadow: var(--shadow-sm); }
-    .full-comp-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left; min-width: 900px; }
-    .full-comp-table th { background: var(--gray-900); color: var(--white); padding: 1rem 1.2rem; font-weight: 700; font-family: var(--mono); font-size: 0.82rem; }
-    .full-comp-table td { padding: 1rem 1.2rem; border-bottom: 1px solid var(--gray-200); }
+    .full-comp-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left; min-width: 950px; }
+    .full-comp-table th { background: var(--gray-900); color: var(--white); padding: 1.1rem 1.2rem; font-weight: 700; font-family: var(--mono); font-size: 0.82rem; }
+    .full-comp-table td { padding: 1.1rem 1.2rem; border-bottom: 1px solid var(--gray-200); }
     .full-comp-table tr:hover td { background: var(--gray-50); }
     .full-comp-table tr.highlight td { background: rgba(234,88,12,0.04); font-weight: 600; }
     .badge-opt { background: #DCFCE7; color: #166534; font-size: 0.72rem; font-weight: 800; padding: 0.2rem 0.5rem; border-radius: 4px; font-family: var(--mono); }
 
-    /* Param & DIC Grid */
+    /* Tech Cards Grid */
     .tech-box-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 2rem; margin-top: 2rem; }
     .tech-box { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 2.2rem; box-shadow: var(--shadow-sm); }
     .tech-box h4 { font-size: 1.3rem; font-weight: 800; color: var(--dark); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.6rem; }
@@ -240,12 +284,12 @@
       background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
       color: var(--white);
       border-radius: var(--radius-lg);
-      padding: 3rem 2.5rem;
+      padding: 3.5rem 3rem;
       box-shadow: var(--shadow-xl);
       border: 1px solid rgba(255,255,255,0.1);
       margin: 2rem 0;
     }
-    .estimator-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 2.5rem; align-items: center; }
+    .estimator-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; align-items: center; }
     @media (max-width: 900px) { .estimator-grid { grid-template-columns: 1fr; } }
     
     .form-group { margin-bottom: 1.2rem; }
@@ -255,7 +299,7 @@
       background: rgba(255,255,255,0.08);
       border: 1px solid rgba(255,255,255,0.2);
       color: var(--white);
-      padding: 0.8rem 1rem;
+      padding: 0.85rem 1rem;
       border-radius: 8px;
       font-size: 0.92rem;
       font-family: var(--font);
@@ -269,10 +313,10 @@
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.12);
       border-radius: var(--radius);
-      padding: 2rem;
+      padding: 2.2rem;
       backdrop-filter: blur(10px);
     }
-    .res-row { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .res-row { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
     .res-row:last-child { border-bottom: none; }
     .res-label { font-size: 0.88rem; color: #94A3B8; }
     .res-val { font-family: var(--mono); font-size: 1.15rem; font-weight: 800; color: #F97316; }
@@ -304,9 +348,9 @@
   <div class="top-bar">
     <div class="container top-bar-inner">
       <div class="top-bar-info">
-        <span><i class="bi bi-shield-check text-primary-light"></i> <strong>시험규격:</strong> ASTM D638 / ASTM C1401 / ASTM D412</span>
-        <span><i class="bi bi-cpu text-primary-light"></i> <strong>정밀도:</strong> FDM 0.05mm 레이어 적층</span>
-        <span><i class="bi bi-camera text-primary-light"></i> <strong>변형률:</strong> DIC 광학 측정 (Ncorr)</span>
+        <span><i class="bi bi-shield-check text-primary-light"></i> <strong>시험규격:</strong> ASTM D638 / ASTM C1401 / ASTM C1135 / ASTM D412</span>
+        <span><i class="bi bi-cpu text-primary-light"></i> <strong>정밀조형:</strong> FDM 0.05mm 정밀 적층</span>
+        <span><i class="bi bi-camera text-primary-light"></i> <strong>광학측정:</strong> DIC 변형률 분석 (Ncorr)</span>
       </div>
       <div class="top-bar-links">
         <a href="/projects/kct"><i class="bi bi-house-door"></i> KCT 홈</a>
@@ -346,38 +390,118 @@
   <div class="spec-hero">
     <div class="container">
       <div class="hero-eyebrow">
-        <i class="bi bi-gear-wide-connected"></i> ASTM D638 & ASTM C1401 ENGINEERING SPECIMEN LAB
+        <i class="bi bi-gear-wide-connected"></i> ASTM D638 & ASTM C1401 COMPREHENSIVE ENGINEERING SPECIMEN LAB
       </div>
       <h1 class="hero-title">
-        고분자 인장 시편 & 구조 실리콘 <span>정밀 시편 제작 센터</span>
+        ASTM D638 고분자 인장 시편 &<br>ASTM C1401 구조 실리콘 <span>정밀 시편 제작 센터</span>
       </h1>
       <p class="hero-desc">
-        ASTM D638 Type I~V 플라스틱 인장 덤벨 시편부터 ASTM C1401/C1135 구조용 실리콘 H-Block 접착 시험체까지, 
-        FDM 정밀 3D 프린팅 조형 기술과 DIC(Digital Image Correlation) 비접촉 광학 변형률 분석을 결합한 원스톱 공학 시편 솔루션을 제공합니다.
+        ASTM D638 Type I~V 플라스틱 인장 덤벨 시편의 5대 기하학적 형상과 FDM 3D 적층 파라미터 최적화, 
+        DIC(Digital Image Correlation) 광학 변형률 분석, 그리고 커튼월 구조 글레이징(SSG)을 위한 ASTM C1401 / ASTM C1135 
+        H-Block 인장 접착 시험체 제작 및 Instron UTM 시험 가이드를 제공하는 엔지니어링 기술 센터입니다.
       </p>
 
       <div class="hero-badges">
-        <span class="hero-badge"><i class="bi bi-check-circle-fill text-accent"></i> ASTM D638 Type I~V 규격 완벽 준수</span>
-        <span class="hero-badge"><i class="bi bi-check-circle-fill text-accent"></i> ASTM C1401 / C1135 H-Block 구조접착</span>
-        <span class="hero-badge"><i class="bi bi-check-circle-fill text-accent"></i> DIC 2~4px 고대비 스펙클 패턴 표면 가공</span>
-        <span class="hero-badge"><i class="bi bi-check-circle-fill text-accent"></i> ★ Type V 고효율 시편 (제작시간·비용 80% 절감)</span>
-        <span class="hero-badge"><i class="bi bi-check-circle-fill text-accent"></i> Instron / Shimadzu UTM 시험 파라미터 매핑</span>
+        <span class="hero-badge"><i class="bi bi-check-circle-fill text-accent"></i> ASTM D638 Type I ~ Type V 전 규격 완벽 대응</span>
+        <span class="hero-badge"><i class="bi bi-check-circle-fill text-accent"></i> ASTM C1401 / C1135 H-Block 구조접착 시험체 (50×12×12mm)</span>
+        <span class="hero-badge"><i class="bi bi-check-circle-fill text-accent"></i> DIC 2~4px 고대비 스펙클 표면 가공 (Ncorr 분석 연동)</span>
+        <span class="hero-badge"><i class="bi bi-check-circle-fill text-accent"></i> ★ Type V 고효율 시편 (제작시간 5배 단축, 재료 80% 절감)</span>
+        <span class="hero-badge"><i class="bi bi-check-circle-fill text-accent"></i> Instron 만능재료시험기 속도 및 신율계 세팅 매핑</span>
       </div>
 
       <div class="hero-quick-cta">
-        <a href="#estimator" class="btn-hero-primary"><i class="bi bi-calculator"></i> 시편 출력시간 & 견적 계산기</a>
-        <a href="#standards-grid" class="btn-hero-secondary"><i class="bi bi-diagram-3"></i> 5대 규격 상세 치수 비교표</a>
+        <a href="#d638-deepdive" class="btn-hero-primary"><i class="bi bi-book-half"></i> ASTM D638 공학 기술 가이드</a>
+        <a href="#c1401-deepdive" class="btn-hero-secondary"><i class="bi bi-building-gear"></i> ASTM C1401 실리콘 구조설계 가이드</a>
+        <a href="#estimator" class="btn-hero-secondary"><i class="bi bi-calculator"></i> 시편 출력시간 & 중량 계산기</a>
       </div>
     </div>
   </div>
 
-  <!-- Section 1: ASTM D638 5 Types -->
-  <section id="standards-grid" class="container">
+  <!-- Engineering Deep Dive 1: ASTM D638 Comprehensive Guide -->
+  <section id="d638-deepdive" class="container">
     <div class="section-header">
-      <span class="section-tag">// Standard Specimen Geometries</span>
-      <h2 class="section-title">ASTM D638 5대 인장 시편 규격 정밀 비교</h2>
+      <span class="section-tag">// Engineering Fundamentals</span>
+      <h2 class="section-title">ASTM D638 플라스틱 인장 시험 심층 공학 가이드</h2>
       <p class="section-subtitle">
-        재료의 형태, 가용 두께, 파단 특성 및 경제성에 따라 최적화된 5가지 덤벨(Dog-bone) 시편 형상을 지원합니다.
+        고분자 재료의 기계적 거동을 정량화하기 위한 시험 원리, 측정 파라미터 수식 및 Instron UTM 장비 설정 프로토콜입니다.
+      </p>
+    </div>
+
+    <div class="whitepaper-box">
+      <div class="wp-header">
+        <div class="wp-icon-ring"><i class="bi bi-rulers"></i></div>
+        <div class="wp-title-wrap">
+          <h3>ASTM D638 표준의 핵심 목적 및 5대 기계적 물성 파라미터</h3>
+          <p>Standard Test Method for Tensile Properties of Plastics (ASTM International / Instron Guidance)</p>
+        </div>
+      </div>
+
+      <div class="wp-content">
+        <p>
+          ASTM D638은 비보강 및 보강 플라스틱, 열가소성/열경화성 고분자, 3D 프린팅 조형물의 인장 물성을 평가하는 대표적인 국제 시험 규격입니다. 덤벨(Dog-bone) 형상의 시편에 일정한 속도로 인장 하중을 가하여 응력-변형률 곡선(Stress-Strain Curve)을 도출하며, 다음 5대 핵심 파라미터를 측정합니다.
+        </p>
+
+        <h4>1. 최종 인장강도 (Ultimate Tensile Strength, UTS / $\sigma_u$)</h4>
+        <p>
+          시편이 파단될 때까지 견디는 최대 인장 하중($F_{\text{max}}$)을 초기 평행부 최소 단면적($A_0 = W \times T$)으로 나눈 값입니다.
+        </p>
+        <div class="formula-callout">
+          <strong>인장강도 산출식:</strong><br>
+          $\sigma = \frac{F_{\text{max}}}{A_0} = \frac{F_{\text{max}}}{W \times T} \quad [\text{MPa 또는 } \text{N/mm}^2]$<br>
+          <em>(여기서 $W$: 평행부 협소 폭, $T$: 시편 두께)</em>
+        </div>
+
+        <h4>2. 인장 탄성계수 (Young's Modulus / Tensile Modulus, $E$)</h4>
+        <p>
+          재료의 강성(Stiffness)을 나타내며, 응력-변형률 곡선의 초기 탄성 선형 구간(보통 변형률 $0.05\% \sim 0.25\%$ 범위)에서의 기울기로 산출됩니다.
+        </p>
+        <div class="formula-callout">
+          <strong>인장 탄성계수 산출식 (Hooke의 법칙):</strong><br>
+          $E = \frac{\Delta \sigma}{\Delta \varepsilon} = \frac{\sigma_2 - \sigma_1}{\varepsilon_2 - \varepsilon_1} \quad [\text{GPa 또는 } \text{MPa}]$
+        </div>
+
+        <h4>3. 항복강도 및 오프셋 항복점 (Yield Strength / $0.2\%$ Offset Yield)</h4>
+        <p>
+          탄성 변형에서 영구적인 소성 변형으로 전이되는 지점의 응력입니다. 뚜렷한 항복점이 나타나지 않는 고분자의 경우 $0.2\%$ 변형률 오프셋 직선을 그어 교차점을 산출합니다.
+        </p>
+
+        <h4>4. 파단 연신율 (Elongation at Break / Nominal Strain, $\varepsilon_b$)</h4>
+        <p>
+          시편이 파단되는 순간 초기 표점거리($G$ 또는 $L_0$) 대비 늘어난 길이의 백분율입니다. 재료의 연성(Ductility)을 평가하는 핵심 척도입니다.
+        </p>
+        <div class="formula-callout">
+          <strong>파단 연신율 산출식:</strong><br>
+          $\varepsilon_b = \frac{L_f - L_0}{L_0} \times 100 \quad [\%]$<br>
+          <em>(여기서 $L_0$: 초기 표점거리 Gage Length, $L_f$: 파단 시점 표점거리)</em>
+        </div>
+
+        <h4>5. 포아송 비 (Poisson's Ratio, $\nu$)</h4>
+        <p>
+          축방향 인장 변형률($\varepsilon_{yy}$)에 대한 횡방향 수축 변형률($\varepsilon_{xx}$)의 비율로, DIC(Digital Image Correlation) 광학 변형률 분석을 통해 실시간 2차원 텐서로 측정됩니다.
+        </p>
+        <div class="formula-callout">
+          <strong>포아송 비 산출식:</strong><br>
+          $\nu = - \frac{\varepsilon_{\text{transverse}}}{\varepsilon_{\text{longitudinal}}} = - \frac{\varepsilon_{xx}}{\varepsilon_{yy}}$
+        </div>
+
+        <div class="alert-box-info">
+          <i class="bi bi-info-circle-fill" style="font-size:1.2rem; flex:none;"></i>
+          <div>
+            <strong>Instron UTM 시험 시 주의사항 (신율계 Extensometer 필수):</strong><br>
+            크로스헤드 이동 거리(Crosshead Displacement)만으로 변형률을 계산하면 그립 슬립 및 시스템 유연성으로 인해 탄성계수가 최대 $30\sim 50\%$ 과소평가될 수 있습니다. 정밀 탄성계수 측정을 위해서는 반드시 <strong>클립온 접촉식 신율계</strong> 또는 <strong>비접촉 비디오/DIC 신율계</strong>를 사용해야 합니다.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: ASTM D638 5 Types Detailed Grid -->
+  <section class="container" style="padding-top:0;">
+    <div class="section-header">
+      <span class="section-tag">// Specimen Types & Dimensions</span>
+      <h2 class="section-title">ASTM D638 5대 덤벨 시편 규격별 상세 치수 & 용도</h2>
+      <p class="section-subtitle">
+        시편 두께, 재료 가용량, 파단 특성 및 시험 목적에 따라 엄격히 정의된 5가지 형상 규격입니다.
       </p>
     </div>
 
@@ -386,7 +510,7 @@
       <div class="spec-card">
         <div class="spec-card-head">
           <span class="spec-type-tag">TYPE I</span>
-          <span style="font-size:0.75rem; color:var(--primary); font-weight:700;"><i class="bi bi-award-fill"></i> 표준 인장 규격</span>
+          <span style="font-size:0.75rem; color:var(--primary); font-weight:700;"><i class="bi bi-award-fill"></i> 표준 덤벨 규격</span>
         </div>
         <h3 class="spec-title">ASTM D638 Type I</h3>
         <div class="spec-subtitle">표준 경질 플라스틱 (두께 ≤ 7.0mm)</div>
@@ -398,7 +522,7 @@
           </div>
           <div class="metric-item">
             <span class="metric-label">3D 출력 소요시간</span>
-            <span class="metric-val">1시간 18분</span>
+            <span class="metric-val">1시간 18분 31초</span>
           </div>
           <div class="metric-item">
             <span class="metric-label">필라멘트 소모량</span>
@@ -411,15 +535,17 @@
         </div>
 
         <table class="spec-dim-table">
-          <tr><th>평행부 폭 (W)</th><td>13.0 mm (±0.5)</td></tr>
-          <tr><th>평행부 길이 (L)</th><td>57.0 mm (±0.5)</td></tr>
-          <tr><th>전체 폭 / 길이 (WO/LO)</th><td>19.0 / 165.0 mm</td></tr>
-          <tr><th>표점거리 (G) / 그립간격 (D)</th><td>50.0 / 115.0 mm</td></tr>
-          <tr><th>필렛 반경 (R)</th><td>76.0 mm (±1.0)</td></tr>
+          <tr><th>W - 평행부 폭</th><td>13.0 mm (±0.5)</td></tr>
+          <tr><th>L - 평행부 길이</th><td>57.0 mm (±0.5)</td></tr>
+          <tr><th>WO - 전체 폭</th><td>19.0 mm (+6.4)</td></tr>
+          <tr><th>LO - 전체 길이</th><td>165.0 mm</td></tr>
+          <tr><th>G - 표점거리 (Gage Length)</th><td>50.0 mm (±0.25)</td></tr>
+          <tr><th>D - 그립간 거리</th><td>115.0 mm (±5.0)</td></tr>
+          <tr><th>R - 필렛 반경</th><td>76.0 mm (±1.0)</td></tr>
         </table>
 
         <p class="spec-desc">
-          가장 널리 쓰이는 표준 덤벨 시편으로 강성 및 반경질 고분자(PLA+, ABS, PC)의 공인 인장 시험에 사용됩니다.
+          <strong>권장 용도:</strong> 가장 대표적인 표준 시편으로 강성 및 반경질 플라스틱(PLA+, ABS, PC, POM 등)의 공인 인증 시험에 필수입니다.
         </p>
         <button class="spec-btn-action" onclick="selectSpecimenToCalc('TYPE-1')">
           <i class="bi bi-check2-circle"></i> 견적 계산기 적용
@@ -430,10 +556,10 @@
       <div class="spec-card">
         <div class="spec-card-head">
           <span class="spec-type-tag" style="color:#0284C7;">TYPE II</span>
-          <span style="font-size:0.75rem; color:#0284C7; font-weight:700;"><i class="bi bi-shield-slash"></i> 비파단 재료용</span>
+          <span style="font-size:0.75rem; color:#0284C7; font-weight:700;"><i class="bi bi-shield-slash"></i> 슬립/조기파단 방지</span>
         </div>
         <h3 class="spec-title">ASTM D638 Type II</h3>
-        <div class="spec-subtitle">협소 평행부 (슬립/그립부 조기파단 방지)</div>
+        <div class="spec-subtitle">협소 평행부 (슬립 및 그립부 파단 방지용)</div>
         
         <div class="spec-metrics">
           <div class="metric-item">
@@ -442,7 +568,7 @@
           </div>
           <div class="metric-item">
             <span class="metric-label">3D 출력 소요시간</span>
-            <span class="metric-val">1시간 09분</span>
+            <span class="metric-val">1시간 09분 45초</span>
           </div>
           <div class="metric-item">
             <span class="metric-label">필라멘트 소모량</span>
@@ -455,15 +581,17 @@
         </div>
 
         <table class="spec-dim-table">
-          <tr><th>평행부 폭 (W)</th><td>6.0 mm (±0.5)</td></tr>
-          <tr><th>평행부 길이 (L)</th><td>57.0 mm (±0.5)</td></tr>
-          <tr><th>전체 폭 / 길이 (WO/LO)</th><td>19.0 / 183.0 mm</td></tr>
-          <tr><th>표점거리 (G) / 그립간격 (D)</th><td>50.0 / 135.0 mm</td></tr>
-          <tr><th>필렛 반경 (R)</th><td>76.0 mm (±1.0)</td></tr>
+          <tr><th>W - 평행부 폭</th><td>6.0 mm (±0.5)</td></tr>
+          <tr><th>L - 평행부 길이</th><td>57.0 mm (±0.5)</td></tr>
+          <tr><th>WO - 전체 폭</th><td>19.0 mm (+6.4)</td></tr>
+          <tr><th>LO - 전체 길이</th><td>183.0 mm</td></tr>
+          <tr><th>G - 표점거리</th><td>50.0 mm (±0.25)</td></tr>
+          <tr><th>D - 그립간 거리</th><td>135.0 mm (±5.0)</td></tr>
+          <tr><th>R - 필렛 반경</th><td>76.0 mm (±1.0)</td></tr>
         </table>
 
         <p class="spec-desc">
-          Type I 시편 시험 시 표점 외부에서 파단되거나 그립 슬립이 발생하는 재료에 적합한 긴 그립 구조를 갖습니다.
+          <strong>권장 용도:</strong> Type I 시험 시 그립 부근의 응력 집중으로 표점 외부 조기 파단이 일어나는 재료에 적합한 긴 그립 구조입니다.
         </p>
         <button class="spec-btn-action" onclick="selectSpecimenToCalc('TYPE-2')">
           <i class="bi bi-check2-circle"></i> 견적 계산기 적용
@@ -474,7 +602,7 @@
       <div class="spec-card">
         <div class="spec-card-head">
           <span class="spec-type-tag" style="color:#7C3AED;">TYPE III</span>
-          <span style="font-size:0.75rem; color:#7C3AED; font-weight:700;"><i class="bi bi-layers-fill"></i> 후판/구조재용</span>
+          <span style="font-size:0.75rem; color:#7C3AED; font-weight:700;"><i class="bi bi-layers-fill"></i> 후판/대형 구조재</span>
         </div>
         <h3 class="spec-title">ASTM D638 Type III</h3>
         <div class="spec-subtitle">후판 시트 및 대형 구조재 (두께 7~14mm)</div>
@@ -486,7 +614,7 @@
           </div>
           <div class="metric-item">
             <span class="metric-label">3D 출력 소요시간</span>
-            <span class="metric-val">3시간 05분</span>
+            <span class="metric-val">3시간 05분 27초</span>
           </div>
           <div class="metric-item">
             <span class="metric-label">필라멘트 소모량</span>
@@ -499,15 +627,17 @@
         </div>
 
         <table class="spec-dim-table">
-          <tr><th>평행부 폭 (W)</th><td>19.0 mm (±0.5)</td></tr>
-          <tr><th>평행부 길이 (L)</th><td>57.0 mm (±0.5)</td></tr>
-          <tr><th>전체 폭 / 길이 (WO/LO)</th><td>29.0 / 246.0 mm</td></tr>
-          <tr><th>표점거리 (G) / 그립간격 (D)</th><td>50.0 / 115.0 mm</td></tr>
-          <tr><th>필렛 반경 (R)</th><td>76.0 mm (±1.0)</td></tr>
+          <tr><th>W - 평행부 폭</th><td>19.0 mm (±0.5)</td></tr>
+          <tr><th>L - 평행부 길이</th><td>57.0 mm (±0.5)</td></tr>
+          <tr><th>WO - 전체 폭</th><td>29.0 mm (+6.4)</td></tr>
+          <tr><th>LO - 전체 길이</th><td>246.0 mm</td></tr>
+          <tr><th>G - 표점거리</th><td>50.0 mm (±0.25)</td></tr>
+          <tr><th>D - 그립간 거리</th><td>115.0 mm (±5.0)</td></tr>
+          <tr><th>R - 필렛 반경</th><td>76.0 mm (±1.0)</td></tr>
         </table>
 
         <p class="spec-desc">
-          두께 7mm 이상의 두꺼운 엔지니어링 플라스틱 판재, 압출재 및 대형 조형체의 대하중 인장 시험 규격입니다.
+          <strong>권장 용도:</strong> 두께 7mm를 초과하는 두꺼운 엔지니어링 플라스틱 판재, 압출재 및 대형 3D 조형체의 대하중 인장 평가용 규격입니다.
         </p>
         <button class="spec-btn-action" onclick="selectSpecimenToCalc('TYPE-3')">
           <i class="bi bi-check2-circle"></i> 견적 계산기 적용
@@ -518,7 +648,7 @@
       <div class="spec-card">
         <div class="spec-card-head">
           <span class="spec-type-tag" style="color:#D97706;">TYPE IV</span>
-          <span style="font-size:0.75rem; color:#D97706; font-weight:700;"><i class="bi bi-shuffle"></i> 연질/탄성체 비교용</span>
+          <span style="font-size:0.75rem; color:#D97706; font-weight:700;"><i class="bi bi-shuffle"></i> 연질/탄성체 비교</span>
         </div>
         <h3 class="spec-title">ASTM D638 Type IV</h3>
         <div class="spec-subtitle">경질 및 비경질 플라스틱 비교 시험용</div>
@@ -543,15 +673,17 @@
         </div>
 
         <table class="spec-dim-table">
-          <tr><th>평행부 폭 (W)</th><td>6.0 mm (±0.5)</td></tr>
-          <tr><th>평행부 길이 (L)</th><td>33.0 mm (±0.5)</td></tr>
-          <tr><th>전체 폭 / 길이 (WO/LO)</th><td>19.0 / 115.0 mm</td></tr>
-          <tr><th>표점거리 (G) / 그립간격 (D)</th><td>25.0 / 65.0 mm</td></tr>
-          <tr><th>필렛 반경 (R / RO)</th><td>14.0 / 25.0 mm</td></tr>
+          <tr><th>W - 평행부 폭</th><td>6.0 mm (±0.5)</td></tr>
+          <tr><th>L - 평행부 길이</th><td>33.0 mm (±0.5)</td></tr>
+          <tr><th>WO - 전체 폭</th><td>19.0 mm (+6.4)</td></tr>
+          <tr><th>LO - 전체 길이</th><td>115.0 mm</td></tr>
+          <tr><th>G - 표점거리</th><td>25.0 mm (±0.13)</td></tr>
+          <tr><th>D - 그립간 거리</th><td>65.0 mm (±5.0)</td></tr>
+          <tr><th>R / RO - 필렛 / 외측반경</th><td>14.0 mm / 25.0 mm</td></tr>
         </table>
 
         <p class="spec-desc">
-          경질 고분자와 연질 탄성체(TPU)의 직접 비교를 위해 외측 반경(RO 25mm)이 설계된 콤팩트 규격입니다.
+          <strong>권장 용도:</strong> 경질 고분자와 유연 고분자(TPU, PE 등)의 연신율 거동 비교를 위해 외측 라운딩(RO 25mm)이 적용된 콤팩트 규격입니다.
         </p>
         <button class="spec-btn-action" onclick="selectSpecimenToCalc('TYPE-4')">
           <i class="bi bi-check2-circle"></i> 견적 계산기 적용
@@ -560,7 +692,7 @@
 
       <!-- Type V (Optimal Recommendation) -->
       <div class="spec-card highlight">
-        <span class="spec-badge-top"><i class="bi bi-star-fill"></i> ★ 논문 검증 최고 효율 시편</span>
+        <span class="spec-badge-top"><i class="bi bi-star-fill"></i> ★ 연구 논문 검증 최고 효율 시편</span>
         <div class="spec-card-head">
           <span class="spec-type-tag" style="background:var(--accent); color:#fff;">TYPE V (MICRO)</span>
           <span style="font-size:0.75rem; color:var(--accent); font-weight:800;"><i class="bi bi-lightning-charge-fill"></i> 80% 시간·비용 절감</span>
@@ -571,7 +703,7 @@
         <div class="spec-metrics" style="background:rgba(234,88,12,0.06); border-color:rgba(234,88,12,0.2);">
           <div class="metric-item">
             <span class="metric-label">최종 인장강도 (UTS)</span>
-            <span class="metric-val accent">42.64 MPa (Type I 근접)</span>
+            <span class="metric-val accent">42.64 MPa (Type I과 동등)</span>
           </div>
           <div class="metric-item">
             <span class="metric-label">3D 출력 소요시간</span>
@@ -588,15 +720,17 @@
         </div>
 
         <table class="spec-dim-table">
-          <tr><th>평행부 폭 (W)</th><td>3.18 mm (±0.5)</td></tr>
-          <tr><th>평행부 길이 (L)</th><td>9.53 mm (±0.5)</td></tr>
-          <tr><th>전체 폭 / 길이 (WO/LO)</th><td>9.53 / 63.5 mm</td></tr>
-          <tr><th>표점거리 (G) / 그립간격 (D)</th><td>7.62 / 25.4 mm</td></tr>
-          <tr><th>필렛 반경 (R)</th><td>12.7 mm (±1.0)</td></tr>
+          <tr><th>W - 평행부 폭</th><td>3.18 mm (±0.5)</td></tr>
+          <tr><th>L - 평행부 길이</th><td>9.53 mm (±0.5)</td></tr>
+          <tr><th>WO - 전체 폭</th><td>9.53 mm (+3.18)</td></tr>
+          <tr><th>LO - 전체 길이</th><td>63.5 mm</td></tr>
+          <tr><th>G - 표점거리</th><td>7.62 mm (±0.25)</td></tr>
+          <tr><th>D - 그립간 거리</th><td>25.4 mm (±5.0)</td></tr>
+          <tr><th>R - 필렛 반경</th><td>12.7 mm (±1.0)</td></tr>
         </table>
 
         <p class="spec-desc">
-          <strong>논문 결론 추천:</strong> Type I 대비 출력 시간 14분(5배 단축), 재료 1.8g(5배 절감)으로 80% 이상 비용을 줄이면서도 42.64 MPa의 정밀 인장강도를 도출하는 최고 가성비 규격입니다.
+          <strong>★ 논문 결론 및 추천:</strong> Type I 대비 출력 시간 14분(5배 단축), 재료 1.8g(5배 절감)으로 80% 이상 원가를 줄이면서도 42.64 MPa의 정밀 인장강도를 도출하는 최고 가성비 마이크로 시편입니다.
         </p>
         <button class="spec-btn-action" onclick="selectSpecimenToCalc('TYPE-5')">
           <i class="bi bi-star-fill"></i> ★ Type V 계산기 적용
@@ -605,158 +739,132 @@
     </div>
   </section>
 
-  <!-- Section 2: Comprehensive Table -->
+  <!-- Engineering Deep Dive 2: FDM 3D Printing & DIC Optical Analysis -->
   <section style="background:var(--white); border-top:1px solid var(--gray-200); border-bottom:1px solid var(--gray-200);">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">// Research Paper Data</span>
-        <h2 class="section-title">ASTM D638 시편 규격별 성능 및 생산 효율 비교</h2>
+        <span class="section-tag">// Additive Manufacturing & DIC Analysis</span>
+        <h2 class="section-title">FDM 3D 적층 파라미터 최적화 & DIC 광학 변형률 분석</h2>
         <p class="section-subtitle">
-          터키 압둘라 굴 대학(AGU) 연구진의 공인 실측 데이터(FDM PLA+, eSUN, 100% Infill 기준)를 기반으로 정리된 비교표입니다.
+          인장 하중 방향 정렬 메커니즘과 비접촉 2차원 고정밀 변형률 필드 가시화 기술입니다.
         </p>
       </div>
 
-      <div class="table-container">
-        <table class="full-comp-table">
-          <thead>
-            <tr>
-              <th>시편 유형</th>
-              <th>평행부 치수 (W × L)</th>
-              <th>표점거리 (G)</th>
-              <th>최종 인장강도 (UTS)</th>
-              <th>출력 소요시간</th>
-              <th>필라멘트 소모량</th>
-              <th>Instron 권장속도</th>
-              <th>최적 용도 & 추천도</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Type I</strong></td>
-              <td>13.0 × 57.0 mm</td>
-              <td>50.0 mm</td>
-              <td>43.18 MPa</td>
-              <td>1시간 18분</td>
-              <td>9.8 g (3.30 m)</td>
-              <td>5 mm/min</td>
-              <td>공인 인증 시험 표준 (높은 신뢰도)</td>
-            </tr>
-            <tr>
-              <td><strong>Type II</strong></td>
-              <td>6.0 × 57.0 mm</td>
-              <td>50.0 mm</td>
-              <td>43.16 MPa</td>
-              <td>1시간 09분</td>
-              <td>8.3 g (2.80 m)</td>
-              <td>5 mm/min</td>
-              <td>그립부 조기 파단 방지용</td>
-            </tr>
-            <tr>
-              <td><strong>Type III</strong></td>
-              <td>19.0 × 57.0 mm</td>
-              <td>50.0 mm</td>
-              <td>43.02 MPa</td>
-              <td>3시간 05분</td>
-              <td>23.0 g (7.70 m)</td>
-              <td>5 mm/min</td>
-              <td>두께 7~14mm 후판 시트 평가</td>
-            </tr>
-            <tr>
-              <td><strong>Type IV</strong></td>
-              <td>6.0 × 33.0 mm</td>
-              <td>25.0 mm</td>
-              <td>40.30 MPa</td>
-              <td>48분 38초</td>
-              <td>5.7 g (1.91 m)</td>
-              <td>50 mm/min</td>
-              <td>연질 탄성체 및 유연 고분자 비교</td>
-            </tr>
-            <tr class="highlight">
-              <td><strong>Type V</strong> <span class="badge-opt">★ 추천</span></td>
-              <td>3.18 × 9.53 mm</td>
-              <td>7.62 mm</td>
-              <td><strong style="color:var(--accent);">42.64 MPa</strong></td>
-              <td><strong style="color:var(--accent);">14분 59초</strong></td>
-              <td><strong style="color:var(--accent);">1.8 g</strong></td>
-              <td>1 ~ 5 mm/min</td>
-              <td>★ <strong>최고 효율 (R&D 신속시험 / 80% 비용절감)</strong></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 3: FDM 3D Printing & DIC Optical Analysis -->
-  <section class="container">
-    <div class="section-header">
-      <span class="section-tag">// Advanced Engineering & Testing</span>
-      <h2 class="section-title">3D 프린팅 최적 공정 & DIC 광학 변형률 분석</h2>
-      <p class="section-subtitle">
-        시편의 층간 결합력을 극대화하는 FDM 적층 조건과 비접촉 2차원 변형률 가시화 기술을 적용합니다.
-      </p>
-    </div>
-
-    <div class="tech-box-grid">
-      <!-- 3D Printing Optimization -->
-      <div class="tech-box">
-        <h4><i class="bi bi-printer-fill text-primary"></i> 3D 프린팅 공정 파라미터 최적화</h4>
-        <p>
-          인장 하중 방향(X축)과 0° 일치하는 <strong>100% Solid Lines 라스터 적층</strong>을 적용하여 층간 박리를 원천 차단하고 단일 부재 수준의 인장강도를 구현합니다.
-        </p>
-        <table class="spec-dim-table">
-          <tr><th>노즐 압출 온도</th><td>215 °C (층간 융착 강화)</td></tr>
-          <tr><th>히팅베드 온도</th><td>80 °C (수축/들뜸 방지)</td></tr>
-          <tr><th>적층 두께 (Layer Height)</th><td>0.25 mm (정밀 조도)</td></tr>
-          <tr><th>인필 밀도 & 각도</th><td>100% Solid (0° 인장방향)</td></tr>
-          <tr><th>출력 속도 & 브림</th><td>30 mm/s, 10 Lines Brim</td></tr>
-        </table>
-      </div>
-
-      <!-- DIC Optical Analysis -->
-      <div class="tech-box">
-        <h4><i class="bi bi-camera-fill text-accent"></i> DIC 광학 변형률 분석 (Ncorr)</h4>
-        <p>
-          시편 표면에 백색 무광 코팅 및 <strong>2~4 pixel 고대비 랜덤 스펙클 패턴</strong>을 도포하여 UTM 인장 시험 중 발생하는 횡방향 수축(Exx) 및 축방향 연신(Eyy)을 비접촉 실시간 정밀 추적합니다.
-        </p>
-        <table class="spec-dim-table">
-          <tr><th>분석 플랫폼</th><td>Ncorr 2D DIC + MATLAB</td></tr>
-          <tr><th>서브셋 반경 & 간격</th><td>Subset Radius 23, Spacing 2</td></tr>
-          <tr><th>스펙클 패턴 크기</th><td>2 ~ 4 Pixel 고밀도 분포</td></tr>
-          <tr><th>측정 출력값</th><td>Exx(횡방향), Eyy(축방향), Necking</td></tr>
-          <tr><th>카메라 세팅</th><td>50MP 고해상도 + 듀얼 조명 동기화</td></tr>
-        </table>
-      </div>
-
-      <!-- Silicone & Construction Specimens -->
-      <div class="tech-box" style="grid-column: 1 / -1;">
-        <h4><i class="bi bi-building-fill-gear text-primary"></i> 건축용 구조 실리콘 & 실란트 공학 시편 라인업</h4>
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:1.2rem; margin-top:1.2rem;">
-          <div style="background:var(--gray-50); padding:1.2rem; border-radius:8px; border:1px solid var(--gray-200);">
-            <div style="font-weight:800; color:var(--dark); margin-bottom:0.3rem;">ASTM C1401 / C1135</div>
-            <div style="font-size:0.82rem; color:var(--accent); font-weight:700; margin-bottom:0.5rem;">H-Block 구조 글레이징 접착 시편</div>
-            <div style="font-size:0.82rem; color:var(--gray-600);">50×12×12mm 알루미늄/유리 구조용 실리콘(Dow 983) 인장접착강도 및 응집파괴 평가</div>
+      <div class="whitepaper-box" style="margin-bottom:2.5rem;">
+        <div class="wp-header">
+          <div class="wp-icon-ring" style="background:rgba(234,88,12,0.1); color:var(--accent);"><i class="bi bi-cpu-fill"></i></div>
+          <div class="wp-title-wrap">
+            <h3>3D 프린팅 적층 파라미터가 인장 물성에 미치는 영향 (연구 논문 분석)</h3>
+            <p>Layer Height, Infill Raster Angle (0° vs 90°), Extrusion Temperature Optimization</p>
           </div>
-          <div style="background:var(--gray-50); padding:1.2rem; border-radius:8px; border:1px solid var(--gray-200);">
-            <div style="font-weight:800; color:var(--dark); margin-bottom:0.3rem;">ASTM D412 (Die C)</div>
-            <div style="font-size:0.82rem; color:var(--accent); font-weight:700; margin-bottom:0.5rem;">엘라스토머 덤벨 인장·연신율 시편</div>
-            <div style="font-size:0.82rem; color:var(--gray-600);">실리콘 고무 100% 모듈러스, 파단 인장강도 및 최대 연신율(400~800%) 시험</div>
+        </div>
+
+        <div class="wp-content">
+          <p>
+            FDM(Fused Deposition Modeling) 3D 프린팅으로 제작된 시편은 적층 방향(Build Orientation)과 라스터 각도(Raster Angle)에 따라 극심한 이방성(Anisotropy)을 나타냅니다. 본 연구 논문(Gomaa et al., 2025)에 따르면:
+          </p>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem; margin:1.5rem 0;">
+            <div style="background:var(--gray-50); padding:1.5rem; border-radius:8px; border:1px solid var(--gray-200);">
+              <div style="font-weight:800; color:var(--dark); margin-bottom:0.4rem;"><i class="bi bi-arrow-right-circle-fill text-accent"></i> 인장 방향 0° 라스터 정렬 (최우수)</div>
+              <p style="font-size:0.88rem; color:var(--gray-700); margin:0;">
+                인장 하중 방향과 필라멘트 압출 방향을 0° 평행하게 적층할 경우 <strong>최대 58.0 ~ 64.0 MPa</strong>의 높은 UTS를 달성하며 층간 박리를 원천 억제합니다.
+              </p>
+            </div>
+            <div style="background:var(--gray-50); padding:1.5rem; border-radius:8px; border:1px solid var(--gray-200);">
+              <div style="font-weight:800; color:var(--dark); margin-bottom:0.4rem;"><i class="bi bi-x-circle-fill text-gray-600"></i> 인장 수직 90° 라스터 적층 (강도 저하)</div>
+              <p style="font-size:0.88rem; color:var(--gray-700); margin:0;">
+                90° 수직 적층 시 층간 계면 접착력 부족으로 인해 인장강도가 <strong>52.8% 급격히 감소(약 35.16 MPa)</strong>합니다.
+              </p>
+            </div>
+            <div style="background:var(--gray-50); padding:1.5rem; border-radius:8px; border:1px solid var(--gray-200);">
+              <div style="font-weight:800; color:var(--dark); margin-bottom:0.4rem;"><i class="bi bi-thermometer-high text-primary"></i> 215℃ 노즐 & 80℃ 베드 최적화</div>
+              <p style="font-size:0.88rem; color:var(--gray-700); margin:0;">
+                215℃ 고온 압출과 80℃ 히팅베드, 100% Solid 인필을 적용하여 미세 공극을 제거하고 완전한 균질 밀도를 형성합니다.
+              </p>
+            </div>
           </div>
-          <div style="background:var(--gray-50); padding:1.2rem; border-radius:8px; border:1px solid var(--gray-200);">
-            <div style="font-weight:800; color:var(--dark); margin-bottom:0.3rem;">ASTM C719 (Class 50/25)</div>
-            <div style="font-size:0.82rem; color:var(--accent); font-weight:700; margin-bottom:0.5rem;">사이클릭 열팽창 신축 시험체</div>
-            <div style="font-size:0.82rem; color:var(--gray-600);">-26℃ ~ 70℃ 극한 환경 챔버에서 ±50% 주기적 압축/인장 반복 피로 내구성 검증</div>
-          </div>
+
+          <h4>DIC(Digital Image Correlation) 비접촉 광학 변형률 분석 프로토콜 (Ncorr)</h4>
+          <p>
+            DIC는 시험체 표면의 무작위 스펙클 패턴(Random Speckle Pattern)의 이동을 추적하여 sub-pixel 정밀도로 2차원 변형률 텐서($E_{xx}, E_{yy}$)를 가시화하는 첨단 비접촉 광학 계측 기술입니다.
+          </p>
+          <ul style="padding-left:1.2rem; color:var(--gray-700); font-size:0.92rem; line-height:1.75;">
+            <li><strong>표면 가공:</strong> 백색 무광 스프레이 페인트 2~3회 균일 도포 후, 에어브러시를 이용해 <strong>2 ~ 4 pixel 크기의 고밀도 블랙 스펙클 패턴</strong>을 형성.</li>
+            <li><strong>Ncorr 분석 파라미터:</strong> MATLAB Ncorr 툴킷에서 Subset Radius 23, Spacing 2, Newton-Raphson 서브픽셀 알고리즘을 적용하여 $R^2 > 0.95$의 높은 선형 회귀 신뢰도 확보.</li>
+            <li><strong>네킹(Necking) 및 변형 거동:</strong> 인장 진행에 따라 축방향 연신($E_{yy}$ 증가)과 횡방향 수축($E_{xx}$ 감소)을 실시간으로 추적하여 소성 변형 구간을 정밀 분석.</li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Section 4: Interactive Estimator -->
+  <!-- Engineering Deep Dive 3: ASTM C1401 Structural Glazing Guide -->
+  <section id="c1401-deepdive" class="container">
+    <div class="section-header">
+      <span class="section-tag">// Structural Silicone Glazing (SSG) Standards</span>
+      <h2 class="section-title">ASTM C1401 구조 글레이징 실리콘 시편 및 공학 설계 가이드</h2>
+      <p class="section-subtitle">
+        초고층 커튼월 풍하중 구조 바이트 계산 및 ASTM C1135 H-Block 인장 접착 강도 시험 규격입니다.
+      </p>
+    </div>
+
+    <div class="whitepaper-box">
+      <div class="wp-header">
+        <div class="wp-icon-ring" style="background:rgba(30,58,138,0.08); color:var(--primary);"><i class="bi bi-building"></i></div>
+        <div class="wp-title-wrap">
+          <h3>ASTM C1401 표준 개요 & 구조용 실리콘 핵심 설계 수식</h3>
+          <p>Standard Guide for Structural Sealant Glazing (ASTM C1401 / Dow Chemical Engineering Standard)</p>
+        </div>
+      </div>
+
+      <div class="wp-content">
+        <p>
+          ASTM C1401은 2변 및 4변 지지 구조 글레이징(SSG) 시스템에서 유리 패널에 가해지는 풍하중(Wind Load)과 자중(Deadload)을 구조용 실리콘 실란트로 알루미늄 프레임에 안전하게 전달하기 위한 미국 재료시험협회(ASTM) 표준 설계 지침입니다.
+        </p>
+
+        <h4>1. 동적 풍하중 지지를 위한 최소 구조 바이트 (Structural Bite, $B$)</h4>
+        <p>
+          유리 패널 단변 길이($W_{\text{short}}$)와 설계 풍하중($P_{\text{wind}}$)을 바탕으로, Dow Chemical 표준 허용 동적 인장응력 <strong>$140\,\text{kPa}$ ($20\,\text{psi}$, 안전율 $2.5\sim 3.0$)</strong>를 적용하여 최소 접착 폭을 산출합니다.
+        </p>
+        <div class="formula-callout">
+          <strong>풍하중 구조 바이트 산출 수식 (ASTM C1401 Trapezoidal Load Distribution):</strong><br>
+          $B = \frac{W_{\text{short}} \times P_{\text{wind}}}{2 \times 140\,\text{kPa}} \quad [\text{mm}]$<br>
+          <em>(규정 절대 최소 바이트: $B_{\text{min}} \ge 6.4\,\text{mm}$)</em>
+        </div>
+
+        <h4>2. 지속 패널 자중 지지를 위한 수직 접착 연장 (Deadload Contact Length)</h4>
+        <p>
+          하부 기계적 세팅 블록이 없는 4변 구조 글레이징의 경우, 유리 자중에 의한 장기 크리프(Creep) 변형을 방지하기 위해 허용 전단응력 <strong>$7.0\,\text{kPa}$ ($1.0\,\text{psi}$)</strong>를 적용합니다.
+        </p>
+        <div class="formula-callout">
+          <strong>자중 지지 최소 접착 연장 수식:</strong><br>
+          $L_{\text{deadload}} = \frac{\text{Glass Weight } (\text{kg}) \times 9.81\,\text{m/s}^2}{\text{Bite } (\text{m}) \times 7,000\,\text{Pa}} \quad [\text{m}]$
+        </div>
+
+        <h4>3. 글루라인 두께 (Glueline Thickness, $G_t$) 설계 규격</h4>
+        <p>
+          유리와 알루미늄 프레임 간의 열팽창 차이에 따른 전단 변형을 흡수할 수 있도록 바이트 대비 $1:1 \sim 1:3$ 비율 범위 내에서 최소 $6.4\,\text{mm}$ 이상, 최대 $12.7\,\text{mm}$ 이하로 유지해야 합니다.
+        </p>
+
+        <h4>4. ASTM C1135 H-Block 구조 접착 인장 시험체 (50 × 12 × 12 mm)</h4>
+        <p>
+          구조용 실리콘(Dow DOWSIL™ 983 / 995 등)의 실제 접착 성능을 공인 검증하기 위해 $50\,\text{mm}$ 길이, $12\,\text{mm}$ 폭, $12\,\text{mm}$ 두께의 H형 실리콘 비드를 2조의 아노다이징 알루미늄 및 유리 사이에 타설한 시험체입니다.
+        </p>
+        <ul style="padding-left:1.2rem; color:var(--gray-700); font-size:0.92rem; line-height:1.75;">
+          <li><strong>시험 속도 (ASTM C1135):</strong> 만능재료시험기(UTM)에서 <strong>$12.5\,\text{mm/min}$</strong> 일정한 속도로 인장 하중 인가.</li>
+          <li><strong>최소 인장 접착 강도:</strong> 통상 $\ge 1.0 \sim 1.5\,\text{MPa}$ 이상 도달 필수.</li>
+          <li><strong>★ 합격 판정 기준 (100% Cohesive Failure):</strong> 기재와 실리콘 계면이 떨어지는 계면 박리(Adhesive Failure)가 $0\%$여야 하며, <strong>실리콘 내부가 찢어지는 응집 파괴(Cohesive Failure)가 $100\%$</strong> 발생해야만 구조심의 합격 승인을 획득합니다.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Estimator 2.0 -->
   <section id="estimator" class="container">
     <div class="estimator-card">
       <div class="section-header" style="margin-bottom:2rem; text-align:left;">
-        <span class="section-tag" style="color:#F97316;">// Real-time Specimen Estimator</span>
+        <span class="section-tag" style="color:#F97316;">// Real-time Specimen Estimator 2.0</span>
         <h2 class="section-title" style="color:#fff;">시편 제작 소요시간 & 중량 견적 계산기</h2>
         <p class="section-subtitle" style="color:#94A3B8;">
           필요한 시편 규격과 수량을 입력하시면 예상 제작 시간, 소모 필라멘트 중량 및 권장 시험 파라미터를 즉시 산출해 드립니다.
@@ -776,6 +884,7 @@
               <option value="TYPE-4">ASTM D638 Type IV (연질 탄성체 비교용 - 48분/개)</option>
               <option value="SIL-HBLOCK">ASTM C1401 / C1135 H-Block 구조접착 시편</option>
               <option value="SIL-D412">ASTM D412 Die C 실리콘 덤벨 시편</option>
+              <option value="SIL-C719">ASTM C719 사이클릭 신축 변위 시험체</option>
             </select>
           </div>
 
@@ -838,7 +947,7 @@
     </div>
   </section>
 
-  <!-- Section 5: Order Form -->
+  <!-- Section: Order Form -->
   <section id="order-form" class="container" style="padding-top:0;">
     <div class="order-section">
       <div class="section-header" style="margin-bottom:2.5rem;">
@@ -883,6 +992,7 @@
               <option value="ASTM D638 Type IV (연질 비교용)">ASTM D638 Type IV (연질 비교용)</option>
               <option value="ASTM C1401 / C1135 H-Block 구조접착 시편">ASTM C1401 / C1135 H-Block 구조접착 시편</option>
               <option value="ASTM D412 Die C 실리콘 덤벨">ASTM D412 Die C 실리콘 덤벨</option>
+              <option value="ASTM C719 사이클릭 신축 변위 시험체">ASTM C719 사이클릭 신축 변위 시험체</option>
               <option value="커스텀 CAD 도면 (.STL / .STEP) 제작">커스텀 CAD 도면 (.STL / .STEP) 제작</option>
             </select>
           </div>
@@ -940,8 +1050,9 @@
           <h5>시편 제작 허브</h5>
           <ul class="footer-links-list">
             <li><a href="/projects/kct/specimens">ASTM D638 Type I~V 시편</a></li>
+            <li><a href="/projects/kct/specimens#d638-deepdive">ASTM D638 공학 가이드</a></li>
+            <li><a href="/projects/kct/specimens#c1401-deepdive">ASTM C1401 구조 설계</a></li>
             <li><a href="/projects/kct/specimens#estimator">소요시간 & 중량 계산기</a></li>
-            <li><a href="/projects/kct/specimens#standards-grid">5대 규격 치수표</a></li>
             <li><a href="/projects/kct/specimens#order-form">온라인 시편 제작 의뢰</a></li>
           </ul>
         </div>
@@ -980,13 +1091,14 @@
   <!-- JS Logic -->
   <script>
     const SPEC_DATA = {
-      'TYPE-1': { name: 'ASTM D638 Type I', timePerUnitMin: 78.5, weightPerUnitG: 9.8, uts: '43.18 MPa', speed: '5 mm/min', ext: '25~50 mm 게이지' },
+      'TYPE-1': { name: 'ASTM D638 Type I', timePerUnitMin: 78.5, weightPerUnitG: 9.8, uts: '43.18 MPa', speed: '5 mm/min', ext: '25~50 mm 접촉식/DIC' },
       'TYPE-2': { name: 'ASTM D638 Type II', timePerUnitMin: 69.75, weightPerUnitG: 8.3, uts: '43.16 MPa', speed: '5 mm/min', ext: '50 mm 게이지' },
       'TYPE-3': { name: 'ASTM D638 Type III', timePerUnitMin: 185.45, weightPerUnitG: 23.0, uts: '43.02 MPa', speed: '5 mm/min', ext: '50 mm 대형 게이지' },
       'TYPE-4': { name: 'ASTM D638 Type IV', timePerUnitMin: 48.6, weightPerUnitG: 5.7, uts: '40.30 MPa', speed: '50 mm/min (연질) / 5 mm/min', ext: '25 mm 비접촉/비디오' },
       'TYPE-5': { name: 'ASTM D638 Type V', timePerUnitMin: 15.0, weightPerUnitG: 1.8, uts: '42.64 MPa (Type I 근접)', speed: '1 ~ 5 mm/min', ext: 'DIC / 7.62 mm 마이크로' },
-      'SIL-HBLOCK': { name: 'ASTM C1401 H-Block', timePerUnitMin: 45.0, weightPerUnitG: 35.0, uts: '1.0~1.5 MPa (접착)', speed: '12.5 mm/min', ext: '변위 센서' },
-      'SIL-D412': { name: 'ASTM D412 Die C', timePerUnitMin: 20.0, weightPerUnitG: 12.0, uts: '2.5~3.5 MPa', speed: '500 mm/min', ext: '고신율 비디오 게이지' }
+      'SIL-HBLOCK': { name: 'ASTM C1401 H-Block', timePerUnitMin: 45.0, weightPerUnitG: 35.0, uts: '≥ 1.0~1.5 MPa (100% 응집파괴)', speed: '12.5 mm/min', ext: 'LVDT 변위 센서' },
+      'SIL-D412': { name: 'ASTM D412 Die C', timePerUnitMin: 20.0, weightPerUnitG: 12.0, uts: '2.5~3.5 MPa (연신율 600%)', speed: '500 mm/min', ext: '고신율 비디오 게이지' },
+      'SIL-C719': { name: 'ASTM C719 사이클 시편', timePerUnitMin: 50.0, weightPerUnitG: 40.0, uts: '±50% 반복 변위 내구', speed: '3.2 mm/h', ext: '온도챔버 센서' }
     };
 
     function runSpecimenCalculation() {
@@ -1029,6 +1141,7 @@
       else if (type === 'TYPE-5') specSelect.value = 'ASTM D638 Type V (마이크로 - 추천)';
       else if (type === 'SIL-HBLOCK') specSelect.value = 'ASTM C1401 / C1135 H-Block 구조접착 시편';
       else if (type === 'SIL-D412') specSelect.value = 'ASTM D412 Die C 실리콘 덤벨';
+      else if (type === 'SIL-C719') specSelect.value = 'ASTM C719 사이클릭 신축 변위 시험체';
 
       document.getElementById('orderQty').value = qty;
       document.getElementById('orderNotes').value = `[계산기 자동연동]\n- 소재: ${mat}\n- 표면가공: ${surf}\n- 산출 소요시간: ${document.getElementById('resPrintTime').innerText}\n- 예상 중량: ${document.getElementById('resFilament').innerText}`;
