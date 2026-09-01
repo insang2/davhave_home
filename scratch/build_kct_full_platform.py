@@ -1,3 +1,6 @@
+with open("scratch/specimens_template.html", "r", encoding="utf-8") as _sf:
+    specimens_html_template = _sf.read()
+
 import os, sys, json
 from app_dataset import APPLICATIONS_DATA
 
@@ -315,6 +318,162 @@ COLOR_CHIPS = [
         "matched_prod": "KCT Thermal-Gap 300",
         "recommendation": "배터리 셀 열전도 시험, 냉각 플레이트 방열 테스트 시편",
         "is_sample_avail": True
+    }
+]
+
+# 3. ASTM D638 & Silicone Engineering Specimens Dataset
+ASTM_D638_SPECIMENS = [
+    {
+        "type_id": "TYPE-1",
+        "name_ko": "ASTM D638 Type I (표준 경질 플라스틱)",
+        "name_en": "ASTM D638 Type I Standard",
+        "thickness": "3.2 mm (≤ 7.0 mm)",
+        "width_narrow": "13.0 mm",
+        "length_narrow": "57.0 mm",
+        "width_overall": "19.0 mm",
+        "length_overall": "165.0 mm",
+        "gage_length": "50.0 mm",
+        "grip_distance": "115.0 mm",
+        "fillet_radius": "76.0 mm",
+        "uts_strength": "43.18 MPa",
+        "print_time": "1시간 18분 31초",
+        "filament_usage": "9.8 g (3.30 m)",
+        "speed_recommend": "5 mm/min (Instron UTM)",
+        "extensometer": "25~50 mm 게이지 신율계 / DIC",
+        "desc": "가장 널리 쓰이는 표준 인장 시편으로 강성/경질 고분자(PLA, ABS, PC 등)의 정밀 인장강도 및 탄성계수 측정에 최적입니다.",
+        "efficiency_grade": "표준형 (인장강도 최고 43.18 MPa)",
+        "badge_color": "var(--primary)"
+    },
+    {
+        "type_id": "TYPE-2",
+        "name_ko": "ASTM D638 Type II (협소 평행부 비파단용)",
+        "name_en": "ASTM D638 Type II Narrow",
+        "thickness": "3.2 mm (≤ 7.0 mm)",
+        "width_narrow": "6.0 mm",
+        "length_narrow": "57.0 mm",
+        "width_overall": "19.0 mm",
+        "length_overall": "183.0 mm",
+        "gage_length": "50.0 mm",
+        "grip_distance": "135.0 mm",
+        "fillet_radius": "76.0 mm",
+        "uts_strength": "43.16 MPa",
+        "print_time": "1시간 09분 45초",
+        "filament_usage": "8.3 g (2.80 m)",
+        "speed_recommend": "5 mm/min",
+        "extensometer": "50 mm 게이지 신율계",
+        "desc": "Type I 시편 시험 시 표점 외부나 그립 부근에서 조기 파단이 일어나는 특수 고분자 재료의 슬립 방지 및 파단 유도용 시편입니다.",
+        "efficiency_grade": "특수형 (응력 집중 제어)",
+        "badge_color": "#0284C7"
+    },
+    {
+        "type_id": "TYPE-3",
+        "name_ko": "ASTM D638 Type III (후판/대형 구조재용)",
+        "name_en": "ASTM D638 Type III Heavy Plate",
+        "thickness": "10.0 mm (7.0 ~ 14.0 mm)",
+        "width_narrow": "19.0 mm",
+        "length_narrow": "57.0 mm",
+        "width_overall": "29.0 mm",
+        "length_overall": "246.0 mm",
+        "gage_length": "50.0 mm",
+        "grip_distance": "115.0 mm",
+        "fillet_radius": "76.0 mm",
+        "uts_strength": "43.02 MPa",
+        "print_time": "3시간 05분 27초",
+        "filament_usage": "23.0 g (7.70 m)",
+        "speed_recommend": "5 mm/min",
+        "extensometer": "50 mm 대형 신율계 / 광학 DIC",
+        "desc": "두께 7mm를 초과하는 두꺼운 엔지니어링 플라스틱 시트, 압출 성형 후판 및 대형 적층 조형체의 기계적 하중 평가에 필수적인 대형 규격입니다.",
+        "efficiency_grade": "중하중용 (최대 게이지 단면)",
+        "badge_color": "#7C3AED"
+    },
+    {
+        "type_id": "TYPE-4",
+        "name_ko": "ASTM D638 Type IV (연질·비경질 & 탄성체 비교용)",
+        "name_en": "ASTM D638 Type IV Non-rigid",
+        "thickness": "3.2 mm (≤ 4.0 mm)",
+        "width_narrow": "6.0 mm",
+        "length_narrow": "33.0 mm",
+        "width_overall": "19.0 mm",
+        "length_overall": "115.0 mm",
+        "gage_length": "25.0 mm",
+        "grip_distance": "65.0 mm",
+        "fillet_radius": "14.0 mm (RO=25mm)",
+        "uts_strength": "40.30 MPa",
+        "print_time": "48분 38초",
+        "filament_usage": "5.7 g (1.91 m)",
+        "speed_recommend": "50 mm/min (연질) / 5 mm/min",
+        "extensometer": "25 mm 비접촉 신율계 / 비디오 게이지",
+        "desc": "경질 플라스틱과 연질 탄성체(TPU, 유연 고분자) 간의 직접적인 인장 특성 비교를 위해 외측 라운딩(RO 25mm)이 적용된 콤팩트 시편입니다.",
+        "efficiency_grade": "비교평가형 (고연신율 최적화)",
+        "badge_color": "#D97706"
+    },
+    {
+        "type_id": "TYPE-5",
+        "name_ko": "ASTM D638 Type V (★ 최고 효율 래피드 마이크로 시편)",
+        "name_en": "ASTM D638 Type V Micro/High-Throughput",
+        "thickness": "3.2 mm (≤ 4.0 mm)",
+        "width_narrow": "3.18 mm",
+        "length_narrow": "9.53 mm",
+        "width_overall": "9.53 mm",
+        "length_overall": "63.5 mm",
+        "gage_length": "7.62 mm",
+        "grip_distance": "25.4 mm",
+        "fillet_radius": "12.7 mm",
+        "uts_strength": "42.64 MPa (Type I과 0.54 MPa 차이)",
+        "print_time": "14분 59초 (Type I 대비 5배 단축)",
+        "filament_usage": "1.8 g (Type I 대비 5배 절감)",
+        "speed_recommend": "1 ~ 5 mm/min",
+        "extensometer": "고해상도 DIC / 마이크로 광학 게이지",
+        "desc": "★ 연구 논문 검증 최적 시편: Type I 대비 재료와 출력 시간을 80% 이상 절감하면서도 42.64 MPa의 정밀 인장강도를 산출하는 최고 효율 시편입니다.",
+        "efficiency_grade": "★ 최고 효율 추천 (신속 R&D / 원가절감 80%)",
+        "badge_color": "var(--accent)"
+    }
+]
+
+SILICONE_TEST_SPECIMENS = [
+    {
+        "spec_id": "SIL-HBLOCK",
+        "standard": "ASTM C1401 / ASTM C1135",
+        "name_ko": "H-Block 구조 글레이징 접착 인장 시험체",
+        "name_en": "H-Block Tensile Adhesion Specimen",
+        "joint_dim": "50 mm (길이) × 12 mm (폭) × 12 mm (두께)",
+        "substrate": "알루미늄 바 (양극산화) 2EA + 구조용 실리콘 비드",
+        "purpose": "커튼월 구조 글레이징(SSG) 풍하중 인장 접착 강도 및 파괴 모드(응집파괴 100% 여부) 공인 시험",
+        "test_speed": "12.5 mm/min",
+        "matched_prod": "Dow DOWSIL™ 983 / 995 Structural Sealant"
+    },
+    {
+        "spec_id": "SIL-D412",
+        "standard": "ASTM D412 (Die C)",
+        "name_ko": "실리콘 엘라스토머 덤벨 인장·연신율 시편",
+        "name_en": "Dumbbell Tensile & Elongation Die C",
+        "joint_dim": "길이 115 mm, 협소부 폭 6 mm, 두께 2.0 mm",
+        "substrate": "순수 실리콘 시트 정밀 프레스 펀칭 / 몰딩",
+        "purpose": "경화 실리콘 고무의 100% 모듈러스, 최대 인장강도(Tensile Strength) 및 파단 신율(Elongation, 400~800%) 측정",
+        "test_speed": "500 mm/min",
+        "matched_prod": "Dow 791 / ARDEX SN PLUS / KCT Weather"
+    },
+    {
+        "spec_id": "SIL-C719",
+        "standard": "ASTM C719 (Class 50/25)",
+        "name_ko": "실란트 사이클릭 열팽창 신축 내구성 시험체",
+        "name_en": "Cyclic Movement Adhesion Specimen",
+        "joint_dim": "50 mm × 12 mm × 12 mm",
+        "substrate": "콘크리트 몰탈 블록 / 알루미늄 바 / 유리 샌드위치",
+        "purpose": "극저온(-26℃) 및 고온(70℃) 환경 챔버에서 ±50% 주기적 압축/인장 반복 피로 내구성 시험",
+        "test_speed": "3.2 mm/h",
+        "matched_prod": "Dow 791 (±50%) / Dow 991 Non-Staining"
+    },
+    {
+        "spec_id": "SIL-C794",
+        "standard": "ASTM C794",
+        "name_ko": "180도 필(Peel) 접착 강도 시험체",
+        "name_en": "180° Peel Adhesion Test Specimen",
+        "joint_dim": "폭 25 mm × 길이 150 mm (와이어 메쉬 보강)",
+        "substrate": "화강석, PVDF 도장 알루미늄, 세라믹 타일 패널",
+        "purpose": "물 침적 및 UV 자외선 노출 후 기재와 실리콘 계면의 180도 박리 접착 강도(N/mm) 및 박리 형태 검증",
+        "test_speed": "50 mm/min",
+        "matched_prod": "Dow Primer 1200 OS / Primer-C + DOWSIL™ 791"
     }
 ]
 
@@ -694,10 +853,12 @@ main_html_template = f"""<!DOCTYPE html>
     <div class="container top-bar-inner">
       <div class="top-bar-info">
         <span><i class="bi bi-building-check text-primary"></i> <strong>사업자등록번호:</strong> 371-07-03719</span>
+        <span><i class="bi bi-box-seam text-primary"></i> <strong>시편제작:</strong> ASTM D638/C1401</span>
         <span><i class="bi bi-palette text-primary"></i> <strong>색상칩:</strong> 실물 시편 & 샘플 신청</span>
         <span><i class="bi bi-file-earmark-pdf text-primary"></i> <strong>기술자료:</strong> TDS·MSDS·성적서 이메일 발송</span>
       </div>
       <div class="top-bar-links">
+        <a href="/projects/kct/specimens"><i class="bi bi-box-seam-fill text-primary"></i> 시편제작 센터</a>
         <a href="/projects/kct/color-samples"><i class="bi bi-palette-fill text-accent"></i> <strong>색상칩 & 샘플요청</strong></a>
         <a href="/projects/kct/technical"><i class="bi bi-file-earmark-arrow-down-fill text-primary"></i> 기술자료 센터</a>
         <a href="https://smartstore.naver.com/kconstrade/" target="_blank" rel="noopener"><i class="bi bi-bag-check"></i> 스마트스토어</a>
@@ -724,6 +885,7 @@ main_html_template = f"""<!DOCTYPE html>
             </div>
           </div>
         </div>
+        <div class="nav-item"><a href="/projects/kct/specimens" class="nav-link"><i class="bi bi-box-seam-fill"></i> 시편제작 센터</a></div>
         <div class="nav-item"><a href="/projects/kct/color-samples" class="nav-link highlight"><i class="bi bi-palette-fill"></i> 색상칩 & 샘플요청</a></div>
         <div class="nav-item"><a href="/projects/kct/technical" class="nav-link"><i class="bi bi-file-earmark-arrow-down-fill text-primary"></i> 기술자료 센터</a></div>
         <div class="nav-item"><a href="#products" class="nav-link">제품스펙 비교</a></div>
@@ -3305,6 +3467,24 @@ with open("/Users/islee/Desktop/devhave/davhave_home/src/lib/kct-tech-render.js"
 escaped_color = color_html_template.replace("\\", "\\\\").replace("`", "\\`").replace("${", "\\${")
 with open("/Users/islee/Desktop/devhave/davhave_home/src/lib/kct-color-render.js", "w", encoding="utf-8") as f:
     f.write(f"// KCT Color & Sample Renderer\nexport function renderKctColorPage() {{\n  return `{escaped_color}`;\n}}\n")
+
+
+# 4. Specimen Fabrication Center Page
+os.makedirs("/Users/islee/Desktop/devhave/davhave_home/public/projects/kct/specimens", exist_ok=True)
+os.makedirs("/Users/islee/Desktop/devhave/davhave_home/public/projects/kct/specimen", exist_ok=True)
+
+with open("/Users/islee/Desktop/devhave/davhave_home/projects/kct/public/specimens.html", "w", encoding="utf-8") as f:
+    f.write(specimens_html_template)
+
+with open("/Users/islee/Desktop/devhave/davhave_home/public/projects/kct/specimens/index.html", "w", encoding="utf-8") as f:
+    f.write(specimens_html_template)
+
+with open("/Users/islee/Desktop/devhave/davhave_home/public/projects/kct/specimen/index.html", "w", encoding="utf-8") as f:
+    f.write(specimens_html_template)
+
+escaped_specimens = specimens_html_template.replace("\\", "\\\\").replace("`", "\\`").replace("${", "\\${")
+with open("/Users/islee/Desktop/devhave/davhave_home/src/lib/kct-specimen-render.js", "w", encoding="utf-8") as f:
+    f.write(f"// KCT Specimen Fabrication Center Renderer\nexport function renderKctSpecimenPage() {{\n  return `{escaped_specimens}`;\n}}\n")
 
 print("Generated all files successfully:")
 print(" - projects/kct/public/index.html")

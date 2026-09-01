@@ -38,6 +38,7 @@ import { renderTermsPage, renderPrivacyPage } from "./lib/policy-render.js";
 import { renderKctPage } from "./lib/kct-render.js";
 import { renderKctTechPage } from "./lib/kct-tech-render.js";
 import { renderKctColorPage } from "./lib/kct-color-render.js";
+import { renderKctSpecimenPage } from "./lib/kct-specimen-render.js";
 import { renderProjectsHub } from "./lib/projects-hub-render.js";
 
 function json(data, status = 200) {
@@ -328,6 +329,13 @@ export default {
       return withSecurityHeaders(new Response(renderPrivacyPage(), {
         headers: { "content-type": "text/html; charset=utf-8" },
       }), { "Cache-Control": "public, max-age=3600, s-maxage=86400" });
+    }
+
+    if (pathname === "/projects/kct/specimens" || pathname === "/projects/kct/specimens/" || pathname === "/projects/kct/specimen" || pathname === "/projects/kct/specimen/" || pathname === "/pjt/kct/specimens" || pathname === "/pjt/kct/specimens/" || pathname === "/pjt/kct/specimen" || pathname === "/pjt/kct/specimen/" || pathname === "/projects/kct/astm-d638" || pathname === "/projects/kct/astm-d638/") {
+      const raw = new Response(renderKctSpecimenPage(), {
+        headers: { "content-type": "text/html; charset=utf-8" },
+      });
+      return withSecurityHeaders(raw, { "Cache-Control": "public, max-age=3600, s-maxage=86400" });
     }
 
     if (pathname === "/projects/kct/color-samples" || pathname === "/projects/kct/color-samples/" || pathname === "/projects/kct/sample" || pathname === "/projects/kct/sample/" || pathname === "/pjt/kct/color-samples" || pathname === "/pjt/kct/color-samples/" || pathname === "/pjt/kct/sample" || pathname === "/pjt/kct/sample/") {

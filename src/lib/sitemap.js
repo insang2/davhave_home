@@ -48,6 +48,7 @@ export function renderSitemap({ blogPosts = [], projects = [], educationPosts = 
     urlEntry("https://davhave.com/content", { changefreq: "monthly", priority: "0.6" }),
     urlEntry("https://davhave.com/projects", { changefreq: "weekly", priority: "0.9" }),
     urlEntry("https://davhave.com/projects/kct", { changefreq: "weekly", priority: "0.9" }),
+    urlEntry("https://davhave.com/projects/kct/specimens", { changefreq: "weekly", priority: "0.9" }),
     urlEntry("https://davhave.com/projects/kct/color-samples", { changefreq: "weekly", priority: "0.8" }),
     urlEntry("https://davhave.com/projects/kct/technical", { changefreq: "weekly", priority: "0.8" }),
     urlEntry("https://davhave.com/terms", { changefreq: "yearly", priority: "0.4" }),
