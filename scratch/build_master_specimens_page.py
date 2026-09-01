@@ -1,6 +1,8 @@
-// KCT Specimen Fabrication Center Renderer
-export function renderKctSpecimenPage() {
-  return `<!DOCTYPE html>
+import os, sys, json
+
+print("=== Building Master ASTM D638 & C1401 Specimen Fabrication Center Page ===")
+
+master_html = """<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
@@ -1680,13 +1682,13 @@ export function renderKctSpecimenPage() {
       const totalMin = Math.round(data.timePerUnitMin * qty);
       const totalHours = Math.floor(totalMin / 60);
       const remainMin = totalMin % 60;
-      const timeStr = totalHours > 0 ? \`\${totalHours}시간 \${remainMin}분\` : \`\${remainMin}분\`;
+      const timeStr = totalHours > 0 ? `${totalHours}시간 ${remainMin}분` : `${remainMin}분`;
 
       const totalWeight = (data.weightPerUnitG * qty).toFixed(1);
       const totalMeters = (totalWeight / 3.0).toFixed(1);
 
       document.getElementById('resPrintTime').innerText = timeStr;
-      document.getElementById('resFilament').innerText = \`\${totalWeight} g (\${totalMeters} m)\`;
+      document.getElementById('resFilament').innerText = `${totalWeight} g (${totalMeters} m)`;
       document.getElementById('resUts').innerText = data.uts;
       document.getElementById('resSpeed').innerText = data.speed;
       document.getElementById('resExtensometer').innerText = data.ext;
@@ -1715,11 +1717,7 @@ export function renderKctSpecimenPage() {
       else if (type === 'SIL-C719') specSelect.value = 'ASTM C719 사이클릭 신축 변위 시험체';
 
       document.getElementById('orderQty').value = qty;
-      document.getElementById('orderNotes').value = \`[계산기 자동연동]
-- 소재: \${mat}
-- 표면가공: \${surf}
-- 산출 소요시간: \${document.getElementById('resPrintTime').innerText}
-- 예상 중량: \${document.getElementById('resFilament').innerText}\`;
+      document.getElementById('orderNotes').value = `[계산기 자동연동]\n- 소재: ${mat}\n- 표면가공: ${surf}\n- 산출 소요시간: ${document.getElementById('resPrintTime').innerText}\n- 예상 중량: ${document.getElementById('resFilament').innerText}`;
 
       document.getElementById('order-form').scrollIntoView({ behavior: 'smooth' });
     }
@@ -1732,14 +1730,7 @@ export function renderKctSpecimenPage() {
       const spec = document.getElementById('orderSpecType').value;
       const qty = document.getElementById('orderQty').value;
 
-      alert(\`[시편 제작 의뢰 접수 완료]
-
-의뢰 기관: \${company}
-담당자: \${name} 님
-회신 이메일: \${email}
-신청 규격: \${spec} (\${qty}개)
-
-24시간 이내 담당 엔지니어가 CAD 도면 검토 및 견적서를 이메일로 회신드립니다.\`);
+      alert(`[시편 제작 의뢰 접수 완료]\n\n의뢰 기관: ${company}\n담당자: ${name} 님\n회신 이메일: ${email}\n신청 규격: ${spec} (${qty}개)\n\n24시간 이내 담당 엔지니어가 CAD 도면 검토 및 견적서를 이메일로 회신드립니다.`);
     }
 
     // Initialize calculation on load
@@ -1759,5 +1750,10 @@ export function renderKctSpecimenPage() {
   </script>
 </body>
 </html>
-`;
-}
+"""
+
+# Write clean master template
+with open("scratch/specimens_template.html", "w", encoding="utf-8") as f:
+    f.write(master_html)
+
+print("Generated master scratch/specimens_template.html successfully!")
