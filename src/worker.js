@@ -335,7 +335,7 @@ export default {
       const raw = new Response(renderKctSpecimenPage(), {
         headers: { "content-type": "text/html; charset=utf-8" },
       });
-      return withSecurityHeaders(raw, { "Cache-Control": "public, max-age=3600, s-maxage=86400" });
+      return withSecurityHeaders(raw, { "Cache-Control": "no-cache, no-store, must-revalidate" });
     }
 
     if (pathname === "/projects/kct/color-samples" || pathname === "/projects/kct/color-samples/" || pathname === "/projects/kct/sample" || pathname === "/projects/kct/sample/" || pathname === "/pjt/kct/color-samples" || pathname === "/pjt/kct/color-samples/" || pathname === "/pjt/kct/sample" || pathname === "/pjt/kct/sample/") {
