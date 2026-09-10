@@ -137,6 +137,8 @@ export function head({ title, description, canonical, ogImage, extraJsonLd, noin
   <link rel="manifest" href="/site.webmanifest" />
   <meta name="theme-color" content="#0a0908" />
   <meta property="og:type" content="${escapeHtml(ogType)}" />
+  <meta property="og:site_name" content="DAVHAVE" />
+  <meta property="og:locale" content="ko_KR" />
   <meta property="og:title" content="${escapeHtml(title)}" />
   <meta property="og:description" content="${escapeHtml(description)}" />
   ${canonical ? `<meta property="og:url" content="${escapeHtml(canonical)}" />` : ""}
@@ -224,10 +226,11 @@ export function renderBlogList({ posts, page, pageSize, total, tag, basePath = "
   const description = tag
     ? `DAVHAVE 블로그의 #${tag} 태그 글 모음`
     : "모바일 앱·웹·AI 개발에 대한 DAVHAVE의 기록.";
+  const canonical = `https://davhave.com${basePath}${page > 1 ? `?page=${page}` : ""}`;
 
   return `<!DOCTYPE html>
 <html lang="ko">
-<head>${head({ title, description, canonical: `https://davhave.com${basePath}` })}</head>
+<head>${head({ title, description, canonical, ogType: "website" })}</head>
 <body>
   ${navBar()}
   <div class="wrap">
@@ -246,18 +249,28 @@ export function renderBlogPost(post) {
   const url = `https://davhave.com/blog/${post.slug}`;
   const title = post.seo_title || post.title;
   const description = post.seo_description || post.excerpt || "";
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: post.title,
-    description,
-    url,
-    datePublished: post.published_at,
-    dateModified: post.updated_at,
-    author: { "@type": "Person", name: "Oscar Lee", url: "https://davhave.com/" },
-    publisher: { "@type": "Organization", name: "DAVHAVE", url: "https://davhave.com/" },
-    ...(post.cover_image_url ? { image: post.cover_image_url } : {}),
-  };
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: post.title,
+      description,
+      url,
+      datePublished: post.published_at,
+      dateModified: post.updated_at,
+      author: { "@type": "Person", name: "Oscar Lee", url: "https://davhave.com/" },
+      publisher: { "@type": "Organization", name: "DAVHAVE", url: "https://davhave.com/" },
+      ...(post.cover_image_url ? { image: post.cover_image_url } : {}),
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "블로그", item: "https://davhave.com/blog" },
+        { "@type": "ListItem", position: 2, name: post.title, item: url },
+      ],
+    },
+  ];
 
   return `<!DOCTYPE html>
 <html lang="ko">

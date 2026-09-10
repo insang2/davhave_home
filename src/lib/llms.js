@@ -1,4 +1,4 @@
-import { CATEGORIES } from "./education-render.js";
+import { CATEGORIES, eduLessonPath } from "./education-render.js";
 import { STACK_DATA } from "./stack-data.js";
 import { PHILOSOPHY_DATA } from "./philosophy-data.js";
 import { SERVICES_DATA } from "./services-data.js";
@@ -23,7 +23,7 @@ export function renderLlms({ blogPosts = [], educationPosts = [], projects = [] 
     if (!lessons.length) return [];
     return [
       `- **${cat.label}** (${lessons.length}개 레슨): https://davhave.com/education/${key}`,
-      ...lessons.map((l) => `  - [${l.title}](https://davhave.com/education/${key}/${l.slug})`),
+      ...lessons.map((l) => `  - [${l.title}](https://davhave.com${eduLessonPath(l)})`),
     ];
   });
 

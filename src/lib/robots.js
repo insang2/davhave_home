@@ -2,6 +2,8 @@ export function renderRobotsTxt() {
   return `# ─── Universal Access: All Search Engines & AI Crawlers Allowed ───
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /api/
 
 # Sitemap Location
 Sitemap: https://davhave.com/sitemap.xml

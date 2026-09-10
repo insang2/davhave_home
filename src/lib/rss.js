@@ -1,3 +1,5 @@
+import { eduLessonPath } from "./education-render.js";
+
 function escapeXml(str = "") {
   return String(str)
     .replace(/&/g, "&amp;")
@@ -15,7 +17,7 @@ export function renderRss(posts = []) {
   const items = posts
     .map((p) => {
       const link = p.kind === "education"
-        ? `https://davhave.com/education/${p.category}/${p.slug}`
+        ? `https://davhave.com${eduLessonPath(p)}`
         : `https://davhave.com/blog/${p.slug}`;
       const content = (p.content_html || p.content_md || "").replace(/\]\]>/g, "]]&gt;");
 

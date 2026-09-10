@@ -1,6 +1,7 @@
 import { STACK_DATA } from "./stack-data.js";
 import { PHILOSOPHY_DATA } from "./philosophy-data.js";
 import { SERVICES_DATA } from "./services-data.js";
+import { eduLessonPath } from "./education-render.js";
 
 function escapeXml(str = "") {
   return String(str)
@@ -66,7 +67,7 @@ export function renderSitemap({ blogPosts = [], projects = [], educationPosts = 
     ...projects.map((p) => urlEntry(`https://davhave.com/portfolio/${p.slug}`, { changefreq: "monthly", priority: "0.8" })),
     ...eduCategories.map((c) => urlEntry(`https://davhave.com/education/${c}`, { changefreq: "weekly", priority: "0.8" })),
     ...educationPosts.map((p) =>
-      urlEntry(`https://davhave.com/education/${p.category}/${p.slug}`, {
+      urlEntry(`https://davhave.com${eduLessonPath(p)}`, {
         lastmod: p.updated_at,
         changefreq: "monthly",
         priority: "0.7",

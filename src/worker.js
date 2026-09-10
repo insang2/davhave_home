@@ -217,7 +217,7 @@ async function handleBlog(request, env, parts, url) {
   if (parts.length === 2) {
     const admin = await isAdminRequest(request, env);
     const post = await getPostBySlug(env.DB, decodeURIComponent(parts[1]));
-    if (!post || (post.status !== "published" && !admin)) return notFound();
+    if (!post || post.kind !== "blog" || (post.status !== "published" && !admin)) return notFound();
     return withSecurityHeaders(new Response(renderBlogPost(post), {
       headers: { "content-type": "text/html; charset=utf-8" },
     }));
@@ -407,7 +407,10 @@ export default {
         listAllPublished(env.DB, "blog"),
         listAllPublished(env.DB, "education"),
       ]);
-      const combined = [...blogPosts, ...educationPosts].sort((a, b) => {
+      const combined = [
+        ...blogPosts.map((p) => ({ ...p, kind: "blog" })),
+        ...educationPosts.map((p) => ({ ...p, kind: "education" })),
+      ].sort((a, b) => {
         const da = new Date(a.published_at || a.created_at || 0).getTime();
         const db = new Date(b.published_at || b.created_at || 0).getTime();
         return db - da;

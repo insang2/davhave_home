@@ -28,6 +28,14 @@ export function classifyAiPost(post) {
   return "claude";
 }
 
+// 레슨의 정규(canonical) 경로. AI 카테고리는 하위 폴더(/education/ai/{subcat}/{slug})가 정규 URL이며
+// /education/ai/{slug}는 301로 여기로 리다이렉트된다. sitemap·rss·llms.txt는 반드시 이 경로를 써야
+// 리다이렉트 체인 없이 정규 URL만 색인된다.
+export function eduLessonPath(post) {
+  if (post.category === "ai") return `/education/ai/${classifyAiPost(post)}/${post.slug}`;
+  return `/education/${post.category}/${post.slug}`;
+}
+
 const EDU_STYLE = `
   .cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.4rem;margin-top:2rem;}
   .cat-card{display:block;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
@@ -210,16 +218,28 @@ export function renderLesson({ post, prev, next }) {
     : `https://davhave.com/education/${post.category}/${post.slug}`;
   const title = post.seo_title || post.title;
   const description = post.seo_description || post.excerpt || "";
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "LearningResource",
-    name: post.title,
-    description,
-    url,
-    learningResourceType: "lesson",
-    about: cat.label,
-    provider: { "@type": "Organization", name: "DAVHAVE", url: "https://davhave.com/" },
-  };
+  const crumbs = [
+    { "@type": "ListItem", position: 1, name: "교육", item: "https://davhave.com/education" },
+    { "@type": "ListItem", position: 2, name: cat.label, item: `https://davhave.com/education/${post.category}` },
+  ];
+  if (subcat && AI_SUBCATEGORIES[subcat]) {
+    crumbs.push({ "@type": "ListItem", position: 3, name: AI_SUBCATEGORIES[subcat].label, item: `https://davhave.com/education/ai/${subcat}` });
+  }
+  crumbs.push({ "@type": "ListItem", position: crumbs.length + 1, name: post.title, item: url });
+
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "LearningResource",
+      name: post.title,
+      description,
+      url,
+      learningResourceType: "lesson",
+      about: cat.label,
+      provider: { "@type": "Organization", name: "DAVHAVE", url: "https://davhave.com/" },
+    },
+    { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: crumbs },
+  ];
 
   const backUrl = subcat ? `/education/ai/${subcat}` : `/education/${post.category}`;
   const backLabel = subcat && AI_SUBCATEGORIES[subcat] ? AI_SUBCATEGORIES[subcat].label : cat.label;
