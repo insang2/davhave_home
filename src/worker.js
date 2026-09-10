@@ -34,6 +34,7 @@ import { renderStackHub, renderStackDetail } from "./lib/stack-render.js";
 import { PHILOSOPHY_DATA } from "./lib/philosophy-data.js";
 import { renderPhilosophyHub, renderPhilosophyDetail } from "./lib/philosophy-render.js";
 import { SERVICES_DATA } from "./lib/services-data.js";
+import { renderServicesHub, renderServicesDetail } from "./lib/services-render.js";
 import { renderTermsPage, renderPrivacyPage } from "./lib/policy-render.js";
 import { renderKctPage } from "./lib/kct-render.js";
 import { renderKctTechPage } from "./lib/kct-tech-render.js";
