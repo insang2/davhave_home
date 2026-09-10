@@ -132,6 +132,14 @@ export function renderServicesDetail(item) {
         </div>
       </div>
 
+      ${item.relatedPosts?.length ? `
+      <div style="margin:2.5rem 0;">
+        <h3 style="font-size:1.1rem; margin-bottom:1rem; color:var(--muted);">관련 글 (Related Articles)</h3>
+        <ul style="list-style:none; margin:0; padding:0;">
+          ${item.relatedPosts.map(p => `<li style="margin-bottom:.6rem;"><a href="/blog/${escapeHtml(p.slug)}" style="border-bottom:1px solid var(--accent);">${escapeHtml(p.title)}</a></li>`).join("")}
+        </ul>
+      </div>` : ""}
+
       <div class="cta-card" style="margin-top:3.5rem;">
         <h3>🚀 ${escapeHtml(item.title)} 관련 프로젝트 & 협업 문의</h3>
         <p>DAVHAVE는 맞춤형 모바일 앱, 반응형 웹, AI 연동 구축 문의에 대해 신속하게 상담 및 아키텍처 가이드를 제공해드립니다.</p>

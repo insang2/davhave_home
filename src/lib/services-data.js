@@ -14,6 +14,10 @@ export const SERVICES_DATA = {
       "오프라인 로컬 데이터베이스(SQLite/Realm) 동기화 아키텍처"
     ],
     targetAudience: "스타트업 모바일 MVP, 기업용 자체 앱, 멘탈 웰빙 및 라이프스타일 서비스",
+    relatedPosts: [
+      { slug: "flutter-vs-native-decision", title: "Flutter로 갈까 네이티브로 갈까 — 실무에서 쓰는 판단 기준" },
+      { slug: "flutter-state-management-choice", title: "Flutter 상태 관리, 뭘 쓸지 3분 정리" },
+    ],
     details: `모바일 애플리케이션은 사용자와 만나는 가장 접점 높은 디바이스 환경입니다. 
 
 DAVHAVE는 크로스플랫폼 프임워크(Flutter, React Native)와 네이티브 언어(Swift, Kotlin)의 장점을 결합하여 화면 잘림 없는 반응형 UI와 쾌속 반응성을 제공합니다. 앱스토어 및 구글 플레이스토어 런칭부터 지속적인 업그레이드까지 완벽하게 전담합니다.`
@@ -33,6 +37,11 @@ DAVHAVE는 크로스플랫폼 프임워크(Flutter, React Native)와 네이티�
       "결제 모듈, 회원 인증, 관리자 대시보드(Admin Panel) 통합"
     ],
     targetAudience: "기업 홍보 사이트, SaaS 웹 서비스, B2B 매칭 플랫폼, 고객 상담 포털",
+    relatedPosts: [
+      { slug: "professional-services-website-tax103", title: "전문직(세무사) 홈페이지는 뭐가 달라야 하나 — 일공삼택스 설계 노트" },
+      { slug: "url-design-for-seo-no-hash-anchors", title: "SEO를 위한 URL 설계 — 왜 /#about이 아니라 /about이어야 하나" },
+      { slug: "serverless-content-engine-d1-workers", title: "CMS 없이 블로그·교육 콘텐츠 엔진 만들기 — Cloudflare D1 + Workers" },
+    ],
     details: `웹사이트는 브랜드의 얼굴이자 비즈니스 전환이 일어나는 핵심 창구입니다. 
 
 DAVHAVE는 접근성이 뛰어난 반응형 UI 설계와 초고속 렌더링을 바탕으로 고객 이탈율을 줄이고 전환율(Conversion Rate)을 높이는 웹 플랫폼을 제작합니다. 검색엔진 최적화(SEO)를 기본 적용하여 상위 노출을 지원합니다.`
@@ -52,6 +61,11 @@ DAVHAVE는 접근성이 뛰어난 반응형 UI 설계와 초고속 렌더링을 
       "Prompt Caching 적용으로 AI API 호스팅 비용 최대 90% 절감"
     ],
     targetAudience: "AI 기능 도입 희망 기업, 자율형 에이전트 서비스, 텍스트 파싱 파이프라인",
+    relatedPosts: [
+      { slug: "internal-ai-chatbot-checklist", title: "사내 AI 챗봇 도입 전 체크리스트 — RAG가 정말 필요한가부터" },
+      { slug: "llm-agent-tool-use-mistakes", title: "LLM 에이전트에 도구를 쥐여줄 때 흔한 실수 5가지" },
+      { slug: "claude-api-prompt-caching-cost", title: "Claude API 비용, Prompt Caching으로 먼저 줄여라" },
+    ],
     details: `단순한 챗봇을 넘어 사용자의 의도를 정확히 파악하고 자율적으로 업무를 수행하는 AI 에이전트의 시대가 열렸습니다. 
 
 DAVHAVE는 최신 Anthropic Claude API와 LangChain 프레임워크를 이식하여 단순 작업 자동화부터 복잡한 컨텍스트 분석까지 서비스 특성에 맞춘 맞춤형 AI 솔루션을 제작합니다.`
@@ -90,6 +104,11 @@ DAVHAVE는 최신 Anthropic Claude API와 LangChain 프레임워크를 이식하
       "서버 다운이나 트래픽 과부하 우려 없는 무제한 자동 탄력 스케일링"
     ],
     targetAudience: "고성능 글로벌 서비스를 원하는 기업, 호스팅 비용 절감 웹사이트",
+    relatedPosts: [
+      { slug: "cloudflare-workers-free-tier-limits", title: "Cloudflare Workers 무료 한도, 실제로 어디까지 되나" },
+      { slug: "serverless-content-engine-d1-workers", title: "CMS 없이 블로그·교육 콘텐츠 엔진 만들기 — Cloudflare D1 + Workers" },
+      { slug: "b2b-engineering-calculator-cloudflare", title: "Cloudflare Workers로 B2B 산업용 공학 계산기 만들기" },
+    ],
     details: `비싼 무거운 무중단 EC2 서버나 무거운 Docker 인프라 없이도 글로벌 엣지 컴퓨팅 기술로 초고속 서비스를 서빙할 수 있습니다. 
 
 DAVHAVE 본 사이트도 Cloudflare Workers와 D1, R2 스택으로 직접 서빙되고 있으며, 최적화된 엣지 아키텍처 전환을 지원합니다.`
@@ -109,6 +128,10 @@ DAVHAVE 본 사이트도 Cloudflare Workers와 D1, R2 스택으로 직접 서빙
       "개발자 1:1 맞춤형 AI 코딩(Claude Code) 도입 및 워크플로우 전수"
     ],
     targetAudience: "개발자 부재 창업가, 코드 리팩터링 필요 팀, AI 워크플로우 도입 기업",
+    relatedPosts: [
+      { slug: "url-design-for-seo-no-hash-anchors", title: "SEO를 위한 URL 설계 — 왜 /#about이 아니라 /about이어야 하나" },
+      { slug: "flutter-vs-native-decision", title: "Flutter로 갈까 네이티브로 갈까 — 실무에서 쓰는 판단 기준" },
+    ],
     details: `잘못 시작된 기술 스택과 복잡한 기술 부채는 훗날 수배의 수정 비용으로 되돌아옵니다. 
 
 DAVHAVE는 기획 단계의 기술 검토부터 코드 리뷰, 성능 오디트까지 다년간의 실무 노하우를 바탕으로 가장 효율적인 기술 방향성을 제시합니다.`
