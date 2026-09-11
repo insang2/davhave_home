@@ -1,4 +1,4 @@
-import { escapeHtml, head, navBar, renderFooter } from "./render.js";
+import { escapeHtml, head, navBar, renderFooter, formatDate } from "./render.js";
 
 export const CATEGORIES = {
   ai: { label: "AI", desc: "프롬프트 엔지니어링, LLM 연동, 에이전트 개발" },
@@ -44,10 +44,6 @@ const EDU_STYLE = `
   .cat-card h3{font-size:1.15rem;margin-bottom:.5rem;color:var(--text);}
   .cat-card p{font-size:.86rem;color:var(--muted);margin-bottom:1rem;}
   .cat-count{font-family:var(--mono);font-size:.75rem;color:var(--accent);}
-  .lesson-row{display:flex;align-items:baseline;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--border);}
-  .lesson-num{font-family:var(--mono);color:var(--muted);font-size:.85rem;min-width:2rem;}
-  .lesson-title{font-weight:600;color:var(--text);}
-  .lesson-title:hover{color:var(--accent);}
   .breadcrumb{font-family:var(--mono);font-size:.8rem;color:var(--muted);margin-bottom:1rem;}
   .breadcrumb a{color:var(--muted);}
   .breadcrumb a:hover{color:var(--accent);}
@@ -136,20 +132,29 @@ export function renderEducationCategory({ category, subcat = null, posts }) {
   }
 
   const items = filteredPosts.length
-    ? filteredPosts
-        .map(
-          (p, i) => {
+    ? `<div class="board">
+        <div class="board-head">
+          <span class="board-num">번호</span>
+          <span style="flex:1;">제목</span>
+          <span class="board-meta"><span>날짜</span><span>조회</span></span>
+        </div>
+        ${filteredPosts
+          .map((p, i) => {
             const sub = category === "ai" ? classifyAiPost(p) : "";
-            const href = category === "ai" ? `/education/ai/${sub}/${escapeHtml(p.slug)}` : `/education/${category}/${escapeHtml(p.slug)}`;
             return `
-      <a class="lesson-row" href="${href}" style="text-decoration:none;">
-        <span class="lesson-num">${String(i + 1).padStart(2, "0")}</span>
-        <span class="lesson-title">${escapeHtml(p.title)}</span>
-        ${sub ? `<span style="margin-left:auto; font-family:var(--mono); font-size:.72rem; padding:.15rem .55rem; border-radius:100px; border:1px solid var(--border); color:var(--accent2);">${sub.toUpperCase()}</span>` : ""}
-      </a>`;
-          }
-        )
-        .join("")
+        <a class="board-row" href="${eduLessonPath(p)}">
+          <span class="board-num">${String(i + 1).padStart(2, "0")}</span>
+          <span class="board-title">${
+            sub ? `<span class="tag-inline">${sub.toUpperCase()}</span>` : ""
+          }${escapeHtml(p.title)}</span>
+          <span class="board-meta">
+            <span>${formatDate(p.published_at)}</span>
+            <span class="board-views">${p.views || 0}</span>
+          </span>
+        </a>`;
+          })
+          .join("")}
+      </div>`
     : `<div class="empty">아직 등록된 레슨이 없습니다.</div>`;
 
   return `<!DOCTYPE html>
@@ -195,11 +200,20 @@ export function renderEducationCategory({ category, subcat = null, posts }) {
           lessonList.innerHTML = '<div class="empty">검색 결과가 없습니다.</div>';
           return;
         }
-        lessonList.innerHTML = data.posts.map((p, i) => \`
-          <a class="lesson-row" href="/education/\${p.category}/\${p.slug}" style="text-decoration:none;">
-            <span class="lesson-num">\${String(i + 1).padStart(2, '0')}</span>
-            <span class="lesson-title">\${p.title}</span>
-          </a>\`).join('');
+        function classify(p) {
+          const t = ((p.slug || '') + ' ' + (p.title || '')).toLowerCase();
+          if (t.includes('gemini')) return 'gemini';
+          if (t.includes('codex')) return 'codex';
+          return 'claude';
+        }
+        lessonList.innerHTML = '<div class="board">' + data.posts.map((p, i) => {
+          const href = p.category === 'ai' ? '/education/ai/' + classify(p) + '/' + p.slug : '/education/' + p.category + '/' + p.slug;
+          return \`
+          <a class="board-row" href="\${href}">
+            <span class="board-num">\${String(i + 1).padStart(2, '0')}</span>
+            <span class="board-title">\${p.title}</span>
+          </a>\`;
+        }).join('') + '</div>';
       }
       searchBtn.addEventListener('click', search);
       searchInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') search(); });

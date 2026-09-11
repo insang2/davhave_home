@@ -218,6 +218,10 @@ export async function listAllPublished(db, kind) {
   return results;
 }
 
+export async function incrementViews(db, id) {
+  await db.prepare("UPDATE posts SET views = views + 1 WHERE id = ?").bind(id).run();
+}
+
 export async function getEducationCategoryCounts(db) {
   const { results } = await db
     .prepare(

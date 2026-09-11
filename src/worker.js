@@ -18,6 +18,7 @@ import {
   getEducationCategoryCounts,
   getAdjacentLessons,
   listAllPublished,
+  incrementViews,
 } from "./lib/db.js";
 import { renderBlogList, renderBlogPost } from "./lib/render.js";
 import { renderAdminPage } from "./lib/admin.js";
@@ -218,7 +219,7 @@ function withSecurityHeaders(res, customHeaders = {}) {
   });
 }
 
-async function handleBlog(request, env, parts, url) {
+async function handleBlog(request, env, parts, url, ctx) {
   // parts[0] === 'blog'
   const page = Number(url.searchParams.get("page") || 1);
 
@@ -241,6 +242,7 @@ async function handleBlog(request, env, parts, url) {
     const admin = await isAdminRequest(request, env);
     const post = await getPostBySlug(env.DB, decodeURIComponent(parts[1]));
     if (!post || post.kind !== "blog" || (post.status !== "published" && !admin)) return notFound();
+    if (post.status === "published") ctx?.waitUntil?.(incrementViews(env.DB, post.id));
     return withSecurityHeaders(new Response(renderBlogPost(post), {
       headers: { "content-type": "text/html; charset=utf-8" },
     }));
@@ -249,7 +251,7 @@ async function handleBlog(request, env, parts, url) {
   return notFound();
 }
 
-async function handleEducation(env, parts) {
+async function handleEducation(env, parts, ctx) {
   // parts[0] === 'education'
   if (parts.length === 1) {
     const counts = await getEducationCategoryCounts(env.DB);
@@ -293,6 +295,7 @@ async function handleEducation(env, parts) {
     }
 
     const { prev, next } = await getAdjacentLessons(env.DB, post.category, post.order_index);
+    ctx?.waitUntil?.(incrementViews(env.DB, post.id));
     return withSecurityHeaders(new Response(renderLesson({ post, prev, next }), {
       headers: { "content-type": "text/html; charset=utf-8" },
     }));
@@ -306,6 +309,7 @@ async function handleEducation(env, parts) {
       return notFound();
     }
     const { prev, next } = await getAdjacentLessons(env.DB, post.category, post.order_index);
+    ctx?.waitUntil?.(incrementViews(env.DB, post.id));
     return withSecurityHeaders(new Response(renderLesson({ post, prev, next }), {
       headers: { "content-type": "text/html; charset=utf-8" },
     }));
@@ -531,7 +535,7 @@ export default {
     }
 
     if (pathname === "/education" || pathname.startsWith("/education/")) {
-      return withSecurityHeaders(await handleEducation(env, pathname.split("/").filter(Boolean)));
+      return withSecurityHeaders(await handleEducation(env, pathname.split("/").filter(Boolean), ctx));
     }
 
     if (pathname === "/admin") {
@@ -543,7 +547,7 @@ export default {
 
     if (pathname === "/blog" || pathname.startsWith("/blog/")) {
       const parts = pathname.split("/").filter(Boolean);
-      return withSecurityHeaders(await handleBlog(request, env, parts, url));
+      return withSecurityHeaders(await handleBlog(request, env, parts, url, ctx));
     }
 
     return env.ASSETS.fetch(request);

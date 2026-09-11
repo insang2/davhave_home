@@ -49,12 +49,32 @@ const BASE_STYLE = `
     text-transform:uppercase;margin-bottom:1rem;}
   h1{font-family:var(--font);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;letter-spacing:-.02em;line-height:1.15;margin-bottom:1rem;text-wrap:balance;}
   .desc{color:var(--muted);margin-bottom:2.5rem;}
-  .post-card{display:block;padding:1.6rem 0;border-bottom:1px solid var(--border);}
-  .post-card:hover .post-title{color:var(--accent);}
-  .post-title{font-size:1.2rem;font-weight:600;color:var(--text);margin-bottom:.5rem;transition:color .2s;}
   .post-meta{font-family:var(--mono);font-size:.78rem;color:var(--muted);margin-bottom:.6rem;}
-  .post-excerpt{color:var(--muted);font-size:.92rem;}
   .tag-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.8rem;}
+  /* 게시판형 목록 */
+  .board{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:var(--surface);margin-top:1.5rem;}
+  .board-head{display:flex;align-items:center;gap:1rem;padding:.7rem 1.2rem;background:rgba(255,255,255,.03);
+    font-family:var(--mono);font-size:.7rem;color:var(--muted);border-bottom:1px solid var(--border);
+    text-transform:uppercase;letter-spacing:.06em;}
+  .board-row{display:flex;align-items:center;gap:1rem;padding:.85rem 1.2rem;border-bottom:1px solid var(--border);
+    text-decoration:none;transition:background .15s;}
+  .board-row:last-child{border-bottom:none;}
+  .board-row:hover{background:rgba(255,255,255,.035);}
+  .board-row:hover .board-title{color:var(--accent);}
+  .board-num{font-family:var(--mono);font-size:.78rem;color:var(--muted);min-width:2.4rem;flex:none;}
+  .board-title{flex:1;min-width:0;color:var(--text);font-weight:600;font-size:.95rem;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;transition:color .15s;}
+  .board-title .tag-inline{font-family:var(--mono);font-size:.72rem;color:var(--accent);margin-right:.5rem;font-weight:600;}
+  .board-meta{display:flex;gap:1rem;font-family:var(--mono);font-size:.74rem;color:var(--muted);flex:none;}
+  .board-views{white-space:nowrap;}
+  .board-views::before{content:"조회 ";opacity:.7;}
+  @media(max-width:640px){
+    .board-head{display:none;}
+    .board-row{flex-wrap:wrap;padding:.8rem 1rem;}
+    .board-num{display:none;}
+    .board-title{white-space:normal;width:100%;}
+    .board-meta{width:100%;justify-content:flex-start;margin-top:.35rem;}
+  }
   .tag-chip{font-family:var(--mono);font-size:.72rem;color:var(--muted);border:1px solid var(--border);
     border-radius:100px;padding:.2rem .7rem;transition:color .2s,border-color .2s;}
   .tag-chip:hover{color:var(--accent);border-color:var(--accent);}
@@ -149,7 +169,7 @@ export function head({ title, description, canonical, ogImage, extraJsonLd, noin
   ${canonical ? `<meta property="og:url" content="${escapeHtml(canonical)}" />` : ""}
   ${ogImage ? `<meta property="og:image" content="${escapeHtml(ogImage)}" />` : ""}
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="alternate" type="application/rss+xml" title="DAVHAVE 블로그 RSS" href="https://davhave.com/rss.xml" />
+  <link rel="alternate" type="application/rss+xml" title="DAVHAVE 커뮤니티 RSS" href="https://davhave.com/rss.xml" />
   ${extraJsonLd ? `<script type="application/ld+json">${JSON.stringify(extraJsonLd)}</script>` : ""}
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -171,7 +191,7 @@ export function navBar(backHref = "/blog", backLabel = "← 목록으로") {
   <ul class="nav-quick-links">
     <li><a href="/projects" class="pjt-link">Projects ↗</a></li>
     <li><a href="/education">Education</a></li>
-    <li><a href="/blog">Blog</a></li>
+    <li><a href="/blog">Community</a></li>
     <li><a href="/services">Services</a></li>
     <li><a href="/stack">Stack</a></li>
   </ul>
@@ -187,7 +207,7 @@ export function renderFooter() {
       <a href="/portfolio">포트폴리오</a>
       <a href="/services">서비스</a>
       <a href="/education">교육</a>
-      <a href="/blog">블로그</a>
+      <a href="/blog">커뮤니티</a>
       <a href="/stack">스택</a>
       <a href="/philosophy">철학</a>
     </nav>
@@ -201,7 +221,7 @@ export function renderFooter() {
   </footer>`;
 }
 
-function formatDate(iso) {
+export function formatDate(iso) {
   if (!iso) return "";
   const d = new Date(iso);
   return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, "0")}.${String(d.getDate()).padStart(2, "0")}`;
@@ -209,22 +229,30 @@ function formatDate(iso) {
 
 export function renderBlogList({ posts, page, pageSize, total, tag, basePath = "/blog" }) {
   const totalPages = Math.max(1, Math.ceil(total / pageSize));
+  const startNum = total - (page - 1) * pageSize;
   const items = posts.length
-    ? posts
-        .map(
-          (p) => `
-      <a class="post-card" href="/blog/${escapeHtml(p.slug)}">
-        <div class="post-meta">${formatDate(p.published_at)}</div>
-        <div class="post-title">${escapeHtml(p.title)}</div>
-        <div class="post-excerpt">${escapeHtml(p.excerpt || "")}</div>
-        ${
-          p.tags?.length
-            ? `<div class="tag-row">${p.tags.map((t) => `<span class="tag-chip">#${escapeHtml(t.name)}</span>`).join("")}</div>`
-            : ""
-        }
-      </a>`
-        )
-        .join("")
+    ? `<div class="board">
+        <div class="board-head">
+          <span class="board-num">번호</span>
+          <span style="flex:1;">제목</span>
+          <span class="board-meta"><span>날짜</span><span>조회</span></span>
+        </div>
+        ${posts
+          .map(
+            (p, i) => `
+        <a class="board-row" href="/blog/${escapeHtml(p.slug)}">
+          <span class="board-num">${startNum - i}</span>
+          <span class="board-title">${
+            p.tags?.[0] ? `<span class="tag-inline">#${escapeHtml(p.tags[0].name)}</span>` : ""
+          }${escapeHtml(p.title)}</span>
+          <span class="board-meta">
+            <span>${formatDate(p.published_at)}</span>
+            <span class="board-views">${p.views || 0}</span>
+          </span>
+        </a>`
+          )
+          .join("")}
+      </div>`
     : `<div class="empty">${tag ? `#${escapeHtml(tag)} 태그의 글이 아직 없습니다.` : "아직 발행된 글이 없습니다."}</div>`;
 
   const pagination =
@@ -248,8 +276,8 @@ export function renderBlogList({ posts, page, pageSize, total, tag, basePath = "
 <body>
   ${navBar()}
   <div class="wrap">
-    <span class="eyebrow">// ${tag ? "tag" : "blog"}</span>
-    <h1>${tag ? `#${escapeHtml(tag)}` : "블로그"}</h1>
+    <span class="eyebrow">// ${tag ? "tag" : "community"}</span>
+    <h1>${tag ? `#${escapeHtml(tag)}` : "커뮤니티"}</h1>
     <p class="desc">${escapeHtml(description)}</p>
     ${items}
     ${pagination}
@@ -292,7 +320,7 @@ export function renderBlogPost(post) {
 <body>
   ${navBar()}
   <div class="wrap">
-    <span class="eyebrow">// blog</span>
+    <span class="eyebrow">// community</span>
     <h1>${escapeHtml(post.title)}</h1>
     <div class="post-meta">${formatDate(post.published_at)} 발행 · 수정 ${formatDate(post.updated_at)}</div>
     ${post.cover_image_url ? `<img class="cover" src="${escapeHtml(post.cover_image_url)}" alt="${escapeHtml(post.title)}" />` : ""}

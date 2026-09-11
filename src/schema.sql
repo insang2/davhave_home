@@ -13,10 +13,13 @@ CREATE TABLE IF NOT EXISTS posts (
   seo_title TEXT,
   seo_description TEXT,
   order_index INTEGER NOT NULL DEFAULT 0,
+  views INTEGER NOT NULL DEFAULT 0,
   published_at TEXT,
   updated_at TEXT NOT NULL DEFAULT (datetime('now')),
   created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
+-- 기존 DB에는 없는 컬럼이라 최초 1회 수동 반영 필요:
+-- ALTER TABLE posts ADD COLUMN views INTEGER NOT NULL DEFAULT 0;
 
 CREATE INDEX IF NOT EXISTS idx_posts_kind_status ON posts (kind, status, published_at DESC);
 CREATE INDEX IF NOT EXISTS idx_posts_category ON posts (category);
