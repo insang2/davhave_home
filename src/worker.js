@@ -23,7 +23,7 @@ import { renderBlogList, renderBlogPost } from "./lib/render.js";
 import { renderAdminPage } from "./lib/admin.js";
 import { renderPortfolioHub, renderPortfolioDetail } from "./lib/portfolio-render.js";
 import { renderContentHub } from "./lib/content-render.js";
-import { renderEducationHub, renderEducationCategory, renderLesson, CATEGORIES, AI_SUBCATEGORIES, classifyAiPost } from "./lib/education-render.js";
+import { renderEducationHub, renderEducationCategory, renderLesson, CATEGORIES, AI_SUBCATEGORIES, classifyAiPost, eduLessonPath } from "./lib/education-render.js";
 import { projects, getProject } from "./lib/projects.js";
 import { renderSitemap } from "./lib/sitemap.js";
 import { renderRss } from "./lib/rss.js";
@@ -41,6 +41,7 @@ import { renderKctTechPage } from "./lib/kct-tech-render.js";
 import { renderKctColorPage } from "./lib/kct-color-render.js";
 import { renderKctSpecimenPage } from "./lib/kct-specimen-render.js";
 import { renderProjectsHub } from "./lib/projects-hub-render.js";
+import { INDEXNOW_KEY, submitUrls, urlsForPost } from "./lib/indexnow.js";
 
 function json(data, status = 200) {
   return new Response(JSON.stringify(data), {
@@ -59,8 +60,9 @@ async function requireAdmin(request, env) {
   return null;
 }
 
-async function handleApi(request, env, url) {
+async function handleApi(request, env, url, ctx) {
   const { pathname } = url;
+  const ping = (urls) => ctx?.waitUntil ? ctx.waitUntil(submitUrls(urls)) : submitUrls(urls);
   const method = request.method;
 
   if (pathname === "/api/admin/login" && method === "POST") {
@@ -123,6 +125,7 @@ async function handleApi(request, env, url) {
     if (!body || !body.title) return json({ error: "제목은 필수입니다." }, 400);
     body.content_html = marked.parse(body.content_md || "");
     const post = await createPost(env.DB, body, uniqueSlug);
+    if (post.status === "published") ping(urlsForPost(post));
     return json(post, 201);
   }
 
@@ -142,14 +145,33 @@ async function handleApi(request, env, url) {
       if (!body) return json({ error: "잘못된 요청입니다." }, 400);
       if (body.content_md !== undefined) body.content_html = marked.parse(body.content_md || "");
       const post = await updatePost(env.DB, id, body, uniqueSlug);
+      if (post && post.status === "published") ping(urlsForPost(post));
       return post ? json(post) : notFound();
     }
     if (method === "DELETE") {
       const denied = await requireAdmin(request, env);
       if (denied) return denied;
+      const existing = await getPostById(env.DB, id);
       await deletePost(env.DB, id);
+      if (existing && existing.status === "published") ping(urlsForPost(existing));
       return json({ ok: true });
     }
+  }
+
+  if (pathname === "/api/indexnow/resubmit" && method === "POST") {
+    const denied = await requireAdmin(request, env);
+    if (denied) return denied;
+    const [blogPosts, educationPosts] = await Promise.all([
+      listAllPublished(env.DB, "blog"),
+      listAllPublished(env.DB, "education"),
+    ]);
+    const urls = [
+      "https://davhave.com/sitemap.xml",
+      ...blogPosts.map((p) => `https://davhave.com/blog/${p.slug}`),
+      ...educationPosts.map((p) => `https://davhave.com${eduLessonPath(p)}`),
+    ];
+    ping(urls);
+    return json({ ok: true, submitted: urls.length });
   }
 
   if (pathname === "/api/upload" && method === "POST") {
@@ -311,9 +333,15 @@ async function handlePortfolio(parts) {
 
 
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     const url = new URL(request.url);
     const { pathname } = url;
+
+    if (pathname === `/${INDEXNOW_KEY}.txt`) {
+      return new Response(INDEXNOW_KEY, {
+        headers: { "content-type": "text/plain; charset=utf-8", "cache-control": "public, max-age=86400" },
+      });
+    }
 
     // Redirect HTTP to HTTPS
     if (url.protocol === "http:" && !url.hostname.includes("localhost") && !url.hostname.includes("127.0.0.1")) {
@@ -373,7 +401,7 @@ export default {
     }
 
     if (pathname.startsWith("/api/")) {
-      return handleApi(request, env, url);
+      return handleApi(request, env, url, ctx);
     }
 
     if (pathname.startsWith("/media/")) {
