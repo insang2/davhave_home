@@ -115,6 +115,11 @@ const BASE_STYLE = `
   .copy-url{font-family:var(--mono);font-size:.8rem;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;}
   footer{padding:2.5rem 5vw 3rem;border-top:1px solid var(--border);text-align:center;font-family:var(--mono);
     font-size:.8rem;color:var(--muted);}
+  footer .footer-nav,footer .footer-meta{display:flex;justify-content:center;flex-wrap:wrap;gap:.45rem 1.1rem;margin-bottom:1rem;}
+  footer .footer-nav a{color:var(--text);}
+  footer .footer-meta a{color:var(--muted);font-size:.76rem;}
+  footer .footer-nav a:hover,footer .footer-meta a:hover{color:var(--accent);}
+  footer .footer-copy{opacity:.85;}
 `;
 
 export function head({ title, description, canonical, ogImage, extraJsonLd, noindex, ogType = "article", googleVerification }) {
@@ -176,14 +181,23 @@ export function navBar(backHref = "/blog", backLabel = "← 목록으로") {
 
 export function renderFooter() {
   return `<footer>
-    <div style="margin-bottom:.8rem; display:flex; justify-content:center; gap:1.2rem; flex-wrap:wrap;">
-      <a href="/terms" style="color:var(--muted); font-size:.8rem; transition:color .2s;">서비스 이용약관</a>
-      <span style="color:var(--border-strong);">·</span>
-      <a href="/privacy" style="color:var(--muted); font-size:.8rem; transition:color .2s;">개인정보 처리방침</a>
-      <span style="color:var(--border-strong);">·</span>
-      <a href="mailto:useapp.davhave@gmail.com" style="color:var(--muted); font-size:.8rem; transition:color .2s;">문의하기</a>
-    </div>
-    © ${new Date().getFullYear()} DAVHAVE · Oscar Lee
+    <nav class="footer-nav" aria-label="사이트 링크">
+      <a href="/">홈</a>
+      <a href="/projects">Projects</a>
+      <a href="/portfolio">포트폴리오</a>
+      <a href="/services">서비스</a>
+      <a href="/education">교육</a>
+      <a href="/blog">블로그</a>
+      <a href="/stack">스택</a>
+      <a href="/philosophy">철학</a>
+    </nav>
+    <nav class="footer-meta" aria-label="정책 및 구독">
+      <a href="/terms">서비스 이용약관</a>
+      <a href="/privacy">개인정보 처리방침</a>
+      <a href="/rss.xml">RSS</a>
+      <a href="mailto:useapp.davhave@gmail.com">문의하기</a>
+    </nav>
+    <div class="footer-copy">© ${new Date().getFullYear()} DAVHAVE · Oscar Lee</div>
   </footer>`;
 }
 
@@ -304,7 +318,7 @@ export function renderBlogPost(post) {
       <a class="share-x-btn" id="share-x" href="https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(url)}" target="_blank" rel="noopener">X 공유</a>
     </div>
   </div>
-  <footer>© ${new Date().getFullYear()} DAVHAVE · Oscar Lee</footer>
+  ${renderFooter()}
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       // 1. Table Wrapper Auto Wrap

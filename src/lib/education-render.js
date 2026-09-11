@@ -1,4 +1,4 @@
-import { escapeHtml, head, navBar } from "./render.js";
+import { escapeHtml, head, navBar, renderFooter } from "./render.js";
 
 export const CATEGORIES = {
   ai: { label: "AI", desc: "프롬프트 엔지니어링, LLM 연동, 에이전트 개발" },
@@ -86,7 +86,7 @@ export function renderEducationHub(counts) {
     <p class="desc">${escapeHtml(description)}</p>
     <div class="cat-grid">${cards}</div>
   </div>
-  <footer>© ${new Date().getFullYear()} DAVHAVE · Oscar Lee</footer>
+  ${renderFooter()}
 </body>
 </html>`;
 }
@@ -205,7 +205,7 @@ export function renderEducationCategory({ category, subcat = null, posts }) {
       searchInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') search(); });
     </script>
   </div>
-  <footer>© ${new Date().getFullYear()} DAVHAVE · Oscar Lee</footer>
+  ${renderFooter()}
 </body>
 </html>`;
 }
@@ -282,7 +282,7 @@ export function renderLesson({ post, prev, next }) {
       </a>
     </div>
   </div>
-  <footer>© ${new Date().getFullYear()} DAVHAVE · Oscar Lee</footer>
+  ${renderFooter()}
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('article table').forEach(tbl => {

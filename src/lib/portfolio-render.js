@@ -1,4 +1,4 @@
-import { escapeHtml, head, navBar } from "./render.js";
+import { escapeHtml, head, navBar, renderFooter } from "./render.js";
 import { projects } from "./projects.js";
 
 const PORTFOLIO_STYLE = `
@@ -55,7 +55,7 @@ export function renderPortfolioHub() {
     <p class="desc">${escapeHtml(description)}</p>
     <div class="case-grid">${cards}</div>
   </div>
-  <footer>© ${new Date().getFullYear()} DAVHAVE · Oscar Lee</footer>
+  ${renderFooter()}
 </body>
 </html>`;
 }
@@ -98,7 +98,7 @@ export function renderPortfolioDetail(project) {
     <a class="visit-btn" href="${escapeHtml(project.siteUrl)}" target="_blank" rel="noopener">사이트 방문하기 →</a>
     <div class="verify-note">${escapeHtml(project.verifiedNote)}</div>
   </div>
-  <footer>© ${new Date().getFullYear()} DAVHAVE · Oscar Lee</footer>
+  ${renderFooter()}
 </body>
 </html>`;
 }

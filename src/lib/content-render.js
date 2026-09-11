@@ -1,4 +1,4 @@
-import { escapeHtml, head, navBar } from "./render.js";
+import { escapeHtml, head, navBar, renderFooter } from "./render.js";
 import { getProject } from "./projects.js";
 import { contentHub } from "./content-links.js";
 
@@ -117,7 +117,7 @@ export function renderContentHub() {
     <ul class="hub-toc">${toc}</ul>
     ${sections}
   </div>
-  <footer>© ${new Date().getFullYear()} DAVHAVE · Oscar Lee</footer>
+  ${renderFooter()}
 </body>
 </html>`;
 }

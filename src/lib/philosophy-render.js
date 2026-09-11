@@ -1,4 +1,4 @@
-import { head, navBar, escapeHtml } from "./render.js";
+import { head, navBar, escapeHtml, renderFooter } from "./render.js";
 import { PHILOSOPHY_DATA } from "./philosophy-data.js";
 
 const PHILOSOPHY_STYLE = `
@@ -69,7 +69,7 @@ export function renderPhilosophyHub() {
       ${cards}
     </div>
   </div>
-  <footer>© ${new Date().getFullYear()} DAVHAVE · Oscar Lee</footer>
+  ${renderFooter()}
 </body>
 </html>`;
 }
@@ -124,7 +124,7 @@ export function renderPhilosophyDetail(item) {
       </div>
     </article>
   </div>
-  <footer>© ${new Date().getFullYear()} DAVHAVE · Oscar Lee</footer>
+  ${renderFooter()}
 </body>
 </html>`;
 }

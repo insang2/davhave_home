@@ -1,4 +1,4 @@
-import { escapeHtml, head, navBar } from "./render.js";
+import { escapeHtml, head, navBar, renderFooter } from "./render.js";
 
 const PROJECTS_HUB_STYLE = `
   .hub-head { margin: 2rem 0 3.5rem; text-align: left; }
@@ -549,19 +549,7 @@ export function renderProjectsHub() {
     </div>
   </div>
 
-  <footer style="border-top:1px solid var(--border); padding:3rem 0; text-align:center; font-family:var(--mono); font-size:.82rem; color:var(--muted);">
-    <div class="wrap">
-      <div>© ${new Date().getFullYear()} DAVHAVE · Oscar Lee. All rights reserved.</div>
-      <div style="margin-top:.6rem; display:flex; justify-content:center; gap:1.5rem; flex-wrap:wrap;">
-        <a href="/" style="color:var(--text); text-decoration:none;">홈</a>
-        <a href="/projects" style="color:var(--accent); text-decoration:none;">Projects 허브</a>
-        <a href="/projects/kct" style="color:var(--text); text-decoration:none;">KCT 플랫폼</a>
-        <a href="/services" style="color:var(--text); text-decoration:none;">Services</a>
-        <a href="/education" style="color:var(--text); text-decoration:none;">Education</a>
-        <a href="/blog" style="color:var(--text); text-decoration:none;">Blog</a>
-      </div>
-    </div>
-  </footer>
+  ${renderFooter()}
 
   <script>
     function filterProjects(cat, btnEl) {

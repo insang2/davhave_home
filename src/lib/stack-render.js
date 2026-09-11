@@ -1,4 +1,4 @@
-import { head, navBar, escapeHtml } from "./render.js";
+import { head, navBar, escapeHtml, renderFooter } from "./render.js";
 import { STACK_DATA } from "./stack-data.js";
 
 const STACK_STYLE = `
@@ -77,7 +77,7 @@ export function renderStackHub() {
       ${items}
     </div>
   </div>
-  <footer>© ${new Date().getFullYear()} DAVHAVE · Oscar Lee</footer>
+  ${renderFooter()}
 </body>
 </html>`;
 }
@@ -146,7 +146,7 @@ export function renderStackDetail(item) {
       </div>
     </article>
   </div>
-  <footer>© ${new Date().getFullYear()} DAVHAVE · Oscar Lee</footer>
+  ${renderFooter()}
 </body>
 </html>`;
 }

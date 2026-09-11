@@ -1,4 +1,4 @@
-import { head, navBar, escapeHtml } from "./render.js";
+import { head, navBar, escapeHtml, renderFooter } from "./render.js";
 import { SERVICES_DATA } from "./services-data.js";
 
 const SERVICES_STYLE = `
@@ -78,7 +78,7 @@ export function renderServicesHub() {
       ${cards}
     </div>
   </div>
-  <footer>© ${new Date().getFullYear()} DAVHAVE · Oscar Lee</footer>
+  ${renderFooter()}
 </body>
 </html>`;
 }
@@ -147,7 +147,7 @@ export function renderServicesDetail(item) {
       </div>
     </article>
   </div>
-  <footer>© ${new Date().getFullYear()} DAVHAVE · Oscar Lee</footer>
+  ${renderFooter()}
 </body>
 </html>`;
 }

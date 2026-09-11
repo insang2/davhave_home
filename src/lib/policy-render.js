@@ -1,4 +1,4 @@
-import { head, navBar, escapeHtml } from "./render.js";
+import { head, navBar, escapeHtml, renderFooter } from "./render.js";
 
 const POLICY_STYLE = `
   .policy-article{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:2.5rem;margin-top:2rem;}
@@ -80,14 +80,7 @@ export function renderTermsPage() {
       </ul>
     </article>
   </div>
-  <footer>
-    <div style="margin-bottom:.8rem;">
-      <a href="/terms" style="color:var(--text); font-weight:600; margin-right:1rem;">서비스 이용약관</a>
-      <a href="/privacy" style="color:var(--muted); margin-right:1rem;">개인정보 처리방침</a>
-      <a href="mailto:useapp.davhave@gmail.com" style="color:var(--muted);">문의하기</a>
-    </div>
-    © ${new Date().getFullYear()} DAVHAVE · Oscar Lee
-  </footer>
+  ${renderFooter()}
 </body>
 </html>`;
 }
@@ -167,14 +160,7 @@ export function renderPrivacyPage() {
       </ul>
     </article>
   </div>
-  <footer>
-    <div style="margin-bottom:.8rem;">
-      <a href="/terms" style="color:var(--muted); margin-right:1rem;">서비스 이용약관</a>
-      <a href="/privacy" style="color:var(--text); font-weight:600; margin-right:1rem;">개인정보 처리방침</a>
-      <a href="mailto:useapp.davhave@gmail.com" style="color:var(--muted);">문의하기</a>
-    </div>
-    © ${new Date().getFullYear()} DAVHAVE · Oscar Lee
-  </footer>
+  ${renderFooter()}
 </body>
 </html>`;
 }
