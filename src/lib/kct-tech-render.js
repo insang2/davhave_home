@@ -9,10 +9,12 @@ export function renderKctTechPage() {
   <meta name="description" content="KCT 기술자료 검색 및 이메일 전송 센터: TDS(기술자료표), MSDS(물질안전보건자료), 공인 시험성적서, UL 94 V-0/MED 인증서, 시방서 등 17대 산업군 기술문서를 실시간 검색하고 이메일로 수신하세요." />
   <meta name="keywords" content="기술자료 센터, 실리콘 TDS, 실리콘 MSDS, 시험성적서, UL94 V-0 인증서, MED 인증서, 한국건설트레이딩, KCT" />
   
+  <link rel="canonical" href="https://davhave.com/projects/kct/technical" />
   <link rel="icon" href="https://kconstrade.com/assets/img/favicon.ico" type="image/x-icon" />
   <meta property="og:title" content="기술자료 검색 및 이메일 전송 센터 - 한국건설트레이딩 (KCT)" />
   <meta property="og:description" content="TDS, MSDS, 공인 시험성적서 및 인증서 실시간 이메일 전송 시스템." />
   <meta property="og:image" content="https://kconstrade.com/assets/img/og-image.png" />
+  <meta property="og:url" content="https://davhave.com/projects/kct/technical" />
   
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

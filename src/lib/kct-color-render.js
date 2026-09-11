@@ -9,10 +9,12 @@ export function renderKctColorPage() {
   <meta name="description" content="KCT 실리콘 색상칩 시편 비교 및 실물 샘플 요청관: 외장 웨더 실란트, ARDEX SN PLUS 14종 인테리어 타일 매칭 색상칩 실시간 비교, 마감재 텍스처 시뮬레이션 및 현장 승인용 무료 시편 신청." />
   <meta name="keywords" content="실리콘 색상표, 실리콘 색상칩, 실리콘 시편 요청, 실리콘 샘플 신청, 아덱스 실리콘 색상, ARDEX SN PLUS, 한국건설트레이딩, KCT" />
   
+  <link rel="canonical" href="https://davhave.com/projects/kct/color-samples" />
   <link rel="icon" href="https://kconstrade.com/assets/img/favicon.ico" type="image/x-icon" />
   <meta property="og:title" content="색상칩 시편 비교 & 실물 샘플 요청 센터 - 한국건설트레이딩 (KCT)" />
   <meta property="og:description" content="실시간 색상칩 비교기, 마감재 텍스처 시뮬레이터 및 현장 승인용 무료 실물 시편/샘플 배송 신청." />
   <meta property="og:image" content="https://kconstrade.com/assets/img/og-image.png" />
+  <meta property="og:url" content="https://davhave.com/projects/kct/color-samples" />
   
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
