@@ -54,6 +54,7 @@ export function renderSitemap({ blogPosts = [], projects = [], educationPosts = 
     urlEntry("https://davhave.com/projects/kct/technical", { changefreq: "weekly", priority: "0.8" }),
     urlEntry("https://davhave.com/terms", { changefreq: "yearly", priority: "0.4" }),
     urlEntry("https://davhave.com/privacy", { changefreq: "yearly", priority: "0.4" }),
+    urlEntry("https://davhave.com/privacy/retroboy", { changefreq: "monthly", priority: "0.5" }),
     ...svcSlugs.map((s) => urlEntry(`https://davhave.com/services/${s}`, { changefreq: "monthly", priority: "0.8" })),
     ...stackSlugs.map((s) => urlEntry(`https://davhave.com/stack/${s}`, { changefreq: "monthly", priority: "0.8" })),
     ...philSlugs.map((s) => urlEntry(`https://davhave.com/philosophy/${s}`, { changefreq: "monthly", priority: "0.8" })),

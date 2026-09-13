@@ -30,6 +30,7 @@ export function renderLlms({ blogPosts = [], educationPosts = [], projects = [] 
   const portfolioLines = [
     `- **KCT 한국건설트레이딩 실리콘 B2B 플랫폼** (https://davhave.com/projects/kct) — Dow Chemical 기준 6대 실리콘 공학 계산기(소요량·프라이머·풍하중 구조바이트·자중지지·글루라인표·ASTM 열팽창변위), 17대 산업군 52종 스펙 DB, 색상칩 시편관, TDS/MSDS 기술자료 센터, ASTM D638 / ASTM C1401 공학 시편제작 센터 통합 구축`,
     `- **KCT ASTM D638 / ASTM C1401 공학 시편제작 센터** (https://davhave.com/projects/kct/specimens) — ASTM D638 Type I~V 플라스틱 인장 시편 3D 프린팅 정밀 제작, DIC 광학 변형률 분석, ASTM C1401 H-Block 구조접착 시편 지원`,
+    `- **RetroBoy (레트로보이) 모바일 앱** (https://davhave.com/privacy/retroboy) — 레트로 감성 카메라 & 필터 앱, 위치 권한(도시명 스탬프 합성 및 사진 JPEG EXIF GPS 태그 저장)의 100% 온디바이스 처리 및 Google Play Data Safety 정책 준수 개인정보처리방침`,
     `- **DAVHAVE Projects 허브** (https://davhave.com/projects) — B2B 솔루션, 모바일 앱, AI 플랫폼, 에듀테크 통합 포트폴리오 쇼케이스`,
     ...projects.map(
       (p) => `- **${p.clientName}** (${p.siteUrl}) — ${p.summary} 상세: https://davhave.com/portfolio/${p.slug}`

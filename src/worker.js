@@ -36,7 +36,7 @@ import { PHILOSOPHY_DATA } from "./lib/philosophy-data.js";
 import { renderPhilosophyHub, renderPhilosophyDetail } from "./lib/philosophy-render.js";
 import { SERVICES_DATA } from "./lib/services-data.js";
 import { renderServicesHub, renderServicesDetail } from "./lib/services-render.js";
-import { renderTermsPage, renderPrivacyPage } from "./lib/policy-render.js";
+import { renderTermsPage, renderPrivacyPage, renderRetroBoyPrivacyPage } from "./lib/policy-render.js";
 import { renderKctPage } from "./lib/kct-render.js";
 import { renderKctTechPage } from "./lib/kct-tech-render.js";
 import { renderKctColorPage } from "./lib/kct-color-render.js";
@@ -362,6 +362,12 @@ export default {
       return withSecurityHeaders(new Response(renderPrivacyPage(), {
         headers: { "content-type": "text/html; charset=utf-8" },
       }), { "Cache-Control": "public, max-age=3600, s-maxage=86400" });
+    }
+
+    if (pathname === "/privacy/retroboy" || pathname === "/privacy/retroboy/" || pathname === "/retroboy/privacy" || pathname === "/retroboy/privacy/" || pathname === "/privacy/retro-boy" || pathname === "/privacy/retro-boy/") {
+      return withSecurityHeaders(new Response(renderRetroBoyPrivacyPage(), {
+        headers: { "content-type": "text/html; charset=utf-8" },
+      }), { "Cache-Control": "no-cache, no-store, must-revalidate" });
     }
 
     if (pathname === "/projects/kct/specimens" || pathname === "/projects/kct/specimens/" || pathname === "/projects/kct/specimen" || pathname === "/projects/kct/specimen/" || pathname === "/pjt/kct/specimens" || pathname === "/pjt/kct/specimens/" || pathname === "/pjt/kct/specimen" || pathname === "/pjt/kct/specimen/" || pathname === "/projects/kct/astm-d638" || pathname === "/projects/kct/astm-d638/") {
