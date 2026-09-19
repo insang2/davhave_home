@@ -101,7 +101,7 @@ export function renderKctColorPage() {
     .page-hero { background: linear-gradient(135deg, #1E1B4B 0%, #312E81 50%, #1E3A8A 100%); color: var(--white); padding: 4.5rem 0 4rem; text-align: center; }
     .page-hero-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(251,146,60,0.2); color: #FB923C; padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; margin-bottom: 1rem; border: 1px solid rgba(251,146,60,0.3); }
     .page-hero h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.85rem; letter-spacing: -0.02em; }
-    .page-hero p { font-size: 1.05rem; color: rgba(255,255,255,0.85); max-width: 820px; margin: 0 auto; line-height: 1.7; }
+    .page-hero p { font-size: 1.05rem; color: rgba(255,255,255,0.85); max-width: 1000px; margin: 0 auto; line-height: 1.7; }
 
     /* ─── Interactive Comparison Studio ─── */
     .section-studio { padding: 3.5rem 0 2rem; }
@@ -153,7 +153,7 @@ export function renderKctColorPage() {
 
     /* ─── Physical Sample Request Section ─── */
     .section-sample-form { padding: 4.5rem 0 6rem; background: var(--white); border-top: 1px solid var(--gray-200); }
-    .sample-form-wrap { max-width: 900px; margin: 0 auto; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 3.5rem; box-shadow: var(--shadow-sm); }
+    .sample-form-wrap { max-width: 1040px; margin: 0 auto; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 3.5rem; box-shadow: var(--shadow-sm); }
     .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.35rem; }
     @media (max-width: 650px) { .form-grid { grid-template-columns: 1fr; } }
     .form-grid .full { grid-column: span 2; }

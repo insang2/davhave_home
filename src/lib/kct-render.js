@@ -134,7 +134,7 @@ export function renderKctPage() {
     .trust-text h4 { font-size: 0.92rem; font-weight: 700; color: var(--dark); }
     .trust-text p { font-size: 0.78rem; color: var(--gray-600); }
 
-    .sec-header { text-align: center; max-width: 860px; margin: 0 auto 3.5rem; }
+    .sec-header { text-align: center; max-width: 1000px; margin: 0 auto 3.5rem; }
     .sec-badge { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--primary); letter-spacing: 0.1em; margin-bottom: 0.5rem; display: block; }
     .sec-title { font-size: 2.25rem; font-weight: 800; color: var(--dark); line-height: 1.3; margin-bottom: 0.8rem; }
     .sec-desc { color: var(--gray-600); font-size: 1rem; line-height: 1.7; }
@@ -246,7 +246,7 @@ export function renderKctPage() {
     .process-card p { font-size: 0.85rem; color: var(--gray-600); line-height: 1.65; }
 
     .section-b2b { padding: 6.5rem 0; background: var(--gray-50); border-top: 1px solid var(--gray-200); }
-    .b2b-wrap { max-width: 880px; margin: 0 auto; background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 3.5rem; box-shadow: var(--shadow-md); }
+    .b2b-wrap { max-width: 1040px; margin: 0 auto; background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 3.5rem; box-shadow: var(--shadow-md); }
     .b2b-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.35rem; }
     @media (max-width: 650px) { .b2b-form-grid { grid-template-columns: 1fr; } }
     .b2b-form-grid .full { grid-column: span 2; }

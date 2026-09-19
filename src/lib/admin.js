@@ -12,7 +12,7 @@ export function renderAdminPage() {
       --text:#e2e8f0;--muted:#718096;--danger:#f56565;--radius:12px;--font:system-ui,-apple-system,sans-serif;
       --mono:ui-monospace,monospace;}
     body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;padding:2rem 1.5rem 6rem;}
-    .wrap{max-width:880px;margin:0 auto;}
+    .wrap{max-width:1200px;margin:0 auto;}
     h1{font-size:1.4rem;margin-bottom:1.5rem;}
     .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;margin-bottom:1.5rem;}
     label{display:block;font-size:.82rem;color:var(--muted);margin:1rem 0 .4rem;}
