@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-19T21:40:00Z",
+  "title": "Design System: DAVHAVE Precision Engineering System",
+  "extensions": {
+    "colorMeta": {
+      "primary-navy": {
+        "role": "primary",
+        "displayName": "Classic Engineering Navy",
+        "canonical": "#0f2d6b"
+      },
+      "accent-orange": {
+        "role": "secondary",
+        "displayName": "Solar Orange",
+        "canonical": "#ff6b35"
+      },
+      "accent-terracotta": {
+        "role": "secondary",
+        "displayName": "Terracotta Ochre",
+        "canonical": "#b43403"
+      },
+      "text-black": {
+        "role": "neutral",
+        "displayName": "Ink Black",
+        "canonical": "#000000"
+      },
+      "bg-white": {
+        "role": "neutral",
+        "displayName": "Pure White",
+        "canonical": "#ffffff"
+      },
+      "bg-dark": {
+        "role": "neutral",
+        "displayName": "Deep Void Black",
+        "canonical": "#0a0908"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headlines in dark studio mode."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings in research paper mode."
+      },
+      "mono": {
+        "displayName": "Code/Numeral",
+        "purpose": "Engineering measurements, formula variables, and spec values."
+      }
+    },
+    "shadows": [
+      {
+        "name": "hard-technical",
+        "value": "3px 3px 0px #0f172a",
+        "purpose": "Physical printed-sheet depth for cards and whitepaper boxes."
+      },
+      {
+        "name": "hard-hover",
+        "value": "6px 6px 0px #0f172a",
+        "purpose": "Elevated hover state."
+      },
+      {
+        "name": "glass-glow",
+        "value": "0 16px 50px rgba(0,0,0,.45), 0 0 20px rgba(255,107,53,.08)",
+        "purpose": "Floating capsule navbar in dark studio mode."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-snap",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Tactile, instant UI state transitions."
+      },
+      {
+        "name": "duration-fast",
+        "value": "150ms",
+        "purpose": "Hover and active micro-interactions."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1200px" }
+    ]
+  }
+}
