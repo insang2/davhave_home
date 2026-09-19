@@ -20,7 +20,7 @@ import {
   listAllPublished,
   incrementViews,
 } from "./lib/db.js";
-import { renderBlogList, renderBlogPost } from "./lib/render.js";
+import { renderBlogList, renderBlogPost, renderNotFoundPage } from "./lib/render.js";
 import { renderAdminPage } from "./lib/admin.js";
 import { renderPortfolioHub, renderPortfolioDetail } from "./lib/portfolio-render.js";
 import { renderContentHub } from "./lib/content-render.js";
@@ -44,6 +44,71 @@ import { renderKctSpecimenPage } from "./lib/kct-specimen-render.js";
 import { renderProjectsHub } from "./lib/projects-hub-render.js";
 import { INDEXNOW_KEY, submitUrls, urlsForPost } from "./lib/indexnow.js";
 
+const TEMPLATE_SLUG_REDIRECTS = {
+  // c-basics 10 duplicate template posts -> canonical English lessons
+  "ch01-c-프로그래밍-입문": "/education/c-basics/ch01-c-intro",
+  "ch02-변수와-자료형": "/education/c-basics/ch02-program-development",
+  "ch03-연산자와-제어문": "/education/c-basics/ch03-c-elements",
+  "ch04-함수와-스코프": "/education/c-basics/ch04-variables-and-data-types",
+  "ch05-포인터-마스터하기": "/education/c-basics/ch05-operators-and-expressions",
+  "ch06-배열과-문자열": "/education/c-basics/ch06-conditional-statements",
+  "ch07-구조체와-공용체": "/education/c-basics/ch07-loops-and-iterations",
+  "ch08-파일-i-o": "/education/c-basics/ch08-functions-basics",
+  "ch09-동적-메모리-할당": "/education/c-basics/ch09-scope-and-storage-classes",
+  "ch10-전처리기와-매크로": "/education/c-basics/ch10-arrays",
+  // java 10 duplicate template posts -> canonical English lessons
+  "ch01-jvm과-자바의-특징": "/education/java/ch01-java-introduction-and-jvm",
+  "ch02-변수와-자료형-완벽-이해": "/education/java/ch02-java-basics-data-types-operators",
+  "ch03-제어문과-반복문": "/education/java/ch03-control-flow-arrays-exceptions",
+  "ch04-클래스와-객체-설계": "/education/java/ch04-object-oriented-programming-classes",
+  "ch05-상속과-인터페이스": "/education/java/ch05-inheritance-polymorphism-interfaces",
+  "ch06-컬렉션-프레임워크": "/education/java/ch06-packages-modules-java-lang-util",
+  "ch07-스트림-api와-함수형": "/education/java/ch07-generics-and-collection-framework",
+  "ch08-멀티스레딩-동시성": "/education/java/ch08-io-streams-and-file-processing",
+  "ch09-네트워킹-기초": "/education/java/ch09-gui-basics-and-swing-components",
+  "ch10-디자인-패턴과-실전": "/education/java/ch10-gui-event-handling-model",
+  // html5-web 10 duplicate template posts -> canonical English lessons
+  "ch01-웹-개발의-기초": "/education/html5-web/ch01-web-history-and-html5",
+  "ch02-html5-구조와-의미": "/education/html5-web/ch02-html5-basics",
+  "ch03-폼과-입력-요소": "/education/html5-web/ch03-links-and-multimedia",
+  "ch04-css3-스타일링": "/education/html5-web/ch04-css3-basics",
+  "ch05-flexbox-레이아웃": "/education/html5-web/ch05-css3-layout-and-advanced",
+  "ch06-css-grid": "/education/html5-web/ch06-forms-and-inputs",
+  "ch07-javascript-기초": "/education/html5-web/ch07-website-layout-practice",
+  "ch08-dom-조작": "/education/html5-web/ch08-javascript-fundamentals",
+  "ch09-html5-api": "/education/html5-web/ch09-javascript-functions-and-objects",
+  "ch10-웹-성능과-seo": "/education/html5-web/ch10-dom-and-html-document",
+  // data-structure 10 duplicate template posts -> category hub
+  "ch01-배열과-동적-배열": "/education/data-structure",
+  "ch02-연결-리스트": "/education/data-structure",
+  "ch03-스택과-큐": "/education/data-structure",
+  "ch04-해시-테이블": "/education/data-structure",
+  "ch05-이진-탐색-트리": "/education/data-structure",
+  "ch06-자가-균형-트리": "/education/data-structure",
+  "ch07-b-트리": "/education/data-structure",
+  "ch08-힙과-우선순위": "/education/data-structure",
+  "ch09-그래프-표현": "/education/data-structure",
+  "ch10-고급-자료구조": "/education/data-structure",
+};
+
+const CANONICAL_ALIASES = {
+  "/retroboy/privacy": "/privacy/retroboy",
+  "/privacy/retro-boy": "/privacy/retroboy",
+  "/pjt": "/projects",
+  "/pjt/kct": "/projects/kct",
+  "/pjt/kct/specimens": "/projects/kct/specimens",
+  "/projects/kct/specimen": "/projects/kct/specimens",
+  "/pjt/kct/specimen": "/projects/kct/specimens",
+  "/projects/kct/astm-d638": "/projects/kct/specimens",
+  "/pjt/kct/astm-d638": "/projects/kct/specimens",
+  "/pjt/kct/color-samples": "/projects/kct/color-samples",
+  "/projects/kct/sample": "/projects/kct/color-samples",
+  "/pjt/kct/sample": "/projects/kct/color-samples",
+  "/pjt/kct/technical": "/projects/kct/technical",
+  "/projects/kct/tech": "/projects/kct/technical",
+  "/pjt/kct/tech": "/projects/kct/technical",
+};
+
 function json(data, status = 200) {
   return new Response(JSON.stringify(data), {
     status,
@@ -52,8 +117,12 @@ function json(data, status = 200) {
 }
 
 function notFound() {
-  return new Response("Not Found", { status: 404 });
+  return withSecurityHeaders(new Response(renderNotFoundPage(), {
+    status: 404,
+    headers: { "content-type": "text/html; charset=utf-8" },
+  }));
 }
+
 
 async function requireAdmin(request, env) {
   const ok = await isAdminRequest(request, env);
@@ -241,14 +310,16 @@ async function handleBlog(request, env, parts, url, ctx) {
   if (parts.length === 2) {
     const admin = await isAdminRequest(request, env);
     const post = await getPostBySlug(env.DB, decodeURIComponent(parts[1]));
-    if (!post || post.kind !== "blog" || (post.status !== "published" && !admin)) return notFound();
+    if (!post || post.kind !== "blog" || (post.status !== "published" && !admin)) {
+      return Response.redirect("https://davhave.com/blog", 301);
+    }
     if (post.status === "published") ctx?.waitUntil?.(incrementViews(env.DB, post.id));
     return withSecurityHeaders(new Response(renderBlogPost(post), {
       headers: { "content-type": "text/html; charset=utf-8" },
     }));
   }
 
-  return notFound();
+  return Response.redirect("https://davhave.com/blog", 301);
 }
 
 async function handleEducation(env, parts, ctx) {
@@ -261,7 +332,9 @@ async function handleEducation(env, parts, ctx) {
   }
 
   const category = decodeURIComponent(parts[1]);
-  if (!CATEGORIES[category]) return notFound();
+  if (!CATEGORIES[category]) {
+    return Response.redirect("https://davhave.com/education", 301);
+  }
 
   // /education/[category] (e.g. /education/ai, /education/python)
   if (parts.length === 2) {
@@ -282,10 +355,15 @@ async function handleEducation(env, parts, ctx) {
       }));
     }
 
+    // 301 Redirect duplicate template lessons to canonical counterpart
+    if (TEMPLATE_SLUG_REDIRECTS[target]) {
+      return Response.redirect(`https://davhave.com${TEMPLATE_SLUG_REDIRECTS[target]}`, 301);
+    }
+
     // Direct lesson slug: /education/[category]/[slug]
     const post = await getPostBySlug(env.DB, target);
     if (!post || post.kind !== "education" || post.status !== "published") {
-      return notFound();
+      return Response.redirect(`https://davhave.com/education/${category}`, 301);
     }
 
     // 301 Redirect legacy /education/ai/[slug] to canonical /education/ai/[subcat]/[slug]
@@ -304,9 +382,12 @@ async function handleEducation(env, parts, ctx) {
   // /education/ai/[subcat]/[slug] OR /education/[category]/[subcat]/[slug]
   if (parts.length === 4) {
     const slug = decodeURIComponent(parts[3]);
+    if (TEMPLATE_SLUG_REDIRECTS[slug]) {
+      return Response.redirect(`https://davhave.com${TEMPLATE_SLUG_REDIRECTS[slug]}`, 301);
+    }
     const post = await getPostBySlug(env.DB, slug);
     if (!post || post.kind !== "education" || post.status !== "published") {
-      return notFound();
+      return Response.redirect(`https://davhave.com/education/${category}`, 301);
     }
     const { prev, next } = await getAdjacentLessons(env.DB, post.category, post.order_index);
     ctx?.waitUntil?.(incrementViews(env.DB, post.id));
@@ -315,7 +396,7 @@ async function handleEducation(env, parts, ctx) {
     }));
   }
 
-  return notFound();
+  return Response.redirect("https://davhave.com/education", 301);
 }
 
 async function handlePortfolio(parts) {
@@ -325,14 +406,19 @@ async function handlePortfolio(parts) {
     }));
   }
   if (parts.length === 2) {
-    const project = getProject(decodeURIComponent(parts[1]));
-    if (!project) return notFound();
+    const slug = decodeURIComponent(parts[1]);
+    if (slug === "kct" || slug === "kconstrade") {
+      return Response.redirect("https://davhave.com/projects/kct", 301);
+    }
+    const project = getProject(slug);
+    if (!project) return Response.redirect("https://davhave.com/portfolio", 301);
     return withSecurityHeaders(new Response(renderPortfolioDetail(project), {
       headers: { "content-type": "text/html; charset=utf-8" },
     }));
   }
-  return notFound();
+  return Response.redirect("https://davhave.com/portfolio", 301);
 }
+
 
 
 
@@ -352,6 +438,22 @@ export default {
       return Response.redirect(`https://${url.hostname}${url.pathname}${url.search}`, 301);
     }
 
+    // Strip trailing slash and resolve canonical aliases (canonical normalization) - exclude root "/"
+    if (pathname.length > 1 && pathname.endsWith("/")) {
+      const cleanPath = pathname.slice(0, -1);
+      const target = CANONICAL_ALIASES[cleanPath] || (cleanPath.startsWith("/pjt/") ? "/projects" + cleanPath.slice("/pjt".length) : cleanPath);
+      return Response.redirect(`https://${url.hostname}${target}${url.search}`, 301);
+    }
+
+    // Canonical 301 redirects for legacy aliases
+    if (CANONICAL_ALIASES[pathname]) {
+      return Response.redirect(`https://${url.hostname}${CANONICAL_ALIASES[pathname]}${url.search}`, 301);
+    }
+
+    if (pathname.startsWith("/pjt/")) {
+      return Response.redirect(`https://${url.hostname}/projects${pathname.slice("/pjt".length)}${url.search}`, 301);
+    }
+
     if (pathname === "/terms") {
       return withSecurityHeaders(new Response(renderTermsPage(), {
         headers: { "content-type": "text/html; charset=utf-8" },
@@ -364,41 +466,41 @@ export default {
       }), { "Cache-Control": "public, max-age=3600, s-maxage=86400" });
     }
 
-    if (pathname === "/privacy/retroboy" || pathname === "/privacy/retroboy/" || pathname === "/retroboy/privacy" || pathname === "/retroboy/privacy/" || pathname === "/privacy/retro-boy" || pathname === "/privacy/retro-boy/") {
+    if (pathname === "/privacy/retroboy") {
       return withSecurityHeaders(new Response(renderRetroBoyPrivacyPage(), {
         headers: { "content-type": "text/html; charset=utf-8" },
       }), { "Cache-Control": "no-cache, no-store, must-revalidate" });
     }
 
-    if (pathname === "/projects/kct/specimens" || pathname === "/projects/kct/specimens/" || pathname === "/projects/kct/specimen" || pathname === "/projects/kct/specimen/" || pathname === "/pjt/kct/specimens" || pathname === "/pjt/kct/specimens/" || pathname === "/pjt/kct/specimen" || pathname === "/pjt/kct/specimen/" || pathname === "/projects/kct/astm-d638" || pathname === "/projects/kct/astm-d638/") {
+    if (pathname === "/projects/kct/specimens") {
       const raw = new Response(renderKctSpecimenPage(), {
         headers: { "content-type": "text/html; charset=utf-8" },
       });
       return withSecurityHeaders(raw, { "Cache-Control": "no-cache, no-store, must-revalidate" });
     }
 
-    if (pathname === "/projects/kct/color-samples" || pathname === "/projects/kct/color-samples/" || pathname === "/projects/kct/sample" || pathname === "/projects/kct/sample/" || pathname === "/pjt/kct/color-samples" || pathname === "/pjt/kct/color-samples/" || pathname === "/pjt/kct/sample" || pathname === "/pjt/kct/sample/") {
+    if (pathname === "/projects/kct/color-samples") {
       const raw = new Response(renderKctColorPage(), {
         headers: { "content-type": "text/html; charset=utf-8" },
       });
       return withSecurityHeaders(raw, { "Cache-Control": "public, max-age=3600, s-maxage=86400" });
     }
 
-    if (pathname === "/projects/kct/technical" || pathname === "/projects/kct/technical/" || pathname === "/projects/kct/tech" || pathname === "/projects/kct/tech/" || pathname === "/pjt/kct/technical" || pathname === "/pjt/kct/technical/" || pathname === "/pjt/kct/tech" || pathname === "/pjt/kct/tech/") {
+    if (pathname === "/projects/kct/technical") {
       const raw = new Response(renderKctTechPage(), {
         headers: { "content-type": "text/html; charset=utf-8" },
       });
       return withSecurityHeaders(raw, { "Cache-Control": "public, max-age=3600, s-maxage=86400" });
     }
 
-    if (pathname === "/projects/kct" || pathname === "/projects/kct/" || pathname === "/pjt/kct" || pathname === "/pjt/kct/") {
+    if (pathname === "/projects/kct") {
       const raw = new Response(renderKctPage(), {
         headers: { "content-type": "text/html; charset=utf-8" },
       });
       return withSecurityHeaders(raw, { "Cache-Control": "public, max-age=3600, s-maxage=86400" });
     }
 
-    if (pathname === "/projects" || pathname === "/projects/" || pathname === "/pjt" || pathname === "/pjt/") {
+    if (pathname === "/projects") {
       const raw = new Response(renderProjectsHub(), {
         headers: { "content-type": "text/html; charset=utf-8" },
       });
@@ -556,6 +658,10 @@ export default {
       return withSecurityHeaders(await handleBlog(request, env, parts, url, ctx));
     }
 
-    return env.ASSETS.fetch(request);
+    const assetRes = await env.ASSETS.fetch(request);
+    if (assetRes.status === 404) {
+      return notFound();
+    }
+    return withSecurityHeaders(assetRes);
   },
 };

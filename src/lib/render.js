@@ -127,13 +127,34 @@ const BASE_STYLE = `
     background:linear-gradient(135deg,var(--accent),var(--accent2));padding:.7rem 1.4rem;border-radius:8px;transition:transform .2s,box-shadow .2s;}
   .cta-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,107,53,.3);color:#17110a;border-bottom:none;}
 
-  .share-row{display:flex;align-items:center;flex-wrap:wrap;gap:1rem;margin:2.5rem 0;padding:1.2rem;border:1px solid var(--border);
+  .share-row{display:flex;align-items:center;flex-wrap:wrap;gap:.75rem;margin:2.5rem 0;padding:1.2rem;border:1px solid var(--border);
     border-radius:var(--radius);background:var(--surface);}
-  .copy-btn,.share-x-btn{font-family:var(--mono);font-size:.82rem;color:#17110a;background:linear-gradient(135deg,var(--accent),var(--accent2));
-    border:none;border-radius:8px;padding:.6rem 1.1rem;cursor:pointer;font-weight:600;display:inline-flex;align-items:center;gap:.4rem;}
+  .share-label{font-family:var(--mono);font-size:.78rem;color:var(--muted);margin-right:.25rem;text-transform:uppercase;letter-spacing:.05em;}
+  .copy-btn,.share-x-btn,.share-kakao-btn,.share-linkedin-btn,.native-share-btn{font-family:var(--mono);font-size:.8rem;color:#17110a;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;border-radius:8px;padding:.55rem 1rem;cursor:pointer;
+    font-weight:600;display:inline-flex;align-items:center;gap:.35rem;text-decoration:none;transition:transform .15s,opacity .15s;}
+  .copy-btn:hover,.share-x-btn:hover,.share-kakao-btn:hover,.share-linkedin-btn:hover,.native-share-btn:hover{transform:translateY(-1px);opacity:.95;}
   .share-x-btn{background:rgba(255,255,255,.1);color:var(--text);border:1px solid var(--border);}
-  .share-x-btn:hover{background:rgba(255,255,255,.2);color:var(--text);}
-  .copy-url{font-family:var(--mono);font-size:.8rem;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;}
+  .share-kakao-btn{background:#FEE500;color:#191919;}
+  .share-linkedin-btn{background:#0A66C2;color:#ffffff;}
+  .native-share-btn{background:rgba(255,255,255,.08);color:var(--text);border:1px solid var(--border);}
+  .copy-url{display:none;}
+  .dh-toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);background:rgba(23,17,10,.95);
+    color:var(--accent2);border:1px solid var(--accent);padding:.75rem 1.5rem;border-radius:100px;font-family:var(--mono);
+    font-size:.85rem;box-shadow:0 12px 35px rgba(0,0,0,.6);z-index:9999;opacity:0;transition:all .3s ease;pointer-events:none;}
+  .dh-toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
+
+  /* Related Technical Articles Section */
+  .related-section{margin:3.5rem 0 2rem;padding-top:2.5rem;border-top:1px solid var(--border);}
+  .related-title{font-family:var(--font);font-size:1.25rem;font-weight:700;margin-bottom:1.25rem;color:var(--text);}
+  .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;}
+  .related-card{display:block;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+    padding:1.4rem;text-decoration:none;transition:transform .2s,border-color .2s;}
+  .related-card:hover{transform:translateY(-3px);border-color:var(--accent);}
+  .related-badge{display:inline-block;font-family:var(--mono);font-size:.7rem;color:var(--accent);text-transform:uppercase;margin-bottom:.5rem;}
+  .related-card h4{font-family:var(--font);font-size:1rem;font-weight:600;color:var(--text);line-height:1.45;margin-bottom:.4rem;}
+  .related-card p{font-size:.82rem;color:var(--muted);line-height:1.5;}
+
   footer{padding:2.5rem 5vw 3rem;border-top:1px solid var(--border);text-align:center;font-family:var(--mono);
     font-size:.8rem;color:var(--muted);}
   footer .footer-nav,footer .footer-meta{display:flex;justify-content:center;flex-wrap:wrap;gap:.45rem 1.1rem;margin-bottom:1rem;}
@@ -143,17 +164,20 @@ const BASE_STYLE = `
   footer .footer-copy{opacity:.85;}
 `;
 
+
 export function head({ title, description, canonical, ogImage, extraJsonLd, noindex, ogType = "article", googleVerification }) {
+  const fullTitle = title.includes("DAVHAVE") || title.includes("KCT") ? title : `${title} | DAVHAVE`;
+  const defaultImage = ogImage || "https://davhave.com/apple-touch-icon.png";
   const googleMeta = googleVerification ? `<meta name="google-site-verification" content="${escapeHtml(googleVerification)}" />` : "";
   return `
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>${escapeHtml(title)}</title>
+  <title>${escapeHtml(fullTitle)}</title>
   <meta name="description" content="${escapeHtml(description)}" />
   ${googleMeta}
   ${noindex ? '<meta name="robots" content="noindex, nofollow" />' : '<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />'}
-  <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-  <meta name="bingbot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="googlebot" content="${noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}" />
+  <meta name="bingbot" content="${noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}" />
   ${canonical ? `<link rel="canonical" href="${escapeHtml(canonical)}" />` : ""}
   <link rel="preload" href="/fonts/bricolage-grotesque-800.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/jetbrains-mono-400.woff2" as="font" type="font/woff2" crossorigin />
@@ -165,11 +189,14 @@ export function head({ title, description, canonical, ogImage, extraJsonLd, noin
   <meta property="og:type" content="${escapeHtml(ogType)}" />
   <meta property="og:site_name" content="DAVHAVE" />
   <meta property="og:locale" content="ko_KR" />
-  <meta property="og:title" content="${escapeHtml(title)}" />
+  <meta property="og:title" content="${escapeHtml(fullTitle)}" />
   <meta property="og:description" content="${escapeHtml(description)}" />
   ${canonical ? `<meta property="og:url" content="${escapeHtml(canonical)}" />` : ""}
-  ${ogImage ? `<meta property="og:image" content="${escapeHtml(ogImage)}" />` : ""}
+  <meta property="og:image" content="${escapeHtml(defaultImage)}" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="${escapeHtml(fullTitle)}" />
+  <meta name="twitter:description" content="${escapeHtml(description)}" />
+  <meta name="twitter:image" content="${escapeHtml(defaultImage)}" />
   <link rel="alternate" type="application/rss+xml" title="DAVHAVE 커뮤니티 RSS" href="https://davhave.com/rss.xml" />
   ${extraJsonLd ? `<script type="application/ld+json">${JSON.stringify(extraJsonLd)}</script>` : ""}
   <!-- Google Tag Manager -->
@@ -182,6 +209,7 @@ export function head({ title, description, canonical, ogImage, extraJsonLd, noin
   <style>${BASE_STYLE}</style>
   `;
 }
+
 
 export function navBar(backHref = "/blog", backLabel = "← 목록으로") {
   return `<!-- Google Tag Manager (noscript) -->
@@ -342,10 +370,35 @@ export function renderBlogPost(post) {
     </div>
 
     <div class="share-row">
-      <span class="copy-url" id="post-url">${url}</span>
-      <button class="copy-btn" id="copy-btn">링크 복사</button>
-      <a class="share-x-btn" id="share-x" href="https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(url)}" target="_blank" rel="noopener">X 공유</a>
+      <span class="share-label">공유하기</span>
+      <button class="copy-btn" id="copy-btn">📋 링크 복사</button>
+      <button class="native-share-btn" id="native-share-btn" style="display:none;">📱 공유</button>
+      <a class="share-x-btn" id="share-x" href="https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(url)}" target="_blank" rel="noopener">𝕏 트위터</a>
+      <a class="share-kakao-btn" id="share-kakao" href="https://story.kakao.com/share?url=${encodeURIComponent(url)}" target="_blank" rel="noopener">🟡 카카오</a>
+      <a class="share-linkedin-btn" id="share-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}" target="_blank" rel="noopener">in 링크드인</a>
     </div>
+    <div id="toast" class="dh-toast">링크가 클립보드에 복사되었습니다! ✓</div>
+
+    <section class="related-section">
+      <h3 class="related-title">📚 관련 기술 프로젝트 & 엔지니어링 리소스</h3>
+      <div class="related-grid">
+        <a class="related-card" href="/projects">
+          <span class="related-badge">라이브 프로덕트</span>
+          <h4>DAVHAVE 엔지니어링 프로젝트 허브</h4>
+          <p>엣지 인프라, 시편 공학, 모바일 플랫폼 등 실제 프로덕션 빌드 스펙.</p>
+        </a>
+        <a class="related-card" href="/education">
+          <span class="related-badge">교육 커리큘럼</span>
+          <h4>실전 엔지니어링 & AI 마스터 가이드</h4>
+          <p>소프트웨어 공학, 알고리즘, 클라우드 DB, AI 에이전트 심층 튜토리얼.</p>
+        </a>
+        <a class="related-card" href="/services">
+          <span class="related-badge">전문 서비스</span>
+          <h4>시스템 아키텍처 & 프로덕트 엔지니어링</h4>
+          <p>고성능 웹/앱 설계 및 엣지 클라우드 도입 기술 컨설팅.</p>
+        </a>
+      </div>
+    </section>
   </div>
   ${renderFooter()}
   <script>
@@ -398,20 +451,67 @@ export function renderBlogPost(post) {
         tocBox.innerHTML = html;
         document.getElementById('toc-placeholder').appendChild(tocBox);
       }
-    });
 
-    document.getElementById('copy-btn').addEventListener('click', async () => {
-      const btn = document.getElementById('copy-btn');
-      try {
-        await navigator.clipboard.writeText(document.getElementById('post-url').textContent.trim());
-        const original = btn.textContent;
-        btn.textContent = '복사됨 ✓';
-        setTimeout(() => { btn.textContent = original; }, 1800);
-      } catch (e) {
-        alert('클립보드 복사에 실패했습니다.');
+      // 4. Toast notification helper
+      const toast = document.getElementById('toast');
+      function showToast(msg) {
+        if (!toast) return;
+        if (msg) toast.textContent = msg;
+        toast.classList.add('show');
+        setTimeout(() => { toast.classList.remove('show'); }, 2200);
+      }
+
+      // 5. Native Share API check
+      const nativeBtn = document.getElementById('native-share-btn');
+      if (navigator.share && nativeBtn) {
+        nativeBtn.style.display = 'inline-flex';
+        nativeBtn.addEventListener('click', async () => {
+          try {
+            await navigator.share({ title: ${JSON.stringify(post.title)}, url: ${JSON.stringify(url)} });
+          } catch (e) {}
+        });
+      }
+
+      // 6. Copy link handler
+      const copyBtn = document.getElementById('copy-btn');
+      if (copyBtn) {
+        copyBtn.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(${JSON.stringify(url)});
+            showToast('링크가 클립보드에 복사되었습니다! ✓');
+          } catch (e) {
+            showToast('클립보드 복사에 실패했습니다.');
+          }
+        });
       }
     });
   </script>
 </body>
 </html>`;
 }
+
+export function renderNotFoundPage() {
+  const title = "페이지를 찾을 수 없습니다 (404) | DAVHAVE";
+  const description = "요청하신 페이지가 이동되었거나 삭제되었습니다. 홈 또는 서비스·교육 메인으로 이동해 보세요.";
+  return `<!DOCTYPE html>
+<html lang="ko">
+<head>${head({ title, description, noindex: true, ogType: "website" })}</head>
+<body>
+  ${navBar("/", "← 홈으로")}
+  <div class="wrap" style="text-align:center;padding:10rem 1.5rem 6rem;">
+    <span class="eyebrow">// 404 error</span>
+    <h1 style="margin-bottom:1rem;">페이지를 찾을 수 없습니다</h1>
+    <p class="desc" style="max-width:560px;margin:0 auto 2.5rem;">요청하신 페이지의 주소가 변경되었거나 삭제되었습니다.<br />아래 주요 허브 또는 검색을 통해 원하는 콘텐츠를 확인하실 수 있습니다.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin:2rem 0 3.5rem;">
+      <a class="cta-btn" href="/">홈으로 이동</a>
+      <a class="cta-btn" style="background:rgba(255,255,255,.08);color:var(--text);box-shadow:none;border:1px solid var(--border);" href="/projects">Projects Hub</a>
+      <a class="cta-btn" style="background:rgba(255,255,255,.08);color:var(--text);box-shadow:none;border:1px solid var(--border);" href="/education">교육 커리큘럼</a>
+      <a class="cta-btn" style="background:rgba(255,255,255,.08);color:var(--text);box-shadow:none;border:1px solid var(--border);" href="/blog">기술 블로그</a>
+      <a class="cta-btn" style="background:rgba(255,255,255,.08);color:var(--text);box-shadow:none;border:1px solid var(--border);" href="/services">엔지니어링 서비스</a>
+    </div>
+  </div>
+  ${renderFooter()}
+</body>
+</html>`;
+}
+

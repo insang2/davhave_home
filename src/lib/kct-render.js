@@ -5,14 +5,14 @@ export function renderKctPage() {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>한국건설트레이딩 (KCT) - 인테리어타일·특수실란트·ESS/EV배터리·건축 실리콘 토탈 솔루션</title>
-  <meta name="description" content="한국건설트레이딩(KCT)은 Dow Chemical 및 프리미엄 인테리어 타일 하이진 실란트(ARDEX SN+급), 색상칩 시편 및 실물 샘플 요청, 조선해양 MED인증, 철도 EN45545, EV 배터리 UL 94 V-0 난연 실란트 등 52개 전 산업군 B2B 24시간 견적 및 전국 직납." />
-  <meta name="keywords" content="한국건설트레이딩, KCT, 색상칩 시편, 실리콘 샘플요청, 아덱스 실리콘, ARDEX SN PLUS, 기술자료 센터, 인테리어 실리콘, 타일 실리콘, 조선용 실란트, 철도용 실란트, ESS 실리콘, EV 배터리 실란트, UL 94 V-0 난연 실리콘, 실리콘 계산기, B2B 견적" />
+  <title>한국건설트레이딩 (KCT) - 와이어링 하네스·인테리어타일·특수실란트·배터리 실리콘 솔루션</title>
+  <meta name="description" content="한국건설트레이딩(KCT)은 자동차 와이어링 하네스 엔지니어링, 전장 FVMQ 실리콘, Dow Chemical 및 프리미엄 타일 하이진 실란트(ARDEX SN+급), 색상칩 시편 및 실물 샘플 요청, 조선 MED, 배터리 UL 94 V-0 난연 실란트 B2B 24시간 견적 및 전국 직납." />
+  <meta name="keywords" content="와이어링 하네스, 하네스 엔지니어링, 자동차 전장 실리콘, 한국건설트레이딩, KCT, 색상칩 시편, 실리콘 샘플요청, 아덱스 실리콘, ARDEX SN PLUS, 기술자료 센터, 인테리어 실리콘, 타일 실리콘, 조선용 실란트, 철도용 실란트, ESS 실리콘, EV 배터리 실란트, UL 94 V-0 난연 실리콘, 실리콘 계산기, B2B 견적" />
   
   <link rel="canonical" href="https://davhave.com/projects/kct" />
   <link rel="icon" href="https://kconstrade.com/assets/img/favicon.ico" type="image/x-icon" />
-  <meta property="og:title" content="한국건설트레이딩 (KCT) - 프리미엄 인테리어·특수 실란트 전문 유통·수출 솔루션" />
-  <meta property="og:description" content="ARDEX SN+급 인테리어 하이진 & Dow Chemical & 색상칩 시편/샘플 요청 & 특수모빌리티·ESS/EV배터리·건축 고기능성 실리콘 전 산업 라인업." />
+  <meta property="og:title" content="한국건설트레이딩 (KCT) - 와이어링 하네스·특수 실란트 전문 엔지니어링 솔루션" />
+  <meta property="og:description" content="와이어링 하네스 전장 실링 & Dow Chemical & ARDEX SN+급 인테리어 하이진 & 색상칩 시편/샘플 요청 & ESS/EV배터리 난연 실리콘 전 산업 라인업." />
   <meta property="og:image" content="https://kconstrade.com/assets/img/og-image.png" />
   <meta property="og:url" content="https://davhave.com/projects/kct" />
   

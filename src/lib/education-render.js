@@ -282,10 +282,35 @@ export function renderLesson({ post, prev, next }) {
     </div>
 
     <div class="share-row">
-      <span class="copy-url" id="post-url">${url}</span>
-      <button class="copy-btn" id="copy-btn">링크 복사</button>
-      <a class="share-x-btn" id="share-x" href="https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(url)}" target="_blank" rel="noopener">X 공유</a>
+      <span class="share-label">공유하기</span>
+      <button class="copy-btn" id="copy-btn">📋 링크 복사</button>
+      <button class="native-share-btn" id="native-share-btn" style="display:none;">📱 공유</button>
+      <a class="share-x-btn" id="share-x" href="https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(url)}" target="_blank" rel="noopener">𝕏 트위터</a>
+      <a class="share-kakao-btn" id="share-kakao" href="https://story.kakao.com/share?url=${encodeURIComponent(url)}" target="_blank" rel="noopener">🟡 카카오</a>
+      <a class="share-linkedin-btn" id="share-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}" target="_blank" rel="noopener">in 링크드인</a>
     </div>
+    <div id="toast" class="dh-toast">링크가 클립보드에 복사되었습니다! ✓</div>
+
+    <section class="related-section">
+      <h3 class="related-title">📚 관련 학습 리소스 & 실전 프로젝트</h3>
+      <div class="related-grid">
+        <a class="related-card" href="${backUrl}">
+          <span class="related-badge">${escapeHtml(backLabel)} 커리큘럼</span>
+          <h4>${escapeHtml(backLabel)} 전체 마스터 코스 목차</h4>
+          <p>이론부터 실무 프로젝트까지 단계별 실습 아티클 전체 보기.</p>
+        </a>
+        <a class="related-card" href="/projects">
+          <span class="related-badge">실전 프로덕트</span>
+          <h4>DAVHAVE 엔지니어링 프로젝트</h4>
+          <p>엣지 인프라, 공학 시험 플랫폼, 모바일 앱 실제 상용화 빌드 스펙.</p>
+        </a>
+        <a class="related-card" href="/services">
+          <span class="related-badge">전문 서비스</span>
+          <h4>시스템 아키텍처 & 기술 컨설팅</h4>
+          <p>고성능 웹/앱 설계 및 엣지 클라우드 엔지니어링 문의.</p>
+        </a>
+      </div>
+    </section>
 
     <div class="lesson-nav">
       <a href="${prev ? (post.category === 'ai' ? `/education/ai/${classifyAiPost(prev)}/${escapeHtml(prev.slug)}` : `/education/${post.category}/${escapeHtml(prev.slug)}`) : "#"}" ${prev ? "" : 'style="visibility:hidden;"'}>
@@ -344,17 +369,38 @@ export function renderLesson({ post, prev, next }) {
         tocBox.innerHTML = html;
         document.getElementById('toc-placeholder').appendChild(tocBox);
       }
-    });
 
-    document.getElementById('copy-btn').addEventListener('click', async () => {
-      const btn = document.getElementById('copy-btn');
-      try {
-        await navigator.clipboard.writeText(document.getElementById('post-url').textContent.trim());
-        const original = btn.textContent;
-        btn.textContent = '복사됨 ✓';
-        setTimeout(() => { btn.textContent = original; }, 1800);
-      } catch (e) {
-        alert('클립보드 복사에 실패했습니다.');
+      // Toast notification helper
+      const toast = document.getElementById('toast');
+      function showToast(msg) {
+        if (!toast) return;
+        if (msg) toast.textContent = msg;
+        toast.classList.add('show');
+        setTimeout(() => { toast.classList.remove('show'); }, 2200);
+      }
+
+      // Native Share API check
+      const nativeBtn = document.getElementById('native-share-btn');
+      if (navigator.share && nativeBtn) {
+        nativeBtn.style.display = 'inline-flex';
+        nativeBtn.addEventListener('click', async () => {
+          try {
+            await navigator.share({ title: ${JSON.stringify(post.title)}, url: ${JSON.stringify(url)} });
+          } catch (e) {}
+        });
+      }
+
+      // Copy link handler
+      const copyBtn = document.getElementById('copy-btn');
+      if (copyBtn) {
+        copyBtn.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(${JSON.stringify(url)});
+            showToast('링크가 클립보드에 복사되었습니다! ✓');
+          } catch (e) {
+            showToast('클립보드 복사에 실패했습니다.');
+          }
+        });
       }
     });
   </script>

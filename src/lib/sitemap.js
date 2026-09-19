@@ -34,42 +34,42 @@ export function renderSitemap({ blogPosts = [], projects = [], educationPosts = 
   const stackSlugs = Object.keys(STACK_DATA);
   const philSlugs = Object.keys(PHILOSOPHY_DATA);
   const svcSlugs = Object.keys(SERVICES_DATA);
+  const today = "2026-09-20";
 
   const entries = [
-    urlEntry("https://davhave.com/", { changefreq: "monthly", priority: "1.0" }),
-    urlEntry("https://davhave.com/blog", { changefreq: "daily", priority: "0.9" }),
-    urlEntry("https://davhave.com/portfolio", { changefreq: "monthly", priority: "0.9" }),
-    urlEntry("https://davhave.com/education", { changefreq: "weekly", priority: "0.9" }),
-    urlEntry("https://davhave.com/education/ai/claude", { changefreq: "weekly", priority: "0.8" }),
-    urlEntry("https://davhave.com/education/ai/codex", { changefreq: "weekly", priority: "0.8" }),
-    urlEntry("https://davhave.com/education/ai/gemini", { changefreq: "weekly", priority: "0.8" }),
-    urlEntry("https://davhave.com/services", { changefreq: "monthly", priority: "0.9" }),
-    urlEntry("https://davhave.com/stack", { changefreq: "monthly", priority: "0.9" }),
-    urlEntry("https://davhave.com/philosophy", { changefreq: "monthly", priority: "0.9" }),
-    urlEntry("https://davhave.com/content", { changefreq: "monthly", priority: "0.6" }),
-    urlEntry("https://davhave.com/projects", { changefreq: "weekly", priority: "0.9" }),
-    urlEntry("https://davhave.com/projects/kct", { changefreq: "weekly", priority: "0.9" }),
-    urlEntry("https://davhave.com/projects/kct/specimens", { changefreq: "weekly", priority: "0.9" }),
-    urlEntry("https://davhave.com/projects/kct/color-samples", { changefreq: "weekly", priority: "0.8" }),
-    urlEntry("https://davhave.com/projects/kct/technical", { changefreq: "weekly", priority: "0.8" }),
-    urlEntry("https://davhave.com/terms", { changefreq: "yearly", priority: "0.4" }),
-    urlEntry("https://davhave.com/privacy", { changefreq: "yearly", priority: "0.4" }),
-    urlEntry("https://davhave.com/privacy/retroboy", { changefreq: "monthly", priority: "0.5" }),
-    ...svcSlugs.map((s) => urlEntry(`https://davhave.com/services/${s}`, { changefreq: "monthly", priority: "0.8" })),
-    ...stackSlugs.map((s) => urlEntry(`https://davhave.com/stack/${s}`, { changefreq: "monthly", priority: "0.8" })),
-    ...philSlugs.map((s) => urlEntry(`https://davhave.com/philosophy/${s}`, { changefreq: "monthly", priority: "0.8" })),
+    urlEntry("https://davhave.com/", { lastmod: today, changefreq: "monthly", priority: "1.0" }),
+    urlEntry("https://davhave.com/projects", { lastmod: today, changefreq: "weekly", priority: "0.9" }),
+    urlEntry("https://davhave.com/projects/kct", { lastmod: today, changefreq: "weekly", priority: "0.9" }),
+    urlEntry("https://davhave.com/projects/kct/specimens", { lastmod: today, changefreq: "weekly", priority: "0.9" }),
+    urlEntry("https://davhave.com/projects/kct/color-samples", { lastmod: today, changefreq: "weekly", priority: "0.8" }),
+    urlEntry("https://davhave.com/projects/kct/technical", { lastmod: today, changefreq: "weekly", priority: "0.8" }),
+    urlEntry("https://davhave.com/portfolio", { lastmod: today, changefreq: "monthly", priority: "0.9" }),
+    urlEntry("https://davhave.com/services", { lastmod: today, changefreq: "monthly", priority: "0.9" }),
+    urlEntry("https://davhave.com/stack", { lastmod: today, changefreq: "monthly", priority: "0.9" }),
+    urlEntry("https://davhave.com/philosophy", { lastmod: today, changefreq: "monthly", priority: "0.9" }),
+    urlEntry("https://davhave.com/education", { lastmod: today, changefreq: "weekly", priority: "0.9" }),
+    urlEntry("https://davhave.com/education/ai/claude", { lastmod: today, changefreq: "weekly", priority: "0.8" }),
+    urlEntry("https://davhave.com/education/ai/codex", { lastmod: today, changefreq: "weekly", priority: "0.8" }),
+    urlEntry("https://davhave.com/education/ai/gemini", { lastmod: today, changefreq: "weekly", priority: "0.8" }),
+    urlEntry("https://davhave.com/blog", { lastmod: today, changefreq: "daily", priority: "0.9" }),
+    urlEntry("https://davhave.com/terms", { lastmod: today, changefreq: "yearly", priority: "0.3" }),
+    urlEntry("https://davhave.com/privacy", { lastmod: today, changefreq: "yearly", priority: "0.3" }),
+    urlEntry("https://davhave.com/privacy/retroboy", { lastmod: today, changefreq: "monthly", priority: "0.5" }),
+    ...svcSlugs.map((s) => urlEntry(`https://davhave.com/services/${s}`, { lastmod: today, changefreq: "monthly", priority: "0.8" })),
+    ...stackSlugs.map((s) => urlEntry(`https://davhave.com/stack/${s}`, { lastmod: today, changefreq: "monthly", priority: "0.8" })),
+    ...philSlugs.map((s) => urlEntry(`https://davhave.com/philosophy/${s}`, { lastmod: today, changefreq: "monthly", priority: "0.8" })),
+    ...eduCategories.map((c) => urlEntry(`https://davhave.com/education/${c}`, { lastmod: today, changefreq: "weekly", priority: "0.8" })),
+    ...projects.filter((p) => p.slug !== "kconstrade" && p.slug !== "kct").map((p) => urlEntry(`https://davhave.com/portfolio/${p.slug}`, { lastmod: today, changefreq: "monthly", priority: "0.8" })),
     ...blogPosts.map((p) =>
       urlEntry(`https://davhave.com/blog/${p.slug}`, {
-        lastmod: p.updated_at,
+        lastmod: p.updated_at ? p.updated_at.slice(0, 10) : today,
         changefreq: "monthly",
         priority: "0.7",
       })
     ),
-    ...projects.map((p) => urlEntry(`https://davhave.com/portfolio/${p.slug}`, { changefreq: "monthly", priority: "0.8" })),
-    ...eduCategories.map((c) => urlEntry(`https://davhave.com/education/${c}`, { changefreq: "weekly", priority: "0.8" })),
     ...educationPosts.map((p) =>
       urlEntry(`https://davhave.com${eduLessonPath(p)}`, {
-        lastmod: p.updated_at,
+        lastmod: p.updated_at ? p.updated_at.slice(0, 10) : today,
         changefreq: "monthly",
         priority: "0.7",
       })
