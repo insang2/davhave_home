@@ -589,6 +589,148 @@
       .philosophy-row { grid-template-columns: 1fr; }
       .contact-card .bezel-inner { padding: 2.4rem 1.8rem; }
     }
+  
+    /* ─── White Paper Research Lab Component (DESIGN.md Dual-Domain) ─── */
+    .lab-showcase-wrap {
+      margin: 4rem auto 2.5rem;
+      background: #ffffff;
+      color: #000000;
+      border: 3px solid #000000;
+      border-radius: 8px;
+      box-shadow: 6px 6px 0px #0f172a;
+      padding: 3rem 2.6rem;
+      position: relative;
+    }
+    @media (max-width: 768px) {
+      .lab-showcase-wrap { padding: 1.6rem 1.1rem; margin: 2.5rem 0; }
+    }
+    .lab-tag {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      font-weight: 900;
+      color: #b43403;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .lab-title {
+      font-family: var(--font);
+      font-size: clamp(1.45rem, 3.6vw, 2.15rem);
+      font-weight: 900;
+      color: #000000;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+    .lab-desc {
+      font-size: 0.98rem;
+      color: #1e293b;
+      line-height: 1.75;
+      font-weight: 500;
+      margin-bottom: 1.8rem;
+      max-width: 840px;
+    }
+    .lab-desc strong { color: #000000; font-weight: 900; }
+    .lab-table-container {
+      overflow-x: auto;
+      margin: 1.6rem 0;
+      -webkit-overflow-scrolling: touch;
+    }
+    .lab-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      text-align: left;
+      min-width: 660px;
+    }
+    .lab-table thead tr {
+      border-top: 3px solid #000000;
+      border-bottom: 2px solid #000000;
+    }
+    .lab-table th {
+      background: #f8fafc;
+      color: #000000;
+      padding: 0.85rem 1rem;
+      font-weight: 900;
+      font-family: var(--mono);
+      font-size: 0.82rem;
+    }
+    .lab-table td {
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid #cbd5e1;
+      color: #000000;
+      font-weight: 600;
+    }
+    .lab-table tbody tr:last-child td {
+      border-bottom: 3px solid #000000;
+    }
+    .lab-table tr:hover td {
+      background: #f1f5f9;
+    }
+    .lab-num {
+      font-family: var(--mono);
+      font-weight: 900;
+      color: #000000;
+    }
+    .lab-badge {
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      font-weight: 900;
+      padding: 0.2rem 0.55rem;
+      border-radius: 3px;
+      background: #0f2d6b;
+      color: #ffffff;
+      display: inline-block;
+    }
+    .lab-cta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .lab-cta-card {
+      border: 2px solid #000000;
+      border-radius: 6px;
+      padding: 1.2rem 1.35rem;
+      background: #f8fafc;
+      text-decoration: none;
+      color: #000000;
+      transition: all 0.15s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .lab-cta-card:hover {
+      background: #0f2d6b;
+      color: #ffffff;
+      transform: translate(-2px, -2px);
+      box-shadow: 4px 4px 0px #000000;
+    }
+    .lab-cta-card:hover h4, .lab-cta-card:hover p, .lab-cta-card:hover span {
+      color: #ffffff !important;
+    }
+    .lab-cta-card h4 {
+      font-size: 1.05rem;
+      font-weight: 900;
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .lab-cta-card p {
+      font-size: 0.85rem;
+      color: #334155;
+      line-height: 1.6;
+      margin-bottom: 0.6rem;
+      flex: 1;
+    }
+    .lab-cta-card span {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: #0f2d6b;
+    }
+
   </style>
 
   <!-- Google Tag Manager -->
@@ -849,7 +991,7 @@
       <div class="section-head reveal">
         <span class="eyebrow-mini">STACK & TOOLS</span>
         <h2 class="h2">쓰는 <span class="ink">기술</span></h2>
-        <p class="section-desc">이 사이트를 포함해, 실제 프로덕트와 AI 시스템 구축에 활용하는 기술 스택입니다. 각 기술을 클릭하면 공식 설명 및 공식 문서를 확인하실 수 있습니다.</p>
+        <p class="section-desc">이 사이트를 포함해, 실제 프로덕트와 AI 시스템 구축에 활용하는 기술 스택입니다. 각 기술을 클릭하면 상세 설명 및 기술 문서를 확인하실 수 있습니다.</p>
       </div>
       <div class="bento stack-grid">
         <article class="card reveal">
@@ -896,7 +1038,7 @@
       </div>
       <div style="margin-top:2.2rem; text-align:center;" class="reveal">
         <a href="/stack" class="btn btn-ghost magnetic">
-          <span>전체 13개 기술 스택 공식 가이드 허브 보기</span>
+          <span>전체 13개 기술 스택 기술 가이드 허브 보기</span>
           <span class="btn-icon"><svg class="icon"><use href="#i-arrow"/></svg></span>
         </a>
       </div>
@@ -984,6 +1126,79 @@
           <span>클라이언트 개발 사례 모음</span>
           <span class="btn-icon"><svg class="icon"><use href="#i-arrow"/></svg></span>
         </a>
+      </div>
+
+      <!-- ─── THE PRECISION ENGINEERING LABORATORY (DESIGN.md Dual-Domain White Paper) ─── -->
+      <div class="lab-showcase-wrap reveal">
+        <span class="lab-tag">// The Precision Engineering Laboratory (DESIGN.md Dual-Domain)</span>
+        <h3 class="lab-title">Dow Chemical 실리콘 공학 엔진 & ASTM D638/C1401 물성 시편관</h3>
+        <p class="lab-desc">
+          DAVHAVE는 단순한 모바일·웹 코딩을 넘어, <strong>실제 건축·산업 현장의 풍하중 구조계산 및 물리적 고분자 인장 시편 3D 정밀 가공</strong>을 아우르는 고난도 엔지니어링 솔루션을 직접 설계·운영합니다. 종이 인쇄급 <strong>100% 잉크 블랙(#000000)</strong>과 학술 3선 표 표준으로 기술적 엄밀함을 보장합니다.
+        </p>
+
+        <!-- IEEE 3-Line Table -->
+        <div class="lab-table-container">
+          <table class="lab-table">
+            <thead>
+              <tr>
+                <th>공학 도메인</th>
+                <th>적용 표준 및 규격</th>
+                <th>주요 연산 엔진 및 물리 계측</th>
+                <th>정량 검증 지표</th>
+                <th>상태</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>구조 글레이징</strong></td>
+                <td>ASTM C1401 / ASTM C1135</td>
+                <td>풍하중 구조 바이트($B$), 자중지지 접착 연장($L$), 글루라인($G_t$)</td>
+                <td class="lab-num">안전율 2.5x / 0.14 MPa 설계응력</td>
+                <td><span class="lab-badge">가동 중</span></td>
+              </tr>
+              <tr>
+                <td><strong>고분자 인장 시편</strong></td>
+                <td>ASTM D638 (Type I~V)</td>
+                <td>FDM 3D 적층 최적화, 표점거리 신율계(E83 Class B-2), DIC 광학 분석</td>
+                <td class="lab-num">UTS 인장강도 / 탄성계수 Chord E</td>
+                <td><span class="lab-badge">가동 중</span></td>
+              </tr>
+              <tr>
+                <td><strong>열팽창 변위</strong></td>
+                <td>ASTM C1472 / ASTM C719</td>
+                <td>커튼월 조인트 팽창·수축 폭 연산 및 무브먼트(Movement ±50%) 분석</td>
+                <td class="lab-num">ΔL = L × α × ΔT (선팽창계수)</td>
+                <td><span class="lab-badge">가동 중</span></td>
+              </tr>
+              <tr>
+                <td><strong>산업 케미컬 DB</strong></td>
+                <td>Dow Corning / KCT 52종</td>
+                <td>17대 산업군 TDS/MSDS 기술자료 및 전용 프라이머 소요량 산출</td>
+                <td class="lab-num">100% 응집 파괴(Cohesive Failure) 기준</td>
+                <td><span class="lab-badge">가동 중</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Direct Deep-Links -->
+        <div class="lab-cta-grid">
+          <a href="/projects/kct#calculators" class="lab-cta-card">
+            <h4>실리콘 6대 공학 계산기 <span>→</span></h4>
+            <p>풍하중 바이트, 자중지지, 글루라인, 열팽창 조인트 실시간 연산</p>
+            <span>/projects/kct#calculators ↗</span>
+          </a>
+          <a href="/projects/kct/specimens" class="lab-cta-card">
+            <h4>ASTM D638 시편제작 센터 <span>→</span></h4>
+            <p>Type I~V 시편 치수, DIC 광학 변형률 분석, 실시간 소요시간 견적기</p>
+            <span>/projects/kct/specimens ↗</span>
+          </a>
+          <a href="/projects/kct/technical" class="lab-cta-card">
+            <h4>TDS / MSDS 기술자료 센터 <span>→</span></h4>
+            <p>52종 실리콘 물성 성적서 및 시험 규격 라이브러리</p>
+            <span>/projects/kct/technical ↗</span>
+          </a>
+        </div>
       </div>
     </section>
 
