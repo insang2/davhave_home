@@ -188,6 +188,18 @@ async function handleApi(request, env, url, ctx) {
     return json(data);
   }
 
+function validateBlogMetadata(post) {
+  if (post.kind !== "blog") return [];
+  const warnings = [];
+  const title = (post.seo_title || post.title || "").trim();
+  const desc = (post.seo_description || post.excerpt || "").trim();
+  if (title.length < 30) warnings.push(`SEO 제목 길이 미달 (${title.length}자 / 권장 30~60자)`);
+  else if (title.length > 60) warnings.push(`SEO 제목 길이 초과 (${title.length}자 / 권장 30~60자)`);
+  if (desc.length < 100) warnings.push(`SEO 설명 길이 미달 (${desc.length}자 / 권장 100~160자)`);
+  else if (desc.length > 160) warnings.push(`SEO 설명 길이 초과 (${desc.length}자 / 권장 100~160자)`);
+  return warnings;
+}
+
   if (pathname === "/api/posts" && method === "POST") {
     const denied = await requireAdmin(request, env);
     if (denied) return denied;
@@ -196,7 +208,8 @@ async function handleApi(request, env, url, ctx) {
     body.content_html = marked.parse(body.content_md || "");
     const post = await createPost(env.DB, body, uniqueSlug);
     if (post.status === "published") ping(urlsForPost(post));
-    return json(post, 201);
+    const seo_warnings = post.status === "published" ? validateBlogMetadata(post) : [];
+    return json({ ...post, seo_warnings }, 201);
   }
 
   const postIdMatch = pathname.match(/^\/api\/posts\/(\d+)$/);
@@ -216,7 +229,9 @@ async function handleApi(request, env, url, ctx) {
       if (body.content_md !== undefined) body.content_html = marked.parse(body.content_md || "");
       const post = await updatePost(env.DB, id, body, uniqueSlug);
       if (post && post.status === "published") ping(urlsForPost(post));
-      return post ? json(post) : notFound();
+      if (!post) return notFound();
+      const seo_warnings = post.status === "published" ? validateBlogMetadata(post) : [];
+      return json({ ...post, seo_warnings });
     }
     if (method === "DELETE") {
       const denied = await requireAdmin(request, env);

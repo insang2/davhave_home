@@ -2,8 +2,8 @@
 title: Git 브랜치 전략: 소규모 팀의 현실적인 선택지
 slug: git-branch-strategy
 excerpt: Git Flow vs Trunk-Based: 각각의 장단점과 소규모 팀에 맞는 방식 선택.
-seo_title: Git 브랜칭 전략 가이드
-seo_description: 팀 규모별 Git 브랜칭 전략, 코드 리뷰, 배포 자동화 방법.
+seo_title: Git 브랜치 전략 비교: 소규모 팀을 위한 Git Flow vs 트렁크 기반(Trunk-Based) 실무
+seo_description: Git Flow, GitHub Flow, 트렁크 기반(Trunk-Based) 브랜치 전략을 소규모 팀 관점에서 비교합니다. 충돌을 줄이고 배포 주기를 단축한 실전 경험과 피처 플래그, 코드 리뷰 PR 템플릿, GitHub Actions 기반 CI/CD 배포 자동화 실무 팁을 확인하세요.
 ---
 
 ## 현실: 복잡한 전략은 오버킬이다

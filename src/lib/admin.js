@@ -90,8 +90,14 @@ export function renderAdminPage() {
         <label>본문 (마크다운)</label><textarea id="f-content"></textarea>
         <label>태그 (쉼표로 구분)</label><input id="f-tags" placeholder="예: 개발, AI, 회고" />
         <div class="row">
-          <div><label>SEO 제목 (비우면 제목 사용)</label><input id="f-seo-title" /></div>
-          <div><label>SEO 설명 (비우면 요약 사용)</label><input id="f-seo-desc" /></div>
+          <div>
+            <label>SEO 제목 (비우면 제목 사용) <span id="f-seo-title-count" style="font-family:var(--mono);font-size:.75rem;margin-left:.4rem;"></span></label>
+            <input id="f-seo-title" placeholder="권장 30~60자" />
+          </div>
+          <div>
+            <label>SEO 설명 (비우면 요약 사용) <span id="f-seo-desc-count" style="font-family:var(--mono);font-size:.75rem;margin-left:.4rem;"></span></label>
+            <input id="f-seo-desc" placeholder="권장 100~160자" />
+          </div>
         </div>
         <label>정렬 순서 (교육 레슨용, 숫자가 작을수록 먼저)</label><input id="f-order" type="number" value="0" />
         <div style="margin-top:1.5rem;display:flex;gap:.7rem;">
@@ -162,6 +168,30 @@ export function renderAdminPage() {
         </div>\`).join('');
     }
 
+    function updateSeoCounters() {
+      const isBlog = document.getElementById('f-kind').value === 'blog';
+      const title = (document.getElementById('f-seo-title').value || document.getElementById('f-title').value || '').trim();
+      const desc = (document.getElementById('f-seo-desc').value || document.getElementById('f-excerpt').value || '').trim();
+      const tEl = document.getElementById('f-seo-title-count');
+      const dEl = document.getElementById('f-seo-desc-count');
+      if (!isBlog) {
+        tEl.textContent = '';
+        dEl.textContent = '';
+        return;
+      }
+      const tLen = title.length;
+      tEl.textContent = '[' + tLen + '자 / 권장 30~60자]';
+      tEl.style.color = (tLen >= 30 && tLen <= 60) ? 'var(--accent)' : (tLen === 0 ? 'var(--muted)' : '#f6ad55');
+      const dLen = desc.length;
+      dEl.textContent = '[' + dLen + '자 / 권장 100~160자]';
+      dEl.style.color = (dLen >= 100 && dLen <= 160) ? 'var(--accent)' : (dLen === 0 ? 'var(--muted)' : '#f6ad55');
+    }
+
+    ['f-title', 'f-seo-title', 'f-excerpt', 'f-seo-desc', 'f-kind'].forEach(id => {
+      document.getElementById(id).addEventListener('input', updateSeoCounters);
+      document.getElementById(id).addEventListener('change', updateSeoCounters);
+    });
+
     function resetForm() {
       editingId = null;
       ['f-title','f-slug','f-excerpt','f-cover','f-content','f-tags','f-seo-title','f-seo-desc'].forEach(id => document.getElementById(id).value = '');
@@ -170,6 +200,7 @@ export function renderAdminPage() {
       document.getElementById('f-status').value = 'draft';
       document.getElementById('f-order').value = 0;
       document.getElementById('delete-btn').classList.add('hidden');
+      updateSeoCounters();
     }
 
     document.getElementById('new-btn').addEventListener('click', () => {
@@ -199,6 +230,7 @@ export function renderAdminPage() {
       document.getElementById('f-order').value = p.order_index || 0;
       document.getElementById('delete-btn').classList.remove('hidden');
       document.getElementById('editor-card').classList.remove('hidden');
+      updateSeoCounters();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
@@ -235,7 +267,12 @@ export function renderAdminPage() {
       const method = editingId ? 'PUT' : 'POST';
       const res = await fetch(url, { method, headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload) });
       if (!res.ok) { toast('저장 실패'); return; }
-      toast('저장되었습니다.');
+      const resData = await res.json().catch(() => ({}));
+      if (resData.seo_warnings && resData.seo_warnings.length > 0) {
+        toast('저장 완료 (SEO 주의: ' + resData.seo_warnings[0] + ')');
+      } else {
+        toast('저장되었습니다.');
+      }
       document.getElementById('editor-card').classList.add('hidden');
       currentKind = payload.kind;
       loadList();

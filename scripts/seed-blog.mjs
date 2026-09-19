@@ -4,6 +4,7 @@ import { readdirSync, readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { marked } from "marked";
+import { validatePostMetadata } from "./validate-blog.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const CONTENT_DIR = join(__dirname, "..", "content", "blog");
@@ -33,10 +34,17 @@ const files = readdirSync(CONTENT_DIR)
   .filter((f) => /^\d{4}-\d{2}-\d{2}-.*\.md$/.test(f))
   .sort();
 
+let seoWarningCount = 0;
 const statements = files.map((file) => {
   const raw = readFileSync(join(CONTENT_DIR, file), "utf8");
   const { fm, body } = parseFrontmatter(raw);
   const contentHtml = marked.parse(body);
+
+  const check = validatePostMetadata({ ...fm, file });
+  if (!check.valid) {
+    seoWarningCount++;
+    console.error(`[SEO WARNING] ${file}: ${[...check.titleErrors, ...check.descErrors].join(", ")}`);
+  }
 
   // Parse date from filename: YYYY-MM-DD-slug.md
   const dateStr = file.slice(0, 10);
@@ -48,4 +56,5 @@ const statements = files.map((file) => {
 });
 
 console.log(statements.join("\n\n"));
-console.error(`seeded ${statements.length} blog posts from ${CONTENT_DIR}`);
+console.error(`seeded ${statements.length} blog posts from ${CONTENT_DIR} (${seoWarningCount} posts have SEO metadata warnings)`);
+
