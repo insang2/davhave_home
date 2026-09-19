@@ -354,7 +354,7 @@ export function renderBlogPost(post) {
     <div class="post-meta">${formatDate(post.published_at)} 발행 · 수정 ${formatDate(post.updated_at)}</div>
     ${post.cover_image_url ? `<img class="cover" src="${escapeHtml(post.cover_image_url)}" alt="${escapeHtml(post.title)}" />` : ""}
     <div id="toc-placeholder"></div>
-    <article id="article-body">${post.content_html}</article>
+    <article id="article-body">${(post.content_html || post.content_md || "").replace(/<h1(\s[^>]*)?>/gi, "<h2$1>").replace(/<\/h1>/gi, "</h2>")}</article>
     ${
       post.tags?.length
         ? `<div class="tag-row">${post.tags

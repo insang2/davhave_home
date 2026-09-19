@@ -273,7 +273,7 @@ export function renderLesson({ post, prev, next }) {
     <h1>${escapeHtml(post.title)}</h1>
     ${post.cover_image_url ? `<img class="cover" src="${escapeHtml(post.cover_image_url)}" alt="${escapeHtml(post.title)}" />` : ""}
     <div id="toc-placeholder"></div>
-    <article id="article-body">${post.content_html || post.content_md || ""}</article>
+    <article id="article-body">${(post.content_html || post.content_md || "").replace(/<h1(\s[^>]*)?>/gi, "<h2$1>").replace(/<\/h1>/gi, "</h2>")}</article>
     
     <div class="cta-card">
       <h3>🎓 DAVHAVE AI & 모바일 개발 마스터링</h3>
