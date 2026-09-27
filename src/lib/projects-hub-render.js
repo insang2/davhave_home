@@ -370,6 +370,9 @@ export function renderProjectsHub() {
             <a href="/projects/kct/technical" class="sublink-item">
               <i class="bi bi-file-earmark-pdf-fill"></i> TDS/MSDS/성적서 기술자료 이메일 전송 센터 →
             </a>
+            <a href="/projects/kct/permits" class="sublink-item">
+              <i class="bi bi-building-check"></i> 전국 건축 허가/착공 현장 리드 데이터베이스 →
+            </a>
             <a href="/projects/kct#calculator" class="sublink-item">
               <i class="bi bi-calculator-fill"></i> Dow 기준 6대 실리콘 공학 계산기 허브 →
             </a>

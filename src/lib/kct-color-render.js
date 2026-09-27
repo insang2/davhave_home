@@ -188,6 +188,7 @@ export function renderKctColorPage() {
       <div class="top-bar-links">
         <a href="/projects/kct"><i class="bi bi-house-door-fill"></i> 메인 포털</a>
         <a href="/projects/kct/technical"><i class="bi bi-file-earmark-arrow-down-fill"></i> 기술자료 센터</a>
+        <a href="/projects/kct/permits"><i class="bi bi-building-check"></i> 허가/착공 현장DB</a>
         <a href="https://smartstore.naver.com/kconstrade/" target="_blank" rel="noopener"><i class="bi bi-bag-check"></i> 스마트스토어</a>
         <a href="/projects/kct#b2b-form"><i class="bi bi-chat-left-text-fill"></i> 온라인 견적문의</a>
       </div>
@@ -204,6 +205,7 @@ export function renderKctColorPage() {
       <div class="nav-menu">
         <a href="/projects/kct" class="btn-nav-link"><i class="bi bi-house"></i> KCT 메인 포털</a>
         <a href="/projects/kct/technical" class="btn-nav-link"><i class="bi bi-file-earmark-pdf"></i> 기술자료 센터</a>
+        <a href="/projects/kct/permits" class="btn-nav-link"><i class="bi bi-building-check"></i> 허가/착공 현장DB</a>
         <a href="/projects/kct#calculator" class="btn-nav-link"><i class="bi bi-calculator"></i> 실리콘 계산기</a>
         <a href="#sample-form" class="btn-quote"><i class="bi bi-send-fill"></i> 실물 시편/샘플 요청</a>
       </div>
@@ -229,6 +231,7 @@ export function renderKctColorPage() {
       <ul class="drawer-nav-list">
         <li class="drawer-nav-item"><a href="/projects/kct"><i class="bi bi-house-door-fill"></i> <span>KCT 메인 포털</span> <span>→</span></a></li>
         <li class="drawer-nav-item"><a href="/projects/kct/technical"><i class="bi bi-file-earmark-pdf-fill"></i> <span>기술자료(TDS/MSDS) 센터</span> <span>→</span></a></li>
+        <li class="drawer-nav-item"><a href="/projects/kct/permits"><i class="bi bi-building-check"></i> <span>허가/착공 현장DB</span> <span>→</span></a></li>
         <li class="drawer-nav-item"><a href="/projects/kct#calculator"><i class="bi bi-calculator"></i> <span>실리콘 조인트 계산기</span> <span>→</span></a></li>
         <li class="drawer-nav-item"><a href="/projects"><i class="bi bi-grid-fill"></i> <span>DAVHAVE Projects 허브</span> <span>↗</span></a></li>
       </ul>
