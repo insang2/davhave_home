@@ -6,13 +6,13 @@ export function renderKctPermitsPage() {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>전국 건축 허가·착공 신규현장 리드 데이터베이스 | KCT 한국건설트레이딩</title>
-  <meta name="description" content="공장, 창고, 업무시설, 공동주택 등 전국 신규 건축 허가·착공 현장 105건을 실시간 정리한 KCT 영업 리드 데이터베이스. 주소, 용도, 연면적, 설계·시공·감리사, 착공일 기준 필터링 및 견적문의." />
+  <meta name="description" content="공장, 창고, 업무시설, 공동주택 등 전국 신규 건축 허가·착공 현장 300건을 실시간 정리한 KCT 영업 리드 데이터베이스. 주소, 용도, 연면적, 설계·시공·감리사, 착공일 기준 필터링 및 견적문의." />
   <meta name="keywords" content="건축 허가 현황, 착공 현장, 건축 인허가, 신축 증축 대수선, 실란트 영업 리드, 건설사 정보, KCT" />
 
   <link rel="canonical" href="https://davhave.com/projects/kct/permits" />
   <link rel="icon" href="https://kconstrade.com/assets/img/favicon.ico" type="image/x-icon" />
   <meta property="og:title" content="전국 건축 허가·착공 신규현장 리드 데이터베이스 | KCT 한국건설트레이딩" />
-  <meta property="og:description" content="공장, 창고, 업무시설, 공동주택 등 전국 신규 건축 허가·착공 현장 105건을 실시간 정리한 KCT 영업 리드 데이터베이스." />
+  <meta property="og:description" content="공장, 창고, 업무시설, 공동주택 등 전국 신규 건축 허가·착공 현장 300건을 실시간 정리한 KCT 영업 리드 데이터베이스." />
   <meta property="og:image" content="https://kconstrade.com/assets/img/og-image.png" />
   <meta property="og:url" content="https://davhave.com/projects/kct/permits" />
 
@@ -172,7 +172,7 @@ export function renderKctPermitsPage() {
     <div class="container top-bar-inner">
       <div class="top-bar-info">
         <span><i class="bi bi-building-check text-primary"></i> <strong>사업자등록번호:</strong> 371-07-03719</span>
-        <span><i class="bi bi-geo-alt-fill text-primary"></i> <strong>허가/착공 현장:</strong> 전국 105건 실시간 정리</span>
+        <span><i class="bi bi-geo-alt-fill text-primary"></i> <strong>허가/착공 현장:</strong> 전국 300건 실시간 정리</span>
         <span><i class="bi bi-truck text-primary"></i> 수도권 당일/익일 직납</span>
       </div>
       <div class="top-bar-links">
@@ -252,10 +252,11 @@ export function renderKctPermitsPage() {
         실란트·실리콘 자재가 필요한 신축·증축·대수선 현장을 찾아 바로 견적을 문의하세요.
       </p>
       <div class="stats-bar">
-        <div class="stat-chip"><strong>105</strong><span>전체 현장</span></div>
-        <div class="stat-chip"><strong>29</strong><span>신축</span></div>
-        <div class="stat-chip"><strong>57</strong><span>증축</span></div>
-        <div class="stat-chip"><strong>19</strong><span>대수선</span></div>
+        <div class="stat-chip"><strong>300</strong><span>전체 현장</span></div>
+        <div class="stat-chip"><strong>78</strong><span>신축</span></div>
+        <div class="stat-chip"><strong>166</strong><span>증축</span></div>
+        <div class="stat-chip"><strong>53</strong><span>대수선</span></div>
+        <div class="stat-chip"><strong>3</strong><span>개축/재축</span></div>
       </div>
     </div>
   </section>
@@ -271,6 +272,8 @@ export function renderKctPermitsPage() {
             <button class="btn-filter-opt" onclick="setPermitTypeFilter('신축', this)">신축</button>
             <button class="btn-filter-opt" onclick="setPermitTypeFilter('증축', this)">증축</button>
             <button class="btn-filter-opt" onclick="setPermitTypeFilter('대수선', this)">대수선</button>
+            <button class="btn-filter-opt" onclick="setPermitTypeFilter('개축', this)">개축</button>
+            <button class="btn-filter-opt" onclick="setPermitTypeFilter('재축', this)">재축</button>
           </div>
         </div>
 
@@ -278,27 +281,30 @@ export function renderKctPermitsPage() {
           <div class="filter-label"><i class="bi bi-building text-primary"></i> 건물 용도</div>
           <select class="select-use" id="permitUseFilter" onchange="filterPermits()">
             <option value="ALL">전체 용도</option>
-            <option value="공장">공장 (36)</option>
-            <option value="동물및식물관련시설">동물및식물관련시설 (13)</option>
-            <option value="창고시설">창고시설 (7)</option>
-            <option value="교육연구시설">교육연구시설 (6)</option>
-            <option value="업무시설">업무시설 (6)</option>
-            <option value="공동주택">공동주택 (6)</option>
-            <option value="제1종근린생활시설">제1종근린생활시설 (5)</option>
-            <option value="자원순환관련시설">자원순환관련시설 (4)</option>
-            <option value="자동차관련시설">자동차관련시설 (3)</option>
-            <option value="문화및집회시설">문화및집회시설 (3)</option>
-            <option value="제2종근린생활시설">제2종근린생활시설 (3)</option>
-            <option value="노유자시설">노유자시설 (2)</option>
-            <option value="종교시설">종교시설 (2)</option>
-            <option value="의료시설">의료시설 (2)</option>
-            <option value="운동시설">운동시설 (1)</option>
-            <option value="숙박시설">숙박시설 (1)</option>
+            <option value="공장">공장 (115)</option>
+            <option value="동물및식물관련시설">동물및식물관련시설 (30)</option>
+            <option value="업무시설">업무시설 (24)</option>
+            <option value="제1종근린생활시설">제1종근린생활시설 (22)</option>
+            <option value="교육연구시설">교육연구시설 (17)</option>
+            <option value="창고시설">창고시설 (15)</option>
+            <option value="공동주택">공동주택 (12)</option>
+            <option value="문화및집회시설">문화및집회시설 (10)</option>
+            <option value="제2종근린생활시설">제2종근린생활시설 (7)</option>
+            <option value="자원순환관련시설">자원순환관련시설 (6)</option>
+            <option value="종교시설">종교시설 (6)</option>
+            <option value="의료시설">의료시설 (6)</option>
+            <option value="자동차관련시설">자동차관련시설 (4)</option>
+            <option value="운동시설">운동시설 (4)</option>
+            <option value="숙박시설">숙박시설 (4)</option>
+            <option value="판매시설">판매시설 (4)</option>
+            <option value="노유자시설">노유자시설 (3)</option>
+            <option value="국방,군사시설">국방,군사시설 (3)</option>
+            <option value="단독주택">단독주택 (2)</option>
+            <option value="위험물저장및처리시설">위험물저장및처리시설 (2)</option>
             <option value="방송통신시설">방송통신시설 (1)</option>
             <option value="발전시설">발전시설 (1)</option>
-            <option value="단독주택">단독주택 (1)</option>
-            <option value="위험물저장및처리시설">위험물저장및처리시설 (1)</option>
-            <option value="국방,군사시설">국방,군사시설 (1)</option>
+            <option value="관광휴게시설">관광휴게시설 (1)</option>
+            <option value="운수시설">운수시설 (1)</option>
           </select>
         </div>
 
@@ -310,7 +316,7 @@ export function renderKctPermitsPage() {
 
       <div class="tech-action-bar">
         <div class="tech-count-info">
-          총 <strong id="permitResultCount">105</strong>건의 허가/착공 현장이 검색되었습니다.
+          총 <strong id="permitResultCount">300</strong>건의 허가/착공 현장이 검색되었습니다.
         </div>
         <div>
           <button id="btnBatchPermitEmail" class="btn-batch-email" disabled onclick="openBatchPermitModal()">
@@ -2748,6 +2754,4491 @@ export function renderKctPermitsPage() {
       <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.30</td>
       <td style="text-align:center; white-space:nowrap;">
         <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%B6%A9%EB%82%A8%20%EC%B2%9C%EC%95%88%EC%8B%9C%20%EB%B6%88%EB%8B%B9%EB%8F%99%201624%20(%EC%A0%9C2%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%2F%EB%8C%80%EC%88%98%EC%84%A0)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%B6%A9%EB%82%A8%20%EC%B2%9C%EC%95%88%EC%8B%9C%20%EB%B6%88%EB%8B%B9%EB%8F%99%201624%0A%EC%9A%A9%EB%8F%84%3A%20%EC%A0%9C2%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EB%8C%80%EC%88%98%EC%84%A0%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C914%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%202%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2021.7%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%A3%BC%EC%8B%9D%ED%9A%8C%EC%82%AC%EC%84%B8%EB%AF%B8%EC%A2%85%ED%95%A9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.30%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="제1종근린생활시설" data-q="경기 광주시 송정동 432 제1종근린생활시설 건축사사무소세세영 한산건설주식회사 주식회사젠트로 외 1 (주)도화엔지니어링">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-106" data-addr="경기 광주시 송정동 432" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 광주시 송정동 432</td>
+      <td>제1종근린생활시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">7,360㎡</td>
+      <td style="white-space:nowrap;">지하1층/2층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">149억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 건축사사무소세세영</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> 한산건설주식회사 주식회사젠트로 외 1</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> (주)도화엔지니어링</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.30</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%EA%B4%91%EC%A3%BC%EC%8B%9C%20%EC%86%A1%EC%A0%95%EB%8F%99%20432%20(%EC%A0%9C1%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%EA%B4%91%EC%A3%BC%EC%8B%9C%20%EC%86%A1%EC%A0%95%EB%8F%99%20432%0A%EC%9A%A9%EB%8F%84%3A%20%EC%A0%9C1%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%207%2C360%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%981%EC%B8%B5%2F2%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20149%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EC%84%B8%EC%84%B8%EC%98%81%0A%EC%8B%9C%EA%B3%B5%3A%20%ED%95%9C%EC%82%B0%EA%B1%B4%EC%84%A4%EC%A3%BC%EC%8B%9D%ED%9A%8C%EC%82%AC%20%EC%A3%BC%EC%8B%9D%ED%9A%8C%EC%82%AC%EC%A0%A0%ED%8A%B8%EB%A1%9C%20%EC%99%B8%201%0A%EA%B0%90%EB%A6%AC%3A%20(%EC%A3%BC)%EB%8F%84%ED%99%94%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EB%A7%81%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.30%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="개축" data-use="동물및식물관련시설" data-q="경남 함안군 함안면 봉성리 554 동물및식물관련시설 종합건축사사무소예감  종합건축사사무소예감">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-107" data-addr="경남 함안군 함안면 봉성리 554" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경남 함안군 함안면 봉성리 554</td>
+      <td>동물및식물관련시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#F3E8FF; color:#7E22CE;">개축</span></td>
+      <td style="white-space:nowrap;">2,614㎡</td>
+      <td style="white-space:nowrap;">3층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">3,258만</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 종합건축사사무소예감</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> 종합건축사사무소예감</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.30</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EB%82%A8%20%ED%95%A8%EC%95%88%EA%B5%B0%20%ED%95%A8%EC%95%88%EB%A9%B4%20%EB%B4%89%EC%84%B1%EB%A6%AC%20554%20(%EB%8F%99%EB%AC%BC%EB%B0%8F%EC%8B%9D%EB%AC%BC%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%2F%EA%B0%9C%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EB%82%A8%20%ED%95%A8%EC%95%88%EA%B5%B0%20%ED%95%A8%EC%95%88%EB%A9%B4%20%EB%B4%89%EC%84%B1%EB%A6%AC%20554%0A%EC%9A%A9%EB%8F%84%3A%20%EB%8F%99%EB%AC%BC%EB%B0%8F%EC%8B%9D%EB%AC%BC%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EA%B0%9C%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C614%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%203%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%203%2C258%EB%A7%8C%0A%EC%84%A4%EA%B3%84%3A%20%EC%A2%85%ED%95%A9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EC%98%88%EA%B0%90%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20%EC%A2%85%ED%95%A9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EC%98%88%EA%B0%90%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.30%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="경기 파주시 파평면 눌노리 144 공장 도시건축사사무소 소현종합건설주식회사 지앤피디자인건축사사무소">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-108" data-addr="경기 파주시 파평면 눌노리 144" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 파주시 파평면 눌노리 144</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">4,164㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">17.3억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 도시건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> 소현종합건설주식회사</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> 지앤피디자인건축사사무소</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.30</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%ED%8C%8C%EC%A3%BC%EC%8B%9C%20%ED%8C%8C%ED%8F%89%EB%A9%B4%20%EB%88%8C%EB%85%B8%EB%A6%AC%20144%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%ED%8C%8C%EC%A3%BC%EC%8B%9C%20%ED%8C%8C%ED%8F%89%EB%A9%B4%20%EB%88%8C%EB%85%B8%EB%A6%AC%20144%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%204%2C164%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2017.3%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EB%8F%84%EC%8B%9C%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20%EC%86%8C%ED%98%84%EC%A2%85%ED%95%A9%EA%B1%B4%EC%84%A4%EC%A3%BC%EC%8B%9D%ED%9A%8C%EC%82%AC%0A%EA%B0%90%EB%A6%AC%3A%20%EC%A7%80%EC%95%A4%ED%94%BC%EB%94%94%EC%9E%90%EC%9D%B8%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.30%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="종교시설" data-q="경기 남양주시 평내동 88-4 종교시설 건축사사무소모던아이 주식회사디에이치건설 건축사사무소모던아이">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-109" data-addr="경기 남양주시 평내동 88-4" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 남양주시 평내동 88-4</td>
+      <td>종교시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">2,119㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">31.4억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 건축사사무소모던아이</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> 주식회사디에이치건설</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> 건축사사무소모던아이</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.30</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%EB%82%A8%EC%96%91%EC%A3%BC%EC%8B%9C%20%ED%8F%89%EB%82%B4%EB%8F%99%2088-4%20(%EC%A2%85%EA%B5%90%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%EB%82%A8%EC%96%91%EC%A3%BC%EC%8B%9C%20%ED%8F%89%EB%82%B4%EB%8F%99%2088-4%0A%EC%9A%A9%EB%8F%84%3A%20%EC%A2%85%EA%B5%90%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C119%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2031.4%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EB%AA%A8%EB%8D%98%EC%95%84%EC%9D%B4%0A%EC%8B%9C%EA%B3%B5%3A%20%EC%A3%BC%EC%8B%9D%ED%9A%8C%EC%82%AC%EB%94%94%EC%97%90%EC%9D%B4%EC%B9%98%EA%B1%B4%EC%84%A4%0A%EA%B0%90%EB%A6%AC%3A%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EB%AA%A8%EB%8D%98%EC%95%84%EC%9D%B4%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.30%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="공장" data-q="울산 울주군 상북면 양등리 810-3 공장 주식회사종합건축사사무소와이지 서진종합건설(주) 한성건축사사무소">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-110" data-addr="울산 울주군 상북면 양등리 810-3" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">울산 울주군 상북면 양등리 810-3</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">3,991㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">24.9억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 주식회사종합건축사사무소와이지</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> 서진종합건설(주)</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> 한성건축사사무소</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.30</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%9A%B8%EC%82%B0%20%EC%9A%B8%EC%A3%BC%EA%B5%B0%20%EC%83%81%EB%B6%81%EB%A9%B4%20%EC%96%91%EB%93%B1%EB%A6%AC%20810-3%20(%EA%B3%B5%EC%9E%A5%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%9A%B8%EC%82%B0%20%EC%9A%B8%EC%A3%BC%EA%B5%B0%20%EC%83%81%EB%B6%81%EB%A9%B4%20%EC%96%91%EB%93%B1%EB%A6%AC%20810-3%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%203%2C991%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2024.9%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%A3%BC%EC%8B%9D%ED%9A%8C%EC%82%AC%EC%A2%85%ED%95%A9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EC%99%80%EC%9D%B4%EC%A7%80%0A%EC%8B%9C%EA%B3%B5%3A%20%EC%84%9C%EC%A7%84%EC%A2%85%ED%95%A9%EA%B1%B4%EC%84%A4(%EC%A3%BC)%0A%EA%B0%90%EB%A6%AC%3A%20%ED%95%9C%EC%84%B1%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.30%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="공동주택" data-q="서울 노원구 공릉동 312-6 공동주택 주식회사시그에이건축사사무소 바른건설주식회사 주식회사시그에이건축사사무소">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-111" data-addr="서울 노원구 공릉동 312-6" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">서울 노원구 공릉동 312-6</td>
+      <td>공동주택</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">2,695㎡</td>
+      <td style="white-space:nowrap;">지하1층/8층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">7.2억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 주식회사시그에이건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> 바른건설주식회사</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> 주식회사시그에이건축사사무소</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.30</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%84%9C%EC%9A%B8%20%EB%85%B8%EC%9B%90%EA%B5%AC%20%EA%B3%B5%EB%A6%89%EB%8F%99%20312-6%20(%EA%B3%B5%EB%8F%99%EC%A3%BC%ED%83%9D%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%84%9C%EC%9A%B8%20%EB%85%B8%EC%9B%90%EA%B5%AC%20%EA%B3%B5%EB%A6%89%EB%8F%99%20312-6%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EB%8F%99%EC%A3%BC%ED%83%9D%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C695%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%981%EC%B8%B5%2F8%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%207.2%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%A3%BC%EC%8B%9D%ED%9A%8C%EC%82%AC%EC%8B%9C%EA%B7%B8%EC%97%90%EC%9D%B4%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20%EB%B0%94%EB%A5%B8%EA%B1%B4%EC%84%A4%EC%A3%BC%EC%8B%9D%ED%9A%8C%EC%82%AC%0A%EA%B0%90%EB%A6%AC%3A%20%EC%A3%BC%EC%8B%9D%ED%9A%8C%EC%82%AC%EC%8B%9C%EA%B7%B8%EC%97%90%EC%9D%B4%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.30%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="공장" data-q="경기도 안성시 양성면 구장리 블록 공장 이노종합건축사사무소 에스디종합건설(주) 이노종합건축사사무소">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-112" data-addr="경기도 안성시 양성면 구장리 블록" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기도 안성시 양성면 구장리 블록</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">3,186㎡</td>
+      <td style="white-space:nowrap;">2층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">-</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 이노종합건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> 에스디종합건설(주)</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> 이노종합건축사사무소</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.30</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%95%88%EC%84%B1%EC%8B%9C%20%EC%96%91%EC%84%B1%EB%A9%B4%20%EA%B5%AC%EC%9E%A5%EB%A6%AC%20%EB%B8%94%EB%A1%9D%20(%EA%B3%B5%EC%9E%A5%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%95%88%EC%84%B1%EC%8B%9C%20%EC%96%91%EC%84%B1%EB%A9%B4%20%EA%B5%AC%EC%9E%A5%EB%A6%AC%20%EB%B8%94%EB%A1%9D%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%203%2C186%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%202%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20-%0A%EC%84%A4%EA%B3%84%3A%20%EC%9D%B4%EB%85%B8%EC%A2%85%ED%95%A9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20%EC%97%90%EC%8A%A4%EB%94%94%EC%A2%85%ED%95%A9%EA%B1%B4%EC%84%A4(%EC%A3%BC)%0A%EA%B0%90%EB%A6%AC%3A%20%EC%9D%B4%EB%85%B8%EC%A2%85%ED%95%A9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.30%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="창고시설" data-q="제주 제주시 애월읍 신엄리 2083-4 창고시설 건축사사무소다정 주식회사가우디종합건설 건축사사무소다정">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-113" data-addr="제주 제주시 애월읍 신엄리 2083-4" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">제주 제주시 애월읍 신엄리 2083-4</td>
+      <td>창고시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">4,150㎡</td>
+      <td style="white-space:nowrap;">지하2층/3층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">10.6억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 건축사사무소다정</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> 주식회사가우디종합건설</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> 건축사사무소다정</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.30</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%A0%9C%EC%A3%BC%20%EC%A0%9C%EC%A3%BC%EC%8B%9C%20%EC%95%A0%EC%9B%94%EC%9D%8D%20%EC%8B%A0%EC%97%84%EB%A6%AC%202083-4%20(%EC%B0%BD%EA%B3%A0%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%A0%9C%EC%A3%BC%20%EC%A0%9C%EC%A3%BC%EC%8B%9C%20%EC%95%A0%EC%9B%94%EC%9D%8D%20%EC%8B%A0%EC%97%84%EB%A6%AC%202083-4%0A%EC%9A%A9%EB%8F%84%3A%20%EC%B0%BD%EA%B3%A0%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%204%2C150%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%982%EC%B8%B5%2F3%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2010.6%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EB%8B%A4%EC%A0%95%0A%EC%8B%9C%EA%B3%B5%3A%20%EC%A3%BC%EC%8B%9D%ED%9A%8C%EC%82%AC%EA%B0%80%EC%9A%B0%EB%94%94%EC%A2%85%ED%95%A9%EA%B1%B4%EC%84%A4%0A%EA%B0%90%EB%A6%AC%3A%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EB%8B%A4%EC%A0%95%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.30%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="대수선" data-use="공장" data-q="경기 용인시 양지읍 양지리 1-2 공장 건축사사무소홍한 건설업 ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-114" data-addr="경기 용인시 양지읍 양지리 1-2" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 용인시 양지읍 양지리 1-2</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#FEF3C7; color:#B45309;">대수선</span></td>
+      <td style="white-space:nowrap;">3,760㎡</td>
+      <td style="white-space:nowrap;">2층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">32.3억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 건축사사무소홍한</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> 건설업</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.30</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%EC%9A%A9%EC%9D%B8%EC%8B%9C%20%EC%96%91%EC%A7%80%EC%9D%8D%20%EC%96%91%EC%A7%80%EB%A6%AC%201-2%20(%EA%B3%B5%EC%9E%A5%2F%EB%8C%80%EC%88%98%EC%84%A0)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%EC%9A%A9%EC%9D%B8%EC%8B%9C%20%EC%96%91%EC%A7%80%EC%9D%8D%20%EC%96%91%EC%A7%80%EB%A6%AC%201-2%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EB%8C%80%EC%88%98%EC%84%A0%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%203%2C760%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%202%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2032.3%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%ED%99%8D%ED%95%9C%0A%EC%8B%9C%EA%B3%B5%3A%20%EA%B1%B4%EC%84%A4%EC%97%85%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.30%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="경기 용인시 이동읍 덕성리 1273-3 공장 건축사사무소가호 (주)기성종합건설 건축사사무소가호">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-115" data-addr="경기 용인시 이동읍 덕성리 1273-3" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 용인시 이동읍 덕성리 1273-3</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">2,220㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">17.5억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 건축사사무소가호</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> (주)기성종합건설</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> 건축사사무소가호</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.30</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%EC%9A%A9%EC%9D%B8%EC%8B%9C%20%EC%9D%B4%EB%8F%99%EC%9D%8D%20%EB%8D%95%EC%84%B1%EB%A6%AC%201273-3%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%EC%9A%A9%EC%9D%B8%EC%8B%9C%20%EC%9D%B4%EB%8F%99%EC%9D%8D%20%EB%8D%95%EC%84%B1%EB%A6%AC%201273-3%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C220%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2017.5%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EA%B0%80%ED%98%B8%0A%EC%8B%9C%EA%B3%B5%3A%20(%EC%A3%BC)%EA%B8%B0%EC%84%B1%EC%A2%85%ED%95%A9%EA%B1%B4%EC%84%A4%0A%EA%B0%90%EB%A6%AC%3A%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EA%B0%80%ED%98%B8%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.30%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="업무시설" data-q="인천 연수구 송도동 208-1 업무시설 디아키건축사사무소 공신건설(주) ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-116" data-addr="인천 연수구 송도동 208-1" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">인천 연수구 송도동 208-1</td>
+      <td>업무시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">3,966㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">188억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 디아키건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> 공신건설(주)</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.30</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%9D%B8%EC%B2%9C%20%EC%97%B0%EC%88%98%EA%B5%AC%20%EC%86%A1%EB%8F%84%EB%8F%99%20208-1%20(%EC%97%85%EB%AC%B4%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%9D%B8%EC%B2%9C%20%EC%97%B0%EC%88%98%EA%B5%AC%20%EC%86%A1%EB%8F%84%EB%8F%99%20208-1%0A%EC%9A%A9%EB%8F%84%3A%20%EC%97%85%EB%AC%B4%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%203%2C966%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20188%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EB%94%94%EC%95%84%ED%82%A4%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20%EA%B3%B5%EC%8B%A0%EA%B1%B4%EC%84%A4(%EC%A3%BC)%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.30%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="단독주택" data-q="경기 용인시 원삼면 고당리 99 단독주택 (주)하니플랜건축사사무소 (주)시오씨앤씨 ㈜단건축사사무소">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-117" data-addr="경기 용인시 원삼면 고당리 99" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 용인시 원삼면 고당리 99</td>
+      <td>단독주택</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">2,054㎡</td>
+      <td style="white-space:nowrap;">2층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">11.2억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (주)하니플랜건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> (주)시오씨앤씨</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> ㈜단건축사사무소</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.30</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%EC%9A%A9%EC%9D%B8%EC%8B%9C%20%EC%9B%90%EC%82%BC%EB%A9%B4%20%EA%B3%A0%EB%8B%B9%EB%A6%AC%2099%20(%EB%8B%A8%EB%8F%85%EC%A3%BC%ED%83%9D%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%EC%9A%A9%EC%9D%B8%EC%8B%9C%20%EC%9B%90%EC%82%BC%EB%A9%B4%20%EA%B3%A0%EB%8B%B9%EB%A6%AC%2099%0A%EC%9A%A9%EB%8F%84%3A%20%EB%8B%A8%EB%8F%85%EC%A3%BC%ED%83%9D%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C054%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%202%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2011.2%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20(%EC%A3%BC)%ED%95%98%EB%8B%88%ED%94%8C%EB%9E%9C%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20(%EC%A3%BC)%EC%8B%9C%EC%98%A4%EC%94%A8%EC%95%A4%EC%94%A8%0A%EA%B0%90%EB%A6%AC%3A%20%E3%88%9C%EB%8B%A8%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.30%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="대수선" data-use="제2종근린생활시설" data-q="서울 강남구 대치동 961 제2종근린생활시설 (주)건축사사무소신성 (주)메타이엔씨 (주)건축사사무소신성">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-118" data-addr="서울 강남구 대치동 961" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">서울 강남구 대치동 961</td>
+      <td>제2종근린생활시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#FEF3C7; color:#B45309;">대수선</span></td>
+      <td style="white-space:nowrap;">3,485㎡</td>
+      <td style="white-space:nowrap;">17층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">219억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (주)건축사사무소신성</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> (주)메타이엔씨</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> (주)건축사사무소신성</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.30</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%84%9C%EC%9A%B8%20%EA%B0%95%EB%82%A8%EA%B5%AC%20%EB%8C%80%EC%B9%98%EB%8F%99%20961%20(%EC%A0%9C2%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%2F%EB%8C%80%EC%88%98%EC%84%A0)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%84%9C%EC%9A%B8%20%EA%B0%95%EB%82%A8%EA%B5%AC%20%EB%8C%80%EC%B9%98%EB%8F%99%20961%0A%EC%9A%A9%EB%8F%84%3A%20%EC%A0%9C2%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EB%8C%80%EC%88%98%EC%84%A0%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%203%2C485%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%2017%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20219%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20(%EC%A3%BC)%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EC%8B%A0%EC%84%B1%0A%EC%8B%9C%EA%B3%B5%3A%20(%EC%A3%BC)%EB%A9%94%ED%83%80%EC%9D%B4%EC%97%94%EC%94%A8%0A%EA%B0%90%EB%A6%AC%3A%20(%EC%A3%BC)%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EC%8B%A0%EC%84%B1%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.30%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="업무시설" data-q="서울 강남구 삼성동 38-25 업무시설 건축사사무소네오마루 (주)정인종합건설 ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-119" data-addr="서울 강남구 삼성동 38-25" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">서울 강남구 삼성동 38-25</td>
+      <td>업무시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">5,731㎡</td>
+      <td style="white-space:nowrap;">지하20층/34층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">204억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 건축사사무소네오마루</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> (주)정인종합건설</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.30</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%84%9C%EC%9A%B8%20%EA%B0%95%EB%82%A8%EA%B5%AC%20%EC%82%BC%EC%84%B1%EB%8F%99%2038-25%20(%EC%97%85%EB%AC%B4%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%84%9C%EC%9A%B8%20%EA%B0%95%EB%82%A8%EA%B5%AC%20%EC%82%BC%EC%84%B1%EB%8F%99%2038-25%0A%EC%9A%A9%EB%8F%84%3A%20%EC%97%85%EB%AC%B4%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%205%2C731%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%9820%EC%B8%B5%2F34%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20204%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EB%84%A4%EC%98%A4%EB%A7%88%EB%A3%A8%0A%EC%8B%9C%EA%B3%B5%3A%20(%EC%A3%BC)%EC%A0%95%EC%9D%B8%EC%A2%85%ED%95%A9%EA%B1%B4%EC%84%A4%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.30%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="충북 청주시 오창읍 송대리 311-1 공장 (주)청사엔지니어링종합건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-120" data-addr="충북 청주시 오창읍 송대리 311-1" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">충북 청주시 오창읍 송대리 311-1</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">41,032㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">55.1억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (주)청사엔지니어링종합건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.30</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%B6%A9%EB%B6%81%20%EC%B2%AD%EC%A3%BC%EC%8B%9C%20%EC%98%A4%EC%B0%BD%EC%9D%8D%20%EC%86%A1%EB%8C%80%EB%A6%AC%20311-1%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%B6%A9%EB%B6%81%20%EC%B2%AD%EC%A3%BC%EC%8B%9C%20%EC%98%A4%EC%B0%BD%EC%9D%8D%20%EC%86%A1%EB%8C%80%EB%A6%AC%20311-1%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2041%2C032%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2055.1%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20(%EC%A3%BC)%EC%B2%AD%EC%82%AC%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EB%A7%81%EC%A2%85%ED%95%A9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.30%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="교육연구시설" data-q="경남 진주시 충무공동 15-4 교육연구시설 창조건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-121" data-addr="경남 진주시 충무공동 15-4" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경남 진주시 충무공동 15-4</td>
+      <td>교육연구시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">25,150㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">320억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 창조건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.30</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EB%82%A8%20%EC%A7%84%EC%A3%BC%EC%8B%9C%20%EC%B6%A9%EB%AC%B4%EA%B3%B5%EB%8F%99%2015-4%20(%EA%B5%90%EC%9C%A1%EC%97%B0%EA%B5%AC%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EB%82%A8%20%EC%A7%84%EC%A3%BC%EC%8B%9C%20%EC%B6%A9%EB%AC%B4%EA%B3%B5%EB%8F%99%2015-4%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B5%90%EC%9C%A1%EC%97%B0%EA%B5%AC%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2025%2C150%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20320%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%B0%BD%EC%A1%B0%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.30%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="대수선" data-use="의료시설" data-q="경기 안산시 고잔동 516 의료시설 중앙포럼건축사사무소(주) (주)이가건설디자인 재명건축사사무소">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-122" data-addr="경기 안산시 고잔동 516" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 안산시 고잔동 516</td>
+      <td>의료시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#FEF3C7; color:#B45309;">대수선</span></td>
+      <td style="white-space:nowrap;">95,152㎡</td>
+      <td style="white-space:nowrap;">지하4층/1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">1,416억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 중앙포럼건축사사무소(주)</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> (주)이가건설디자인</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> 재명건축사사무소</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.30</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%EC%95%88%EC%82%B0%EC%8B%9C%20%EA%B3%A0%EC%9E%94%EB%8F%99%20516%20(%EC%9D%98%EB%A3%8C%EC%8B%9C%EC%84%A4%2F%EB%8C%80%EC%88%98%EC%84%A0)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%EC%95%88%EC%82%B0%EC%8B%9C%20%EA%B3%A0%EC%9E%94%EB%8F%99%20516%0A%EC%9A%A9%EB%8F%84%3A%20%EC%9D%98%EB%A3%8C%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EB%8C%80%EC%88%98%EC%84%A0%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2095%2C152%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%984%EC%B8%B5%2F1%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%201%2C416%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%A4%91%EC%95%99%ED%8F%AC%EB%9F%BC%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C(%EC%A3%BC)%0A%EC%8B%9C%EA%B3%B5%3A%20(%EC%A3%BC)%EC%9D%B4%EA%B0%80%EA%B1%B4%EC%84%A4%EB%94%94%EC%9E%90%EC%9D%B8%0A%EA%B0%90%EB%A6%AC%3A%20%EC%9E%AC%EB%AA%85%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.30%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="충북 음성군 감곡면 상우리 474-1 공장 (주)정림건축종합건축사사무소 소담건축사사무소 주식회사디비월드 (주)희림종합건축사사무소">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-123" data-addr="충북 음성군 감곡면 상우리 474-1" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">충북 음성군 감곡면 상우리 474-1</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">120,380㎡</td>
+      <td style="white-space:nowrap;">지하1층/3층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">125억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (주)정림건축종합건축사사무소 소담건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> 주식회사디비월드</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> (주)희림종합건축사사무소</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.30</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%B6%A9%EB%B6%81%20%EC%9D%8C%EC%84%B1%EA%B5%B0%20%EA%B0%90%EA%B3%A1%EB%A9%B4%20%EC%83%81%EC%9A%B0%EB%A6%AC%20474-1%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%B6%A9%EB%B6%81%20%EC%9D%8C%EC%84%B1%EA%B5%B0%20%EA%B0%90%EA%B3%A1%EB%A9%B4%20%EC%83%81%EC%9A%B0%EB%A6%AC%20474-1%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%20120%2C380%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%981%EC%B8%B5%2F3%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20125%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20(%EC%A3%BC)%EC%A0%95%EB%A6%BC%EA%B1%B4%EC%B6%95%EC%A2%85%ED%95%A9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%20%EC%86%8C%EB%8B%B4%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20%EC%A3%BC%EC%8B%9D%ED%9A%8C%EC%82%AC%EB%94%94%EB%B9%84%EC%9B%94%EB%93%9C%0A%EA%B0%90%EB%A6%AC%3A%20(%EC%A3%BC)%ED%9D%AC%EB%A6%BC%EC%A2%85%ED%95%A9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.30%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="충북 음성군 대소읍 대풍리 37 공장 (주)우일종합건축사사무소 티엔이엔씨(주) (주)우일종합건축사사무소">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-124" data-addr="충북 음성군 대소읍 대풍리 37" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">충북 음성군 대소읍 대풍리 37</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">47,239㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">183억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (주)우일종합건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> 티엔이엔씨(주)</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> (주)우일종합건축사사무소</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.30</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%B6%A9%EB%B6%81%20%EC%9D%8C%EC%84%B1%EA%B5%B0%20%EB%8C%80%EC%86%8C%EC%9D%8D%20%EB%8C%80%ED%92%8D%EB%A6%AC%2037%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%B6%A9%EB%B6%81%20%EC%9D%8C%EC%84%B1%EA%B5%B0%20%EB%8C%80%EC%86%8C%EC%9D%8D%20%EB%8C%80%ED%92%8D%EB%A6%AC%2037%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2047%2C239%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20183%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20(%EC%A3%BC)%EC%9A%B0%EC%9D%BC%EC%A2%85%ED%95%A9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20%ED%8B%B0%EC%97%94%EC%9D%B4%EC%97%94%EC%94%A8(%EC%A3%BC)%0A%EA%B0%90%EB%A6%AC%3A%20(%EC%A3%BC)%EC%9A%B0%EC%9D%BC%EC%A2%85%ED%95%A9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.30%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="부산 강서구 구랑동 1199-6 공장 건축사사무소터 (주)바른종합건설 ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-125" data-addr="부산 강서구 구랑동 1199-6" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">부산 강서구 구랑동 1199-6</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">2,765㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">17.9억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 건축사사무소터</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> (주)바른종합건설</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.30</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EB%B6%80%EC%82%B0%20%EA%B0%95%EC%84%9C%EA%B5%AC%20%EA%B5%AC%EB%9E%91%EB%8F%99%201199-6%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EB%B6%80%EC%82%B0%20%EA%B0%95%EC%84%9C%EA%B5%AC%20%EA%B5%AC%EB%9E%91%EB%8F%99%201199-6%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C765%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2017.9%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%ED%84%B0%0A%EC%8B%9C%EA%B3%B5%3A%20(%EC%A3%BC)%EB%B0%94%EB%A5%B8%EC%A2%85%ED%95%A9%EA%B1%B4%EC%84%A4%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.30%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="제2종근린생활시설" data-q="전남 곡성군 석곡면 석곡리 204 제2종근린생활시설 주식회사 맥스유엔지니어링건축사사무소 주식회사 더시선 건축사사무소 주식회사가온건설 갑진건축사사무소">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-126" data-addr="전남 곡성군 석곡면 석곡리 204" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">전남 곡성군 석곡면 석곡리 204</td>
+      <td>제2종근린생활시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">2,433㎡</td>
+      <td style="white-space:nowrap;">3층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">4.6억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 주식회사 맥스유엔지니어링건축사사무소 주식회사 더시선 건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> 주식회사가온건설</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> 갑진건축사사무소</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.30</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%A0%84%EB%82%A8%20%EA%B3%A1%EC%84%B1%EA%B5%B0%20%EC%84%9D%EA%B3%A1%EB%A9%B4%20%EC%84%9D%EA%B3%A1%EB%A6%AC%20204%20(%EC%A0%9C2%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%A0%84%EB%82%A8%20%EA%B3%A1%EC%84%B1%EA%B5%B0%20%EC%84%9D%EA%B3%A1%EB%A9%B4%20%EC%84%9D%EA%B3%A1%EB%A6%AC%20204%0A%EC%9A%A9%EB%8F%84%3A%20%EC%A0%9C2%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C433%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%203%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%204.6%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%A3%BC%EC%8B%9D%ED%9A%8C%EC%82%AC%20%EB%A7%A5%EC%8A%A4%EC%9C%A0%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EB%A7%81%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%20%EC%A3%BC%EC%8B%9D%ED%9A%8C%EC%82%AC%20%EB%8D%94%EC%8B%9C%EC%84%A0%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20%EC%A3%BC%EC%8B%9D%ED%9A%8C%EC%82%AC%EA%B0%80%EC%98%A8%EA%B1%B4%EC%84%A4%0A%EA%B0%90%EB%A6%AC%3A%20%EA%B0%91%EC%A7%84%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.30%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="충북 청주시 향정동 1 공장 (주)팀텐건축사사무소 에스케이에코플랜트주식회사 (주)한미글로벌건축사사무소">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-127" data-addr="충북 청주시 향정동 1" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">충북 청주시 향정동 1</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">502,119㎡</td>
+      <td style="white-space:nowrap;">5층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">61.3억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (주)팀텐건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> 에스케이에코플랜트주식회사</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> (주)한미글로벌건축사사무소</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.30</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%B6%A9%EB%B6%81%20%EC%B2%AD%EC%A3%BC%EC%8B%9C%20%ED%96%A5%EC%A0%95%EB%8F%99%201%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%B6%A9%EB%B6%81%20%EC%B2%AD%EC%A3%BC%EC%8B%9C%20%ED%96%A5%EC%A0%95%EB%8F%99%201%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%20502%2C119%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%205%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2061.3%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20(%EC%A3%BC)%ED%8C%80%ED%85%90%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20%EC%97%90%EC%8A%A4%EC%BC%80%EC%9D%B4%EC%97%90%EC%BD%94%ED%94%8C%EB%9E%9C%ED%8A%B8%EC%A3%BC%EC%8B%9D%ED%9A%8C%EC%82%AC%0A%EA%B0%90%EB%A6%AC%3A%20(%EC%A3%BC)%ED%95%9C%EB%AF%B8%EA%B8%80%EB%A1%9C%EB%B2%8C%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.30%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="동물및식물관련시설" data-q="전북 완주군 고산면 남봉리 992-6 동물및식물관련시설 두인건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-128" data-addr="전북 완주군 고산면 남봉리 992-6" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">전북 완주군 고산면 남봉리 992-6</td>
+      <td>동물및식물관련시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">5,444㎡</td>
+      <td style="white-space:nowrap;">2층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">2.5억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 두인건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.30</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%A0%84%EB%B6%81%20%EC%99%84%EC%A3%BC%EA%B5%B0%20%EA%B3%A0%EC%82%B0%EB%A9%B4%20%EB%82%A8%EB%B4%89%EB%A6%AC%20992-6%20(%EB%8F%99%EB%AC%BC%EB%B0%8F%EC%8B%9D%EB%AC%BC%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%A0%84%EB%B6%81%20%EC%99%84%EC%A3%BC%EA%B5%B0%20%EA%B3%A0%EC%82%B0%EB%A9%B4%20%EB%82%A8%EB%B4%89%EB%A6%AC%20992-6%0A%EC%9A%A9%EB%8F%84%3A%20%EB%8F%99%EB%AC%BC%EB%B0%8F%EC%8B%9D%EB%AC%BC%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%205%2C444%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%202%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%202.5%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EB%91%90%EC%9D%B8%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.30%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="대수선" data-use="의료시설" data-q="경기 군포시 당동 730 의료시설 (주)포에이그룹건축사사무소  (주)포에이그룹건축사사무소">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-129" data-addr="경기 군포시 당동 730" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 군포시 당동 730</td>
+      <td>의료시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#FEF3C7; color:#B45309;">대수선</span></td>
+      <td style="white-space:nowrap;">33,923㎡</td>
+      <td style="white-space:nowrap;">지하1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">218억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (주)포에이그룹건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> (주)포에이그룹건축사사무소</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.30</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%EA%B5%B0%ED%8F%AC%EC%8B%9C%20%EB%8B%B9%EB%8F%99%20730%20(%EC%9D%98%EB%A3%8C%EC%8B%9C%EC%84%A4%2F%EB%8C%80%EC%88%98%EC%84%A0)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%EA%B5%B0%ED%8F%AC%EC%8B%9C%20%EB%8B%B9%EB%8F%99%20730%0A%EC%9A%A9%EB%8F%84%3A%20%EC%9D%98%EB%A3%8C%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EB%8C%80%EC%88%98%EC%84%A0%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2033%2C923%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%981%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20218%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20(%EC%A3%BC)%ED%8F%AC%EC%97%90%EC%9D%B4%EA%B7%B8%EB%A3%B9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20(%EC%A3%BC)%ED%8F%AC%EC%97%90%EC%9D%B4%EA%B7%B8%EB%A3%B9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.30%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="교육연구시설" data-q="경남 진주시 충무공동 15-3 교육연구시설 창조건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-130" data-addr="경남 진주시 충무공동 15-3" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경남 진주시 충무공동 15-3</td>
+      <td>교육연구시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">6,512㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">71.2억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 창조건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.30</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EB%82%A8%20%EC%A7%84%EC%A3%BC%EC%8B%9C%20%EC%B6%A9%EB%AC%B4%EA%B3%B5%EB%8F%99%2015-3%20(%EA%B5%90%EC%9C%A1%EC%97%B0%EA%B5%AC%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EB%82%A8%20%EC%A7%84%EC%A3%BC%EC%8B%9C%20%EC%B6%A9%EB%AC%B4%EA%B3%B5%EB%8F%99%2015-3%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B5%90%EC%9C%A1%EC%97%B0%EA%B5%AC%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%206%2C512%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2071.2%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%B0%BD%EC%A1%B0%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.30%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="충남 공주시 우성면 보흥리 652-8 공장 우리건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-131" data-addr="충남 공주시 우성면 보흥리 652-8" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">충남 공주시 우성면 보흥리 652-8</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">2,589㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">23.1억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 우리건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.30</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%B6%A9%EB%82%A8%20%EA%B3%B5%EC%A3%BC%EC%8B%9C%20%EC%9A%B0%EC%84%B1%EB%A9%B4%20%EB%B3%B4%ED%9D%A5%EB%A6%AC%20652-8%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%B6%A9%EB%82%A8%20%EA%B3%B5%EC%A3%BC%EC%8B%9C%20%EC%9A%B0%EC%84%B1%EB%A9%B4%20%EB%B3%B4%ED%9D%A5%EB%A6%AC%20652-8%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C589%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2023.1%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%9A%B0%EB%A6%AC%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.30%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="충남 예산군 예산읍 관작리 276-2 공장 건축사사무소예산건축  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-132" data-addr="충남 예산군 예산읍 관작리 276-2" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">충남 예산군 예산읍 관작리 276-2</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">4,051㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">19.1억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 건축사사무소예산건축</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.30</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%B6%A9%EB%82%A8%20%EC%98%88%EC%82%B0%EA%B5%B0%20%EC%98%88%EC%82%B0%EC%9D%8D%20%EA%B4%80%EC%9E%91%EB%A6%AC%20276-2%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%B6%A9%EB%82%A8%20%EC%98%88%EC%82%B0%EA%B5%B0%20%EC%98%88%EC%82%B0%EC%9D%8D%20%EA%B4%80%EC%9E%91%EB%A6%AC%20276-2%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%204%2C051%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2019.1%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EC%98%88%EC%82%B0%EA%B1%B4%EC%B6%95%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.30%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="대수선" data-use="업무시설" data-q="대구 중구 남일동 110-1 업무시설 건축사사무소건우 (주)디엘리온 건축사사무소건우">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-133" data-addr="대구 중구 남일동 110-1" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">대구 중구 남일동 110-1</td>
+      <td>업무시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#FEF3C7; color:#B45309;">대수선</span></td>
+      <td style="white-space:nowrap;">6,452㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">130억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 건축사사무소건우</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> (주)디엘리온</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> 건축사사무소건우</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.30</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EB%8C%80%EA%B5%AC%20%EC%A4%91%EA%B5%AC%20%EB%82%A8%EC%9D%BC%EB%8F%99%20110-1%20(%EC%97%85%EB%AC%B4%EC%8B%9C%EC%84%A4%2F%EB%8C%80%EC%88%98%EC%84%A0)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EB%8C%80%EA%B5%AC%20%EC%A4%91%EA%B5%AC%20%EB%82%A8%EC%9D%BC%EB%8F%99%20110-1%0A%EC%9A%A9%EB%8F%84%3A%20%EC%97%85%EB%AC%B4%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EB%8C%80%EC%88%98%EC%84%A0%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%206%2C452%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20130%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EA%B1%B4%EC%9A%B0%0A%EC%8B%9C%EA%B3%B5%3A%20(%EC%A3%BC)%EB%94%94%EC%97%98%EB%A6%AC%EC%98%A8%0A%EA%B0%90%EB%A6%AC%3A%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EA%B1%B4%EC%9A%B0%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.30%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="강원 춘천시 칠전동 650 공장 (주)삼우종합건축사사무소 삼성물산(주) (주)삼우씨엠건축사사무소">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-134" data-addr="강원 춘천시 칠전동 650" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">강원 춘천시 칠전동 650</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">19,714㎡</td>
+      <td style="white-space:nowrap;">지하1층/4층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">78.3억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (주)삼우종합건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> 삼성물산(주)</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> (주)삼우씨엠건축사사무소</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.30</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B0%95%EC%9B%90%20%EC%B6%98%EC%B2%9C%EC%8B%9C%20%EC%B9%A0%EC%A0%84%EB%8F%99%20650%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B0%95%EC%9B%90%20%EC%B6%98%EC%B2%9C%EC%8B%9C%20%EC%B9%A0%EC%A0%84%EB%8F%99%20650%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2019%2C714%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%981%EC%B8%B5%2F4%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2078.3%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20(%EC%A3%BC)%EC%82%BC%EC%9A%B0%EC%A2%85%ED%95%A9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20%EC%82%BC%EC%84%B1%EB%AC%BC%EC%82%B0(%EC%A3%BC)%0A%EA%B0%90%EB%A6%AC%3A%20(%EC%A3%BC)%EC%82%BC%EC%9A%B0%EC%94%A8%EC%97%A0%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.30%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="경남 김해시 진례면 담안리 123 공장 토림건축사사무소 (주)고명건설 종합건축사사무소금정">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-135" data-addr="경남 김해시 진례면 담안리 123" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경남 김해시 진례면 담안리 123</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">2,422㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">19.6억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 토림건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> (주)고명건설</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> 종합건축사사무소금정</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.30</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EB%82%A8%20%EA%B9%80%ED%95%B4%EC%8B%9C%20%EC%A7%84%EB%A1%80%EB%A9%B4%20%EB%8B%B4%EC%95%88%EB%A6%AC%20123%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EB%82%A8%20%EA%B9%80%ED%95%B4%EC%8B%9C%20%EC%A7%84%EB%A1%80%EB%A9%B4%20%EB%8B%B4%EC%95%88%EB%A6%AC%20123%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C422%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2019.6%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%ED%86%A0%EB%A6%BC%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20(%EC%A3%BC)%EA%B3%A0%EB%AA%85%EA%B1%B4%EC%84%A4%0A%EA%B0%90%EB%A6%AC%3A%20%EC%A2%85%ED%95%A9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EA%B8%88%EC%A0%95%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.30%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="제1종근린생활시설" data-q="강원 강릉시 구정면 제비리 608-1 제1종근린생활시설 아름현건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-136" data-addr="강원 강릉시 구정면 제비리 608-1" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">강원 강릉시 구정면 제비리 608-1</td>
+      <td>제1종근린생활시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">3,039㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">73.1억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 아름현건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.30</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B0%95%EC%9B%90%20%EA%B0%95%EB%A6%89%EC%8B%9C%20%EA%B5%AC%EC%A0%95%EB%A9%B4%20%EC%A0%9C%EB%B9%84%EB%A6%AC%20608-1%20(%EC%A0%9C1%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B0%95%EC%9B%90%20%EA%B0%95%EB%A6%89%EC%8B%9C%20%EA%B5%AC%EC%A0%95%EB%A9%B4%20%EC%A0%9C%EB%B9%84%EB%A6%AC%20608-1%0A%EC%9A%A9%EB%8F%84%3A%20%EC%A0%9C1%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%203%2C039%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2073.1%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%95%84%EB%A6%84%ED%98%84%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.30%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="제1종근린생활시설" data-q="강원 강릉시 구정면 제비리 888 제1종근린생활시설 아름현건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-137" data-addr="강원 강릉시 구정면 제비리 888" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">강원 강릉시 구정면 제비리 888</td>
+      <td>제1종근린생활시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">3,071㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">58.6억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 아름현건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.30</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B0%95%EC%9B%90%20%EA%B0%95%EB%A6%89%EC%8B%9C%20%EA%B5%AC%EC%A0%95%EB%A9%B4%20%EC%A0%9C%EB%B9%84%EB%A6%AC%20888%20(%EC%A0%9C1%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B0%95%EC%9B%90%20%EA%B0%95%EB%A6%89%EC%8B%9C%20%EA%B5%AC%EC%A0%95%EB%A9%B4%20%EC%A0%9C%EB%B9%84%EB%A6%AC%20888%0A%EC%9A%A9%EB%8F%84%3A%20%EC%A0%9C1%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%203%2C071%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2058.6%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%95%84%EB%A6%84%ED%98%84%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.30%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="업무시설" data-q="서울 양천구 신정동 321 업무시설 (주)종합건축사사무소림  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-138" data-addr="서울 양천구 신정동 321" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">서울 양천구 신정동 321</td>
+      <td>업무시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">18,789㎡</td>
+      <td style="white-space:nowrap;">지하1층/7층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">672억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (주)종합건축사사무소림</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%84%9C%EC%9A%B8%20%EC%96%91%EC%B2%9C%EA%B5%AC%20%EC%8B%A0%EC%A0%95%EB%8F%99%20321%20(%EC%97%85%EB%AC%B4%EC%8B%9C%EC%84%A4%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%84%9C%EC%9A%B8%20%EC%96%91%EC%B2%9C%EA%B5%AC%20%EC%8B%A0%EC%A0%95%EB%8F%99%20321%0A%EC%9A%A9%EB%8F%84%3A%20%EC%97%85%EB%AC%B4%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2018%2C789%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%981%EC%B8%B5%2F7%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20672%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20(%EC%A3%BC)%EC%A2%85%ED%95%A9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EB%A6%BC%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="경북 경주시 황성동 70-6 공장 주식회사홍은건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-139" data-addr="경북 경주시 황성동 70-6" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경북 경주시 황성동 70-6</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">25,516㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">85억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 주식회사홍은건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EB%B6%81%20%EA%B2%BD%EC%A3%BC%EC%8B%9C%20%ED%99%A9%EC%84%B1%EB%8F%99%2070-6%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EB%B6%81%20%EA%B2%BD%EC%A3%BC%EC%8B%9C%20%ED%99%A9%EC%84%B1%EB%8F%99%2070-6%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2025%2C516%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2085%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%A3%BC%EC%8B%9D%ED%9A%8C%EC%82%AC%ED%99%8D%EC%9D%80%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="인천 남동구 고잔동 644-5 공장 지그집건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-140" data-addr="인천 남동구 고잔동 644-5" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">인천 남동구 고잔동 644-5</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">2,677㎡</td>
+      <td style="white-space:nowrap;">5층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">29.2억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 지그집건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%9D%B8%EC%B2%9C%20%EB%82%A8%EB%8F%99%EA%B5%AC%20%EA%B3%A0%EC%9E%94%EB%8F%99%20644-5%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%9D%B8%EC%B2%9C%20%EB%82%A8%EB%8F%99%EA%B5%AC%20%EA%B3%A0%EC%9E%94%EB%8F%99%20644-5%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C677%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%205%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2029.2%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%A7%80%EA%B7%B8%EC%A7%91%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="전북 정읍시 고부면 덕안리 943 공장 마당건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-141" data-addr="전북 정읍시 고부면 덕안리 943" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">전북 정읍시 고부면 덕안리 943</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">3,427㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">2.1억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 마당건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%A0%84%EB%B6%81%20%EC%A0%95%EC%9D%8D%EC%8B%9C%20%EA%B3%A0%EB%B6%80%EB%A9%B4%20%EB%8D%95%EC%95%88%EB%A6%AC%20943%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%A0%84%EB%B6%81%20%EC%A0%95%EC%9D%8D%EC%8B%9C%20%EA%B3%A0%EB%B6%80%EB%A9%B4%20%EB%8D%95%EC%95%88%EB%A6%AC%20943%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%203%2C427%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%202.1%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EB%A7%88%EB%8B%B9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="운동시설" data-q="경기 가평군 설악면 방일리 산 90-2 운동시설 건축사사무소명성  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-142" data-addr="경기 가평군 설악면 방일리 산 90-2" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 가평군 설악면 방일리 산 90-2</td>
+      <td>운동시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">12,688㎡</td>
+      <td style="white-space:nowrap;">지하1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">591억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 건축사사무소명성</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%EA%B0%80%ED%8F%89%EA%B5%B0%20%EC%84%A4%EC%95%85%EB%A9%B4%20%EB%B0%A9%EC%9D%BC%EB%A6%AC%20%EC%82%B0%2090-2%20(%EC%9A%B4%EB%8F%99%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%EA%B0%80%ED%8F%89%EA%B5%B0%20%EC%84%A4%EC%95%85%EB%A9%B4%20%EB%B0%A9%EC%9D%BC%EB%A6%AC%20%EC%82%B0%2090-2%0A%EC%9A%A9%EB%8F%84%3A%20%EC%9A%B4%EB%8F%99%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2012%2C688%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%981%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20591%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EB%AA%85%EC%84%B1%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="판매시설" data-q="전남 화순군 화순읍 광덕리 183 판매시설 주식회사건영종합건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-143" data-addr="전남 화순군 화순읍 광덕리 183" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">전남 화순군 화순읍 광덕리 183</td>
+      <td>판매시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">2,940㎡</td>
+      <td style="white-space:nowrap;">2층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">1.4억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 주식회사건영종합건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%A0%84%EB%82%A8%20%ED%99%94%EC%88%9C%EA%B5%B0%20%ED%99%94%EC%88%9C%EC%9D%8D%20%EA%B4%91%EB%8D%95%EB%A6%AC%20183%20(%ED%8C%90%EB%A7%A4%EC%8B%9C%EC%84%A4%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%A0%84%EB%82%A8%20%ED%99%94%EC%88%9C%EA%B5%B0%20%ED%99%94%EC%88%9C%EC%9D%8D%20%EA%B4%91%EB%8D%95%EB%A6%AC%20183%0A%EC%9A%A9%EB%8F%84%3A%20%ED%8C%90%EB%A7%A4%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C940%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%202%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%201.4%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%A3%BC%EC%8B%9D%ED%9A%8C%EC%82%AC%EA%B1%B4%EC%98%81%EC%A2%85%ED%95%A9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="대수선" data-use="교육연구시설" data-q="전남 순천시 석현동 313 교육연구시설 (유)신구조엔지니어링건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-144" data-addr="전남 순천시 석현동 313" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">전남 순천시 석현동 313</td>
+      <td>교육연구시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#FEF3C7; color:#B45309;">대수선</span></td>
+      <td style="white-space:nowrap;">10,000㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">345억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (유)신구조엔지니어링건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%A0%84%EB%82%A8%20%EC%88%9C%EC%B2%9C%EC%8B%9C%20%EC%84%9D%ED%98%84%EB%8F%99%20313%20(%EA%B5%90%EC%9C%A1%EC%97%B0%EA%B5%AC%EC%8B%9C%EC%84%A4%2F%EB%8C%80%EC%88%98%EC%84%A0)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%A0%84%EB%82%A8%20%EC%88%9C%EC%B2%9C%EC%8B%9C%20%EC%84%9D%ED%98%84%EB%8F%99%20313%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B5%90%EC%9C%A1%EC%97%B0%EA%B5%AC%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EB%8C%80%EC%88%98%EC%84%A0%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2010%2C000%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20345%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20(%EC%9C%A0)%EC%8B%A0%EA%B5%AC%EC%A1%B0%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EB%A7%81%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="문화및집회시설" data-q="경남 밀양시 삼문동 271 문화및집회시설 (주)신한종합건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-145" data-addr="경남 밀양시 삼문동 271" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경남 밀양시 삼문동 271</td>
+      <td>문화및집회시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">8,688㎡</td>
+      <td style="white-space:nowrap;">지하3층/7층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">1.7억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (주)신한종합건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EB%82%A8%20%EB%B0%80%EC%96%91%EC%8B%9C%20%EC%82%BC%EB%AC%B8%EB%8F%99%20271%20(%EB%AC%B8%ED%99%94%EB%B0%8F%EC%A7%91%ED%9A%8C%EC%8B%9C%EC%84%A4%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EB%82%A8%20%EB%B0%80%EC%96%91%EC%8B%9C%20%EC%82%BC%EB%AC%B8%EB%8F%99%20271%0A%EC%9A%A9%EB%8F%84%3A%20%EB%AC%B8%ED%99%94%EB%B0%8F%EC%A7%91%ED%9A%8C%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%208%2C688%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%983%EC%B8%B5%2F7%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%201.7%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20(%EC%A3%BC)%EC%8B%A0%ED%95%9C%EC%A2%85%ED%95%A9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="교육연구시설" data-q="제주 제주시 아라일동 1 교육연구시설 건축사사무소 무이건축 (주)아이엔지그룹건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-146" data-addr="제주 제주시 아라일동 1" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">제주 제주시 아라일동 1</td>
+      <td>교육연구시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">359,086㎡</td>
+      <td style="white-space:nowrap;">지하1층/4층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">3,578억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 건축사사무소 무이건축 (주)아이엔지그룹건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%A0%9C%EC%A3%BC%20%EC%A0%9C%EC%A3%BC%EC%8B%9C%20%EC%95%84%EB%9D%BC%EC%9D%BC%EB%8F%99%201%20(%EA%B5%90%EC%9C%A1%EC%97%B0%EA%B5%AC%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%A0%9C%EC%A3%BC%20%EC%A0%9C%EC%A3%BC%EC%8B%9C%20%EC%95%84%EB%9D%BC%EC%9D%BC%EB%8F%99%201%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B5%90%EC%9C%A1%EC%97%B0%EA%B5%AC%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%20359%2C086%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%981%EC%B8%B5%2F4%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%203%2C578%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%20%EB%AC%B4%EC%9D%B4%EA%B1%B4%EC%B6%95%20(%EC%A3%BC)%EC%95%84%EC%9D%B4%EC%97%94%EC%A7%80%EA%B7%B8%EB%A3%B9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="대수선" data-use="문화및집회시설" data-q="전남 영암군 삼호읍 용당리 2178-2 문화및집회시설 (유)종합건축사사무소신도시  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-147" data-addr="전남 영암군 삼호읍 용당리 2178-2" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">전남 영암군 삼호읍 용당리 2178-2</td>
+      <td>문화및집회시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#FEF3C7; color:#B45309;">대수선</span></td>
+      <td style="white-space:nowrap;">19,939㎡</td>
+      <td style="white-space:nowrap;">지하6층/15층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">69.6억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (유)종합건축사사무소신도시</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%A0%84%EB%82%A8%20%EC%98%81%EC%95%94%EA%B5%B0%20%EC%82%BC%ED%98%B8%EC%9D%8D%20%EC%9A%A9%EB%8B%B9%EB%A6%AC%202178-2%20(%EB%AC%B8%ED%99%94%EB%B0%8F%EC%A7%91%ED%9A%8C%EC%8B%9C%EC%84%A4%2F%EB%8C%80%EC%88%98%EC%84%A0)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%A0%84%EB%82%A8%20%EC%98%81%EC%95%94%EA%B5%B0%20%EC%82%BC%ED%98%B8%EC%9D%8D%20%EC%9A%A9%EB%8B%B9%EB%A6%AC%202178-2%0A%EC%9A%A9%EB%8F%84%3A%20%EB%AC%B8%ED%99%94%EB%B0%8F%EC%A7%91%ED%9A%8C%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EB%8C%80%EC%88%98%EC%84%A0%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2019%2C939%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%986%EC%B8%B5%2F15%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2069.6%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20(%EC%9C%A0)%EC%A2%85%ED%95%A9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EC%8B%A0%EB%8F%84%EC%8B%9C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="공장" data-q="대구 달성군 논공읍 북리 1-78 공장 천우건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-148" data-addr="대구 달성군 논공읍 북리 1-78" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">대구 달성군 논공읍 북리 1-78</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">2,784㎡</td>
+      <td style="white-space:nowrap;">2층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">17.3억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 천우건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EB%8C%80%EA%B5%AC%20%EB%8B%AC%EC%84%B1%EA%B5%B0%20%EB%85%BC%EA%B3%B5%EC%9D%8D%20%EB%B6%81%EB%A6%AC%201-78%20(%EA%B3%B5%EC%9E%A5%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EB%8C%80%EA%B5%AC%20%EB%8B%AC%EC%84%B1%EA%B5%B0%20%EB%85%BC%EA%B3%B5%EC%9D%8D%20%EB%B6%81%EB%A6%AC%201-78%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C784%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%202%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2017.3%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%B2%9C%EC%9A%B0%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="동물및식물관련시설" data-q="전북 부안군 주산면 사산리 609-11 동물및식물관련시설 민건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-149" data-addr="전북 부안군 주산면 사산리 609-11" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">전북 부안군 주산면 사산리 609-11</td>
+      <td>동물및식물관련시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">7,001㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">2억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 민건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%A0%84%EB%B6%81%20%EB%B6%80%EC%95%88%EA%B5%B0%20%EC%A3%BC%EC%82%B0%EB%A9%B4%20%EC%82%AC%EC%82%B0%EB%A6%AC%20609-11%20(%EB%8F%99%EB%AC%BC%EB%B0%8F%EC%8B%9D%EB%AC%BC%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%A0%84%EB%B6%81%20%EB%B6%80%EC%95%88%EA%B5%B0%20%EC%A3%BC%EC%82%B0%EB%A9%B4%20%EC%82%AC%EC%82%B0%EB%A6%AC%20609-11%0A%EC%9A%A9%EB%8F%84%3A%20%EB%8F%99%EB%AC%BC%EB%B0%8F%EC%8B%9D%EB%AC%BC%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%207%2C001%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%202%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EB%AF%BC%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="대수선" data-use="공장" data-q="경기 화성시 방교동 840-3 공장 목전건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-150" data-addr="경기 화성시 방교동 840-3" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 화성시 방교동 840-3</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#FEF3C7; color:#B45309;">대수선</span></td>
+      <td style="white-space:nowrap;">4,276㎡</td>
+      <td style="white-space:nowrap;">4층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">60.4억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 목전건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%ED%99%94%EC%84%B1%EC%8B%9C%20%EB%B0%A9%EA%B5%90%EB%8F%99%20840-3%20(%EA%B3%B5%EC%9E%A5%2F%EB%8C%80%EC%88%98%EC%84%A0)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%ED%99%94%EC%84%B1%EC%8B%9C%20%EB%B0%A9%EA%B5%90%EB%8F%99%20840-3%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EB%8C%80%EC%88%98%EC%84%A0%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%204%2C276%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%204%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2060.4%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EB%AA%A9%EC%A0%84%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="의료시설" data-q="대전 서구 둔산동 1161 의료시설 주식회사건축사사무소우림  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-151" data-addr="대전 서구 둔산동 1161" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">대전 서구 둔산동 1161</td>
+      <td>의료시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">12,312㎡</td>
+      <td style="white-space:nowrap;">지하10층/12층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">47.5억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 주식회사건축사사무소우림</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EB%8C%80%EC%A0%84%20%EC%84%9C%EA%B5%AC%20%EB%91%94%EC%82%B0%EB%8F%99%201161%20(%EC%9D%98%EB%A3%8C%EC%8B%9C%EC%84%A4%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EB%8C%80%EC%A0%84%20%EC%84%9C%EA%B5%AC%20%EB%91%94%EC%82%B0%EB%8F%99%201161%0A%EC%9A%A9%EB%8F%84%3A%20%EC%9D%98%EB%A3%8C%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2012%2C312%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%9810%EC%B8%B5%2F12%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2047.5%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%A3%BC%EC%8B%9D%ED%9A%8C%EC%82%AC%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EC%9A%B0%EB%A6%BC%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="제2종근린생활시설" data-q="경기 하남시 감이동 525-4 제2종근린생활시설 (주)건축사사무소다림건축  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-152" data-addr="경기 하남시 감이동 525-4" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 하남시 감이동 525-4</td>
+      <td>제2종근린생활시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">2,795㎡</td>
+      <td style="white-space:nowrap;">지하4층/5층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">50.2억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (주)건축사사무소다림건축</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%ED%95%98%EB%82%A8%EC%8B%9C%20%EA%B0%90%EC%9D%B4%EB%8F%99%20525-4%20(%EC%A0%9C2%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%ED%95%98%EB%82%A8%EC%8B%9C%20%EA%B0%90%EC%9D%B4%EB%8F%99%20525-4%0A%EC%9A%A9%EB%8F%84%3A%20%EC%A0%9C2%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C795%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%984%EC%B8%B5%2F5%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2050.2%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20(%EC%A3%BC)%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EB%8B%A4%EB%A6%BC%EA%B1%B4%EC%B6%95%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="제1종근린생활시설" data-q="서울 용산구 한남동 4-22 제1종근린생활시설 (주)종합건축사사무소시건축  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-153" data-addr="서울 용산구 한남동 4-22" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">서울 용산구 한남동 4-22</td>
+      <td>제1종근린생활시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">2,047㎡</td>
+      <td style="white-space:nowrap;">지하4층/6층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">74.1억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (주)종합건축사사무소시건축</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%84%9C%EC%9A%B8%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%ED%95%9C%EB%82%A8%EB%8F%99%204-22%20(%EC%A0%9C1%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%84%9C%EC%9A%B8%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%ED%95%9C%EB%82%A8%EB%8F%99%204-22%0A%EC%9A%A9%EB%8F%84%3A%20%EC%A0%9C1%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C047%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%984%EC%B8%B5%2F6%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2074.1%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20(%EC%A3%BC)%EC%A2%85%ED%95%A9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EC%8B%9C%EA%B1%B4%EC%B6%95%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="제1종근린생활시설" data-q="경기 파주시 다율동 1037-5 제1종근린생활시설 건축사사무소마루  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-154" data-addr="경기 파주시 다율동 1037-5" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 파주시 다율동 1037-5</td>
+      <td>제1종근린생활시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">9,834㎡</td>
+      <td style="white-space:nowrap;">지하2층/5층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">15.5억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 건축사사무소마루</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%ED%8C%8C%EC%A3%BC%EC%8B%9C%20%EB%8B%A4%EC%9C%A8%EB%8F%99%201037-5%20(%EC%A0%9C1%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%ED%8C%8C%EC%A3%BC%EC%8B%9C%20%EB%8B%A4%EC%9C%A8%EB%8F%99%201037-5%0A%EC%9A%A9%EB%8F%84%3A%20%EC%A0%9C1%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%209%2C834%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%982%EC%B8%B5%2F5%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2015.5%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EB%A7%88%EB%A3%A8%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="대수선" data-use="공장" data-q="인천 남동구 고잔동 693-1 공장 주식회사엠에이건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-155" data-addr="인천 남동구 고잔동 693-1" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">인천 남동구 고잔동 693-1</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#FEF3C7; color:#B45309;">대수선</span></td>
+      <td style="white-space:nowrap;">13,458㎡</td>
+      <td style="white-space:nowrap;">2층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">238억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 주식회사엠에이건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%9D%B8%EC%B2%9C%20%EB%82%A8%EB%8F%99%EA%B5%AC%20%EA%B3%A0%EC%9E%94%EB%8F%99%20693-1%20(%EA%B3%B5%EC%9E%A5%2F%EB%8C%80%EC%88%98%EC%84%A0)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%9D%B8%EC%B2%9C%20%EB%82%A8%EB%8F%99%EA%B5%AC%20%EA%B3%A0%EC%9E%94%EB%8F%99%20693-1%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EB%8C%80%EC%88%98%EC%84%A0%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2013%2C458%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%202%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20238%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%A3%BC%EC%8B%9D%ED%9A%8C%EC%82%AC%EC%97%A0%EC%97%90%EC%9D%B4%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="공장" data-q="경기 부천시 내동 222-28 공장 (주)광현건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-156" data-addr="경기 부천시 내동 222-28" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 부천시 내동 222-28</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">3,401㎡</td>
+      <td style="white-space:nowrap;">5층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">22.1억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (주)광현건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%EB%B6%80%EC%B2%9C%EC%8B%9C%20%EB%82%B4%EB%8F%99%20222-28%20(%EA%B3%B5%EC%9E%A5%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%EB%B6%80%EC%B2%9C%EC%8B%9C%20%EB%82%B4%EB%8F%99%20222-28%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%203%2C401%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%205%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2022.1%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20(%EC%A3%BC)%EA%B4%91%ED%98%84%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="제1종근린생활시설" data-q="서울 용산구 한강로2가 157-2 제1종근린생활시설 (주)호안건축건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-157" data-addr="서울 용산구 한강로2가 157-2" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">서울 용산구 한강로2가 157-2</td>
+      <td>제1종근린생활시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">2,087㎡</td>
+      <td style="white-space:nowrap;">지하1층/8층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">100억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (주)호안건축건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%84%9C%EC%9A%B8%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%ED%95%9C%EA%B0%95%EB%A1%9C2%EA%B0%80%20157-2%20(%EC%A0%9C1%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%84%9C%EC%9A%B8%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%ED%95%9C%EA%B0%95%EB%A1%9C2%EA%B0%80%20157-2%0A%EC%9A%A9%EB%8F%84%3A%20%EC%A0%9C1%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C087%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%981%EC%B8%B5%2F8%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20100%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20(%EC%A3%BC)%ED%98%B8%EC%95%88%EA%B1%B4%EC%B6%95%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="개축" data-use="동물및식물관련시설" data-q="전남 영암군 도포면 덕화리 1-3 동물및식물관련시설 명제건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-158" data-addr="전남 영암군 도포면 덕화리 1-3" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">전남 영암군 도포면 덕화리 1-3</td>
+      <td>동물및식물관련시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#F3E8FF; color:#7E22CE;">개축</span></td>
+      <td style="white-space:nowrap;">2,391㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">4,688만</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 명제건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%A0%84%EB%82%A8%20%EC%98%81%EC%95%94%EA%B5%B0%20%EB%8F%84%ED%8F%AC%EB%A9%B4%20%EB%8D%95%ED%99%94%EB%A6%AC%201-3%20(%EB%8F%99%EB%AC%BC%EB%B0%8F%EC%8B%9D%EB%AC%BC%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%2F%EA%B0%9C%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%A0%84%EB%82%A8%20%EC%98%81%EC%95%94%EA%B5%B0%20%EB%8F%84%ED%8F%AC%EB%A9%B4%20%EB%8D%95%ED%99%94%EB%A6%AC%201-3%0A%EC%9A%A9%EB%8F%84%3A%20%EB%8F%99%EB%AC%BC%EB%B0%8F%EC%8B%9D%EB%AC%BC%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EA%B0%9C%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C391%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%204%2C688%EB%A7%8C%0A%EC%84%A4%EA%B3%84%3A%20%EB%AA%85%EC%A0%9C%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="동물및식물관련시설" data-q="전북 남원시 대강면 사석리 1961-5 동물및식물관련시설 아키엔건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-159" data-addr="전북 남원시 대강면 사석리 1961-5" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">전북 남원시 대강면 사석리 1961-5</td>
+      <td>동물및식물관련시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">2,705㎡</td>
+      <td style="white-space:nowrap;">2층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">1,883만</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 아키엔건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%A0%84%EB%B6%81%20%EB%82%A8%EC%9B%90%EC%8B%9C%20%EB%8C%80%EA%B0%95%EB%A9%B4%20%EC%82%AC%EC%84%9D%EB%A6%AC%201961-5%20(%EB%8F%99%EB%AC%BC%EB%B0%8F%EC%8B%9D%EB%AC%BC%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%A0%84%EB%B6%81%20%EB%82%A8%EC%9B%90%EC%8B%9C%20%EB%8C%80%EA%B0%95%EB%A9%B4%20%EC%82%AC%EC%84%9D%EB%A6%AC%201961-5%0A%EC%9A%A9%EB%8F%84%3A%20%EB%8F%99%EB%AC%BC%EB%B0%8F%EC%8B%9D%EB%AC%BC%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C705%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%202%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%201%2C883%EB%A7%8C%0A%EC%84%A4%EA%B3%84%3A%20%EC%95%84%ED%82%A4%EC%97%94%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="대수선" data-use="공동주택" data-q="부산 수영구 민락동 181-79 공동주택 건축사사무소메인  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-160" data-addr="부산 수영구 민락동 181-79" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">부산 수영구 민락동 181-79</td>
+      <td>공동주택</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#FEF3C7; color:#B45309;">대수선</span></td>
+      <td style="white-space:nowrap;">34,985㎡</td>
+      <td style="white-space:nowrap;">16층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">260억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 건축사사무소메인</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EB%B6%80%EC%82%B0%20%EC%88%98%EC%98%81%EA%B5%AC%20%EB%AF%BC%EB%9D%BD%EB%8F%99%20181-79%20(%EA%B3%B5%EB%8F%99%EC%A3%BC%ED%83%9D%2F%EB%8C%80%EC%88%98%EC%84%A0)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EB%B6%80%EC%82%B0%20%EC%88%98%EC%98%81%EA%B5%AC%20%EB%AF%BC%EB%9D%BD%EB%8F%99%20181-79%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EB%8F%99%EC%A3%BC%ED%83%9D%0A%EA%B5%AC%EB%B6%84%3A%20%EB%8C%80%EC%88%98%EC%84%A0%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2034%2C985%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%2016%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20260%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EB%A9%94%EC%9D%B8%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="대수선" data-use="공동주택" data-q="부산 수영구 민락동 181-79 공동주택 건축사사무소메인  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-161" data-addr="부산 수영구 민락동 181-79" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">부산 수영구 민락동 181-79</td>
+      <td>공동주택</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#FEF3C7; color:#B45309;">대수선</span></td>
+      <td style="white-space:nowrap;">34,985㎡</td>
+      <td style="white-space:nowrap;">16층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">260억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 건축사사무소메인</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EB%B6%80%EC%82%B0%20%EC%88%98%EC%98%81%EA%B5%AC%20%EB%AF%BC%EB%9D%BD%EB%8F%99%20181-79%20(%EA%B3%B5%EB%8F%99%EC%A3%BC%ED%83%9D%2F%EB%8C%80%EC%88%98%EC%84%A0)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EB%B6%80%EC%82%B0%20%EC%88%98%EC%98%81%EA%B5%AC%20%EB%AF%BC%EB%9D%BD%EB%8F%99%20181-79%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EB%8F%99%EC%A3%BC%ED%83%9D%0A%EA%B5%AC%EB%B6%84%3A%20%EB%8C%80%EC%88%98%EC%84%A0%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2034%2C985%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%2016%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20260%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EB%A9%94%EC%9D%B8%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="경남 함안군 칠서면 계내리 626-4 공장 종합건축사사무소늘채움  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-162" data-addr="경남 함안군 칠서면 계내리 626-4" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경남 함안군 칠서면 계내리 626-4</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">4,803㎡</td>
+      <td style="white-space:nowrap;">3층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">39.3억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 종합건축사사무소늘채움</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EB%82%A8%20%ED%95%A8%EC%95%88%EA%B5%B0%20%EC%B9%A0%EC%84%9C%EB%A9%B4%20%EA%B3%84%EB%82%B4%EB%A6%AC%20626-4%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EB%82%A8%20%ED%95%A8%EC%95%88%EA%B5%B0%20%EC%B9%A0%EC%84%9C%EB%A9%B4%20%EA%B3%84%EB%82%B4%EB%A6%AC%20626-4%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%204%2C803%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%203%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2039.3%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%A2%85%ED%95%A9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EB%8A%98%EC%B1%84%EC%9B%80%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="제주 제주시 조천읍 대흘리 110-3 공장 정건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-163" data-addr="제주 제주시 조천읍 대흘리 110-3" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">제주 제주시 조천읍 대흘리 110-3</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">10,576㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">20.4억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 정건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%A0%9C%EC%A3%BC%20%EC%A0%9C%EC%A3%BC%EC%8B%9C%20%EC%A1%B0%EC%B2%9C%EC%9D%8D%20%EB%8C%80%ED%9D%98%EB%A6%AC%20110-3%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%A0%9C%EC%A3%BC%20%EC%A0%9C%EC%A3%BC%EC%8B%9C%20%EC%A1%B0%EC%B2%9C%EC%9D%8D%20%EB%8C%80%ED%9D%98%EB%A6%AC%20110-3%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2010%2C576%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2020.4%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%A0%95%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="교육연구시설" data-q="대전 중구 목동 24-14 교육연구시설 주식회사에이치앤에스에이건축사사무소 (주)장종합건축사사무소 외 1  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-164" data-addr="대전 중구 목동 24-14" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">대전 중구 목동 24-14</td>
+      <td>교육연구시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">42,933㎡</td>
+      <td style="white-space:nowrap;">지하2층/5층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">87.5억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 주식회사에이치앤에스에이건축사사무소 (주)장종합건축사사무소 외 1</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EB%8C%80%EC%A0%84%20%EC%A4%91%EA%B5%AC%20%EB%AA%A9%EB%8F%99%2024-14%20(%EA%B5%90%EC%9C%A1%EC%97%B0%EA%B5%AC%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EB%8C%80%EC%A0%84%20%EC%A4%91%EA%B5%AC%20%EB%AA%A9%EB%8F%99%2024-14%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B5%90%EC%9C%A1%EC%97%B0%EA%B5%AC%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2042%2C933%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%982%EC%B8%B5%2F5%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2087.5%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%A3%BC%EC%8B%9D%ED%9A%8C%EC%82%AC%EC%97%90%EC%9D%B4%EC%B9%98%EC%95%A4%EC%97%90%EC%8A%A4%EC%97%90%EC%9D%B4%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%20(%EC%A3%BC)%EC%9E%A5%EC%A2%85%ED%95%A9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%20%EC%99%B8%201%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="대수선" data-use="문화및집회시설" data-q="서울 용산구 한남동 737-24 문화및집회시설 엠아이엔건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-165" data-addr="서울 용산구 한남동 737-24" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">서울 용산구 한남동 737-24</td>
+      <td>문화및집회시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#FEF3C7; color:#B45309;">대수선</span></td>
+      <td style="white-space:nowrap;">3,382㎡</td>
+      <td style="white-space:nowrap;">지하5층/11층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">160억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 엠아이엔건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%84%9C%EC%9A%B8%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%ED%95%9C%EB%82%A8%EB%8F%99%20737-24%20(%EB%AC%B8%ED%99%94%EB%B0%8F%EC%A7%91%ED%9A%8C%EC%8B%9C%EC%84%A4%2F%EB%8C%80%EC%88%98%EC%84%A0)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%84%9C%EC%9A%B8%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%ED%95%9C%EB%82%A8%EB%8F%99%20737-24%0A%EC%9A%A9%EB%8F%84%3A%20%EB%AC%B8%ED%99%94%EB%B0%8F%EC%A7%91%ED%9A%8C%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EB%8C%80%EC%88%98%EC%84%A0%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%203%2C382%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%985%EC%B8%B5%2F11%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20160%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%97%A0%EC%95%84%EC%9D%B4%EC%97%94%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="공장" data-q="충북 제천시 왕암동 1357-2 공장 (주)선엔지니어링종합건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-166" data-addr="충북 제천시 왕암동 1357-2" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">충북 제천시 왕암동 1357-2</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">4,491㎡</td>
+      <td style="white-space:nowrap;">2층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">22.2억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (주)선엔지니어링종합건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%B6%A9%EB%B6%81%20%EC%A0%9C%EC%B2%9C%EC%8B%9C%20%EC%99%95%EC%95%94%EB%8F%99%201357-2%20(%EA%B3%B5%EC%9E%A5%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%B6%A9%EB%B6%81%20%EC%A0%9C%EC%B2%9C%EC%8B%9C%20%EC%99%95%EC%95%94%EB%8F%99%201357-2%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%204%2C491%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%202%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2022.2%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20(%EC%A3%BC)%EC%84%A0%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EB%A7%81%EC%A2%85%ED%95%A9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="대수선" data-use="공장" data-q="경남 사천시 사남면 유천리 802 공장 정인종합건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-167" data-addr="경남 사천시 사남면 유천리 802" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경남 사천시 사남면 유천리 802</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#FEF3C7; color:#B45309;">대수선</span></td>
+      <td style="white-space:nowrap;">306,054㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">469억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 정인종합건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EB%82%A8%20%EC%82%AC%EC%B2%9C%EC%8B%9C%20%EC%82%AC%EB%82%A8%EB%A9%B4%20%EC%9C%A0%EC%B2%9C%EB%A6%AC%20802%20(%EA%B3%B5%EC%9E%A5%2F%EB%8C%80%EC%88%98%EC%84%A0)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EB%82%A8%20%EC%82%AC%EC%B2%9C%EC%8B%9C%20%EC%82%AC%EB%82%A8%EB%A9%B4%20%EC%9C%A0%EC%B2%9C%EB%A6%AC%20802%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EB%8C%80%EC%88%98%EC%84%A0%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%20306%2C054%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20469%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%A0%95%EC%9D%B8%EC%A2%85%ED%95%A9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="창고시설" data-q="제주 제주시 구좌읍 세화리 1283 창고시설 주식회사 디엠이엔지종합건축사사무소 주식회사 건축사사무소 이즈건축  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-168" data-addr="제주 제주시 구좌읍 세화리 1283" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">제주 제주시 구좌읍 세화리 1283</td>
+      <td>창고시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">2,800㎡</td>
+      <td style="white-space:nowrap;">3층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">7.5억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 주식회사 디엠이엔지종합건축사사무소 주식회사 건축사사무소 이즈건축</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%A0%9C%EC%A3%BC%20%EC%A0%9C%EC%A3%BC%EC%8B%9C%20%EA%B5%AC%EC%A2%8C%EC%9D%8D%20%EC%84%B8%ED%99%94%EB%A6%AC%201283%20(%EC%B0%BD%EA%B3%A0%EC%8B%9C%EC%84%A4%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%A0%9C%EC%A3%BC%20%EC%A0%9C%EC%A3%BC%EC%8B%9C%20%EA%B5%AC%EC%A2%8C%EC%9D%8D%20%EC%84%B8%ED%99%94%EB%A6%AC%201283%0A%EC%9A%A9%EB%8F%84%3A%20%EC%B0%BD%EA%B3%A0%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C800%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%203%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%207.5%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%A3%BC%EC%8B%9D%ED%9A%8C%EC%82%AC%20%EB%94%94%EC%97%A0%EC%9D%B4%EC%97%94%EC%A7%80%EC%A2%85%ED%95%A9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%20%EC%A3%BC%EC%8B%9D%ED%9A%8C%EC%82%AC%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%20%EC%9D%B4%EC%A6%88%EA%B1%B4%EC%B6%95%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="경기 파주시 문발동 507-4 공장 코아건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-169" data-addr="경기 파주시 문발동 507-4" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 파주시 문발동 507-4</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">11,829㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">79.1억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 코아건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%ED%8C%8C%EC%A3%BC%EC%8B%9C%20%EB%AC%B8%EB%B0%9C%EB%8F%99%20507-4%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%ED%8C%8C%EC%A3%BC%EC%8B%9C%20%EB%AC%B8%EB%B0%9C%EB%8F%99%20507-4%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2011%2C829%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2079.1%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%BD%94%EC%95%84%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="재축" data-use="자원순환관련시설" data-q="충남 천안시 성거읍 오목리 12-4 자원순환관련시설 온유건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-170" data-addr="충남 천안시 성거읍 오목리 12-4" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">충남 천안시 성거읍 오목리 12-4</td>
+      <td>자원순환관련시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#FCE7F3; color:#BE185D;">재축</span></td>
+      <td style="white-space:nowrap;">2,543㎡</td>
+      <td style="white-space:nowrap;">5층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">12.3억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 온유건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%B6%A9%EB%82%A8%20%EC%B2%9C%EC%95%88%EC%8B%9C%20%EC%84%B1%EA%B1%B0%EC%9D%8D%20%EC%98%A4%EB%AA%A9%EB%A6%AC%2012-4%20(%EC%9E%90%EC%9B%90%EC%88%9C%ED%99%98%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%2F%EC%9E%AC%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%B6%A9%EB%82%A8%20%EC%B2%9C%EC%95%88%EC%8B%9C%20%EC%84%B1%EA%B1%B0%EC%9D%8D%20%EC%98%A4%EB%AA%A9%EB%A6%AC%2012-4%0A%EC%9A%A9%EB%8F%84%3A%20%EC%9E%90%EC%9B%90%EC%88%9C%ED%99%98%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%9E%AC%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C543%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%205%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2012.3%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%98%A8%EC%9C%A0%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="업무시설" data-q="서울 동대문구 이문동 251-7 업무시설 동화종합건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-171" data-addr="서울 동대문구 이문동 251-7" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">서울 동대문구 이문동 251-7</td>
+      <td>업무시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">5,495㎡</td>
+      <td style="white-space:nowrap;">지하2층/14층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">31억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 동화종합건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%84%9C%EC%9A%B8%20%EB%8F%99%EB%8C%80%EB%AC%B8%EA%B5%AC%20%EC%9D%B4%EB%AC%B8%EB%8F%99%20251-7%20(%EC%97%85%EB%AC%B4%EC%8B%9C%EC%84%A4%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%84%9C%EC%9A%B8%20%EB%8F%99%EB%8C%80%EB%AC%B8%EA%B5%AC%20%EC%9D%B4%EB%AC%B8%EB%8F%99%20251-7%0A%EC%9A%A9%EB%8F%84%3A%20%EC%97%85%EB%AC%B4%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%205%2C495%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%982%EC%B8%B5%2F14%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2031%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EB%8F%99%ED%99%94%EC%A2%85%ED%95%A9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="경남 사천시 사남면 방지리 599 공장 건축사사무소이도  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-172" data-addr="경남 사천시 사남면 방지리 599" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경남 사천시 사남면 방지리 599</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">32,658㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">83.8억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 건축사사무소이도</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EB%82%A8%20%EC%82%AC%EC%B2%9C%EC%8B%9C%20%EC%82%AC%EB%82%A8%EB%A9%B4%20%EB%B0%A9%EC%A7%80%EB%A6%AC%20599%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EB%82%A8%20%EC%82%AC%EC%B2%9C%EC%8B%9C%20%EC%82%AC%EB%82%A8%EB%A9%B4%20%EB%B0%A9%EC%A7%80%EB%A6%AC%20599%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2032%2C658%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2083.8%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EC%9D%B4%EB%8F%84%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="대수선" data-use="공장" data-q="강원 강릉시 대전동 896-1 공장 가우재건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-173" data-addr="강원 강릉시 대전동 896-1" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">강원 강릉시 대전동 896-1</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#FEF3C7; color:#B45309;">대수선</span></td>
+      <td style="white-space:nowrap;">6,400㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">23.8억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 가우재건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B0%95%EC%9B%90%20%EA%B0%95%EB%A6%89%EC%8B%9C%20%EB%8C%80%EC%A0%84%EB%8F%99%20896-1%20(%EA%B3%B5%EC%9E%A5%2F%EB%8C%80%EC%88%98%EC%84%A0)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B0%95%EC%9B%90%20%EA%B0%95%EB%A6%89%EC%8B%9C%20%EB%8C%80%EC%A0%84%EB%8F%99%20896-1%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EB%8C%80%EC%88%98%EC%84%A0%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%206%2C400%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2023.8%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EA%B0%80%EC%9A%B0%EC%9E%AC%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="경북 경주시 외동읍 문산리 986 공장 유일종합장래운건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-174" data-addr="경북 경주시 외동읍 문산리 986" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경북 경주시 외동읍 문산리 986</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">5,271㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">16.2억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 유일종합장래운건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EB%B6%81%20%EA%B2%BD%EC%A3%BC%EC%8B%9C%20%EC%99%B8%EB%8F%99%EC%9D%8D%20%EB%AC%B8%EC%82%B0%EB%A6%AC%20986%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EB%B6%81%20%EA%B2%BD%EC%A3%BC%EC%8B%9C%20%EC%99%B8%EB%8F%99%EC%9D%8D%20%EB%AC%B8%EC%82%B0%EB%A6%AC%20986%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%205%2C271%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2016.2%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%9C%A0%EC%9D%BC%EC%A2%85%ED%95%A9%EC%9E%A5%EB%9E%98%EC%9A%B4%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="대수선" data-use="업무시설" data-q="서울 구로구 구로동 107 업무시설 퍼디건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-175" data-addr="서울 구로구 구로동 107" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">서울 구로구 구로동 107</td>
+      <td>업무시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#FEF3C7; color:#B45309;">대수선</span></td>
+      <td style="white-space:nowrap;">4,092㎡</td>
+      <td style="white-space:nowrap;">지하1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">47억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 퍼디건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%84%9C%EC%9A%B8%20%EA%B5%AC%EB%A1%9C%EA%B5%AC%20%EA%B5%AC%EB%A1%9C%EB%8F%99%20107%20(%EC%97%85%EB%AC%B4%EC%8B%9C%EC%84%A4%2F%EB%8C%80%EC%88%98%EC%84%A0)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%84%9C%EC%9A%B8%20%EA%B5%AC%EB%A1%9C%EA%B5%AC%20%EA%B5%AC%EB%A1%9C%EB%8F%99%20107%0A%EC%9A%A9%EB%8F%84%3A%20%EC%97%85%EB%AC%B4%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EB%8C%80%EC%88%98%EC%84%A0%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%204%2C092%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%981%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2047%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%ED%8D%BC%EB%94%94%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="대수선" data-use="업무시설" data-q="서울 구로구 구로동 107-8 업무시설 퍼디건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-176" data-addr="서울 구로구 구로동 107-8" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">서울 구로구 구로동 107-8</td>
+      <td>업무시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#FEF3C7; color:#B45309;">대수선</span></td>
+      <td style="white-space:nowrap;">4,117㎡</td>
+      <td style="white-space:nowrap;">지하1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">43.6억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 퍼디건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%84%9C%EC%9A%B8%20%EA%B5%AC%EB%A1%9C%EA%B5%AC%20%EA%B5%AC%EB%A1%9C%EB%8F%99%20107-8%20(%EC%97%85%EB%AC%B4%EC%8B%9C%EC%84%A4%2F%EB%8C%80%EC%88%98%EC%84%A0)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%84%9C%EC%9A%B8%20%EA%B5%AC%EB%A1%9C%EA%B5%AC%20%EA%B5%AC%EB%A1%9C%EB%8F%99%20107-8%0A%EC%9A%A9%EB%8F%84%3A%20%EC%97%85%EB%AC%B4%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EB%8C%80%EC%88%98%EC%84%A0%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%204%2C117%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%981%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2043.6%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%ED%8D%BC%EB%94%94%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="자동차관련시설" data-q="대구 북구 관음동 448-1 자동차관련시설 주식회사건축사사무소에이디에프건축  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-177" data-addr="대구 북구 관음동 448-1" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">대구 북구 관음동 448-1</td>
+      <td>자동차관련시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">9,328㎡</td>
+      <td style="white-space:nowrap;">4층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">22.2억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 주식회사건축사사무소에이디에프건축</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EB%8C%80%EA%B5%AC%20%EB%B6%81%EA%B5%AC%20%EA%B4%80%EC%9D%8C%EB%8F%99%20448-1%20(%EC%9E%90%EB%8F%99%EC%B0%A8%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EB%8C%80%EA%B5%AC%20%EB%B6%81%EA%B5%AC%20%EA%B4%80%EC%9D%8C%EB%8F%99%20448-1%0A%EC%9A%A9%EB%8F%84%3A%20%EC%9E%90%EB%8F%99%EC%B0%A8%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%209%2C328%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%204%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2022.2%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%A3%BC%EC%8B%9D%ED%9A%8C%EC%82%AC%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EC%97%90%EC%9D%B4%EB%94%94%EC%97%90%ED%94%84%EA%B1%B4%EC%B6%95%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="제1종근린생활시설" data-q="서울 강남구 역삼동 648-22 제1종근린생활시설 (주)국전건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-178" data-addr="서울 강남구 역삼동 648-22" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">서울 강남구 역삼동 648-22</td>
+      <td>제1종근린생활시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">4,249㎡</td>
+      <td style="white-space:nowrap;">5층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">360억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (주)국전건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%84%9C%EC%9A%B8%20%EA%B0%95%EB%82%A8%EA%B5%AC%20%EC%97%AD%EC%82%BC%EB%8F%99%20648-22%20(%EC%A0%9C1%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%84%9C%EC%9A%B8%20%EA%B0%95%EB%82%A8%EA%B5%AC%20%EC%97%AD%EC%82%BC%EB%8F%99%20648-22%0A%EC%9A%A9%EB%8F%84%3A%20%EC%A0%9C1%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%204%2C249%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%205%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20360%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20(%EC%A3%BC)%EA%B5%AD%EC%A0%84%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="창고시설" data-q="전북 완주군 삼례읍 수계리 1382 창고시설 호연건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-179" data-addr="전북 완주군 삼례읍 수계리 1382" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">전북 완주군 삼례읍 수계리 1382</td>
+      <td>창고시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">4,668㎡</td>
+      <td style="white-space:nowrap;">지하1층/4층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">5.4억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 호연건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%A0%84%EB%B6%81%20%EC%99%84%EC%A3%BC%EA%B5%B0%20%EC%82%BC%EB%A1%80%EC%9D%8D%20%EC%88%98%EA%B3%84%EB%A6%AC%201382%20(%EC%B0%BD%EA%B3%A0%EC%8B%9C%EC%84%A4%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%A0%84%EB%B6%81%20%EC%99%84%EC%A3%BC%EA%B5%B0%20%EC%82%BC%EB%A1%80%EC%9D%8D%20%EC%88%98%EA%B3%84%EB%A6%AC%201382%0A%EC%9A%A9%EB%8F%84%3A%20%EC%B0%BD%EA%B3%A0%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%204%2C668%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%981%EC%B8%B5%2F4%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%205.4%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%ED%98%B8%EC%97%B0%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="공동주택" data-q="부산 연제구 거제동 1528 공동주택   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-180" data-addr="부산 연제구 거제동 1528" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">부산 연제구 거제동 1528</td>
+      <td>공동주택</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">106,522㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">173억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EB%B6%80%EC%82%B0%20%EC%97%B0%EC%A0%9C%EA%B5%AC%20%EA%B1%B0%EC%A0%9C%EB%8F%99%201528%20(%EA%B3%B5%EB%8F%99%EC%A3%BC%ED%83%9D%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EB%B6%80%EC%82%B0%20%EC%97%B0%EC%A0%9C%EA%B5%AC%20%EA%B1%B0%EC%A0%9C%EB%8F%99%201528%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EB%8F%99%EC%A3%BC%ED%83%9D%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%20106%2C522%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20173%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="제2종근린생활시설" data-q="인천 서해구 청라동 157-7 제2종근린생활시설 예가람건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-181" data-addr="인천 서해구 청라동 157-7" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">인천 서해구 청라동 157-7</td>
+      <td>제2종근린생활시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">15,691㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">-</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 예가람건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%9D%B8%EC%B2%9C%20%EC%84%9C%ED%95%B4%EA%B5%AC%20%EC%B2%AD%EB%9D%BC%EB%8F%99%20157-7%20(%EC%A0%9C2%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%9D%B8%EC%B2%9C%20%EC%84%9C%ED%95%B4%EA%B5%AC%20%EC%B2%AD%EB%9D%BC%EB%8F%99%20157-7%0A%EC%9A%A9%EB%8F%84%3A%20%EC%A0%9C2%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2015%2C691%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20-%0A%EC%84%A4%EA%B3%84%3A%20%EC%98%88%EA%B0%80%EB%9E%8C%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="동물및식물관련시설" data-q="전남 해남군 계곡면 법곡리 664-3 동물및식물관련시설 주식회사문엔창건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-182" data-addr="전남 해남군 계곡면 법곡리 664-3" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">전남 해남군 계곡면 법곡리 664-3</td>
+      <td>동물및식물관련시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">2,351㎡</td>
+      <td style="white-space:nowrap;">2층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">2,291만</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 주식회사문엔창건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.29</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%A0%84%EB%82%A8%20%ED%95%B4%EB%82%A8%EA%B5%B0%20%EA%B3%84%EA%B3%A1%EB%A9%B4%20%EB%B2%95%EA%B3%A1%EB%A6%AC%20664-3%20(%EB%8F%99%EB%AC%BC%EB%B0%8F%EC%8B%9D%EB%AC%BC%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%A0%84%EB%82%A8%20%ED%95%B4%EB%82%A8%EA%B5%B0%20%EA%B3%84%EA%B3%A1%EB%A9%B4%20%EB%B2%95%EA%B3%A1%EB%A6%AC%20664-3%0A%EC%9A%A9%EB%8F%84%3A%20%EB%8F%99%EB%AC%BC%EB%B0%8F%EC%8B%9D%EB%AC%BC%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C351%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%202%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%202%2C291%EB%A7%8C%0A%EC%84%A4%EA%B3%84%3A%20%EC%A3%BC%EC%8B%9D%ED%9A%8C%EC%82%AC%EB%AC%B8%EC%97%94%EC%B0%BD%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.29%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="문화및집회시설" data-q="경기 안산시 본오동 665-55 문화및집회시설 (주)에스이오피 건축사사무소 호림디자인건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-183" data-addr="경기 안산시 본오동 665-55" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 안산시 본오동 665-55</td>
+      <td>문화및집회시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">4,102㎡</td>
+      <td style="white-space:nowrap;">3층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">807억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (주)에스이오피 건축사사무소 호림디자인건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.29</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%EC%95%88%EC%82%B0%EC%8B%9C%20%EB%B3%B8%EC%98%A4%EB%8F%99%20665-55%20(%EB%AC%B8%ED%99%94%EB%B0%8F%EC%A7%91%ED%9A%8C%EC%8B%9C%EC%84%A4%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%EC%95%88%EC%82%B0%EC%8B%9C%20%EB%B3%B8%EC%98%A4%EB%8F%99%20665-55%0A%EC%9A%A9%EB%8F%84%3A%20%EB%AC%B8%ED%99%94%EB%B0%8F%EC%A7%91%ED%9A%8C%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%204%2C102%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%203%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20807%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20(%EC%A3%BC)%EC%97%90%EC%8A%A4%EC%9D%B4%EC%98%A4%ED%94%BC%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%20%ED%98%B8%EB%A6%BC%EB%94%94%EC%9E%90%EC%9D%B8%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.29%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="부산 기장군 장안읍 명례리 897-4 공장 대승종합건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-184" data-addr="부산 기장군 장안읍 명례리 897-4" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">부산 기장군 장안읍 명례리 897-4</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">17,952㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">78억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 대승종합건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.29</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EB%B6%80%EC%82%B0%20%EA%B8%B0%EC%9E%A5%EA%B5%B0%20%EC%9E%A5%EC%95%88%EC%9D%8D%20%EB%AA%85%EB%A1%80%EB%A6%AC%20897-4%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EB%B6%80%EC%82%B0%20%EA%B8%B0%EC%9E%A5%EA%B5%B0%20%EC%9E%A5%EC%95%88%EC%9D%8D%20%EB%AA%85%EB%A1%80%EB%A6%AC%20897-4%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2017%2C952%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2078%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EB%8C%80%EC%8A%B9%EC%A2%85%ED%95%A9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.29%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="대수선" data-use="공장" data-q="울산 북구 명촌동 1-2 공장 현대엔지니어링(주)  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-185" data-addr="울산 북구 명촌동 1-2" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">울산 북구 명촌동 1-2</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#FEF3C7; color:#B45309;">대수선</span></td>
+      <td style="white-space:nowrap;">452,798㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">17.5억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 현대엔지니어링(주)</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.29</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%9A%B8%EC%82%B0%20%EB%B6%81%EA%B5%AC%20%EB%AA%85%EC%B4%8C%EB%8F%99%201-2%20(%EA%B3%B5%EC%9E%A5%2F%EB%8C%80%EC%88%98%EC%84%A0)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%9A%B8%EC%82%B0%20%EB%B6%81%EA%B5%AC%20%EB%AA%85%EC%B4%8C%EB%8F%99%201-2%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EB%8C%80%EC%88%98%EC%84%A0%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%20452%2C798%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2017.5%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%ED%98%84%EB%8C%80%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EB%A7%81(%EC%A3%BC)%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.29%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="종교시설" data-q="충북 청주시 북문로3가 3-2 종교시설 주식회사센건축사사무소 (주)에스건설 주식회사센건축사사무소">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-186" data-addr="충북 청주시 북문로3가 3-2" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">충북 청주시 북문로3가 3-2</td>
+      <td>종교시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">3,275㎡</td>
+      <td style="white-space:nowrap;">4층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">15.1억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 주식회사센건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> (주)에스건설</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> 주식회사센건축사사무소</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.29</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%B6%A9%EB%B6%81%20%EC%B2%AD%EC%A3%BC%EC%8B%9C%20%EB%B6%81%EB%AC%B8%EB%A1%9C3%EA%B0%80%203-2%20(%EC%A2%85%EA%B5%90%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%B6%A9%EB%B6%81%20%EC%B2%AD%EC%A3%BC%EC%8B%9C%20%EB%B6%81%EB%AC%B8%EB%A1%9C3%EA%B0%80%203-2%0A%EC%9A%A9%EB%8F%84%3A%20%EC%A2%85%EA%B5%90%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%203%2C275%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%204%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2015.1%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%A3%BC%EC%8B%9D%ED%9A%8C%EC%82%AC%EC%84%BC%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20(%EC%A3%BC)%EC%97%90%EC%8A%A4%EA%B1%B4%EC%84%A4%0A%EA%B0%90%EB%A6%AC%3A%20%EC%A3%BC%EC%8B%9D%ED%9A%8C%EC%82%AC%EC%84%BC%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.29%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="경기 안산시 성곡동 701-5 공장 건축사사무소더반  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-187" data-addr="경기 안산시 성곡동 701-5" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 안산시 성곡동 701-5</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">2,034㎡</td>
+      <td style="white-space:nowrap;">2층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">18.6억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 건축사사무소더반</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.29</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%EC%95%88%EC%82%B0%EC%8B%9C%20%EC%84%B1%EA%B3%A1%EB%8F%99%20701-5%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%EC%95%88%EC%82%B0%EC%8B%9C%20%EC%84%B1%EA%B3%A1%EB%8F%99%20701-5%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C034%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%202%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2018.6%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EB%8D%94%EB%B0%98%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.29%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="공장" data-q="경기 화성시 송산동 100-47 공장 (주)동원디엔씨건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-188" data-addr="경기 화성시 송산동 100-47" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 화성시 송산동 100-47</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">4,408㎡</td>
+      <td style="white-space:nowrap;">지하1층/4층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">10.3억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (주)동원디엔씨건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.29</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%ED%99%94%EC%84%B1%EC%8B%9C%20%EC%86%A1%EC%82%B0%EB%8F%99%20100-47%20(%EA%B3%B5%EC%9E%A5%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%ED%99%94%EC%84%B1%EC%8B%9C%20%EC%86%A1%EC%82%B0%EB%8F%99%20100-47%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%204%2C408%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%981%EC%B8%B5%2F4%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2010.3%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20(%EC%A3%BC)%EB%8F%99%EC%9B%90%EB%94%94%EC%97%94%EC%94%A8%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.29%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="업무시설" data-q="서울 성동구 성수동2가 322-6 업무시설 (주)더시스템랩건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-189" data-addr="서울 성동구 성수동2가 322-6" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">서울 성동구 성수동2가 322-6</td>
+      <td>업무시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">4,648㎡</td>
+      <td style="white-space:nowrap;">지하8층/10층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">56.7억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (주)더시스템랩건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.29</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%84%9C%EC%9A%B8%20%EC%84%B1%EB%8F%99%EA%B5%AC%20%EC%84%B1%EC%88%98%EB%8F%992%EA%B0%80%20322-6%20(%EC%97%85%EB%AC%B4%EC%8B%9C%EC%84%A4%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%84%9C%EC%9A%B8%20%EC%84%B1%EB%8F%99%EA%B5%AC%20%EC%84%B1%EC%88%98%EB%8F%992%EA%B0%80%20322-6%0A%EC%9A%A9%EB%8F%84%3A%20%EC%97%85%EB%AC%B4%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%204%2C648%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%988%EC%B8%B5%2F10%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2056.7%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20(%EC%A3%BC)%EB%8D%94%EC%8B%9C%EC%8A%A4%ED%85%9C%EB%9E%A9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.29%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="동물및식물관련시설" data-q="충남 당진시 고대면 성산리 192-10 동물및식물관련시설 (주)선건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-190" data-addr="충남 당진시 고대면 성산리 192-10" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">충남 당진시 고대면 성산리 192-10</td>
+      <td>동물및식물관련시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">7,658㎡</td>
+      <td style="white-space:nowrap;">2층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">2,696만</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (주)선건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.29</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%B6%A9%EB%82%A8%20%EB%8B%B9%EC%A7%84%EC%8B%9C%20%EA%B3%A0%EB%8C%80%EB%A9%B4%20%EC%84%B1%EC%82%B0%EB%A6%AC%20192-10%20(%EB%8F%99%EB%AC%BC%EB%B0%8F%EC%8B%9D%EB%AC%BC%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%B6%A9%EB%82%A8%20%EB%8B%B9%EC%A7%84%EC%8B%9C%20%EA%B3%A0%EB%8C%80%EB%A9%B4%20%EC%84%B1%EC%82%B0%EB%A6%AC%20192-10%0A%EC%9A%A9%EB%8F%84%3A%20%EB%8F%99%EB%AC%BC%EB%B0%8F%EC%8B%9D%EB%AC%BC%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%207%2C658%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%202%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%202%2C696%EB%A7%8C%0A%EC%84%A4%EA%B3%84%3A%20(%EC%A3%BC)%EC%84%A0%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.29%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="창고시설" data-q="경기 화성시 향남읍 도이리 165-14 창고시설 지에이건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-191" data-addr="경기 화성시 향남읍 도이리 165-14" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 화성시 향남읍 도이리 165-14</td>
+      <td>창고시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">2,629㎡</td>
+      <td style="white-space:nowrap;">2층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">4억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 지에이건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.29</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%ED%99%94%EC%84%B1%EC%8B%9C%20%ED%96%A5%EB%82%A8%EC%9D%8D%20%EB%8F%84%EC%9D%B4%EB%A6%AC%20165-14%20(%EC%B0%BD%EA%B3%A0%EC%8B%9C%EC%84%A4%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%ED%99%94%EC%84%B1%EC%8B%9C%20%ED%96%A5%EB%82%A8%EC%9D%8D%20%EB%8F%84%EC%9D%B4%EB%A6%AC%20165-14%0A%EC%9A%A9%EB%8F%84%3A%20%EC%B0%BD%EA%B3%A0%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C629%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%202%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%204%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%A7%80%EC%97%90%EC%9D%B4%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.29%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="경북 경주시 안강읍 옥산리 1053-1 공장 이공건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-192" data-addr="경북 경주시 안강읍 옥산리 1053-1" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경북 경주시 안강읍 옥산리 1053-1</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">2,478㎡</td>
+      <td style="white-space:nowrap;">2층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">9,374만</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 이공건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.29</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EB%B6%81%20%EA%B2%BD%EC%A3%BC%EC%8B%9C%20%EC%95%88%EA%B0%95%EC%9D%8D%20%EC%98%A5%EC%82%B0%EB%A6%AC%201053-1%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EB%B6%81%20%EA%B2%BD%EC%A3%BC%EC%8B%9C%20%EC%95%88%EA%B0%95%EC%9D%8D%20%EC%98%A5%EC%82%B0%EB%A6%AC%201053-1%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C478%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%202%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%209%2C374%EB%A7%8C%0A%EC%84%A4%EA%B3%84%3A%20%EC%9D%B4%EA%B3%B5%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.29%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="문화및집회시설" data-q="경기 안성시 보개면 양복리 238-2 문화및집회시설 (주)건축사사무소메타  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-193" data-addr="경기 안성시 보개면 양복리 238-2" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 안성시 보개면 양복리 238-2</td>
+      <td>문화및집회시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">5,406㎡</td>
+      <td style="white-space:nowrap;">지하1층/3층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">25.7억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (주)건축사사무소메타</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.29</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%EC%95%88%EC%84%B1%EC%8B%9C%20%EB%B3%B4%EA%B0%9C%EB%A9%B4%20%EC%96%91%EB%B3%B5%EB%A6%AC%20238-2%20(%EB%AC%B8%ED%99%94%EB%B0%8F%EC%A7%91%ED%9A%8C%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%EC%95%88%EC%84%B1%EC%8B%9C%20%EB%B3%B4%EA%B0%9C%EB%A9%B4%20%EC%96%91%EB%B3%B5%EB%A6%AC%20238-2%0A%EC%9A%A9%EB%8F%84%3A%20%EB%AC%B8%ED%99%94%EB%B0%8F%EC%A7%91%ED%9A%8C%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%205%2C406%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%981%EC%B8%B5%2F3%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2025.7%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20(%EC%A3%BC)%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EB%A9%94%ED%83%80%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.29%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="충남 서천군 장항읍 신창리 399 공장 (주)종합건축사사무소환경건축  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-194" data-addr="충남 서천군 장항읍 신창리 399" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">충남 서천군 장항읍 신창리 399</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">162,304㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">144억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (주)종합건축사사무소환경건축</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.29</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%B6%A9%EB%82%A8%20%EC%84%9C%EC%B2%9C%EA%B5%B0%20%EC%9E%A5%ED%95%AD%EC%9D%8D%20%EC%8B%A0%EC%B0%BD%EB%A6%AC%20399%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%B6%A9%EB%82%A8%20%EC%84%9C%EC%B2%9C%EA%B5%B0%20%EC%9E%A5%ED%95%AD%EC%9D%8D%20%EC%8B%A0%EC%B0%BD%EB%A6%AC%20399%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%20162%2C304%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20144%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20(%EC%A3%BC)%EC%A2%85%ED%95%A9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%ED%99%98%EA%B2%BD%EA%B1%B4%EC%B6%95%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.29%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="동물및식물관련시설" data-q="전북 부안군 계화면 궁안리 2406-5 동물및식물관련시설 (주)다온건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-195" data-addr="전북 부안군 계화면 궁안리 2406-5" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">전북 부안군 계화면 궁안리 2406-5</td>
+      <td>동물및식물관련시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">2,880㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">8,256만</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (주)다온건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.29</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%A0%84%EB%B6%81%20%EB%B6%80%EC%95%88%EA%B5%B0%20%EA%B3%84%ED%99%94%EB%A9%B4%20%EA%B6%81%EC%95%88%EB%A6%AC%202406-5%20(%EB%8F%99%EB%AC%BC%EB%B0%8F%EC%8B%9D%EB%AC%BC%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%A0%84%EB%B6%81%20%EB%B6%80%EC%95%88%EA%B5%B0%20%EA%B3%84%ED%99%94%EB%A9%B4%20%EA%B6%81%EC%95%88%EB%A6%AC%202406-5%0A%EC%9A%A9%EB%8F%84%3A%20%EB%8F%99%EB%AC%BC%EB%B0%8F%EC%8B%9D%EB%AC%BC%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C880%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%208%2C256%EB%A7%8C%0A%EC%84%A4%EA%B3%84%3A%20(%EC%A3%BC)%EB%8B%A4%EC%98%A8%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.29%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="동물및식물관련시설" data-q="전남 영암군 군서면 마산리 257 동물및식물관련시설 명제건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-196" data-addr="전남 영암군 군서면 마산리 257" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">전남 영암군 군서면 마산리 257</td>
+      <td>동물및식물관련시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">2,061㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">4,091만</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 명제건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.29</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%A0%84%EB%82%A8%20%EC%98%81%EC%95%94%EA%B5%B0%20%EA%B5%B0%EC%84%9C%EB%A9%B4%20%EB%A7%88%EC%82%B0%EB%A6%AC%20257%20(%EB%8F%99%EB%AC%BC%EB%B0%8F%EC%8B%9D%EB%AC%BC%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%A0%84%EB%82%A8%20%EC%98%81%EC%95%94%EA%B5%B0%20%EA%B5%B0%EC%84%9C%EB%A9%B4%20%EB%A7%88%EC%82%B0%EB%A6%AC%20257%0A%EC%9A%A9%EB%8F%84%3A%20%EB%8F%99%EB%AC%BC%EB%B0%8F%EC%8B%9D%EB%AC%BC%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C061%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%204%2C091%EB%A7%8C%0A%EC%84%A4%EA%B3%84%3A%20%EB%AA%85%EC%A0%9C%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.29%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="제1종근린생활시설" data-q="충북 충주시 중앙탑면 하구암리 727 제1종근린생활시설 한국전력공사  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-197" data-addr="충북 충주시 중앙탑면 하구암리 727" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">충북 충주시 중앙탑면 하구암리 727</td>
+      <td>제1종근린생활시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">2,900㎡</td>
+      <td style="white-space:nowrap;">지하1층/4층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">2.4억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 한국전력공사</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.29</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%B6%A9%EB%B6%81%20%EC%B6%A9%EC%A3%BC%EC%8B%9C%20%EC%A4%91%EC%95%99%ED%83%91%EB%A9%B4%20%ED%95%98%EA%B5%AC%EC%95%94%EB%A6%AC%20727%20(%EC%A0%9C1%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%B6%A9%EB%B6%81%20%EC%B6%A9%EC%A3%BC%EC%8B%9C%20%EC%A4%91%EC%95%99%ED%83%91%EB%A9%B4%20%ED%95%98%EA%B5%AC%EC%95%94%EB%A6%AC%20727%0A%EC%9A%A9%EB%8F%84%3A%20%EC%A0%9C1%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C900%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%981%EC%B8%B5%2F4%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%202.4%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%ED%95%9C%EA%B5%AD%EC%A0%84%EB%A0%A5%EA%B3%B5%EC%82%AC%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.29%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="강원 춘천시 동내면 거두리 1151 공장 건축사사무소 시노시아 씨앤에이치 엔지니어링  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-198" data-addr="강원 춘천시 동내면 거두리 1151" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">강원 춘천시 동내면 거두리 1151</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">14,188㎡</td>
+      <td style="white-space:nowrap;">지하1층/3층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">41.6억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 건축사사무소 시노시아 씨앤에이치 엔지니어링</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.29</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B0%95%EC%9B%90%20%EC%B6%98%EC%B2%9C%EC%8B%9C%20%EB%8F%99%EB%82%B4%EB%A9%B4%20%EA%B1%B0%EB%91%90%EB%A6%AC%201151%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B0%95%EC%9B%90%20%EC%B6%98%EC%B2%9C%EC%8B%9C%20%EB%8F%99%EB%82%B4%EB%A9%B4%20%EA%B1%B0%EB%91%90%EB%A6%AC%201151%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2014%2C188%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%981%EC%B8%B5%2F3%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2041.6%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%20%EC%8B%9C%EB%85%B8%EC%8B%9C%EC%95%84%20%EC%94%A8%EC%95%A4%EC%97%90%EC%9D%B4%EC%B9%98%20%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EB%A7%81%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.29%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="노유자시설" data-q="전남 장성군 남면 분향리 258-1 노유자시설 로켓건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-199" data-addr="전남 장성군 남면 분향리 258-1" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">전남 장성군 남면 분향리 258-1</td>
+      <td>노유자시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">2,166㎡</td>
+      <td style="white-space:nowrap;">4층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">3.7억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 로켓건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.29</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%A0%84%EB%82%A8%20%EC%9E%A5%EC%84%B1%EA%B5%B0%20%EB%82%A8%EB%A9%B4%20%EB%B6%84%ED%96%A5%EB%A6%AC%20258-1%20(%EB%85%B8%EC%9C%A0%EC%9E%90%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%A0%84%EB%82%A8%20%EC%9E%A5%EC%84%B1%EA%B5%B0%20%EB%82%A8%EB%A9%B4%20%EB%B6%84%ED%96%A5%EB%A6%AC%20258-1%0A%EC%9A%A9%EB%8F%84%3A%20%EB%85%B8%EC%9C%A0%EC%9E%90%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C166%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%204%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%203.7%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EB%A1%9C%EC%BC%93%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.29%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="대수선" data-use="판매시설" data-q="경기 광명시 일직동 500 판매시설 (주)한원포럼건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-200" data-addr="경기 광명시 일직동 500" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 광명시 일직동 500</td>
+      <td>판매시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#FEF3C7; color:#B45309;">대수선</span></td>
+      <td style="white-space:nowrap;">258,881㎡</td>
+      <td style="white-space:nowrap;">지하7층/10층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">3,176억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (주)한원포럼건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.29</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%EA%B4%91%EB%AA%85%EC%8B%9C%20%EC%9D%BC%EC%A7%81%EB%8F%99%20500%20(%ED%8C%90%EB%A7%A4%EC%8B%9C%EC%84%A4%2F%EB%8C%80%EC%88%98%EC%84%A0)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%EA%B4%91%EB%AA%85%EC%8B%9C%20%EC%9D%BC%EC%A7%81%EB%8F%99%20500%0A%EC%9A%A9%EB%8F%84%3A%20%ED%8C%90%EB%A7%A4%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EB%8C%80%EC%88%98%EC%84%A0%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%20258%2C881%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%987%EC%B8%B5%2F10%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%203%2C176%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20(%EC%A3%BC)%ED%95%9C%EC%9B%90%ED%8F%AC%EB%9F%BC%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.29%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="업무시설" data-q="서울 중구 황학동 1582 업무시설 브엔엘메타건축사사무소주식회사  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-201" data-addr="서울 중구 황학동 1582" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">서울 중구 황학동 1582</td>
+      <td>업무시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">2,192㎡</td>
+      <td style="white-space:nowrap;">지하2층/12층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">22.2억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 브엔엘메타건축사사무소주식회사</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.29</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%84%9C%EC%9A%B8%20%EC%A4%91%EA%B5%AC%20%ED%99%A9%ED%95%99%EB%8F%99%201582%20(%EC%97%85%EB%AC%B4%EC%8B%9C%EC%84%A4%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%84%9C%EC%9A%B8%20%EC%A4%91%EA%B5%AC%20%ED%99%A9%ED%95%99%EB%8F%99%201582%0A%EC%9A%A9%EB%8F%84%3A%20%EC%97%85%EB%AC%B4%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C192%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%982%EC%B8%B5%2F12%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2022.2%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EB%B8%8C%EC%97%94%EC%97%98%EB%A9%94%ED%83%80%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EC%A3%BC%EC%8B%9D%ED%9A%8C%EC%82%AC%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.29%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="경북 포항시 동촌동 5 공장 (주)디와이건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-202" data-addr="경북 포항시 동촌동 5" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경북 포항시 동촌동 5</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">3,917,738㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">239억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (주)디와이건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.29</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EB%B6%81%20%ED%8F%AC%ED%95%AD%EC%8B%9C%20%EB%8F%99%EC%B4%8C%EB%8F%99%205%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EB%B6%81%20%ED%8F%AC%ED%95%AD%EC%8B%9C%20%EB%8F%99%EC%B4%8C%EB%8F%99%205%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%203%2C917%2C738%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20239%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20(%EC%A3%BC)%EB%94%94%EC%99%80%EC%9D%B4%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.29%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="공장" data-q="전남 담양군 무정면 봉안리 383-1 공장 천지인건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-203" data-addr="전남 담양군 무정면 봉안리 383-1" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">전남 담양군 무정면 봉안리 383-1</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">3,122㎡</td>
+      <td style="white-space:nowrap;">2층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">2.9억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 천지인건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.29</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%A0%84%EB%82%A8%20%EB%8B%B4%EC%96%91%EA%B5%B0%20%EB%AC%B4%EC%A0%95%EB%A9%B4%20%EB%B4%89%EC%95%88%EB%A6%AC%20383-1%20(%EA%B3%B5%EC%9E%A5%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%A0%84%EB%82%A8%20%EB%8B%B4%EC%96%91%EA%B5%B0%20%EB%AC%B4%EC%A0%95%EB%A9%B4%20%EB%B4%89%EC%95%88%EB%A6%AC%20383-1%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%203%2C122%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%202%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%202.9%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%B2%9C%EC%A7%80%EC%9D%B8%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.29%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="창고시설" data-q="경남 진주시 가좌동 900 창고시설 조은김진희건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-204" data-addr="경남 진주시 가좌동 900" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경남 진주시 가좌동 900</td>
+      <td>창고시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">445,956㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">1,666억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 조은김진희건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.29</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EB%82%A8%20%EC%A7%84%EC%A3%BC%EC%8B%9C%20%EA%B0%80%EC%A2%8C%EB%8F%99%20900%20(%EC%B0%BD%EA%B3%A0%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EB%82%A8%20%EC%A7%84%EC%A3%BC%EC%8B%9C%20%EA%B0%80%EC%A2%8C%EB%8F%99%20900%0A%EC%9A%A9%EB%8F%84%3A%20%EC%B0%BD%EA%B3%A0%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%20445%2C956%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%201%2C666%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%A1%B0%EC%9D%80%EA%B9%80%EC%A7%84%ED%9D%AC%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.29%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="교육연구시설" data-q="대전 유성구 장동 100 교육연구시설 (주)건축사사무소 티오피 (주)건축사사무소인 외 1  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-205" data-addr="대전 유성구 장동 100" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">대전 유성구 장동 100</td>
+      <td>교육연구시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">124,877㎡</td>
+      <td style="white-space:nowrap;">지하1층/5층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">35.5억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (주)건축사사무소 티오피 (주)건축사사무소인 외 1</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.29</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EB%8C%80%EC%A0%84%20%EC%9C%A0%EC%84%B1%EA%B5%AC%20%EC%9E%A5%EB%8F%99%20100%20(%EA%B5%90%EC%9C%A1%EC%97%B0%EA%B5%AC%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EB%8C%80%EC%A0%84%20%EC%9C%A0%EC%84%B1%EA%B5%AC%20%EC%9E%A5%EB%8F%99%20100%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B5%90%EC%9C%A1%EC%97%B0%EA%B5%AC%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%20124%2C877%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%981%EC%B8%B5%2F5%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2035.5%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20(%EC%A3%BC)%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%20%ED%8B%B0%EC%98%A4%ED%94%BC%20(%EC%A3%BC)%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EC%9D%B8%20%EC%99%B8%201%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.29%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="창고시설" data-q="충남 아산시 음봉면 신휴리 774 창고시설 주식회사남호종합엔지니어링건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-206" data-addr="충남 아산시 음봉면 신휴리 774" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">충남 아산시 음봉면 신휴리 774</td>
+      <td>창고시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">21,801㎡</td>
+      <td style="white-space:nowrap;">2층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">128억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 주식회사남호종합엔지니어링건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.29</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%B6%A9%EB%82%A8%20%EC%95%84%EC%82%B0%EC%8B%9C%20%EC%9D%8C%EB%B4%89%EB%A9%B4%20%EC%8B%A0%ED%9C%B4%EB%A6%AC%20774%20(%EC%B0%BD%EA%B3%A0%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%B6%A9%EB%82%A8%20%EC%95%84%EC%82%B0%EC%8B%9C%20%EC%9D%8C%EB%B4%89%EB%A9%B4%20%EC%8B%A0%ED%9C%B4%EB%A6%AC%20774%0A%EC%9A%A9%EB%8F%84%3A%20%EC%B0%BD%EA%B3%A0%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2021%2C801%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%202%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20128%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%A3%BC%EC%8B%9D%ED%9A%8C%EC%82%AC%EB%82%A8%ED%98%B8%EC%A2%85%ED%95%A9%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EB%A7%81%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.29%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="대수선" data-use="제1종근린생활시설" data-q="서울 강남구 신사동 629-31 제1종근린생활시설 원이엔씨종합건축사사무소주식회사  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-207" data-addr="서울 강남구 신사동 629-31" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">서울 강남구 신사동 629-31</td>
+      <td>제1종근린생활시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#FEF3C7; color:#B45309;">대수선</span></td>
+      <td style="white-space:nowrap;">2,985㎡</td>
+      <td style="white-space:nowrap;">5층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">286억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 원이엔씨종합건축사사무소주식회사</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.29</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%84%9C%EC%9A%B8%20%EA%B0%95%EB%82%A8%EA%B5%AC%20%EC%8B%A0%EC%82%AC%EB%8F%99%20629-31%20(%EC%A0%9C1%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%2F%EB%8C%80%EC%88%98%EC%84%A0)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%84%9C%EC%9A%B8%20%EA%B0%95%EB%82%A8%EA%B5%AC%20%EC%8B%A0%EC%82%AC%EB%8F%99%20629-31%0A%EC%9A%A9%EB%8F%84%3A%20%EC%A0%9C1%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EB%8C%80%EC%88%98%EC%84%A0%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C985%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%205%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20286%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%9B%90%EC%9D%B4%EC%97%94%EC%94%A8%EC%A2%85%ED%95%A9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EC%A3%BC%EC%8B%9D%ED%9A%8C%EC%82%AC%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.29%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="전남 광양시 광양읍 익신리 756-8 공장 신아건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-208" data-addr="전남 광양시 광양읍 익신리 756-8" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">전남 광양시 광양읍 익신리 756-8</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">2,629㎡</td>
+      <td style="white-space:nowrap;">5층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">9.4억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 신아건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.29</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%A0%84%EB%82%A8%20%EA%B4%91%EC%96%91%EC%8B%9C%20%EA%B4%91%EC%96%91%EC%9D%8D%20%EC%9D%B5%EC%8B%A0%EB%A6%AC%20756-8%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%A0%84%EB%82%A8%20%EA%B4%91%EC%96%91%EC%8B%9C%20%EA%B4%91%EC%96%91%EC%9D%8D%20%EC%9D%B5%EC%8B%A0%EB%A6%AC%20756-8%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C629%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%205%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%209.4%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%8B%A0%EC%95%84%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.29%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="울산 남구 상개동 472-9 공장 석원건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-209" data-addr="울산 남구 상개동 472-9" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">울산 남구 상개동 472-9</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">53,871㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">287억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 석원건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.29</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%9A%B8%EC%82%B0%20%EB%82%A8%EA%B5%AC%20%EC%83%81%EA%B0%9C%EB%8F%99%20472-9%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%9A%B8%EC%82%B0%20%EB%82%A8%EA%B5%AC%20%EC%83%81%EA%B0%9C%EB%8F%99%20472-9%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2053%2C871%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20287%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%84%9D%EC%9B%90%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.29%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="동물및식물관련시설" data-q="강원 철원군 동송읍 관우리 250 동물및식물관련시설 (주)엄씨네건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-210" data-addr="강원 철원군 동송읍 관우리 250" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">강원 철원군 동송읍 관우리 250</td>
+      <td>동물및식물관련시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">3,836㎡</td>
+      <td style="white-space:nowrap;">3층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">7,763만</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (주)엄씨네건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.29</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B0%95%EC%9B%90%20%EC%B2%A0%EC%9B%90%EA%B5%B0%20%EB%8F%99%EC%86%A1%EC%9D%8D%20%EA%B4%80%EC%9A%B0%EB%A6%AC%20250%20(%EB%8F%99%EB%AC%BC%EB%B0%8F%EC%8B%9D%EB%AC%BC%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B0%95%EC%9B%90%20%EC%B2%A0%EC%9B%90%EA%B5%B0%20%EB%8F%99%EC%86%A1%EC%9D%8D%20%EA%B4%80%EC%9A%B0%EB%A6%AC%20250%0A%EC%9A%A9%EB%8F%84%3A%20%EB%8F%99%EB%AC%BC%EB%B0%8F%EC%8B%9D%EB%AC%BC%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%203%2C836%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%203%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%207%2C763%EB%A7%8C%0A%EC%84%A4%EA%B3%84%3A%20(%EC%A3%BC)%EC%97%84%EC%94%A8%EB%84%A4%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.29%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="대수선" data-use="교육연구시설" data-q="경기 성남시 구미동 159 교육연구시설 건축사사무소예정  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-211" data-addr="경기 성남시 구미동 159" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 성남시 구미동 159</td>
+      <td>교육연구시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#FEF3C7; color:#B45309;">대수선</span></td>
+      <td style="white-space:nowrap;">134,124㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">168억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 건축사사무소예정</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.29</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%EC%84%B1%EB%82%A8%EC%8B%9C%20%EA%B5%AC%EB%AF%B8%EB%8F%99%20159%20(%EA%B5%90%EC%9C%A1%EC%97%B0%EA%B5%AC%EC%8B%9C%EC%84%A4%2F%EB%8C%80%EC%88%98%EC%84%A0)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%EC%84%B1%EB%82%A8%EC%8B%9C%20%EA%B5%AC%EB%AF%B8%EB%8F%99%20159%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B5%90%EC%9C%A1%EC%97%B0%EA%B5%AC%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EB%8C%80%EC%88%98%EC%84%A0%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%20134%2C124%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20168%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EC%98%88%EC%A0%95%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.29%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="제1종근린생활시설" data-q="서울 관악구 봉천동 862-7 제1종근린생활시설 (주)에이아이종합건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-212" data-addr="서울 관악구 봉천동 862-7" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">서울 관악구 봉천동 862-7</td>
+      <td>제1종근린생활시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">4,988㎡</td>
+      <td style="white-space:nowrap;">지하1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">64.3억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (주)에이아이종합건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.29</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%84%9C%EC%9A%B8%20%EA%B4%80%EC%95%85%EA%B5%AC%20%EB%B4%89%EC%B2%9C%EB%8F%99%20862-7%20(%EC%A0%9C1%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%84%9C%EC%9A%B8%20%EA%B4%80%EC%95%85%EA%B5%AC%20%EB%B4%89%EC%B2%9C%EB%8F%99%20862-7%0A%EC%9A%A9%EB%8F%84%3A%20%EC%A0%9C1%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%204%2C988%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%981%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2064.3%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20(%EC%A3%BC)%EC%97%90%EC%9D%B4%EC%95%84%EC%9D%B4%EC%A2%85%ED%95%A9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.29%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="충북 충주시 주덕읍 당우리 1513 공장 우리종합건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-213" data-addr="충북 충주시 주덕읍 당우리 1513" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">충북 충주시 주덕읍 당우리 1513</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">3,832㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">11.5억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 우리종합건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.29</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%B6%A9%EB%B6%81%20%EC%B6%A9%EC%A3%BC%EC%8B%9C%20%EC%A3%BC%EB%8D%95%EC%9D%8D%20%EB%8B%B9%EC%9A%B0%EB%A6%AC%201513%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%B6%A9%EB%B6%81%20%EC%B6%A9%EC%A3%BC%EC%8B%9C%20%EC%A3%BC%EB%8D%95%EC%9D%8D%20%EB%8B%B9%EC%9A%B0%EB%A6%AC%201513%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%203%2C832%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2011.5%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%9A%B0%EB%A6%AC%EC%A2%85%ED%95%A9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.29%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="경북 성주군 선남면 문방리 1411 공장   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-214" data-addr="경북 성주군 선남면 문방리 1411" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경북 성주군 선남면 문방리 1411</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">4,108㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">7.1억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.29</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EB%B6%81%20%EC%84%B1%EC%A3%BC%EA%B5%B0%20%EC%84%A0%EB%82%A8%EB%A9%B4%20%EB%AC%B8%EB%B0%A9%EB%A6%AC%201411%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EB%B6%81%20%EC%84%B1%EC%A3%BC%EA%B5%B0%20%EC%84%A0%EB%82%A8%EB%A9%B4%20%EB%AC%B8%EB%B0%A9%EB%A6%AC%201411%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%204%2C108%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%207.1%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.29%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="의료시설" data-q="서울 구로구 구로동 26-2 의료시설   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-215" data-addr="서울 구로구 구로동 26-2" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">서울 구로구 구로동 26-2</td>
+      <td>의료시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">7,340㎡</td>
+      <td style="white-space:nowrap;">5층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">183억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%84%9C%EC%9A%B8%20%EA%B5%AC%EB%A1%9C%EA%B5%AC%20%EA%B5%AC%EB%A1%9C%EB%8F%99%2026-2%20(%EC%9D%98%EB%A3%8C%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%84%9C%EC%9A%B8%20%EA%B5%AC%EB%A1%9C%EA%B5%AC%20%EA%B5%AC%EB%A1%9C%EB%8F%99%2026-2%0A%EC%9A%A9%EB%8F%84%3A%20%EC%9D%98%EB%A3%8C%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%207%2C340%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%205%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20183%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="판매시설" data-q="제주 제주시 구좌읍 세화리 1339-2 판매시설   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-216" data-addr="제주 제주시 구좌읍 세화리 1339-2" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">제주 제주시 구좌읍 세화리 1339-2</td>
+      <td>판매시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">9,627㎡</td>
+      <td style="white-space:nowrap;">지하1층/11층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">1.8억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%A0%9C%EC%A3%BC%20%EC%A0%9C%EC%A3%BC%EC%8B%9C%20%EA%B5%AC%EC%A2%8C%EC%9D%8D%20%EC%84%B8%ED%99%94%EB%A6%AC%201339-2%20(%ED%8C%90%EB%A7%A4%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%A0%9C%EC%A3%BC%20%EC%A0%9C%EC%A3%BC%EC%8B%9C%20%EA%B5%AC%EC%A2%8C%EC%9D%8D%20%EC%84%B8%ED%99%94%EB%A6%AC%201339-2%0A%EC%9A%A9%EB%8F%84%3A%20%ED%8C%90%EB%A7%A4%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%209%2C627%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%981%EC%B8%B5%2F11%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%201.8%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="공장" data-q="경기도 화성시 만세구 송산면 용포리 블록 공장   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-217" data-addr="경기도 화성시 만세구 송산면 용포리 블록" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기도 화성시 만세구 송산면 용포리 블록</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">3,185㎡</td>
+      <td style="white-space:nowrap;">6층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">-</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%ED%99%94%EC%84%B1%EC%8B%9C%20%EB%A7%8C%EC%84%B8%EA%B5%AC%20%EC%86%A1%EC%82%B0%EB%A9%B4%20%EC%9A%A9%ED%8F%AC%EB%A6%AC%20%EB%B8%94%EB%A1%9D%20(%EA%B3%B5%EC%9E%A5%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%ED%99%94%EC%84%B1%EC%8B%9C%20%EB%A7%8C%EC%84%B8%EA%B5%AC%20%EC%86%A1%EC%82%B0%EB%A9%B4%20%EC%9A%A9%ED%8F%AC%EB%A6%AC%20%EB%B8%94%EB%A1%9D%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%203%2C185%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%206%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20-%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="국방,군사시설" data-q="경기 양평군 청운면 도원리 505-1 국방,군사시설   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-218" data-addr="경기 양평군 청운면 도원리 505-1" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 양평군 청운면 도원리 505-1</td>
+      <td>국방,군사시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">3,334㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">1.9억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%B2%AD%EC%9A%B4%EB%A9%B4%20%EB%8F%84%EC%9B%90%EB%A6%AC%20505-1%20(%EA%B5%AD%EB%B0%A9%2C%EA%B5%B0%EC%82%AC%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%B2%AD%EC%9A%B4%EB%A9%B4%20%EB%8F%84%EC%9B%90%EB%A6%AC%20505-1%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B5%AD%EB%B0%A9%2C%EA%B5%B0%EC%82%AC%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%203%2C334%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%201.9%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="관광휴게시설" data-q="충북 음성군 금왕읍 용계리 190-3 관광휴게시설   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-219" data-addr="충북 음성군 금왕읍 용계리 190-3" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">충북 음성군 금왕읍 용계리 190-3</td>
+      <td>관광휴게시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">2,396㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">17.3억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.29</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%B6%A9%EB%B6%81%20%EC%9D%8C%EC%84%B1%EA%B5%B0%20%EA%B8%88%EC%99%95%EC%9D%8D%20%EC%9A%A9%EA%B3%84%EB%A6%AC%20190-3%20(%EA%B4%80%EA%B4%91%ED%9C%B4%EA%B2%8C%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%B6%A9%EB%B6%81%20%EC%9D%8C%EC%84%B1%EA%B5%B0%20%EA%B8%88%EC%99%95%EC%9D%8D%20%EC%9A%A9%EA%B3%84%EB%A6%AC%20190-3%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B4%80%EA%B4%91%ED%9C%B4%EA%B2%8C%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C396%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2017.3%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.29%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="교육연구시설" data-q="충남 홍성군 홍북읍 신경리 1576 교육연구시설   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-220" data-addr="충남 홍성군 홍북읍 신경리 1576" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">충남 홍성군 홍북읍 신경리 1576</td>
+      <td>교육연구시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">3,000㎡</td>
+      <td style="white-space:nowrap;">2층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">16.3억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%B6%A9%EB%82%A8%20%ED%99%8D%EC%84%B1%EA%B5%B0%20%ED%99%8D%EB%B6%81%EC%9D%8D%20%EC%8B%A0%EA%B2%BD%EB%A6%AC%201576%20(%EA%B5%90%EC%9C%A1%EC%97%B0%EA%B5%AC%EC%8B%9C%EC%84%A4%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%B6%A9%EB%82%A8%20%ED%99%8D%EC%84%B1%EA%B5%B0%20%ED%99%8D%EB%B6%81%EC%9D%8D%20%EC%8B%A0%EA%B2%BD%EB%A6%AC%201576%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B5%90%EC%9C%A1%EC%97%B0%EA%B5%AC%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%203%2C000%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%202%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2016.3%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="경기 안산시 초지동 654-10 공장   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-221" data-addr="경기 안산시 초지동 654-10" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 안산시 초지동 654-10</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">6,322㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">41.2억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%EC%95%88%EC%82%B0%EC%8B%9C%20%EC%B4%88%EC%A7%80%EB%8F%99%20654-10%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%EC%95%88%EC%82%B0%EC%8B%9C%20%EC%B4%88%EC%A7%80%EB%8F%99%20654-10%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%206%2C322%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2041.2%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="제1종근린생활시설" data-q="경기 구리시 인창동 676-2 제1종근린생활시설   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-222" data-addr="경기 구리시 인창동 676-2" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 구리시 인창동 676-2</td>
+      <td>제1종근린생활시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">8,970㎡</td>
+      <td style="white-space:nowrap;">지하2층/17층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">121억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%EA%B5%AC%EB%A6%AC%EC%8B%9C%20%EC%9D%B8%EC%B0%BD%EB%8F%99%20676-2%20(%EC%A0%9C1%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%EA%B5%AC%EB%A6%AC%EC%8B%9C%20%EC%9D%B8%EC%B0%BD%EB%8F%99%20676-2%0A%EC%9A%A9%EB%8F%84%3A%20%EC%A0%9C1%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%208%2C970%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%982%EC%B8%B5%2F17%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20121%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="자원순환관련시설" data-q="충남 논산시 부적면 감곡리 82-23 자원순환관련시설   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-223" data-addr="충남 논산시 부적면 감곡리 82-23" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">충남 논산시 부적면 감곡리 82-23</td>
+      <td>자원순환관련시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">3,374㎡</td>
+      <td style="white-space:nowrap;">2층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">8.5억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%B6%A9%EB%82%A8%20%EB%85%BC%EC%82%B0%EC%8B%9C%20%EB%B6%80%EC%A0%81%EB%A9%B4%20%EA%B0%90%EA%B3%A1%EB%A6%AC%2082-23%20(%EC%9E%90%EC%9B%90%EC%88%9C%ED%99%98%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%B6%A9%EB%82%A8%20%EB%85%BC%EC%82%B0%EC%8B%9C%20%EB%B6%80%EC%A0%81%EB%A9%B4%20%EA%B0%90%EA%B3%A1%EB%A6%AC%2082-23%0A%EC%9A%A9%EB%8F%84%3A%20%EC%9E%90%EC%9B%90%EC%88%9C%ED%99%98%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%203%2C374%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%202%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%208.5%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="강원 속초시 대포동 45-15 공장   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-224" data-addr="강원 속초시 대포동 45-15" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">강원 속초시 대포동 45-15</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">3,833㎡</td>
+      <td style="white-space:nowrap;">2층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">8.1억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B0%95%EC%9B%90%20%EC%86%8D%EC%B4%88%EC%8B%9C%20%EB%8C%80%ED%8F%AC%EB%8F%99%2045-15%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B0%95%EC%9B%90%20%EC%86%8D%EC%B4%88%EC%8B%9C%20%EB%8C%80%ED%8F%AC%EB%8F%99%2045-15%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%203%2C833%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%202%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%208.1%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="공장" data-q="강원 원주시 문막읍 후용리 1153 공장   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-225" data-addr="강원 원주시 문막읍 후용리 1153" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">강원 원주시 문막읍 후용리 1153</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">4,130㎡</td>
+      <td style="white-space:nowrap;">2층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">4.4억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B0%95%EC%9B%90%20%EC%9B%90%EC%A3%BC%EC%8B%9C%20%EB%AC%B8%EB%A7%89%EC%9D%8D%20%ED%9B%84%EC%9A%A9%EB%A6%AC%201153%20(%EA%B3%B5%EC%9E%A5%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B0%95%EC%9B%90%20%EC%9B%90%EC%A3%BC%EC%8B%9C%20%EB%AC%B8%EB%A7%89%EC%9D%8D%20%ED%9B%84%EC%9A%A9%EB%A6%AC%201153%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%204%2C130%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%202%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%204.4%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="동물및식물관련시설" data-q="경북 영천시 금호읍 남성리 153-5 동물및식물관련시설   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-226" data-addr="경북 영천시 금호읍 남성리 153-5" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경북 영천시 금호읍 남성리 153-5</td>
+      <td>동물및식물관련시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">4,163㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">2,906만</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EB%B6%81%20%EC%98%81%EC%B2%9C%EC%8B%9C%20%EA%B8%88%ED%98%B8%EC%9D%8D%20%EB%82%A8%EC%84%B1%EB%A6%AC%20153-5%20(%EB%8F%99%EB%AC%BC%EB%B0%8F%EC%8B%9D%EB%AC%BC%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EB%B6%81%20%EC%98%81%EC%B2%9C%EC%8B%9C%20%EA%B8%88%ED%98%B8%EC%9D%8D%20%EB%82%A8%EC%84%B1%EB%A6%AC%20153-5%0A%EC%9A%A9%EB%8F%84%3A%20%EB%8F%99%EB%AC%BC%EB%B0%8F%EC%8B%9D%EB%AC%BC%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%204%2C163%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%202%2C906%EB%A7%8C%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="경남 거제시 사등면 사등리 2050 공장   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-227" data-addr="경남 거제시 사등면 사등리 2050" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경남 거제시 사등면 사등리 2050</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">18,231㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">83.8억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EB%82%A8%20%EA%B1%B0%EC%A0%9C%EC%8B%9C%20%EC%82%AC%EB%93%B1%EB%A9%B4%20%EC%82%AC%EB%93%B1%EB%A6%AC%202050%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EB%82%A8%20%EA%B1%B0%EC%A0%9C%EC%8B%9C%20%EC%82%AC%EB%93%B1%EB%A9%B4%20%EC%82%AC%EB%93%B1%EB%A6%AC%202050%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2018%2C231%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2083.8%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="업무시설" data-q="경기 평택시 고덕동 2153-5 업무시설   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-228" data-addr="경기 평택시 고덕동 2153-5" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 평택시 고덕동 2153-5</td>
+      <td>업무시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">17,665㎡</td>
+      <td style="white-space:nowrap;">지하5층/14층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">92.3억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%ED%8F%89%ED%83%9D%EC%8B%9C%20%EA%B3%A0%EB%8D%95%EB%8F%99%202153-5%20(%EC%97%85%EB%AC%B4%EC%8B%9C%EC%84%A4%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%ED%8F%89%ED%83%9D%EC%8B%9C%20%EA%B3%A0%EB%8D%95%EB%8F%99%202153-5%0A%EC%9A%A9%EB%8F%84%3A%20%EC%97%85%EB%AC%B4%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2017%2C665%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%985%EC%B8%B5%2F14%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2092.3%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="국방,군사시설" data-q="충남 논산시 양촌면 거사리 576 국방,군사시설   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-229" data-addr="충남 논산시 양촌면 거사리 576" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">충남 논산시 양촌면 거사리 576</td>
+      <td>국방,군사시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">67,914㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">220억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%B6%A9%EB%82%A8%20%EB%85%BC%EC%82%B0%EC%8B%9C%20%EC%96%91%EC%B4%8C%EB%A9%B4%20%EA%B1%B0%EC%82%AC%EB%A6%AC%20576%20(%EA%B5%AD%EB%B0%A9%2C%EA%B5%B0%EC%82%AC%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%B6%A9%EB%82%A8%20%EB%85%BC%EC%82%B0%EC%8B%9C%20%EC%96%91%EC%B4%8C%EB%A9%B4%20%EA%B1%B0%EC%82%AC%EB%A6%AC%20576%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B5%AD%EB%B0%A9%2C%EA%B5%B0%EC%82%AC%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2067%2C914%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20220%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="운수시설" data-q="서울 강서구 오곡동 1 운수시설   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-230" data-addr="서울 강서구 오곡동 1" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">서울 강서구 오곡동 1</td>
+      <td>운수시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">45,655㎡</td>
+      <td style="white-space:nowrap;">지하1층/3층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">4,762억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%84%9C%EC%9A%B8%20%EA%B0%95%EC%84%9C%EA%B5%AC%20%EC%98%A4%EA%B3%A1%EB%8F%99%201%20(%EC%9A%B4%EC%88%98%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%84%9C%EC%9A%B8%20%EA%B0%95%EC%84%9C%EA%B5%AC%20%EC%98%A4%EA%B3%A1%EB%8F%99%201%0A%EC%9A%A9%EB%8F%84%3A%20%EC%9A%B4%EC%88%98%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2045%2C655%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%981%EC%B8%B5%2F3%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%204%2C762%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="동물및식물관련시설" data-q="전북 남원시 대강면 월탄리 820-3 동물및식물관련시설 아키엔건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-231" data-addr="전북 남원시 대강면 월탄리 820-3" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">전북 남원시 대강면 월탄리 820-3</td>
+      <td>동물및식물관련시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">3,330㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">2,378만</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 아키엔건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%A0%84%EB%B6%81%20%EB%82%A8%EC%9B%90%EC%8B%9C%20%EB%8C%80%EA%B0%95%EB%A9%B4%20%EC%9B%94%ED%83%84%EB%A6%AC%20820-3%20(%EB%8F%99%EB%AC%BC%EB%B0%8F%EC%8B%9D%EB%AC%BC%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%A0%84%EB%B6%81%20%EB%82%A8%EC%9B%90%EC%8B%9C%20%EB%8C%80%EA%B0%95%EB%A9%B4%20%EC%9B%94%ED%83%84%EB%A6%AC%20820-3%0A%EC%9A%A9%EB%8F%84%3A%20%EB%8F%99%EB%AC%BC%EB%B0%8F%EC%8B%9D%EB%AC%BC%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%203%2C330%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%202%2C378%EB%A7%8C%0A%EC%84%A4%EA%B3%84%3A%20%EC%95%84%ED%82%A4%EC%97%94%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="경기 연천군 백학면 통구리 1062-9 공장   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-232" data-addr="경기 연천군 백학면 통구리 1062-9" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 연천군 백학면 통구리 1062-9</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">2,920㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">8.2억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%EC%97%B0%EC%B2%9C%EA%B5%B0%20%EB%B0%B1%ED%95%99%EB%A9%B4%20%ED%86%B5%EA%B5%AC%EB%A6%AC%201062-9%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%EC%97%B0%EC%B2%9C%EA%B5%B0%20%EB%B0%B1%ED%95%99%EB%A9%B4%20%ED%86%B5%EA%B5%AC%EB%A6%AC%201062-9%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C920%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%208.2%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="제1종근린생활시설" data-q="대구 서구 내당동 871-40 제1종근린생활시설   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-233" data-addr="대구 서구 내당동 871-40" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">대구 서구 내당동 871-40</td>
+      <td>제1종근린생활시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">2,257㎡</td>
+      <td style="white-space:nowrap;">지하1층/11층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">12.8억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EB%8C%80%EA%B5%AC%20%EC%84%9C%EA%B5%AC%20%EB%82%B4%EB%8B%B9%EB%8F%99%20871-40%20(%EC%A0%9C1%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EB%8C%80%EA%B5%AC%20%EC%84%9C%EA%B5%AC%20%EB%82%B4%EB%8B%B9%EB%8F%99%20871-40%0A%EC%9A%A9%EB%8F%84%3A%20%EC%A0%9C1%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C257%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%981%EC%B8%B5%2F11%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2012.8%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="종교시설" data-q="경기 양평군 양서면 목왕리 116 종교시설   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-234" data-addr="경기 양평군 양서면 목왕리 116" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 양평군 양서면 목왕리 116</td>
+      <td>종교시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">11,370㎡</td>
+      <td style="white-space:nowrap;">지하1층/2층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">2.4억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%96%91%EC%84%9C%EB%A9%B4%20%EB%AA%A9%EC%99%95%EB%A6%AC%20116%20(%EC%A2%85%EA%B5%90%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%EC%96%91%ED%8F%89%EA%B5%B0%20%EC%96%91%EC%84%9C%EB%A9%B4%20%EB%AA%A9%EC%99%95%EB%A6%AC%20116%0A%EC%9A%A9%EB%8F%84%3A%20%EC%A2%85%EA%B5%90%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2011%2C370%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%981%EC%B8%B5%2F2%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%202.4%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="업무시설" data-q="서울 강북구 수유동 192-59 업무시설   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-235" data-addr="서울 강북구 수유동 192-59" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">서울 강북구 수유동 192-59</td>
+      <td>업무시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">69,080㎡</td>
+      <td style="white-space:nowrap;">지하8층/20층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">490억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%84%9C%EC%9A%B8%20%EA%B0%95%EB%B6%81%EA%B5%AC%20%EC%88%98%EC%9C%A0%EB%8F%99%20192-59%20(%EC%97%85%EB%AC%B4%EC%8B%9C%EC%84%A4%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%84%9C%EC%9A%B8%20%EA%B0%95%EB%B6%81%EA%B5%AC%20%EC%88%98%EC%9C%A0%EB%8F%99%20192-59%0A%EC%9A%A9%EB%8F%84%3A%20%EC%97%85%EB%AC%B4%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2069%2C080%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%988%EC%B8%B5%2F20%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20490%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="충북 제천시 왕암동 924 공장   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-236" data-addr="충북 제천시 왕암동 924" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">충북 제천시 왕암동 924</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">16,381㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">41.3억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%B6%A9%EB%B6%81%20%EC%A0%9C%EC%B2%9C%EC%8B%9C%20%EC%99%95%EC%95%94%EB%8F%99%20924%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%B6%A9%EB%B6%81%20%EC%A0%9C%EC%B2%9C%EC%8B%9C%20%EC%99%95%EC%95%94%EB%8F%99%20924%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2016%2C381%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2041.3%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="대수선" data-use="업무시설" data-q="서울 양천구 신월동 331-1 업무시설   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-237" data-addr="서울 양천구 신월동 331-1" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">서울 양천구 신월동 331-1</td>
+      <td>업무시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#FEF3C7; color:#B45309;">대수선</span></td>
+      <td style="white-space:nowrap;">10,502㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">311억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%84%9C%EC%9A%B8%20%EC%96%91%EC%B2%9C%EA%B5%AC%20%EC%8B%A0%EC%9B%94%EB%8F%99%20331-1%20(%EC%97%85%EB%AC%B4%EC%8B%9C%EC%84%A4%2F%EB%8C%80%EC%88%98%EC%84%A0)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%84%9C%EC%9A%B8%20%EC%96%91%EC%B2%9C%EA%B5%AC%20%EC%8B%A0%EC%9B%94%EB%8F%99%20331-1%0A%EC%9A%A9%EB%8F%84%3A%20%EC%97%85%EB%AC%B4%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EB%8C%80%EC%88%98%EC%84%A0%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2010%2C502%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20311%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="대수선" data-use="제1종근린생활시설" data-q="대구 달서구 두류동 101-8 제1종근린생활시설   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-238" data-addr="대구 달서구 두류동 101-8" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">대구 달서구 두류동 101-8</td>
+      <td>제1종근린생활시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#FEF3C7; color:#B45309;">대수선</span></td>
+      <td style="white-space:nowrap;">2,062㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">14.4억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EB%8C%80%EA%B5%AC%20%EB%8B%AC%EC%84%9C%EA%B5%AC%20%EB%91%90%EB%A5%98%EB%8F%99%20101-8%20(%EC%A0%9C1%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%2F%EB%8C%80%EC%88%98%EC%84%A0)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EB%8C%80%EA%B5%AC%20%EB%8B%AC%EC%84%9C%EA%B5%AC%20%EB%91%90%EB%A5%98%EB%8F%99%20101-8%0A%EC%9A%A9%EB%8F%84%3A%20%EC%A0%9C1%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EB%8C%80%EC%88%98%EC%84%A0%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C062%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2014.4%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="제1종근린생활시설" data-q="경기 고양시 지축동 895 제1종근린생활시설   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-239" data-addr="경기 고양시 지축동 895" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 고양시 지축동 895</td>
+      <td>제1종근린생활시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">12,485㎡</td>
+      <td style="white-space:nowrap;">3층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">60억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%EA%B3%A0%EC%96%91%EC%8B%9C%20%EC%A7%80%EC%B6%95%EB%8F%99%20895%20(%EC%A0%9C1%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%EA%B3%A0%EC%96%91%EC%8B%9C%20%EC%A7%80%EC%B6%95%EB%8F%99%20895%0A%EC%9A%A9%EB%8F%84%3A%20%EC%A0%9C1%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2012%2C485%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%203%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2060%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="교육연구시설" data-q="제주 제주시 영평동 2231-1 교육연구시설   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-240" data-addr="제주 제주시 영평동 2231-1" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">제주 제주시 영평동 2231-1</td>
+      <td>교육연구시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">7,368㎡</td>
+      <td style="white-space:nowrap;">지하1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">32.8억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%A0%9C%EC%A3%BC%20%EC%A0%9C%EC%A3%BC%EC%8B%9C%20%EC%98%81%ED%8F%89%EB%8F%99%202231-1%20(%EA%B5%90%EC%9C%A1%EC%97%B0%EA%B5%AC%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%A0%9C%EC%A3%BC%20%EC%A0%9C%EC%A3%BC%EC%8B%9C%20%EC%98%81%ED%8F%89%EB%8F%99%202231-1%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B5%90%EC%9C%A1%EC%97%B0%EA%B5%AC%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%207%2C368%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%981%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2032.8%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="경기 안산시 성곡동 823-1 공장   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-241" data-addr="경기 안산시 성곡동 823-1" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 안산시 성곡동 823-1</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">15,642㎡</td>
+      <td style="white-space:nowrap;">3층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">148억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%EC%95%88%EC%82%B0%EC%8B%9C%20%EC%84%B1%EA%B3%A1%EB%8F%99%20823-1%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%EC%95%88%EC%82%B0%EC%8B%9C%20%EC%84%B1%EA%B3%A1%EB%8F%99%20823-1%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2015%2C642%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%203%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20148%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="대수선" data-use="공장" data-q="경기 김포시 양촌읍 학운리 3871 공장   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-242" data-addr="경기 김포시 양촌읍 학운리 3871" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 김포시 양촌읍 학운리 3871</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#FEF3C7; color:#B45309;">대수선</span></td>
+      <td style="white-space:nowrap;">7,691㎡</td>
+      <td style="white-space:nowrap;">2층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">39.9억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%EA%B9%80%ED%8F%AC%EC%8B%9C%20%EC%96%91%EC%B4%8C%EC%9D%8D%20%ED%95%99%EC%9A%B4%EB%A6%AC%203871%20(%EA%B3%B5%EC%9E%A5%2F%EB%8C%80%EC%88%98%EC%84%A0)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%EA%B9%80%ED%8F%AC%EC%8B%9C%20%EC%96%91%EC%B4%8C%EC%9D%8D%20%ED%95%99%EC%9A%B4%EB%A6%AC%203871%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EB%8C%80%EC%88%98%EC%84%A0%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%207%2C691%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%202%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2039.9%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="동물및식물관련시설" data-q="경북 영천시 도동 193-3 동물및식물관련시설   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-243" data-addr="경북 영천시 도동 193-3" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경북 영천시 도동 193-3</td>
+      <td>동물및식물관련시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">5,617㎡</td>
+      <td style="white-space:nowrap;">2층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">4,224만</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EB%B6%81%20%EC%98%81%EC%B2%9C%EC%8B%9C%20%EB%8F%84%EB%8F%99%20193-3%20(%EB%8F%99%EB%AC%BC%EB%B0%8F%EC%8B%9D%EB%AC%BC%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EB%B6%81%20%EC%98%81%EC%B2%9C%EC%8B%9C%20%EB%8F%84%EB%8F%99%20193-3%0A%EC%9A%A9%EB%8F%84%3A%20%EB%8F%99%EB%AC%BC%EB%B0%8F%EC%8B%9D%EB%AC%BC%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%205%2C617%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%202%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%204%2C224%EB%A7%8C%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="경기 평택시 포승읍 원정리 1177-2 공장   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-244" data-addr="경기 평택시 포승읍 원정리 1177-2" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 평택시 포승읍 원정리 1177-2</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">41,481㎡</td>
+      <td style="white-space:nowrap;">3층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">-</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%ED%8F%89%ED%83%9D%EC%8B%9C%20%ED%8F%AC%EC%8A%B9%EC%9D%8D%20%EC%9B%90%EC%A0%95%EB%A6%AC%201177-2%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%ED%8F%89%ED%83%9D%EC%8B%9C%20%ED%8F%AC%EC%8A%B9%EC%9D%8D%20%EC%9B%90%EC%A0%95%EB%A6%AC%201177-2%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2041%2C481%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%203%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20-%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="교육연구시설" data-q="대전 유성구 구성동 23 교육연구시설   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-245" data-addr="대전 유성구 구성동 23" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">대전 유성구 구성동 23</td>
+      <td>교육연구시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">643,664㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">4,773억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EB%8C%80%EC%A0%84%20%EC%9C%A0%EC%84%B1%EA%B5%AC%20%EA%B5%AC%EC%84%B1%EB%8F%99%2023%20(%EA%B5%90%EC%9C%A1%EC%97%B0%EA%B5%AC%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EB%8C%80%EC%A0%84%20%EC%9C%A0%EC%84%B1%EA%B5%AC%20%EA%B5%AC%EC%84%B1%EB%8F%99%2023%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B5%90%EC%9C%A1%EC%97%B0%EA%B5%AC%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%20643%2C664%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%204%2C773%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="경기 평택시 안중읍 덕우리 82-18 공장   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-246" data-addr="경기 평택시 안중읍 덕우리 82-18" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 평택시 안중읍 덕우리 82-18</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">7,827㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">47.8억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%ED%8F%89%ED%83%9D%EC%8B%9C%20%EC%95%88%EC%A4%91%EC%9D%8D%20%EB%8D%95%EC%9A%B0%EB%A6%AC%2082-18%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%ED%8F%89%ED%83%9D%EC%8B%9C%20%EC%95%88%EC%A4%91%EC%9D%8D%20%EB%8D%95%EC%9A%B0%EB%A6%AC%2082-18%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%207%2C827%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2047.8%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="제1종근린생활시설" data-q="강원 춘천시 퇴계동 195-2 제1종근린생활시설   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-247" data-addr="강원 춘천시 퇴계동 195-2" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">강원 춘천시 퇴계동 195-2</td>
+      <td>제1종근린생활시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">2,653㎡</td>
+      <td style="white-space:nowrap;">4층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">12.6억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B0%95%EC%9B%90%20%EC%B6%98%EC%B2%9C%EC%8B%9C%20%ED%87%B4%EA%B3%84%EB%8F%99%20195-2%20(%EC%A0%9C1%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B0%95%EC%9B%90%20%EC%B6%98%EC%B2%9C%EC%8B%9C%20%ED%87%B4%EA%B3%84%EB%8F%99%20195-2%0A%EC%9A%A9%EB%8F%84%3A%20%EC%A0%9C1%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C653%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%204%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2012.6%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="전남 완도군 완도읍 대야리 655 공장   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-248" data-addr="전남 완도군 완도읍 대야리 655" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">전남 완도군 완도읍 대야리 655</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">5,564㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">3.2억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%A0%84%EB%82%A8%20%EC%99%84%EB%8F%84%EA%B5%B0%20%EC%99%84%EB%8F%84%EC%9D%8D%20%EB%8C%80%EC%95%BC%EB%A6%AC%20655%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%A0%84%EB%82%A8%20%EC%99%84%EB%8F%84%EA%B5%B0%20%EC%99%84%EB%8F%84%EC%9D%8D%20%EB%8C%80%EC%95%BC%EB%A6%AC%20655%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%205%2C564%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%203.2%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="경기 양주시 은현면 도하리 314-1 공장   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-249" data-addr="경기 양주시 은현면 도하리 314-1" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 양주시 은현면 도하리 314-1</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">11,754㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">35.7억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%EC%96%91%EC%A3%BC%EC%8B%9C%20%EC%9D%80%ED%98%84%EB%A9%B4%20%EB%8F%84%ED%95%98%EB%A6%AC%20314-1%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%EC%96%91%EC%A3%BC%EC%8B%9C%20%EC%9D%80%ED%98%84%EB%A9%B4%20%EB%8F%84%ED%95%98%EB%A6%AC%20314-1%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2011%2C754%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2035.7%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="대수선" data-use="숙박시설" data-q="서울 영등포구 신길동 65-85 숙박시설   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-250" data-addr="서울 영등포구 신길동 65-85" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">서울 영등포구 신길동 65-85</td>
+      <td>숙박시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#FEF3C7; color:#B45309;">대수선</span></td>
+      <td style="white-space:nowrap;">4,886㎡</td>
+      <td style="white-space:nowrap;">지하2층/20층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">61.1억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%84%9C%EC%9A%B8%20%EC%98%81%EB%93%B1%ED%8F%AC%EA%B5%AC%20%EC%8B%A0%EA%B8%B8%EB%8F%99%2065-85%20(%EC%88%99%EB%B0%95%EC%8B%9C%EC%84%A4%2F%EB%8C%80%EC%88%98%EC%84%A0)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%84%9C%EC%9A%B8%20%EC%98%81%EB%93%B1%ED%8F%AC%EA%B5%AC%20%EC%8B%A0%EA%B8%B8%EB%8F%99%2065-85%0A%EC%9A%A9%EB%8F%84%3A%20%EC%88%99%EB%B0%95%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EB%8C%80%EC%88%98%EC%84%A0%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%204%2C886%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%982%EC%B8%B5%2F20%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2061.1%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="공동주택" data-q="강원 원주시 단계동 1221 공동주택   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-251" data-addr="강원 원주시 단계동 1221" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">강원 원주시 단계동 1221</td>
+      <td>공동주택</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">68,700㎡</td>
+      <td style="white-space:nowrap;">2층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">183억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B0%95%EC%9B%90%20%EC%9B%90%EC%A3%BC%EC%8B%9C%20%EB%8B%A8%EA%B3%84%EB%8F%99%201221%20(%EA%B3%B5%EB%8F%99%EC%A3%BC%ED%83%9D%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B0%95%EC%9B%90%20%EC%9B%90%EC%A3%BC%EC%8B%9C%20%EB%8B%A8%EA%B3%84%EB%8F%99%201221%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EB%8F%99%EC%A3%BC%ED%83%9D%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2068%2C700%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%202%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20183%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="공동주택" data-q="서울 노원구 공릉동 649-14 공동주택   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-252" data-addr="서울 노원구 공릉동 649-14" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">서울 노원구 공릉동 649-14</td>
+      <td>공동주택</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">3,697㎡</td>
+      <td style="white-space:nowrap;">지하1층/12층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">15.5억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.09.10</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%84%9C%EC%9A%B8%20%EB%85%B8%EC%9B%90%EA%B5%AC%20%EA%B3%B5%EB%A6%89%EB%8F%99%20649-14%20(%EA%B3%B5%EB%8F%99%EC%A3%BC%ED%83%9D%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%84%9C%EC%9A%B8%20%EB%85%B8%EC%9B%90%EA%B5%AC%20%EA%B3%B5%EB%A6%89%EB%8F%99%20649-14%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EB%8F%99%EC%A3%BC%ED%83%9D%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%203%2C697%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%981%EC%B8%B5%2F12%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2015.5%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.09.10%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="인천 제물포구 송현동 1-6 공장 건축사사무소미본  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-253" data-addr="인천 제물포구 송현동 1-6" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">인천 제물포구 송현동 1-6</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">127,647㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">-</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 건축사사무소미본</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.29</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%9D%B8%EC%B2%9C%20%EC%A0%9C%EB%AC%BC%ED%8F%AC%EA%B5%AC%20%EC%86%A1%ED%98%84%EB%8F%99%201-6%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%9D%B8%EC%B2%9C%20%EC%A0%9C%EB%AC%BC%ED%8F%AC%EA%B5%AC%20%EC%86%A1%ED%98%84%EB%8F%99%201-6%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%20127%2C647%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20-%0A%EC%84%A4%EA%B3%84%3A%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EB%AF%B8%EB%B3%B8%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.29%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="대수선" data-use="공장" data-q="인천 서해구 청라동 204-5 공장   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-254" data-addr="인천 서해구 청라동 204-5" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">인천 서해구 청라동 204-5</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#FEF3C7; color:#B45309;">대수선</span></td>
+      <td style="white-space:nowrap;">4,979㎡</td>
+      <td style="white-space:nowrap;">8층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">-</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%9D%B8%EC%B2%9C%20%EC%84%9C%ED%95%B4%EA%B5%AC%20%EC%B2%AD%EB%9D%BC%EB%8F%99%20204-5%20(%EA%B3%B5%EC%9E%A5%2F%EB%8C%80%EC%88%98%EC%84%A0)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%9D%B8%EC%B2%9C%20%EC%84%9C%ED%95%B4%EA%B5%AC%20%EC%B2%AD%EB%9D%BC%EB%8F%99%20204-5%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EB%8C%80%EC%88%98%EC%84%A0%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%204%2C979%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%208%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20-%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="업무시설" data-q="경기 파주시 와동동 1498-1 업무시설 (주)에이플랜건축사사무소 경우종합건설(주) 주식회사한빛건축사사무소">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-255" data-addr="경기 파주시 와동동 1498-1" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 파주시 와동동 1498-1</td>
+      <td>업무시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">15,259㎡</td>
+      <td style="white-space:nowrap;">지하2층/23층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">58.7억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (주)에이플랜건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> 경우종합건설(주)</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> 주식회사한빛건축사사무소</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%ED%8C%8C%EC%A3%BC%EC%8B%9C%20%EC%99%80%EB%8F%99%EB%8F%99%201498-1%20(%EC%97%85%EB%AC%B4%EC%8B%9C%EC%84%A4%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%ED%8C%8C%EC%A3%BC%EC%8B%9C%20%EC%99%80%EB%8F%99%EB%8F%99%201498-1%0A%EC%9A%A9%EB%8F%84%3A%20%EC%97%85%EB%AC%B4%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2015%2C259%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%982%EC%B8%B5%2F23%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2058.7%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20(%EC%A3%BC)%EC%97%90%EC%9D%B4%ED%94%8C%EB%9E%9C%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20%EA%B2%BD%EC%9A%B0%EC%A2%85%ED%95%A9%EA%B1%B4%EC%84%A4(%EC%A3%BC)%0A%EA%B0%90%EB%A6%AC%3A%20%EC%A3%BC%EC%8B%9D%ED%9A%8C%EC%82%AC%ED%95%9C%EB%B9%9B%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="대수선" data-use="업무시설" data-q="경북 포항시 대잠동 1001 업무시설 시민건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-256" data-addr="경북 포항시 대잠동 1001" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경북 포항시 대잠동 1001</td>
+      <td>업무시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#FEF3C7; color:#B45309;">대수선</span></td>
+      <td style="white-space:nowrap;">36,333㎡</td>
+      <td style="white-space:nowrap;">지하6층/15층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">657억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 시민건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EB%B6%81%20%ED%8F%AC%ED%95%AD%EC%8B%9C%20%EB%8C%80%EC%9E%A0%EB%8F%99%201001%20(%EC%97%85%EB%AC%B4%EC%8B%9C%EC%84%A4%2F%EB%8C%80%EC%88%98%EC%84%A0)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EB%B6%81%20%ED%8F%AC%ED%95%AD%EC%8B%9C%20%EB%8C%80%EC%9E%A0%EB%8F%99%201001%0A%EC%9A%A9%EB%8F%84%3A%20%EC%97%85%EB%AC%B4%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EB%8C%80%EC%88%98%EC%84%A0%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2036%2C333%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%986%EC%B8%B5%2F15%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20657%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%8B%9C%EB%AF%BC%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="공장" data-q="충청북도 청주시 흥덕구 강내면 다락리 블록 공장 건축사사무소장  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-257" data-addr="충청북도 청주시 흥덕구 강내면 다락리 블록" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">충청북도 청주시 흥덕구 강내면 다락리 블록</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">7,746㎡</td>
+      <td style="white-space:nowrap;">3층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">-</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 건축사사무소장</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%B6%A9%EC%B2%AD%EB%B6%81%EB%8F%84%20%EC%B2%AD%EC%A3%BC%EC%8B%9C%20%ED%9D%A5%EB%8D%95%EA%B5%AC%20%EA%B0%95%EB%82%B4%EB%A9%B4%20%EB%8B%A4%EB%9D%BD%EB%A6%AC%20%EB%B8%94%EB%A1%9D%20(%EA%B3%B5%EC%9E%A5%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%B6%A9%EC%B2%AD%EB%B6%81%EB%8F%84%20%EC%B2%AD%EC%A3%BC%EC%8B%9C%20%ED%9D%A5%EB%8D%95%EA%B5%AC%20%EA%B0%95%EB%82%B4%EB%A9%B4%20%EB%8B%A4%EB%9D%BD%EB%A6%AC%20%EB%B8%94%EB%A1%9D%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%207%2C746%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%203%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20-%0A%EC%84%A4%EA%B3%84%3A%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EC%9E%A5%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="충북 진천군 이월면 미잠리 129-15 공장 단건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-258" data-addr="충북 진천군 이월면 미잠리 129-15" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">충북 진천군 이월면 미잠리 129-15</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">3,642㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">4.3억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 단건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%B6%A9%EB%B6%81%20%EC%A7%84%EC%B2%9C%EA%B5%B0%20%EC%9D%B4%EC%9B%94%EB%A9%B4%20%EB%AF%B8%EC%9E%A0%EB%A6%AC%20129-15%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%B6%A9%EB%B6%81%20%EC%A7%84%EC%B2%9C%EA%B5%B0%20%EC%9D%B4%EC%9B%94%EB%A9%B4%20%EB%AF%B8%EC%9E%A0%EB%A6%AC%20129-15%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%203%2C642%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%204.3%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EB%8B%A8%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="대수선" data-use="운동시설" data-q="대구 북구 고성동3가 2 운동시설 건축사사무소제이앤케이  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-259" data-addr="대구 북구 고성동3가 2" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">대구 북구 고성동3가 2</td>
+      <td>운동시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#FEF3C7; color:#B45309;">대수선</span></td>
+      <td style="white-space:nowrap;">33,050㎡</td>
+      <td style="white-space:nowrap;">3층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">1,537억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 건축사사무소제이앤케이</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EB%8C%80%EA%B5%AC%20%EB%B6%81%EA%B5%AC%20%EA%B3%A0%EC%84%B1%EB%8F%993%EA%B0%80%202%20(%EC%9A%B4%EB%8F%99%EC%8B%9C%EC%84%A4%2F%EB%8C%80%EC%88%98%EC%84%A0)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EB%8C%80%EA%B5%AC%20%EB%B6%81%EA%B5%AC%20%EA%B3%A0%EC%84%B1%EB%8F%993%EA%B0%80%202%0A%EC%9A%A9%EB%8F%84%3A%20%EC%9A%B4%EB%8F%99%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EB%8C%80%EC%88%98%EC%84%A0%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2033%2C050%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%203%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%201%2C537%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EC%A0%9C%EC%9D%B4%EC%95%A4%EC%BC%80%EC%9D%B4%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="동물및식물관련시설" data-q="전북 장수군 계북면 양악리 569 동물및식물관련시설 주식회사누리종합건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-260" data-addr="전북 장수군 계북면 양악리 569" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">전북 장수군 계북면 양악리 569</td>
+      <td>동물및식물관련시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">3,835㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">8,914만</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 주식회사누리종합건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%A0%84%EB%B6%81%20%EC%9E%A5%EC%88%98%EA%B5%B0%20%EA%B3%84%EB%B6%81%EB%A9%B4%20%EC%96%91%EC%95%85%EB%A6%AC%20569%20(%EB%8F%99%EB%AC%BC%EB%B0%8F%EC%8B%9D%EB%AC%BC%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%A0%84%EB%B6%81%20%EC%9E%A5%EC%88%98%EA%B5%B0%20%EA%B3%84%EB%B6%81%EB%A9%B4%20%EC%96%91%EC%95%85%EB%A6%AC%20569%0A%EC%9A%A9%EB%8F%84%3A%20%EB%8F%99%EB%AC%BC%EB%B0%8F%EC%8B%9D%EB%AC%BC%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%203%2C835%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%208%2C914%EB%A7%8C%0A%EC%84%A4%EA%B3%84%3A%20%EC%A3%BC%EC%8B%9D%ED%9A%8C%EC%82%AC%EB%88%84%EB%A6%AC%EC%A2%85%ED%95%A9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="교육연구시설" data-q="경기 김포시 고촌읍 신곡리 446-2 교육연구시설 건축사사무소청명  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-261" data-addr="경기 김포시 고촌읍 신곡리 446-2" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 김포시 고촌읍 신곡리 446-2</td>
+      <td>교육연구시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">9,410㎡</td>
+      <td style="white-space:nowrap;">3층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">105억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 건축사사무소청명</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%EA%B9%80%ED%8F%AC%EC%8B%9C%20%EA%B3%A0%EC%B4%8C%EC%9D%8D%20%EC%8B%A0%EA%B3%A1%EB%A6%AC%20446-2%20(%EA%B5%90%EC%9C%A1%EC%97%B0%EA%B5%AC%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%EA%B9%80%ED%8F%AC%EC%8B%9C%20%EA%B3%A0%EC%B4%8C%EC%9D%8D%20%EC%8B%A0%EA%B3%A1%EB%A6%AC%20446-2%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B5%90%EC%9C%A1%EC%97%B0%EA%B5%AC%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%209%2C410%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%203%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20105%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EC%B2%AD%EB%AA%85%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="경북 포항시 동촌동 5 공장 (주)포스코이앤씨  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-262" data-addr="경북 포항시 동촌동 5" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경북 포항시 동촌동 5</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">3,913,762㎡</td>
+      <td style="white-space:nowrap;">2층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">239억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (주)포스코이앤씨</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EB%B6%81%20%ED%8F%AC%ED%95%AD%EC%8B%9C%20%EB%8F%99%EC%B4%8C%EB%8F%99%205%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EB%B6%81%20%ED%8F%AC%ED%95%AD%EC%8B%9C%20%EB%8F%99%EC%B4%8C%EB%8F%99%205%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%203%2C913%2C762%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%202%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20239%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20(%EC%A3%BC)%ED%8F%AC%EC%8A%A4%EC%BD%94%EC%9D%B4%EC%95%A4%EC%94%A8%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="대수선" data-use="공장" data-q="경기 평택시 모곡동 432-1 공장 건축사사무소길온건축  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-263" data-addr="경기 평택시 모곡동 432-1" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 평택시 모곡동 432-1</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#FEF3C7; color:#B45309;">대수선</span></td>
+      <td style="white-space:nowrap;">24,299㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">85.2억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 건축사사무소길온건축</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%ED%8F%89%ED%83%9D%EC%8B%9C%20%EB%AA%A8%EA%B3%A1%EB%8F%99%20432-1%20(%EA%B3%B5%EC%9E%A5%2F%EB%8C%80%EC%88%98%EC%84%A0)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%ED%8F%89%ED%83%9D%EC%8B%9C%20%EB%AA%A8%EA%B3%A1%EB%8F%99%20432-1%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EB%8C%80%EC%88%98%EC%84%A0%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2024%2C299%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2085.2%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EA%B8%B8%EC%98%A8%EA%B1%B4%EC%B6%95%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="대수선" data-use="업무시설" data-q="서울 동대문구 장안동 464-3 업무시설 동화종합건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-264" data-addr="서울 동대문구 장안동 464-3" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">서울 동대문구 장안동 464-3</td>
+      <td>업무시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#FEF3C7; color:#B45309;">대수선</span></td>
+      <td style="white-space:nowrap;">6,692㎡</td>
+      <td style="white-space:nowrap;">지하1층/5층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">171억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 동화종합건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%84%9C%EC%9A%B8%20%EB%8F%99%EB%8C%80%EB%AC%B8%EA%B5%AC%20%EC%9E%A5%EC%95%88%EB%8F%99%20464-3%20(%EC%97%85%EB%AC%B4%EC%8B%9C%EC%84%A4%2F%EB%8C%80%EC%88%98%EC%84%A0)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%84%9C%EC%9A%B8%20%EB%8F%99%EB%8C%80%EB%AC%B8%EA%B5%AC%20%EC%9E%A5%EC%95%88%EB%8F%99%20464-3%0A%EC%9A%A9%EB%8F%84%3A%20%EC%97%85%EB%AC%B4%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EB%8C%80%EC%88%98%EC%84%A0%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%206%2C692%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%981%EC%B8%B5%2F5%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20171%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EB%8F%99%ED%99%94%EC%A2%85%ED%95%A9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="경남 김해시 진영읍 하계리 753-5 공장 세모건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-265" data-addr="경남 김해시 진영읍 하계리 753-5" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경남 김해시 진영읍 하계리 753-5</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">4,172㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">14.4억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 세모건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EB%82%A8%20%EA%B9%80%ED%95%B4%EC%8B%9C%20%EC%A7%84%EC%98%81%EC%9D%8D%20%ED%95%98%EA%B3%84%EB%A6%AC%20753-5%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EB%82%A8%20%EA%B9%80%ED%95%B4%EC%8B%9C%20%EC%A7%84%EC%98%81%EC%9D%8D%20%ED%95%98%EA%B3%84%EB%A6%AC%20753-5%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%204%2C172%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2014.4%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%84%B8%EB%AA%A8%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="숙박시설" data-q="경기 평택시 평택동 188-12 숙박시설 (주)삼중아키텍트건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-266" data-addr="경기 평택시 평택동 188-12" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 평택시 평택동 188-12</td>
+      <td>숙박시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">8,670㎡</td>
+      <td style="white-space:nowrap;">지하3층/16층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">16.1억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (주)삼중아키텍트건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%ED%8F%89%ED%83%9D%EC%8B%9C%20%ED%8F%89%ED%83%9D%EB%8F%99%20188-12%20(%EC%88%99%EB%B0%95%EC%8B%9C%EC%84%A4%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%ED%8F%89%ED%83%9D%EC%8B%9C%20%ED%8F%89%ED%83%9D%EB%8F%99%20188-12%0A%EC%9A%A9%EB%8F%84%3A%20%EC%88%99%EB%B0%95%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%208%2C670%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%983%EC%B8%B5%2F16%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2016.1%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20(%EC%A3%BC)%EC%82%BC%EC%A4%91%EC%95%84%ED%82%A4%ED%85%8D%ED%8A%B8%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="업무시설" data-q="강원 홍천군 홍천읍 희망리 267-3 업무시설 지안건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-267" data-addr="강원 홍천군 홍천읍 희망리 267-3" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">강원 홍천군 홍천읍 희망리 267-3</td>
+      <td>업무시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">2,097㎡</td>
+      <td style="white-space:nowrap;">2층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">2.6억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 지안건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B0%95%EC%9B%90%20%ED%99%8D%EC%B2%9C%EA%B5%B0%20%ED%99%8D%EC%B2%9C%EC%9D%8D%20%ED%9D%AC%EB%A7%9D%EB%A6%AC%20267-3%20(%EC%97%85%EB%AC%B4%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B0%95%EC%9B%90%20%ED%99%8D%EC%B2%9C%EA%B5%B0%20%ED%99%8D%EC%B2%9C%EC%9D%8D%20%ED%9D%AC%EB%A7%9D%EB%A6%AC%20267-3%0A%EC%9A%A9%EB%8F%84%3A%20%EC%97%85%EB%AC%B4%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C097%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%202%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%202.6%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%A7%80%EC%95%88%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="전남 광양시 금호동 645 공장 (주)포스코에이앤씨건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-268" data-addr="전남 광양시 금호동 645" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">전남 광양시 금호동 645</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">163,192㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">2,087억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (주)포스코에이앤씨건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%A0%84%EB%82%A8%20%EA%B4%91%EC%96%91%EC%8B%9C%20%EA%B8%88%ED%98%B8%EB%8F%99%20645%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%A0%84%EB%82%A8%20%EA%B4%91%EC%96%91%EC%8B%9C%20%EA%B8%88%ED%98%B8%EB%8F%99%20645%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%20163%2C192%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%202%2C087%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20(%EC%A3%BC)%ED%8F%AC%EC%8A%A4%EC%BD%94%EC%97%90%EC%9D%B4%EC%95%A4%EC%94%A8%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="대수선" data-use="공장" data-q="전북 완주군 봉동읍 장구리 580-1 공장 건축법인녹엔지니어링건축사사무소(주)  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-269" data-addr="전북 완주군 봉동읍 장구리 580-1" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">전북 완주군 봉동읍 장구리 580-1</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#FEF3C7; color:#B45309;">대수선</span></td>
+      <td style="white-space:nowrap;">6,559㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">16.2억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 건축법인녹엔지니어링건축사사무소(주)</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%A0%84%EB%B6%81%20%EC%99%84%EC%A3%BC%EA%B5%B0%20%EB%B4%89%EB%8F%99%EC%9D%8D%20%EC%9E%A5%EA%B5%AC%EB%A6%AC%20580-1%20(%EA%B3%B5%EC%9E%A5%2F%EB%8C%80%EC%88%98%EC%84%A0)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%A0%84%EB%B6%81%20%EC%99%84%EC%A3%BC%EA%B5%B0%20%EB%B4%89%EB%8F%99%EC%9D%8D%20%EC%9E%A5%EA%B5%AC%EB%A6%AC%20580-1%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EB%8C%80%EC%88%98%EC%84%A0%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%206%2C559%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2016.2%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EA%B1%B4%EC%B6%95%EB%B2%95%EC%9D%B8%EB%85%B9%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EB%A7%81%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C(%EC%A3%BC)%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="경남 김해시 주촌면 망덕리 872-7 공장 명문종합건축사(사)  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-270" data-addr="경남 김해시 주촌면 망덕리 872-7" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경남 김해시 주촌면 망덕리 872-7</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">8,206㎡</td>
+      <td style="white-space:nowrap;">2층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">43.1억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 명문종합건축사(사)</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EB%82%A8%20%EA%B9%80%ED%95%B4%EC%8B%9C%20%EC%A3%BC%EC%B4%8C%EB%A9%B4%20%EB%A7%9D%EB%8D%95%EB%A6%AC%20872-7%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EB%82%A8%20%EA%B9%80%ED%95%B4%EC%8B%9C%20%EC%A3%BC%EC%B4%8C%EB%A9%B4%20%EB%A7%9D%EB%8D%95%EB%A6%AC%20872-7%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%208%2C206%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%202%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2043.1%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EB%AA%85%EB%AC%B8%EC%A2%85%ED%95%A9%EA%B1%B4%EC%B6%95%EC%82%AC(%EC%82%AC)%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="울산 동구 전하동 1 공장 (주)정림건축종합건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-271" data-addr="울산 동구 전하동 1" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">울산 동구 전하동 1</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">1,484,966㎡</td>
+      <td style="white-space:nowrap;">2층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">3,116억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (주)정림건축종합건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%9A%B8%EC%82%B0%20%EB%8F%99%EA%B5%AC%20%EC%A0%84%ED%95%98%EB%8F%99%201%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%9A%B8%EC%82%B0%20%EB%8F%99%EA%B5%AC%20%EC%A0%84%ED%95%98%EB%8F%99%201%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%201%2C484%2C966%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%202%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%203%2C116%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20(%EC%A3%BC)%EC%A0%95%EB%A6%BC%EA%B1%B4%EC%B6%95%EC%A2%85%ED%95%A9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="업무시설" data-q="경남 창녕군 대지면 효정리 292-1 업무시설 (주)라움건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-272" data-addr="경남 창녕군 대지면 효정리 292-1" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경남 창녕군 대지면 효정리 292-1</td>
+      <td>업무시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">2,078㎡</td>
+      <td style="white-space:nowrap;">3층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">2.2억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (주)라움건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EB%82%A8%20%EC%B0%BD%EB%85%95%EA%B5%B0%20%EB%8C%80%EC%A7%80%EB%A9%B4%20%ED%9A%A8%EC%A0%95%EB%A6%AC%20292-1%20(%EC%97%85%EB%AC%B4%EC%8B%9C%EC%84%A4%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EB%82%A8%20%EC%B0%BD%EB%85%95%EA%B5%B0%20%EB%8C%80%EC%A7%80%EB%A9%B4%20%ED%9A%A8%EC%A0%95%EB%A6%AC%20292-1%0A%EC%9A%A9%EB%8F%84%3A%20%EC%97%85%EB%AC%B4%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C078%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%203%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%202.2%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20(%EC%A3%BC)%EB%9D%BC%EC%9B%80%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="창고시설" data-q="인천 연수구 송도동 605-5 창고시설 호미건축  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-273" data-addr="인천 연수구 송도동 605-5" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">인천 연수구 송도동 605-5</td>
+      <td>창고시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">4,945㎡</td>
+      <td style="white-space:nowrap;">9층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">34.7억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 호미건축</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%9D%B8%EC%B2%9C%20%EC%97%B0%EC%88%98%EA%B5%AC%20%EC%86%A1%EB%8F%84%EB%8F%99%20605-5%20(%EC%B0%BD%EA%B3%A0%EC%8B%9C%EC%84%A4%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%9D%B8%EC%B2%9C%20%EC%97%B0%EC%88%98%EA%B5%AC%20%EC%86%A1%EB%8F%84%EB%8F%99%20605-5%0A%EC%9A%A9%EB%8F%84%3A%20%EC%B0%BD%EA%B3%A0%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%204%2C945%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%209%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2034.7%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%ED%98%B8%EB%AF%B8%EA%B1%B4%EC%B6%95%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="대수선" data-use="창고시설" data-q="경기 이천시 설성면 상봉리 3 창고시설 야그(yaga&amp;d)건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-274" data-addr="경기 이천시 설성면 상봉리 3" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 이천시 설성면 상봉리 3</td>
+      <td>창고시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#FEF3C7; color:#B45309;">대수선</span></td>
+      <td style="white-space:nowrap;">43,799㎡</td>
+      <td style="white-space:nowrap;">지하1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">54.7억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 야그(YAGA&amp;D)건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%EC%9D%B4%EC%B2%9C%EC%8B%9C%20%EC%84%A4%EC%84%B1%EB%A9%B4%20%EC%83%81%EB%B4%89%EB%A6%AC%203%20(%EC%B0%BD%EA%B3%A0%EC%8B%9C%EC%84%A4%2F%EB%8C%80%EC%88%98%EC%84%A0)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%EC%9D%B4%EC%B2%9C%EC%8B%9C%20%EC%84%A4%EC%84%B1%EB%A9%B4%20%EC%83%81%EB%B4%89%EB%A6%AC%203%0A%EC%9A%A9%EB%8F%84%3A%20%EC%B0%BD%EA%B3%A0%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EB%8C%80%EC%88%98%EC%84%A0%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2043%2C799%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%981%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2054.7%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%95%BC%EA%B7%B8(YAGA%26D)%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="운동시설" data-q="전북 임실군 성수면 도인리 703 운동시설 건축무한이엔지종합건축사사무소 제이플랜건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-275" data-addr="전북 임실군 성수면 도인리 703" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">전북 임실군 성수면 도인리 703</td>
+      <td>운동시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">4,208㎡</td>
+      <td style="white-space:nowrap;">지하1층/2층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">2.8억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 건축무한이엔지종합건축사사무소 제이플랜건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%A0%84%EB%B6%81%20%EC%9E%84%EC%8B%A4%EA%B5%B0%20%EC%84%B1%EC%88%98%EB%A9%B4%20%EB%8F%84%EC%9D%B8%EB%A6%AC%20703%20(%EC%9A%B4%EB%8F%99%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%A0%84%EB%B6%81%20%EC%9E%84%EC%8B%A4%EA%B5%B0%20%EC%84%B1%EC%88%98%EB%A9%B4%20%EB%8F%84%EC%9D%B8%EB%A6%AC%20703%0A%EC%9A%A9%EB%8F%84%3A%20%EC%9A%B4%EB%8F%99%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%204%2C208%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%981%EC%B8%B5%2F2%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%202.8%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EA%B1%B4%EC%B6%95%EB%AC%B4%ED%95%9C%EC%9D%B4%EC%97%94%EC%A7%80%EC%A2%85%ED%95%A9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%20%EC%A0%9C%EC%9D%B4%ED%94%8C%EB%9E%9C%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="대수선" data-use="판매시설" data-q="경기 성남시 서현동 263 판매시설 유앤지건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-276" data-addr="경기 성남시 서현동 263" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 성남시 서현동 263</td>
+      <td>판매시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#FEF3C7; color:#B45309;">대수선</span></td>
+      <td style="white-space:nowrap;">119,609㎡</td>
+      <td style="white-space:nowrap;">지하1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">2,016억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 유앤지건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%EC%84%B1%EB%82%A8%EC%8B%9C%20%EC%84%9C%ED%98%84%EB%8F%99%20263%20(%ED%8C%90%EB%A7%A4%EC%8B%9C%EC%84%A4%2F%EB%8C%80%EC%88%98%EC%84%A0)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%EC%84%B1%EB%82%A8%EC%8B%9C%20%EC%84%9C%ED%98%84%EB%8F%99%20263%0A%EC%9A%A9%EB%8F%84%3A%20%ED%8C%90%EB%A7%A4%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EB%8C%80%EC%88%98%EC%84%A0%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%20119%2C609%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%981%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%202%2C016%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%9C%A0%EC%95%A4%EC%A7%80%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="세종 전의면 양곡리 592 공장 명작건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-277" data-addr="세종 전의면 양곡리 592" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">세종 전의면 양곡리 592</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">6,960㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">29.1억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 명작건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%84%B8%EC%A2%85%20%EC%A0%84%EC%9D%98%EB%A9%B4%20%EC%96%91%EA%B3%A1%EB%A6%AC%20592%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%84%B8%EC%A2%85%20%EC%A0%84%EC%9D%98%EB%A9%B4%20%EC%96%91%EA%B3%A1%EB%A6%AC%20592%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%206%2C960%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2029.1%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EB%AA%85%EC%9E%91%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="제1종근린생활시설" data-q="전남 구례군 구례읍 봉동리 94-2 제1종근린생활시설 유한회사단건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-278" data-addr="전남 구례군 구례읍 봉동리 94-2" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">전남 구례군 구례읍 봉동리 94-2</td>
+      <td>제1종근린생활시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">2,579㎡</td>
+      <td style="white-space:nowrap;">4층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">4.7억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 유한회사단건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%A0%84%EB%82%A8%20%EA%B5%AC%EB%A1%80%EA%B5%B0%20%EA%B5%AC%EB%A1%80%EC%9D%8D%20%EB%B4%89%EB%8F%99%EB%A6%AC%2094-2%20(%EC%A0%9C1%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%A0%84%EB%82%A8%20%EA%B5%AC%EB%A1%80%EA%B5%B0%20%EA%B5%AC%EB%A1%80%EC%9D%8D%20%EB%B4%89%EB%8F%99%EB%A6%AC%2094-2%0A%EC%9A%A9%EB%8F%84%3A%20%EC%A0%9C1%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C579%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%204%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%204.7%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%9C%A0%ED%95%9C%ED%9A%8C%EC%82%AC%EB%8B%A8%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="위험물저장및처리시설" data-q="경기 평택시 포승읍 만호리 626 위험물저장및처리시설 핸드건축사사무소  아지트건축사사무소">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-279" data-addr="경기 평택시 포승읍 만호리 626" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 평택시 포승읍 만호리 626</td>
+      <td>위험물저장및처리시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">2,155㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">329억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 핸드건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> 아지트건축사사무소</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%ED%8F%89%ED%83%9D%EC%8B%9C%20%ED%8F%AC%EC%8A%B9%EC%9D%8D%20%EB%A7%8C%ED%98%B8%EB%A6%AC%20626%20(%EC%9C%84%ED%97%98%EB%AC%BC%EC%A0%80%EC%9E%A5%EB%B0%8F%EC%B2%98%EB%A6%AC%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%ED%8F%89%ED%83%9D%EC%8B%9C%20%ED%8F%AC%EC%8A%B9%EC%9D%8D%20%EB%A7%8C%ED%98%B8%EB%A6%AC%20626%0A%EC%9A%A9%EB%8F%84%3A%20%EC%9C%84%ED%97%98%EB%AC%BC%EC%A0%80%EC%9E%A5%EB%B0%8F%EC%B2%98%EB%A6%AC%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C155%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20329%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%ED%95%B8%EB%93%9C%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20%EC%95%84%EC%A7%80%ED%8A%B8%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="종교시설" data-q="제주 제주시 아라이동 1002-1 종교시설 건축사사무소신일  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-280" data-addr="제주 제주시 아라이동 1002-1" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">제주 제주시 아라이동 1002-1</td>
+      <td>종교시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">4,022㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">21.7억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 건축사사무소신일</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%A0%9C%EC%A3%BC%20%EC%A0%9C%EC%A3%BC%EC%8B%9C%20%EC%95%84%EB%9D%BC%EC%9D%B4%EB%8F%99%201002-1%20(%EC%A2%85%EA%B5%90%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%A0%9C%EC%A3%BC%20%EC%A0%9C%EC%A3%BC%EC%8B%9C%20%EC%95%84%EB%9D%BC%EC%9D%B4%EB%8F%99%201002-1%0A%EC%9A%A9%EB%8F%84%3A%20%EC%A2%85%EA%B5%90%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%204%2C022%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2021.7%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EC%8B%A0%EC%9D%BC%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="문화및집회시설" data-q="전남 보성군 웅치면 대산리 산 113-22 문화및집회시설 나눔건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-281" data-addr="전남 보성군 웅치면 대산리 산 113-22" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">전남 보성군 웅치면 대산리 산 113-22</td>
+      <td>문화및집회시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">2,504㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">653만</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 나눔건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%A0%84%EB%82%A8%20%EB%B3%B4%EC%84%B1%EA%B5%B0%20%EC%9B%85%EC%B9%98%EB%A9%B4%20%EB%8C%80%EC%82%B0%EB%A6%AC%20%EC%82%B0%20113-22%20(%EB%AC%B8%ED%99%94%EB%B0%8F%EC%A7%91%ED%9A%8C%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%A0%84%EB%82%A8%20%EB%B3%B4%EC%84%B1%EA%B5%B0%20%EC%9B%85%EC%B9%98%EB%A9%B4%20%EB%8C%80%EC%82%B0%EB%A6%AC%20%EC%82%B0%20113-22%0A%EC%9A%A9%EB%8F%84%3A%20%EB%AC%B8%ED%99%94%EB%B0%8F%EC%A7%91%ED%9A%8C%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C504%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20653%EB%A7%8C%0A%EC%84%A4%EA%B3%84%3A%20%EB%82%98%EB%88%94%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="공장" data-q="전남 광양시 태인동 1801 공장 건축사사무소인중헌  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-282" data-addr="전남 광양시 태인동 1801" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">전남 광양시 태인동 1801</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">6,723㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">22.6억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 건축사사무소인중헌</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%A0%84%EB%82%A8%20%EA%B4%91%EC%96%91%EC%8B%9C%20%ED%83%9C%EC%9D%B8%EB%8F%99%201801%20(%EA%B3%B5%EC%9E%A5%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%A0%84%EB%82%A8%20%EA%B4%91%EC%96%91%EC%8B%9C%20%ED%83%9C%EC%9D%B8%EB%8F%99%201801%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%206%2C723%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2022.6%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EC%9D%B8%EC%A4%91%ED%97%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="광주 광산구 삼거동 925 공장 디바건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-283" data-addr="광주 광산구 삼거동 925" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">광주 광산구 삼거동 925</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">8,937㎡</td>
+      <td style="white-space:nowrap;">2층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">18.1억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 디바건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B4%91%EC%A3%BC%20%EA%B4%91%EC%82%B0%EA%B5%AC%20%EC%82%BC%EA%B1%B0%EB%8F%99%20925%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B4%91%EC%A3%BC%20%EA%B4%91%EC%82%B0%EA%B5%AC%20%EC%82%BC%EA%B1%B0%EB%8F%99%20925%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%208%2C937%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%202%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2018.1%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EB%94%94%EB%B0%94%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="공장" data-q="부산 기장군 장안읍 반룡리 949-4 공장 건축사사무소누리 주식회사지음종합건설 건축사사무소누리">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-284" data-addr="부산 기장군 장안읍 반룡리 949-4" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">부산 기장군 장안읍 반룡리 949-4</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">6,082㎡</td>
+      <td style="white-space:nowrap;">3층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">41억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 건축사사무소누리</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> 주식회사지음종합건설</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> 건축사사무소누리</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EB%B6%80%EC%82%B0%20%EA%B8%B0%EC%9E%A5%EA%B5%B0%20%EC%9E%A5%EC%95%88%EC%9D%8D%20%EB%B0%98%EB%A3%A1%EB%A6%AC%20949-4%20(%EA%B3%B5%EC%9E%A5%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EB%B6%80%EC%82%B0%20%EA%B8%B0%EC%9E%A5%EA%B5%B0%20%EC%9E%A5%EC%95%88%EC%9D%8D%20%EB%B0%98%EB%A3%A1%EB%A6%AC%20949-4%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%206%2C082%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%203%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2041%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EB%88%84%EB%A6%AC%0A%EC%8B%9C%EA%B3%B5%3A%20%EC%A3%BC%EC%8B%9D%ED%9A%8C%EC%82%AC%EC%A7%80%EC%9D%8C%EC%A2%85%ED%95%A9%EA%B1%B4%EC%84%A4%0A%EA%B0%90%EB%A6%AC%3A%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EB%88%84%EB%A6%AC%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="전남 여수시 화치동 1295 공장 건축사사무소예장  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-285" data-addr="전남 여수시 화치동 1295" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">전남 여수시 화치동 1295</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">99,307㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">664억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 건축사사무소예장</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%A0%84%EB%82%A8%20%EC%97%AC%EC%88%98%EC%8B%9C%20%ED%99%94%EC%B9%98%EB%8F%99%201295%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%A0%84%EB%82%A8%20%EC%97%AC%EC%88%98%EC%8B%9C%20%ED%99%94%EC%B9%98%EB%8F%99%201295%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2099%2C307%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20664%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EC%98%88%EC%9E%A5%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="제1종근린생활시설" data-q="경북 봉화군 상운면 하눌리 898 제1종근린생활시설 한국전력공사  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-286" data-addr="경북 봉화군 상운면 하눌리 898" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경북 봉화군 상운면 하눌리 898</td>
+      <td>제1종근린생활시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">2,900㎡</td>
+      <td style="white-space:nowrap;">지하1층/4층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">3,506만</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 한국전력공사</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EB%B6%81%20%EB%B4%89%ED%99%94%EA%B5%B0%20%EC%83%81%EC%9A%B4%EB%A9%B4%20%ED%95%98%EB%88%8C%EB%A6%AC%20898%20(%EC%A0%9C1%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EB%B6%81%20%EB%B4%89%ED%99%94%EA%B5%B0%20%EC%83%81%EC%9A%B4%EB%A9%B4%20%ED%95%98%EB%88%8C%EB%A6%AC%20898%0A%EC%9A%A9%EB%8F%84%3A%20%EC%A0%9C1%EC%A2%85%EA%B7%BC%EB%A6%B0%EC%83%9D%ED%99%9C%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C900%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%981%EC%B8%B5%2F4%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%203%2C506%EB%A7%8C%0A%EC%84%A4%EA%B3%84%3A%20%ED%95%9C%EA%B5%AD%EC%A0%84%EB%A0%A5%EA%B3%B5%EC%82%AC%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="대수선" data-use="업무시설" data-q="부산 동구 범일동 830-266 업무시설 주식회사인우종합건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-287" data-addr="부산 동구 범일동 830-266" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">부산 동구 범일동 830-266</td>
+      <td>업무시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#FEF3C7; color:#B45309;">대수선</span></td>
+      <td style="white-space:nowrap;">9,391㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">50.4억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 주식회사인우종합건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EB%B6%80%EC%82%B0%20%EB%8F%99%EA%B5%AC%20%EB%B2%94%EC%9D%BC%EB%8F%99%20830-266%20(%EC%97%85%EB%AC%B4%EC%8B%9C%EC%84%A4%2F%EB%8C%80%EC%88%98%EC%84%A0)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EB%B6%80%EC%82%B0%20%EB%8F%99%EA%B5%AC%20%EB%B2%94%EC%9D%BC%EB%8F%99%20830-266%0A%EC%9A%A9%EB%8F%84%3A%20%EC%97%85%EB%AC%B4%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EB%8C%80%EC%88%98%EC%84%A0%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%209%2C391%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2050.4%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%A3%BC%EC%8B%9D%ED%9A%8C%EC%82%AC%EC%9D%B8%EC%9A%B0%EC%A2%85%ED%95%A9%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="경기 김포시 대곶면 석정리 19-15 공장 (주)예림호건축사사무소  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-288" data-addr="경기 김포시 대곶면 석정리 19-15" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 김포시 대곶면 석정리 19-15</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">4,570㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">43.9억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (주)예림호건축사사무소</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%EA%B9%80%ED%8F%AC%EC%8B%9C%20%EB%8C%80%EA%B3%B6%EB%A9%B4%20%EC%84%9D%EC%A0%95%EB%A6%AC%2019-15%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%EA%B9%80%ED%8F%AC%EC%8B%9C%20%EB%8C%80%EA%B3%B6%EB%A9%B4%20%EC%84%9D%EC%A0%95%EB%A6%AC%2019-15%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%204%2C570%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2043.9%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20(%EC%A3%BC)%EC%98%88%EB%A6%BC%ED%98%B8%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="광주 광산구 소촌동 846 공장 에이디건축사사무소윤  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-289" data-addr="광주 광산구 소촌동 846" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">광주 광산구 소촌동 846</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">5,020㎡</td>
+      <td style="white-space:nowrap;">2층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">26.3억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 에이디건축사사무소윤</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B4%91%EC%A3%BC%20%EA%B4%91%EC%82%B0%EA%B5%AC%20%EC%86%8C%EC%B4%8C%EB%8F%99%20846%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B4%91%EC%A3%BC%20%EA%B4%91%EC%82%B0%EA%B5%AC%20%EC%86%8C%EC%B4%8C%EB%8F%99%20846%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%205%2C020%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%202%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2026.3%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EC%97%90%EC%9D%B4%EB%94%94%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EC%9C%A4%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="충북 진천군 문백면 문덕리 723 공장 건축사사무소양지  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-290" data-addr="충북 진천군 문백면 문덕리 723" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">충북 진천군 문백면 문덕리 723</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">72,408㎡</td>
+      <td style="white-space:nowrap;">2층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">100억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 건축사사무소양지</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%B6%A9%EB%B6%81%20%EC%A7%84%EC%B2%9C%EA%B5%B0%20%EB%AC%B8%EB%B0%B1%EB%A9%B4%20%EB%AC%B8%EB%8D%95%EB%A6%AC%20723%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%B6%A9%EB%B6%81%20%EC%A7%84%EC%B2%9C%EA%B5%B0%20%EB%AC%B8%EB%B0%B1%EB%A9%B4%20%EB%AC%B8%EB%8D%95%EB%A6%AC%20723%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2072%2C408%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%202%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20100%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EC%96%91%EC%A7%80%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="대수선" data-use="동물및식물관련시설" data-q="경기 포천시 이동면 노곡리 750 동물및식물관련시설 건축사사무소하랑  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-291" data-addr="경기 포천시 이동면 노곡리 750" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 포천시 이동면 노곡리 750</td>
+      <td>동물및식물관련시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#FEF3C7; color:#B45309;">대수선</span></td>
+      <td style="white-space:nowrap;">2,726㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">2.6억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 건축사사무소하랑</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%ED%8F%AC%EC%B2%9C%EC%8B%9C%20%EC%9D%B4%EB%8F%99%EB%A9%B4%20%EB%85%B8%EA%B3%A1%EB%A6%AC%20750%20(%EB%8F%99%EB%AC%BC%EB%B0%8F%EC%8B%9D%EB%AC%BC%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%2F%EB%8C%80%EC%88%98%EC%84%A0)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%ED%8F%AC%EC%B2%9C%EC%8B%9C%20%EC%9D%B4%EB%8F%99%EB%A9%B4%20%EB%85%B8%EA%B3%A1%EB%A6%AC%20750%0A%EC%9A%A9%EB%8F%84%3A%20%EB%8F%99%EB%AC%BC%EB%B0%8F%EC%8B%9D%EB%AC%BC%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EB%8C%80%EC%88%98%EC%84%A0%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C726%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%202.6%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%ED%95%98%EB%9E%91%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="동물및식물관련시설" data-q="충북 진천군 진천읍 상신리 566 동물및식물관련시설 건축사사무소아뜰리에윤  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-292" data-addr="충북 진천군 진천읍 상신리 566" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">충북 진천군 진천읍 상신리 566</td>
+      <td>동물및식물관련시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">3,921㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">1.1억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> 건축사사무소아뜰리에윤</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%B6%A9%EB%B6%81%20%EC%A7%84%EC%B2%9C%EA%B5%B0%20%EC%A7%84%EC%B2%9C%EC%9D%8D%20%EC%83%81%EC%8B%A0%EB%A6%AC%20566%20(%EB%8F%99%EB%AC%BC%EB%B0%8F%EC%8B%9D%EB%AC%BC%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%B6%A9%EB%B6%81%20%EC%A7%84%EC%B2%9C%EA%B5%B0%20%EC%A7%84%EC%B2%9C%EC%9D%8D%20%EC%83%81%EC%8B%A0%EB%A6%AC%20566%0A%EC%9A%A9%EB%8F%84%3A%20%EB%8F%99%EB%AC%BC%EB%B0%8F%EC%8B%9D%EB%AC%BC%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%203%2C921%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%201.1%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EC%95%84%EB%9C%B0%EB%A6%AC%EC%97%90%EC%9C%A4%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="충북 옥천군 동이면 적하리 960-8 공장 (주)건축사사무소신건축  ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-293" data-addr="충북 옥천군 동이면 적하리 960-8" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">충북 옥천군 동이면 적하리 960-8</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">4,188㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">6.6억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> (주)건축사사무소신건축</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;">2026.07.28</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%B6%A9%EB%B6%81%20%EC%98%A5%EC%B2%9C%EA%B5%B0%20%EB%8F%99%EC%9D%B4%EB%A9%B4%20%EC%A0%81%ED%95%98%EB%A6%AC%20960-8%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%B6%A9%EB%B6%81%20%EC%98%A5%EC%B2%9C%EA%B5%B0%20%EB%8F%99%EC%9D%B4%EB%A9%B4%20%EC%A0%81%ED%95%98%EB%A6%AC%20960-8%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%204%2C188%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%206.6%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20(%EC%A3%BC)%EA%B1%B4%EC%B6%95%EC%82%AC%EC%82%AC%EB%AC%B4%EC%86%8C%EC%8B%A0%EA%B1%B4%EC%B6%95%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%202026.07.28%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="신축" data-use="숙박시설" data-q="충남 아산시 둔포면 석곡리 1711 숙박시설   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-294" data-addr="충남 아산시 둔포면 석곡리 1711" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">충남 아산시 둔포면 석곡리 1711</td>
+      <td>숙박시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#E0F2FE; color:#0284C7;">신축</span></td>
+      <td style="white-space:nowrap;">2,512㎡</td>
+      <td style="white-space:nowrap;">10층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">12.8억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%B6%A9%EB%82%A8%20%EC%95%84%EC%82%B0%EC%8B%9C%20%EB%91%94%ED%8F%AC%EB%A9%B4%20%EC%84%9D%EA%B3%A1%EB%A6%AC%201711%20(%EC%88%99%EB%B0%95%EC%8B%9C%EC%84%A4%2F%EC%8B%A0%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%B6%A9%EB%82%A8%20%EC%95%84%EC%82%B0%EC%8B%9C%20%EB%91%94%ED%8F%AC%EB%A9%B4%20%EC%84%9D%EA%B3%A1%EB%A6%AC%201711%0A%EC%9A%A9%EB%8F%84%3A%20%EC%88%99%EB%B0%95%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%8B%A0%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C512%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%2010%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2012.8%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="문화및집회시설" data-q="경기 용인시 백암면 고안리 1743 문화및집회시설   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-295" data-addr="경기 용인시 백암면 고안리 1743" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경기 용인시 백암면 고안리 1743</td>
+      <td>문화및집회시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">20,800㎡</td>
+      <td style="white-space:nowrap;">지하1층/1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">23.2억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EA%B8%B0%20%EC%9A%A9%EC%9D%B8%EC%8B%9C%20%EB%B0%B1%EC%95%94%EB%A9%B4%20%EA%B3%A0%EC%95%88%EB%A6%AC%201743%20(%EB%AC%B8%ED%99%94%EB%B0%8F%EC%A7%91%ED%9A%8C%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EA%B8%B0%20%EC%9A%A9%EC%9D%B8%EC%8B%9C%20%EB%B0%B1%EC%95%94%EB%A9%B4%20%EA%B3%A0%EC%95%88%EB%A6%AC%201743%0A%EC%9A%A9%EB%8F%84%3A%20%EB%AC%B8%ED%99%94%EB%B0%8F%EC%A7%91%ED%9A%8C%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2020%2C800%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%20%EC%A7%80%ED%95%981%EC%B8%B5%2F1%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2023.2%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="충북 충주시 대소원면 본리 600 공장   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-296" data-addr="충북 충주시 대소원면 본리 600" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">충북 충주시 대소원면 본리 600</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">7,414㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">21.7억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%B6%A9%EB%B6%81%20%EC%B6%A9%EC%A3%BC%EC%8B%9C%20%EB%8C%80%EC%86%8C%EC%9B%90%EB%A9%B4%20%EB%B3%B8%EB%A6%AC%20600%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%B6%A9%EB%B6%81%20%EC%B6%A9%EC%A3%BC%EC%8B%9C%20%EB%8C%80%EC%86%8C%EC%9B%90%EB%A9%B4%20%EB%B3%B8%EB%A6%AC%20600%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%207%2C414%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2021.7%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="동물및식물관련시설" data-q="경북 성주군 용암면 대봉리 428 동물및식물관련시설   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-297" data-addr="경북 성주군 용암면 대봉리 428" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">경북 성주군 용암면 대봉리 428</td>
+      <td>동물및식물관련시설</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">2,141㎡</td>
+      <td style="white-space:nowrap;">6층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">1.3억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EA%B2%BD%EB%B6%81%20%EC%84%B1%EC%A3%BC%EA%B5%B0%20%EC%9A%A9%EC%95%94%EB%A9%B4%20%EB%8C%80%EB%B4%89%EB%A6%AC%20428%20(%EB%8F%99%EB%AC%BC%EB%B0%8F%EC%8B%9D%EB%AC%BC%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EA%B2%BD%EB%B6%81%20%EC%84%B1%EC%A3%BC%EA%B5%B0%20%EC%9A%A9%EC%95%94%EB%A9%B4%20%EB%8C%80%EB%B4%89%EB%A6%AC%20428%0A%EC%9A%A9%EB%8F%84%3A%20%EB%8F%99%EB%AC%BC%EB%B0%8F%EC%8B%9D%EB%AC%BC%EA%B4%80%EB%A0%A8%EC%8B%9C%EC%84%A4%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%202%2C141%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%206%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%201.3%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="전북 완주군 봉동읍 용암리 869 공장   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-298" data-addr="전북 완주군 봉동읍 용암리 869" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">전북 완주군 봉동읍 용암리 869</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">72,839㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">256억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%A0%84%EB%B6%81%20%EC%99%84%EC%A3%BC%EA%B5%B0%20%EB%B4%89%EB%8F%99%EC%9D%8D%20%EC%9A%A9%EC%95%94%EB%A6%AC%20869%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%A0%84%EB%B6%81%20%EC%99%84%EC%A3%BC%EA%B5%B0%20%EB%B4%89%EB%8F%99%EC%9D%8D%20%EC%9A%A9%EC%95%94%EB%A6%AC%20869%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2072%2C839%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20256%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="전남 여수시 적량동 1320 공장   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-299" data-addr="전남 여수시 적량동 1320" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">전남 여수시 적량동 1320</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">21,328㎡</td>
+      <td style="white-space:nowrap;">2층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">340억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%A0%84%EB%82%A8%20%EC%97%AC%EC%88%98%EC%8B%9C%20%EC%A0%81%EB%9F%89%EB%8F%99%201320%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%A0%84%EB%82%A8%20%EC%97%AC%EC%88%98%EC%8B%9C%20%EC%A0%81%EB%9F%89%EB%8F%99%201320%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2021%2C328%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%202%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%20340%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
+          <i class="bi bi-envelope-at-fill"></i> 견적문의
+        </a>
+      </td>
+    </tr>
+
+    <tr class="permit-row" data-type="증축" data-use="공장" data-q="충북 청주시 송정동 140-20 공장   ">
+      <td style="text-align:center; width:46px;">
+        <input type="checkbox" class="permit-check" value="PMT-300" data-addr="충북 청주시 송정동 140-20" onchange="updateSelectedPermitsCount()" />
+      </td>
+      <td style="font-weight:700; color:var(--dark); min-width:220px;">충북 청주시 송정동 140-20</td>
+      <td>공장</td>
+      <td><span style="display:inline-block; padding:0.25rem 0.6rem; border-radius:4px; font-size:0.75rem; font-weight:700; background:#DCFCE7; color:#15803D;">증축</span></td>
+      <td style="white-space:nowrap;">10,840㎡</td>
+      <td style="white-space:nowrap;">1층</td>
+      <td style="white-space:nowrap; font-family:var(--font-en);">89.6억</td>
+      <td style="font-size:0.78rem; color:var(--gray-600); line-height:1.6; min-width:160px;">
+        <div><strong style="color:var(--gray-800);">설계</strong> -</div>
+        <div><strong style="color:var(--gray-800);">시공</strong> -</div>
+        <div><strong style="color:var(--gray-800);">감리</strong> -</div>
+      </td>
+      <td style="white-space:nowrap; font-family:var(--font-en); font-weight:700;"><span style="color:var(--gray-400);">착공일 미정</span></td>
+      <td style="text-align:center; white-space:nowrap;">
+        <a class="btn-email-doc" href="mailto:sales@kconstrade.com?subject=%5B%ED%97%88%EA%B0%80%2F%EC%B0%A9%EA%B3%B5%20%ED%98%84%EC%9E%A5%20%EB%AC%B8%EC%9D%98%5D%20%EC%B6%A9%EB%B6%81%20%EC%B2%AD%EC%A3%BC%EC%8B%9C%20%EC%86%A1%EC%A0%95%EB%8F%99%20140-20%20(%EA%B3%B5%EC%9E%A5%2F%EC%A6%9D%EC%B6%95)&body=%EC%95%84%EB%9E%98%20%ED%98%84%EC%9E%A5%20%EC%A0%95%EB%B3%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EC%8B%A4%EB%9E%80%ED%8A%B8%2F%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EC%A0%9C%ED%92%88%20%EA%B2%AC%EC%A0%81%EC%9D%84%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%EC%A3%BC%EC%86%8C%3A%20%EC%B6%A9%EB%B6%81%20%EC%B2%AD%EC%A3%BC%EC%8B%9C%20%EC%86%A1%EC%A0%95%EB%8F%99%20140-20%0A%EC%9A%A9%EB%8F%84%3A%20%EA%B3%B5%EC%9E%A5%0A%EA%B5%AC%EB%B6%84%3A%20%EC%A6%9D%EC%B6%95%0A%EC%97%B0%EB%A9%B4%EC%A0%81%3A%2010%2C840%E3%8E%A1%0A%EC%B8%B5%EC%88%98%3A%201%EC%B8%B5%0A%EA%B3%B5%EC%82%AC%EB%B9%84%3A%2089.6%EC%96%B5%0A%EC%84%A4%EA%B3%84%3A%20-%0A%EC%8B%9C%EA%B3%B5%3A%20-%0A%EA%B0%90%EB%A6%AC%3A%20-%0A%EC%B0%A9%EA%B3%B5%EC%9D%BC%3A%20%EB%AF%B8%EC%A0%95%0A">
           <i class="bi bi-envelope-at-fill"></i> 견적문의
         </a>
       </td>
