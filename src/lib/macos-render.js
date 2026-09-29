@@ -1,7 +1,14 @@
 /**
  * DAVHAVE macOS 27 Edition (Pilot Experience)
- * Pixel-faithful Liquid Glass macOS Simulation referencing macos27.kimi.page
- * Featuring Real Online Photos, Wallpapers, Finder, Safari, Photos, Music & Engineering Suite.
+ * Pixel-faithful Liquid Glass macOS Simulation with:
+ * - Real File System (Upload from local PC, Download, Create, Delete, LocalStorage persist)
+ * - Full Notes App (Create, Edit, Auto-save to LocalStorage, Load, Delete, Export .md)
+ * - Desktop Widgets (Analog & Digital Clock, Monthly Calendar, Weather, System Monitor, Sticky Note)
+ * - Calendar.app (Interactive event scheduler)
+ * - Clock.app (World Clock, Stopwatch with laps, Timer)
+ * - Online Wallpapers (Tahoe, Glass, Aurora, Big Sur)
+ * - Online Photos & Music Player
+ * - KCT Calculator & ASTM Specimen Lab
  */
 
 export function renderMacOsPage() {
@@ -10,8 +17,8 @@ export function renderMacOsPage() {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>macOS 27 (DAVHAVE Edition) — Liquid Glass Studio Experience</title>
-  <meta name="description" content="macOS 27 — a pixel-faithful Liquid Glass macOS simulation running entirely in your browser with DAVHAVE Engineering Suite." />
+  <title>macOS 27 (DAVHAVE Edition) — Interactive Web Desktop</title>
+  <meta name="description" content="macOS 27 — a pixel-faithful Liquid Glass macOS simulation with real file management, notes editor, widgets, calendar, clock and engineering suite." />
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -38,7 +45,7 @@ export function renderMacOsPage() {
       --accent-orange: #ff6b35;
       --accent-purple: #af52de;
       --accent-green: #34c759;
-      --glass-tint-dark: rgba(22, 26, 35, 0.68);
+      --glass-tint-dark: rgba(22, 26, 35, 0.72);
       --glass-border: rgba(255, 255, 255, 0.16);
       --glass-glow: inset 0 1px 0 rgba(255, 255, 255, 0.28);
       --shadow-window: 0 28px 75px -12px rgba(0, 0, 0, 0.68), 0 0 1px rgba(255, 255, 255, 0.22);
@@ -71,7 +78,7 @@ export function renderMacOsPage() {
       }
     }
 
-    /* ─── Wallpaper Layer (Online Assets from macos27.kimi.page) ─── */
+    /* ─── Wallpaper Layer ─── */
     #desktop-wallpaper {
       position: absolute;
       inset: 0;
@@ -80,7 +87,6 @@ export function renderMacOsPage() {
       background-repeat: no-repeat;
       transition: background-image 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
       z-index: 0;
-      transform: scale(1.01);
     }
 
     /* ─── Top Menu Bar (Liquid Glass) ─── */
@@ -194,7 +200,6 @@ export function renderMacOsPage() {
       margin-left: 12px;
     }
 
-    /* Menu Right Icons */
     .status-icon {
       padding: 0 6px;
       height: 22px;
@@ -212,6 +217,7 @@ export function renderMacOsPage() {
       padding: 0 8px;
       font-variant-numeric: tabular-nums;
       font-weight: 500;
+      cursor: pointer;
     }
 
     /* ─── Desktop Workspace & Grid Icons ─── */
@@ -219,7 +225,7 @@ export function renderMacOsPage() {
       position: absolute;
       top: var(--menubar-height);
       left: 0;
-      right: 0;
+      right: 320px; /* Space for desktop widgets */
       bottom: 86px;
       padding: 16px;
       display: grid;
@@ -230,6 +236,11 @@ export function renderMacOsPage() {
       align-content: start;
       justify-content: start;
       z-index: 1;
+    }
+
+    @media (max-width: 1024px) {
+      #desktop { right: 0; }
+      #desktop-widgets { display: none; }
     }
 
     .desktop-icon {
@@ -304,12 +315,156 @@ export function renderMacOsPage() {
     .sq-calc { background: linear-gradient(135deg, #FF6B35 0%, #C2410C 100%); }
     .sq-specimen { background: linear-gradient(135deg, #0F2D6B 0%, #0284C7 100%); }
     .sq-notes { background: linear-gradient(135deg, #FFE57A 0%, #FFC600 100%); }
+    .sq-calendar { background: linear-gradient(135deg, #ffffff 0%, #f5f5f7 100%); }
+    .sq-clock { background: linear-gradient(135deg, #1C1C1E 0%, #000000 100%); }
     .sq-terminal { background: linear-gradient(135deg, #3A3A3C 0%, #121214 100%); }
     .sq-settings { background: linear-gradient(135deg, #8E8E93 0%, #48484A 100%); }
-    .sq-projects { background: linear-gradient(135deg, #32ADE6 0%, #0A5CFF 100%); }
     .sq-web { background: linear-gradient(135deg, #e11d48 0%, #9f1239 100%); }
 
-    /* ─── Bottom Floating Dock (Liquid Glass & Gaussian Magnification) ─── */
+    /* ─── Desktop Widgets (macOS Sonoma / 27 Native Tiles) ─── */
+    #desktop-widgets {
+      position: absolute;
+      top: calc(var(--menubar-height) + 16px);
+      right: 20px;
+      width: 290px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      z-index: 2;
+      pointer-events: auto;
+    }
+
+    .widget-tile {
+      background: rgba(22, 26, 36, 0.52);
+      backdrop-filter: blur(35px) saturate(190%);
+      -webkit-backdrop-filter: blur(35px) saturate(190%);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      border-radius: 20px;
+      padding: 14px;
+      color: #fff;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .widget-tile:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+    }
+
+    /* Analog Clock Widget */
+    .widget-clock-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .analog-clock-canvas {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 50% 50%, #1c2230 0%, #0d111a 100%);
+      border: 2px solid rgba(255, 255, 255, 0.25);
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.6), 0 4px 10px rgba(0,0,0,0.4);
+      position: relative;
+    }
+
+    .clock-hand {
+      position: absolute;
+      bottom: 50%;
+      left: 50%;
+      transform-origin: bottom center;
+      border-radius: 4px;
+    }
+
+    .hand-hour { width: 3px; height: 26px; background: #fff; margin-left: -1.5px; }
+    .hand-min { width: 2px; height: 34px; background: #cbd5e1; margin-left: -1px; }
+    .hand-sec { width: 1.5px; height: 38px; background: #ff3b30; margin-left: -0.75px; }
+    .clock-pin {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 6px; height: 6px;
+      margin: -3px 0 0 -3px;
+      background: #ff3b30;
+      border-radius: 50%;
+    }
+
+    /* Calendar Widget */
+    .widget-cal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #f59e0b;
+    }
+
+    .widget-cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      text-align: center;
+      gap: 4px;
+      font-size: 11px;
+    }
+
+    .cal-day-label {
+      font-size: 9.5px;
+      color: #94a3b8;
+      font-weight: 600;
+    }
+
+    .cal-day {
+      padding: 3px 0;
+      border-radius: 50%;
+      cursor: pointer;
+      color: #e2e8f0;
+    }
+
+    .cal-day:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .cal-day.today {
+      background: var(--accent-blue);
+      font-weight: 700;
+      color: #fff;
+    }
+
+    /* Weather & System Widget */
+    .widget-wx-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .wx-temp {
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    /* Sticky Note Widget */
+    .widget-sticky {
+      background: rgba(254, 240, 138, 0.88);
+      color: #713f12;
+      border-color: rgba(250, 204, 21, 0.4);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+    }
+
+    .sticky-textarea {
+      width: 100%;
+      height: 70px;
+      background: transparent;
+      border: none;
+      outline: none;
+      resize: none;
+      font-family: var(--font-system);
+      font-size: 12px;
+      color: #713f12;
+      line-height: 1.5;
+    }
+
+    /* ─── Bottom Floating Dock ─── */
     #dock-container {
       position: absolute;
       bottom: 12px;
@@ -374,7 +529,6 @@ export function renderMacOsPage() {
       margin: 0 4px 6px 4px;
     }
 
-    /* Dock Tooltip */
     .dock-tooltip {
       position: absolute;
       top: -34px;
@@ -400,7 +554,6 @@ export function renderMacOsPage() {
       transform: translateY(0);
     }
 
-    /* Dock Bounce Animation */
     @keyframes dockBounce {
       0%, 100% { transform: translateY(0); }
       35% { transform: translateY(-28px); }
@@ -412,7 +565,7 @@ export function renderMacOsPage() {
       animation: dockBounce 0.65s cubic-bezier(0.28, 0.84, 0.42, 1);
     }
 
-    /* ─── Window System (Liquid Glass & Ventura/Sonoma Native Chrome) ─── */
+    /* ─── Window System ─── */
     .app-window {
       position: absolute;
       border-radius: 12px;
@@ -450,7 +603,6 @@ export function renderMacOsPage() {
       pointer-events: none;
     }
 
-    /* Window Unified Titlebar */
     .window-titlebar {
       height: 42px;
       background: rgba(22, 26, 36, 0.55);
@@ -518,7 +670,6 @@ export function renderMacOsPage() {
       pointer-events: none;
     }
 
-    /* Window Body */
     .window-body {
       flex: 1;
       overflow: auto;
@@ -534,286 +685,126 @@ export function renderMacOsPage() {
     .resize-handle-b { bottom: 0; left: 0; height: 6px; width: 100%; cursor: ns-resize; }
     .resize-handle-br { bottom: 0; right: 0; width: 14px; height: 14px; cursor: nwse-resize; }
 
-    /* ─── App: Photos (사진 앱 - Online Photography) ─── */
-    .photos-container {
+    /* ─── Notes App (생성, 저장, 불러오기, 편집, 내보내기) ─── */
+    .notes-container {
       display: flex;
       height: 100%;
       margin: -18px;
     }
 
-    .photos-sidebar {
-      width: 190px;
-      background: rgba(20, 24, 34, 0.55);
+    .notes-sidebar {
+      width: 230px;
+      background: rgba(20, 24, 34, 0.6);
       border-right: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 12px 8px;
+      display: flex;
+      flex-direction: column;
     }
 
-    .photos-nav-header {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: #94a3b8;
-      padding: 6px 10px;
-      letter-spacing: 0.05em;
-    }
-
-    .photos-nav-item {
+    .notes-toolbar {
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 7px 10px;
+      justify-content: space-between;
+    }
+
+    .notes-action-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: 6px;
+      padding: 4px 10px;
+      color: #fff;
+      font-size: 11.5px;
+      font-weight: 600;
       cursor: pointer;
-      color: #cbd5e1;
-      font-size: 12.5px;
-      font-weight: 500;
-      margin-bottom: 2px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
       transition: background 0.15s;
     }
 
-    .photos-nav-item:hover, .photos-nav-item.active {
-      background: rgba(0, 122, 255, 0.25);
-      color: #fff;
+    .notes-action-btn:hover {
+      background: var(--accent-blue);
+      border-color: var(--accent-blue);
     }
 
-    .photos-main {
+    .notes-list {
       flex: 1;
-      padding: 18px;
       overflow-y: auto;
+      padding: 8px;
     }
 
-    .photos-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 14px;
-    }
-
-    .photo-card {
-      aspect-ratio: 16/11;
+    .notes-item {
+      padding: 9px 12px;
       border-radius: 8px;
-      overflow: hidden;
-      position: relative;
       cursor: pointer;
-      background: #000;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      margin-bottom: 4px;
+      transition: background 0.15s;
     }
 
-    .photo-card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.5);
+    .notes-item:hover, .notes-item.active {
+      background: rgba(255, 255, 255, 0.12);
     }
 
-    .photo-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: filter 0.2s ease;
+    .notes-item.active {
+      border-left: 3px solid var(--accent-blue);
     }
 
-    .photo-badge {
-      position: absolute;
-      bottom: 6px;
-      left: 6px;
-      right: 6px;
-      padding: 4px 8px;
-      background: rgba(10, 15, 25, 0.7);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border-radius: 4px;
-      font-size: 11px;
+    .notes-item-title {
+      font-size: 12px;
+      font-weight: 600;
       color: #fff;
-      font-weight: 500;
+      margin-bottom: 2px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
-    /* Photo Lightbox Inspector */
-    #photo-lightbox {
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.92);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      z-index: 50;
-      display: none;
-      flex-direction: column;
-    }
-
-    #photo-lightbox.show {
-      display: flex;
-    }
-
-    .lightbox-bar {
-      height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 16px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .lightbox-body {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      position: relative;
-    }
-
-    .lightbox-body img {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 8px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
-      object-fit: contain;
-    }
-
-    /* ─── App: Music (음악 플레이어) ─── */
-    .music-container {
-      display: flex;
-      height: 100%;
-      margin: -18px;
-    }
-
-    .music-sidebar {
-      width: 180px;
-      background: rgba(20, 24, 34, 0.55);
-      border-right: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 12px 8px;
-    }
-
-    .music-main {
-      flex: 1;
-      padding: 20px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .album-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-
-    .album-card {
-      cursor: pointer;
-      text-align: center;
-    }
-
-    .album-cover {
-      width: 100%;
-      aspect-ratio: 1/1;
-      border-radius: 8px;
-      overflow: hidden;
-      margin-bottom: 8px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
-      transition: transform 0.2s ease;
-    }
-
-    .album-card:hover .album-cover {
-      transform: translateY(-4px);
-    }
-
-    .album-cover img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .album-title {
-      font-size: 12px;
-      font-weight: 600;
-      color: #fff;
-    }
-
-    .album-artist {
-      font-size: 11px;
+    .notes-item-date {
+      font-size: 10px;
       color: #94a3b8;
     }
 
-    .player-dock {
-      background: rgba(15, 20, 30, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 10px;
-      padding: 12px 16px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-top: 16px;
-    }
-
-    /* ─── App: Safari Browser ─── */
-    .safari-toolbar {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-
-    .safari-nav-btn {
-      width: 28px;
-      height: 28px;
-      border-radius: 6px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      color: #cbd5e1;
-    }
-
-    .safari-url-bar {
+    .notes-editor {
       flex: 1;
-      background: rgba(0, 0, 0, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      border-radius: 8px;
-      padding: 6px 14px;
+      display: flex;
+      flex-direction: column;
+      background: rgba(18, 22, 30, 0.4);
+    }
+
+    .editor-header {
+      padding: 12px 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: 12px;
+      justify-content: space-between;
+    }
+
+    .editor-title-input {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      background: transparent;
+      border: none;
+      outline: none;
+      width: 70%;
+      font-family: var(--font-system);
+    }
+
+    .editor-body-textarea {
+      flex: 1;
+      padding: 18px;
+      background: transparent;
+      border: none;
+      outline: none;
       color: #e2e8f0;
+      font-size: 13.5px;
+      line-height: 1.8;
+      font-family: var(--font-system);
+      resize: none;
     }
 
-    .safari-favorites-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      margin-top: 18px;
-    }
-
-    .safari-fav-item {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 10px;
-      overflow: hidden;
-      cursor: pointer;
-      transition: transform 0.15s ease;
-      text-align: center;
-      padding-bottom: 10px;
-    }
-
-    .safari-fav-item:hover {
-      transform: translateY(-3px);
-      border-color: var(--accent-blue);
-    }
-
-    .safari-fav-thumb {
-      width: 100%;
-      height: 90px;
-      object-fit: cover;
-      margin-bottom: 8px;
-    }
-
-    /* ─── App: Finder (파일 탐색기) ─── */
+    /* ─── Finder App (실제 파일 업로드, 저장, 다운로드, 삭제) ─── */
     .finder-container {
       display: flex;
       height: 100%;
@@ -822,12 +813,27 @@ export function renderMacOsPage() {
 
     .finder-sidebar {
       width: 180px;
-      background: rgba(20, 24, 34, 0.55);
+      background: rgba(20, 24, 34, 0.6);
       border-right: 1px solid rgba(255, 255, 255, 0.08);
       padding: 12px 8px;
     }
 
     .finder-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .finder-toolbar {
+      padding: 8px 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(15, 20, 28, 0.4);
+    }
+
+    .finder-content {
       flex: 1;
       padding: 16px;
       overflow-y: auto;
@@ -846,7 +852,8 @@ export function renderMacOsPage() {
       text-align: center;
       cursor: pointer;
       padding: 8px 4px;
-      border-radius: 6px;
+      border-radius: 8px;
+      position: relative;
     }
 
     .finder-file:hover {
@@ -881,7 +888,105 @@ export function renderMacOsPage() {
       word-break: break-all;
     }
 
-    /* ─── App: KCT Silicone Calculator ─── */
+    /* ─── Calendar.app (인터랙티브 일정 관리자) ─── */
+    .cal-app-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .cal-month-nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .cal-full-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+    }
+
+    .cal-full-cell {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      min-height: 64px;
+      padding: 6px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .cal-full-cell:hover {
+      background: rgba(0, 122, 255, 0.2);
+    }
+
+    .cal-full-cell.current-day {
+      border-color: var(--accent-blue);
+      background: rgba(0, 122, 255, 0.15);
+    }
+
+    .cal-cell-num {
+      font-weight: 700;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    .cal-event-tag {
+      background: var(--accent-orange);
+      color: #fff;
+      font-size: 9.5px;
+      padding: 1px 4px;
+      border-radius: 3px;
+      margin-bottom: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* ─── Clock.app (스톱워치 & 타이머 & 세계시계) ─── */
+    .clock-tab-bar {
+      display: flex;
+      gap: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 10px;
+      margin-bottom: 16px;
+    }
+
+    .clock-tab-btn {
+      padding: 6px 14px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #cbd5e1;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .clock-tab-btn.active {
+      background: var(--accent-blue);
+      color: #fff;
+    }
+
+    .stopwatch-display {
+      font-family: var(--font-mono);
+      font-size: 46px;
+      font-weight: 700;
+      text-align: center;
+      margin: 20px 0;
+      color: #fff;
+    }
+
+    .clock-ctrl-btns {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    /* ─── KCT & ASTM App Styles ─── */
     .calc-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -904,15 +1009,8 @@ export function renderMacOsPage() {
       align-items: center;
       gap: 6px;
     }
-    .form-group {
-      margin-bottom: 12px;
-    }
-    .form-label {
-      display: block;
-      font-size: 11px;
-      color: #94a3b8;
-      margin-bottom: 4px;
-    }
+    .form-group { margin-bottom: 12px; }
+    .form-label { display: block; font-size: 11px; color: #94a3b8; margin-bottom: 4px; }
     .form-input {
       width: 100%;
       background: rgba(0, 0, 0, 0.4);
@@ -923,12 +1021,8 @@ export function renderMacOsPage() {
       font-family: var(--font-mono);
       font-size: 12px;
       outline: none;
-      transition: border-color 0.15s;
     }
-    .form-input:focus {
-      border-color: var(--accent-blue);
-      box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.25);
-    }
+    .form-input:focus { border-color: var(--accent-blue); box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.25); }
     .res-box {
       background: rgba(16, 24, 40, 0.85);
       border: 1px solid rgba(0, 168, 255, 0.3);
@@ -936,55 +1030,11 @@ export function renderMacOsPage() {
       padding: 14px;
       margin-top: 10px;
     }
-    .res-metric {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px;
-      font-size: 12px;
-    }
-    .res-val {
-      font-family: var(--font-mono);
-      font-weight: 700;
-      color: #38bdf8;
-    }
-    .res-val.highlight {
-      font-size: 16px;
-      color: #4ade80;
-    }
+    .res-metric { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 12px; }
+    .res-val { font-family: var(--font-mono); font-weight: 700; color: #38bdf8; }
+    .res-val.highlight { font-size: 16px; color: #4ade80; }
 
-    /* ─── App: ASTM Specimen Lab ─── */
-    .specimen-canvas-wrap {
-      background: #070b12;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 10px;
-      padding: 14px;
-      text-align: center;
-      margin-bottom: 14px;
-    }
-    .specimen-types {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 14px;
-      overflow-x: auto;
-      padding-bottom: 4px;
-    }
-    .specimen-chip {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      padding: 5px 12px;
-      border-radius: 6px;
-      font-size: 11.5px;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all 0.15s;
-    }
-    .specimen-chip:hover, .specimen-chip.active {
-      background: var(--accent-blue);
-      border-color: var(--accent-blue);
-      color: #fff;
-    }
-
-    /* ─── App: Terminal (davhave-cli) ─── */
+    /* ─── Terminal Body ─── */
     .terminal-body {
       background: #090c10 !important;
       font-family: var(--font-mono) !important;
@@ -993,283 +1043,52 @@ export function renderMacOsPage() {
       padding: 14px !important;
       color: #d1d5db;
     }
-    .terminal-output {
-      margin-bottom: 8px;
-      white-space: pre-wrap;
-    }
-    .terminal-prompt-line {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .prompt-label {
-      color: #4ade80;
-      font-weight: 700;
-    }
-    .terminal-input {
-      flex: 1;
-      background: transparent;
-      border: none;
-      outline: none;
-      color: #fff;
-      font-family: var(--font-mono);
-      font-size: 12px;
-      caret-color: #38bdf8;
-    }
+    .terminal-output { margin-bottom: 8px; white-space: pre-wrap; }
+    .terminal-prompt-line { display: flex; align-items: center; gap: 6px; }
+    .prompt-label { color: #4ade80; font-weight: 700; }
+    .terminal-input { flex: 1; background: transparent; border: none; outline: none; color: #fff; font-family: var(--font-mono); font-size: 12px; caret-color: #38bdf8; }
 
-    /* ─── App: Notes (Insights) ─── */
-    .notes-layout {
-      display: flex;
-      height: 100%;
-      margin: -18px;
-    }
-    .notes-sidebar {
-      width: 220px;
-      background: rgba(20, 24, 34, 0.55);
-      border-right: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 12px;
-      overflow-y: auto;
-    }
-    .notes-item {
-      padding: 9px 12px;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-bottom: 4px;
-      transition: background 0.15s;
-    }
-    .notes-item:hover, .notes-item.active {
-      background: rgba(255, 255, 255, 0.12);
-    }
-    .notes-item.active {
-      border-left: 3px solid var(--accent-blue);
-    }
-    .notes-item-title {
-      font-size: 12px;
-      font-weight: 600;
-      color: #fff;
-      margin-bottom: 2px;
-    }
-    .notes-item-date {
-      font-size: 10px;
-      color: #94a3b8;
-    }
-    .notes-content {
-      flex: 1;
-      padding: 22px;
-      overflow-y: auto;
-      line-height: 1.75;
-    }
-
-    /* ─── App: System Settings ─── */
-    .settings-section {
-      margin-bottom: 22px;
-    }
-    .settings-title {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: #94a3b8;
-      margin-bottom: 10px;
-    }
-    .wp-thumbnails {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 10px;
-    }
-    .wp-thumb {
-      aspect-ratio: 16/10;
-      border-radius: 8px;
-      border: 2px solid transparent;
-      cursor: pointer;
-      transition: all 0.2s;
-      position: relative;
-      overflow: hidden;
-      background-size: cover;
-      background-position: center;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
-    }
-    .wp-thumb:hover {
-      transform: translateY(-2px);
-    }
-    .wp-thumb.active {
-      border-color: var(--accent-blue);
-      box-shadow: 0 0 12px rgba(0, 122, 255, 0.6);
-    }
-    .wp-thumb span {
-      position: absolute;
-      bottom: 4px;
-      left: 6px;
-      font-size: 10px;
-      font-weight: 600;
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
-      background: rgba(0, 0, 0, 0.4);
-      padding: 1px 4px;
-      border-radius: 3px;
-    }
-
-    /* ─── Spotlight Search Modal ─── */
+    /* ─── Spotlight ─── */
     #spotlight-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.35);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      display: none;
-      align-items: flex-start;
-      justify-content: center;
-      padding-top: 15vh;
-      z-index: 20000;
+      position: fixed; inset: 0; background: rgba(0, 0, 0, 0.35); backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px); display: none; align-items: flex-start; justify-content: center;
+      padding-top: 15vh; z-index: 20000;
     }
-    #spotlight-overlay.show {
-      display: flex;
-    }
+    #spotlight-overlay.show { display: flex; }
     #spotlight-box {
-      width: 600px;
-      max-width: 90vw;
-      background: rgba(30, 35, 48, 0.88);
-      backdrop-filter: blur(40px) saturate(200%);
-      -webkit-backdrop-filter: blur(40px) saturate(200%);
-      border: 1px solid rgba(255, 255, 255, 0.24);
-      border-radius: 14px;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.3);
-      overflow: hidden;
-      animation: spotIn 0.15s ease-out;
+      width: 600px; max-width: 90vw; background: rgba(30, 35, 48, 0.88); backdrop-filter: blur(40px) saturate(200%);
+      -webkit-backdrop-filter: blur(40px) saturate(200%); border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 14px; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7); overflow: hidden; animation: spotIn 0.15s ease-out;
     }
-    @keyframes spotIn {
-      from { opacity: 0; transform: scale(0.97); }
-      to { opacity: 1; transform: scale(1); }
-    }
-    .spotlight-input-row {
-      display: flex;
-      align-items: center;
-      padding: 14px 18px;
-      gap: 12px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .spotlight-input {
-      flex: 1;
-      background: transparent;
-      border: none;
-      outline: none;
-      font-size: 18px;
-      color: #fff;
-      font-family: var(--font-system);
-    }
-    .spotlight-results {
-      max-height: 340px;
-      overflow-y: auto;
-      padding: 6px;
-    }
-    .spotlight-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 9px 14px;
-      border-radius: 8px;
-      cursor: pointer;
-      color: #e2e8f0;
-      font-size: 13px;
-    }
-    .spotlight-item:hover, .spotlight-item.active {
-      background: var(--accent-blue);
-      color: #fff;
-    }
+    @keyframes spotIn { from { opacity: 0; transform: scale(0.97); } to { opacity: 1; transform: scale(1); } }
+    .spotlight-input-row { display: flex; align-items: center; padding: 14px 18px; gap: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+    .spotlight-input { flex: 1; background: transparent; border: none; outline: none; font-size: 18px; color: #fff; font-family: var(--font-system); }
+    .spotlight-results { max-height: 340px; overflow-y: auto; padding: 6px; }
+    .spotlight-item { display: flex; align-items: center; gap: 12px; padding: 9px 14px; border-radius: 8px; cursor: pointer; color: #e2e8f0; font-size: 13px; }
+    .spotlight-item:hover, .spotlight-item.active { background: var(--accent-blue); color: #fff; }
 
     /* ─── Control Center ─── */
     #control-center {
-      position: absolute;
-      top: 34px;
-      right: 12px;
-      width: 320px;
-      background: rgba(28, 33, 44, 0.9);
-      backdrop-filter: blur(40px) saturate(200%);
-      -webkit-backdrop-filter: blur(40px) saturate(200%);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 16px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.65);
-      padding: 14px;
-      display: none;
-      flex-direction: column;
-      gap: 12px;
-      z-index: 10005;
-      animation: menuFadeIn 0.15s ease-out;
+      position: absolute; top: 34px; right: 12px; width: 320px; background: rgba(28, 33, 44, 0.9);
+      backdrop-filter: blur(40px) saturate(200%); -webkit-backdrop-filter: blur(40px) saturate(200%);
+      border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 16px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.65);
+      padding: 14px; display: none; flex-direction: column; gap: 12px; z-index: 10005; animation: menuFadeIn 0.15s ease-out;
     }
-    #control-center.show {
-      display: flex;
-    }
-    .cc-row {
-      display: flex;
-      gap: 10px;
-    }
-    .cc-card {
-      flex: 1;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 12px;
-      padding: 10px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .cc-icon-btn {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: var(--accent-blue);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-    }
-    .cc-slider-wrap {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 12px;
-      padding: 12px;
-    }
-    .cc-slider-label {
-      font-size: 11px;
-      color: #94a3b8;
-      margin-bottom: 6px;
-      display: flex;
-      justify-content: space-between;
-    }
-    .cc-slider {
-      width: 100%;
-      -webkit-appearance: none;
-      height: 18px;
-      border-radius: 9px;
-      background: rgba(0, 0, 0, 0.4);
-      outline: none;
-    }
-    .cc-slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: #fff;
-      cursor: pointer;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
-    }
+    #control-center.show { display: flex; }
+    .cc-row { display: flex; gap: 10px; }
+    .cc-card { flex: 1; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 10px; display: flex; align-items: center; gap: 10px; }
+    .cc-icon-btn { width: 32px; height: 32px; border-radius: 50%; background: var(--accent-blue); display: flex; align-items: center; justify-content: center; color: #fff; }
+    .cc-slider-wrap { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 12px; }
+    .cc-slider-label { font-size: 11px; color: #94a3b8; margin-bottom: 6px; display: flex; justify-content: space-between; }
+    .cc-slider { width: 100%; -webkit-appearance: none; height: 18px; border-radius: 9px; background: rgba(0, 0, 0, 0.4); outline: none; }
+    .cc-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: #fff; cursor: pointer; }
 
-    /* ─── Mobile Fallback Notice ─── */
+    /* ─── Mobile Fallback ─── */
     #mobile-notice {
-      display: none;
-      position: absolute;
-      top: 34px;
-      left: 12px;
-      right: 12px;
-      background: rgba(15, 23, 42, 0.95);
-      border: 1px solid rgba(255, 107, 53, 0.5);
-      padding: 10px 14px;
-      border-radius: 10px;
-      z-index: 10002;
-      font-size: 12px;
-      color: #f8fafc;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      display: none; position: absolute; top: 34px; left: 12px; right: 12px;
+      background: rgba(15, 23, 42, 0.95); border: 1px solid rgba(255, 107, 53, 0.5);
+      padding: 10px 14px; border-radius: 10px; z-index: 10002; font-size: 12px; color: #f8fafc;
+      align-items: center; justify-content: space-between;
     }
     @media (max-width: 768px) {
       #mobile-notice { display: flex; }
@@ -1280,7 +1099,7 @@ export function renderMacOsPage() {
   </style>
 </head>
 <body>
-  <!-- Liquid Glass Refraction SVG Filter (Directly from macos27.kimi.page) -->
+  <!-- Liquid Glass Refraction SVG Filter -->
   <svg width="0" height="0" aria-hidden="true" style="position:absolute">
     <defs>
       <filter id="lg-refraction" x="-5%" y="-5%" width="110%" height="110%">
@@ -1291,10 +1110,13 @@ export function renderMacOsPage() {
     </defs>
   </svg>
 
-  <!-- Desktop Wallpaper (Default: Tahoe Day from macos27.kimi.page) -->
+  <!-- Desktop Wallpaper -->
   <div id="desktop-wallpaper" style="background-image: url('https://macos27.kimi.page/wallpaper-tahoe-day.jpg');"></div>
 
-  <!-- Mobile Notice Banner -->
+  <!-- Hidden File Input for Real PC File Upload -->
+  <input type="file" id="real-file-uploader" style="display:none;" onchange="handleRealFileUpload(event)" />
+
+  <!-- Mobile Notice -->
   <div id="mobile-notice">
     <div>🖥️ <strong>macOS 27 Pilot</strong>: 데스크톱 화면에서 최상의 경험을 제공합니다.</div>
     <a href="/" style="color:var(--accent-orange); font-weight:700; text-decoration:none; margin-left:8px;">웹 메인으로 ↗</a>
@@ -1305,33 +1127,22 @@ export function renderMacOsPage() {
     <div class="menu-left">
       <div class="menu-item menu-apple" id="apple-menu-btn" title="DAVHAVE Studio"></div>
       <div class="menu-item menu-appname" id="menu-active-app">Finder</div>
-      <div class="menu-item">파일</div>
-      <div class="menu-item">편집</div>
-      <div class="menu-item">보기</div>
-      <div class="menu-item">이동</div>
-      <div class="menu-item">창</div>
-      <div class="menu-item">도움말</div>
+      <div class="menu-item" onclick="openApp('finder')">파일</div>
+      <div class="menu-item" onclick="openApp('notes')">편집</div>
+      <div class="menu-item" onclick="toggleWidgets()">위젯 보기</div>
+      <div class="menu-item" onclick="openApp('calendar')">캘린더</div>
+      <div class="menu-item" onclick="openApp('clock')">시계</div>
+      <div class="menu-item" onclick="openApp('about')">도움말</div>
     </div>
 
     <!-- Apple Dropdown Menu -->
     <div class="menu-dropdown" id="apple-dropdown">
-      <div class="dropdown-row" onclick="openApp('about')">
-        <span>DAVHAVE Studio 정보</span>
-      </div>
+      <div class="dropdown-row" onclick="openApp('about')"><span>DAVHAVE Studio 정보</span></div>
       <div class="dropdown-divider"></div>
-      <div class="dropdown-row" onclick="openApp('settings')">
-        <span>시스템 설정...</span>
-        <span class="dropdown-shortcut">⌘,</span>
-      </div>
-      <div class="dropdown-row" onclick="toggleSpotlight()">
-        <span>Spotlight 검색</span>
-        <span class="dropdown-shortcut">⌘Space</span>
-      </div>
+      <div class="dropdown-row" onclick="openApp('settings')"><span>시스템 설정...</span><span class="dropdown-shortcut">⌘,</span></div>
+      <div class="dropdown-row" onclick="toggleSpotlight()"><span>Spotlight 검색</span><span class="dropdown-shortcut">⌘Space</span></div>
       <div class="dropdown-divider"></div>
-      <div class="dropdown-row" onclick="window.location.href='/'">
-        <span>웹 표준 홈으로 돌아가기</span>
-        <span class="dropdown-shortcut">⎋ Esc</span>
-      </div>
+      <div class="dropdown-row" onclick="window.location.href='/'"><span>웹 표준 홈으로 돌아가기</span><span class="dropdown-shortcut">⎋ Esc</span></div>
     </div>
 
     <div class="menu-right">
@@ -1347,7 +1158,7 @@ export function renderMacOsPage() {
       <div class="status-icon" id="control-center-btn" onclick="toggleControlCenter()" title="제어 센터">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="6" rx="3"></rect><circle cx="9" cy="7" r="1.5" fill="currentColor"></circle><rect x="4" y="14" width="16" height="6" rx="3"></rect><circle cx="15" cy="17" r="1.5" fill="currentColor"></circle></svg>
       </div>
-      <div class="status-icon status-clock" id="clock-display">오후 1:05</div>
+      <div class="status-icon status-clock" id="clock-display" onclick="openApp('clock')">오후 1:20</div>
     </div>
   </header>
 
@@ -1369,7 +1180,7 @@ export function renderMacOsPage() {
         </div>
         <div>
           <div style="font-weight:600; font-size:12px;">D1 Database</div>
-          <div style="font-size:10px; color:#94a3b8;">Active · Global Sync</div>
+          <div style="font-size:10px; color:#94a3b8;">Active · Connected</div>
         </div>
       </div>
     </div>
@@ -1401,31 +1212,34 @@ export function renderMacOsPage() {
       <span class="desktop-icon-label">Finder</span>
     </div>
 
-    <div class="desktop-icon" onclick="selectDesktopIcon(this)" ondblclick="openApp('photos')" data-app="photos">
+    <div class="desktop-icon" onclick="selectDesktopIcon(this)" ondblclick="openApp('notes')" data-app="notes">
       <div class="desktop-icon-img">
-        <div class="app-squircle sq-photos">
-          <svg width="26" height="26" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4" fill="#ff2d55"/><circle cx="17" cy="12" r="4" fill="#ff9500"/><circle cx="12" cy="17" r="4" fill="#4cd964"/><circle cx="7" cy="12" r="4" fill="#007aff"/></svg>
+        <div class="app-squircle sq-notes">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2"><path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z"></path><path d="M15 3v5h5M9 13h6M9 17h4"></path></svg>
         </div>
       </div>
-      <span class="desktop-icon-label">사진.app</span>
+      <span class="desktop-icon-label">메모.app</span>
     </div>
 
-    <div class="desktop-icon" onclick="selectDesktopIcon(this)" ondblclick="openApp('safari')" data-app="safari">
+    <div class="desktop-icon" onclick="selectDesktopIcon(this)" ondblclick="openApp('calendar')" data-app="calendar">
       <div class="desktop-icon-img">
-        <div class="app-squircle sq-safari">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="#ff3b30" stroke="#fff"></polygon></svg>
+        <div class="app-squircle sq-calendar">
+          <div style="text-align:center;">
+            <div style="font-size:8px; font-weight:800; color:#ff3b30; text-transform:uppercase;">SEP</div>
+            <div style="font-size:16px; font-weight:800; color:#1c1c1e; line-height:1;" id="icon-cal-date">29</div>
+          </div>
         </div>
       </div>
-      <span class="desktop-icon-label">Safari</span>
+      <span class="desktop-icon-label">캘린더.app</span>
     </div>
 
-    <div class="desktop-icon" onclick="selectDesktopIcon(this)" ondblclick="openApp('music')" data-app="music">
+    <div class="desktop-icon" onclick="selectDesktopIcon(this)" ondblclick="openApp('clock')" data-app="clock">
       <div class="desktop-icon-img">
-        <div class="app-squircle sq-music">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3" fill="#fff"></circle><circle cx="18" cy="16" r="3" fill="#fff"></circle></svg>
+        <div class="app-squircle sq-clock">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
         </div>
       </div>
-      <span class="desktop-icon-label">음악.app</span>
+      <span class="desktop-icon-label">시계.app</span>
     </div>
 
     <div class="desktop-icon" onclick="selectDesktopIcon(this)" ondblclick="openApp('calc')" data-app="calc">
@@ -1454,144 +1268,134 @@ export function renderMacOsPage() {
       </div>
       <span class="desktop-icon-label">Terminal</span>
     </div>
-
-    <div class="desktop-icon" onclick="selectDesktopIcon(this)" ondblclick="openApp('notes')" data-app="notes">
-      <div class="desktop-icon-img">
-        <div class="app-squircle sq-notes">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2"><path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z"></path><path d="M15 3v5h5M9 13h6M9 17h4"></path></svg>
-        </div>
-      </div>
-      <span class="desktop-icon-label">엔지니어링 메모</span>
-    </div>
   </main>
 
-  <!-- ─── Window: Photos (사진 앱 - Online Gallery) ─── -->
-  <div class="app-window" id="window-photos" style="width: 820px; height: 560px; top: 60px; left: 120px;">
-    <div class="window-titlebar" onmousedown="startDragWindow(event, 'window-photos')">
-      <div class="traffic-lights">
-        <button class="traffic-btn btn-close" onclick="closeApp('photos')"></button>
-        <button class="traffic-btn btn-min" onclick="minimizeApp('photos')"></button>
-        <button class="traffic-btn btn-max" onclick="maximizeApp('photos')"></button>
+  <!-- ─── Desktop Widgets (macOS Sonoma / 27 Style Tiles) ─── -->
+  <aside id="desktop-widgets">
+    <!-- Widget 1: Analog Clock & Time -->
+    <div class="widget-tile" onclick="openApp('clock')" style="cursor:pointer;" title="시계 앱 열기">
+      <div class="widget-clock-wrap">
+        <div class="analog-clock-canvas">
+          <div class="clock-hand hand-hour" id="hand-hour"></div>
+          <div class="clock-hand hand-min" id="hand-min"></div>
+          <div class="clock-hand hand-sec" id="hand-sec"></div>
+          <div class="clock-pin"></div>
+        </div>
+        <div>
+          <div style="font-size:11px; font-weight:700; color:#94a3b8; text-transform:uppercase;">SEOUL · KST</div>
+          <div style="font-size:22px; font-weight:800; font-variant-numeric:tabular-nums;" id="widget-digital-clock">13:20:00</div>
+          <div style="font-size:11.5px; color:#cbd5e1;" id="widget-date-str">9월 29일 화요일</div>
+        </div>
       </div>
-      <div class="window-title">사진 — DAVHAVE Architectural & Engineering Gallery</div>
+    </div>
+
+    <!-- Widget 2: Interactive Monthly Calendar -->
+    <div class="widget-tile" onclick="openApp('calendar')" style="cursor:pointer;" title="캘린더 앱 열기">
+      <div class="widget-cal-header">
+        <span id="widget-cal-month-title">2026년 9월</span>
+        <span style="font-size:10px; color:#94a3b8;">CALENDAR</span>
+      </div>
+      <div class="widget-cal-grid" id="widget-cal-days">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+
+    <!-- Widget 3: Real-time Weather & System Pulse -->
+    <div class="widget-tile">
+      <div class="widget-wx-row">
+        <div>
+          <div style="font-size:11px; font-weight:700; color:#94a3b8;">SEOUL · 맑음</div>
+          <div class="wx-temp">22°</div>
+          <div style="font-size:10.5px; color:#cbd5e1; margin-top:2px;">최고 25° · 최저 17°</div>
+        </div>
+        <div style="font-size:36px;">☀️</div>
+      </div>
+      <div style="margin-top:12px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.1); font-size:11px; display:flex; justify-content:space-between;">
+        <span>엣지 가동률: <strong style="color:#4ade80;" id="cpu-pulse">12%</strong></span>
+        <span>지연시간: <strong style="color:#38bdf8;">0ms</strong></span>
+      </div>
+    </div>
+
+    <!-- Widget 4: Quick Desktop Sticky Note -->
+    <div class="widget-tile widget-sticky">
+      <div style="font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:4px; opacity:0.8;">STICKY NOTE</div>
+      <textarea class="sticky-textarea" id="sticky-note-input" placeholder="바탕화면 빠른 메모를 입력하세요 (자동 저장됨)..." oninput="saveStickyNote(this.value)"></textarea>
+    </div>
+  </aside>
+
+  <!-- ─── Window: Notes (생성, 저장, 불러오기, 편집, 다운로드) ─── -->
+  <div class="app-window" id="window-notes" style="width: 820px; height: 540px; top: 60px; left: 130px;">
+    <div class="window-titlebar" onmousedown="startDragWindow(event, 'window-notes')">
+      <div class="traffic-lights">
+        <button class="traffic-btn btn-close" onclick="closeApp('notes')"></button>
+        <button class="traffic-btn btn-min" onclick="minimizeApp('notes')"></button>
+        <button class="traffic-btn btn-max" onclick="maximizeApp('notes')"></button>
+      </div>
+      <div class="window-title">메모 — DAVHAVE Engineering Notes</div>
       <div></div>
     </div>
     <div class="window-body" style="padding:0; overflow:hidden;">
-      <div class="photos-container">
-        <div class="photos-sidebar">
-          <div class="photos-nav-header">보관함</div>
-          <div class="photos-nav-item active" onclick="filterPhotos('all', this)">
-            <span>🖼️</span><span>모든 사진</span>
+      <div class="notes-container">
+        <!-- Notes Sidebar -->
+        <div class="notes-sidebar">
+          <div class="notes-toolbar">
+            <span style="font-size:12px; font-weight:700; color:#fff;">모든 메모</span>
+            <button class="notes-action-btn" onclick="createNewNote()">+ 새 메모</button>
           </div>
-          <div class="photos-nav-item" onclick="filterPhotos('arch', this)">
-            <span>🏢</span><span>건축 &amp; 커튼월</span>
-          </div>
-          <div class="photos-nav-item" onclick="filterPhotos('nature', this)">
-            <span>🌲</span><span>풍경 &amp; 요세미티</span>
-          </div>
-          <div class="photos-nav-item" onclick="filterPhotos('studio', this)">
-            <span>💻</span><span>스튜디오 &amp; 도메인</span>
+          <div class="notes-list" id="notes-items-list">
+            <!-- Injected by JS -->
           </div>
         </div>
-        <div class="photos-main">
-          <div class="photos-grid" id="photos-grid">
-            <!-- Dynamically populated with real online photos -->
+        <!-- Notes Editor -->
+        <div class="notes-editor">
+          <div class="editor-header">
+            <input type="text" class="editor-title-input" id="note-title-input" placeholder="메모 제목" oninput="handleNoteEdit()" />
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span id="note-save-status" style="font-size:11px; color:#4ade80;">자동 저장됨</span>
+              <button class="notes-action-btn" onclick="exportCurrentNote()" title="내 컴퓨터로 다운로드 (.md)">📥 저장</button>
+              <button class="notes-action-btn" onclick="deleteCurrentNote()" style="color:#ff5f56;" title="메모 삭제">🗑️</button>
+            </div>
           </div>
-        </div>
-      </div>
-
-      <!-- Photo Lightbox -->
-      <div id="photo-lightbox">
-        <div class="lightbox-bar">
-          <span id="lb-title" style="font-weight:600; color:#fff;">Photo Viewer</span>
-          <button onclick="closeLightbox()" style="background:none; border:none; color:#fff; font-size:18px; cursor:pointer;">✕</button>
-        </div>
-        <div class="lightbox-body">
-          <img id="lb-img" src="" alt="Full view" />
+          <textarea class="editor-body-textarea" id="note-body-input" placeholder="메모 내용을 자유롭게 입력하세요. 입력 즉시 로컬에 영구 저장됩니다..." oninput="handleNoteEdit()"></textarea>
         </div>
       </div>
     </div>
-    <div class="resize-handle resize-handle-r" onmousedown="startResizeWindow(event, 'window-photos', 'r')"></div>
-    <div class="resize-handle resize-handle-b" onmousedown="startResizeWindow(event, 'window-photos', 'b')"></div>
-    <div class="resize-handle resize-handle-br" onmousedown="startResizeWindow(event, 'window-photos', 'br')"></div>
+    <div class="resize-handle resize-handle-r" onmousedown="startResizeWindow(event, 'window-notes', 'r')"></div>
+    <div class="resize-handle resize-handle-b" onmousedown="startResizeWindow(event, 'window-notes', 'b')"></div>
+    <div class="resize-handle resize-handle-br" onmousedown="startResizeWindow(event, 'window-notes', 'br')"></div>
   </div>
 
-  <!-- ─── Window: Safari Browser ─── -->
-  <div class="app-window" id="window-safari" style="width: 860px; height: 580px; top: 75px; left: 160px;">
-    <div class="window-titlebar" onmousedown="startDragWindow(event, 'window-safari')">
-      <div class="traffic-lights">
-        <button class="traffic-btn btn-close" onclick="closeApp('safari')"></button>
-        <button class="traffic-btn btn-min" onclick="minimizeApp('safari')"></button>
-        <button class="traffic-btn btn-max" onclick="maximizeApp('safari')"></button>
-      </div>
-      <div class="window-title">Safari — Start Page</div>
-      <div></div>
-    </div>
-    <div class="window-body" style="padding:14px; display:flex; flex-direction:column;">
-      <div class="safari-toolbar">
-        <div class="safari-nav-btn" onclick="safariHome()">❮</div>
-        <div class="safari-nav-btn" onclick="safariReload()">↻</div>
-        <div class="safari-url-bar">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          <span id="safari-url-text">https://davhave.com/projects/kct</span>
-        </div>
-      </div>
-
-      <div id="safari-content-area" style="flex:1; border-radius:8px; overflow:hidden; border:1px solid rgba(255,255,255,0.1); background:#0d1117;">
-        <iframe id="safari-frame" src="/projects/kct" style="width:100%; height:100%; border:none;"></iframe>
-      </div>
-    </div>
-    <div class="resize-handle resize-handle-r" onmousedown="startResizeWindow(event, 'window-safari', 'r')"></div>
-    <div class="resize-handle resize-handle-b" onmousedown="startResizeWindow(event, 'window-safari', 'b')"></div>
-    <div class="resize-handle resize-handle-br" onmousedown="startResizeWindow(event, 'window-safari', 'br')"></div>
-  </div>
-
-  <!-- ─── Window: Finder ─── -->
-  <div class="app-window" id="window-finder" style="width: 780px; height: 500px; top: 90px; left: 190px;">
+  <!-- ─── Window: Finder (실제 파일 업로드, 저장, 다운로드) ─── -->
+  <div class="app-window" id="window-finder" style="width: 820px; height: 520px; top: 80px; left: 160px;">
     <div class="window-titlebar" onmousedown="startDragWindow(event, 'window-finder')">
       <div class="traffic-lights">
         <button class="traffic-btn btn-close" onclick="closeApp('finder')"></button>
         <button class="traffic-btn btn-min" onclick="minimizeApp('finder')"></button>
         <button class="traffic-btn btn-max" onclick="maximizeApp('finder')"></button>
       </div>
-      <div class="window-title">Finder — Documents</div>
+      <div class="window-title">Finder — Documents &amp; User Files</div>
       <div></div>
     </div>
     <div class="window-body" style="padding:0; overflow:hidden;">
       <div class="finder-container">
         <div class="finder-sidebar">
           <div class="photos-nav-header">즐겨찾기</div>
-          <div class="photos-nav-item active">📁 <span>문서 (Documents)</span></div>
+          <div class="photos-nav-item active" onclick="filterFinderCategory('docs', this)">📁 <span>문서 (Documents)</span></div>
           <div class="photos-nav-item" onclick="openApp('photos')">🖼️ <span>사진 (Photos)</span></div>
-          <div class="photos-nav-item" onclick="window.open('/projects', '_blank')">🌐 <span>프로젝트 허브</span></div>
+          <div class="photos-nav-item" onclick="filterFinderCategory('uploads', this)">💾 <span>업로드된 파일</span></div>
           <div class="photos-nav-header" style="margin-top:10px;">iCloud</div>
           <div class="photos-nav-item">☁️ <span>iCloud Drive</span></div>
         </div>
         <div class="finder-main">
-          <div class="finder-files-grid">
-            <div class="finder-file" ondblclick="openApp('calc')">
-              <div class="finder-file-icon">🧮</div>
-              <div class="finder-file-name">KCT_Calculator.app</div>
-            </div>
-            <div class="finder-file" ondblclick="openApp('specimen')">
-              <div class="finder-file-icon">🧪</div>
-              <div class="finder-file-name">ASTM_D638_Lab.app</div>
-            </div>
-            <div class="finder-file" ondblclick="openLightbox('https://macos27.kimi.page/photo-4.jpg', 'Curtain Wall Facade.jpg')">
-              <div class="finder-file-icon"><img src="https://macos27.kimi.page/photo-4.jpg" alt="Photo" /></div>
-              <div class="finder-file-name">Curtain_Wall.jpg</div>
-            </div>
-            <div class="finder-file" ondblclick="openLightbox('https://macos27.kimi.page/photo-1.jpg', 'Yosemite Sunset.jpg')">
-              <div class="finder-file-icon"><img src="https://macos27.kimi.page/photo-1.jpg" alt="Photo" /></div>
-              <div class="finder-file-name">Yosemite.jpg</div>
-            </div>
-            <div class="finder-file" ondblclick="openApp('notes')">
-              <div class="finder-file-icon">📄</div>
-              <div class="finder-file-name">Edge_Architecture.md</div>
-            </div>
-            <div class="finder-file" ondblclick="openApp('about')">
-              <div class="finder-file-icon">📝</div>
-              <div class="finder-file-name">README.txt</div>
+          <div class="finder-toolbar">
+            <button class="notes-action-btn" onclick="triggerRealFileUpload()">⬆️ 파일 업로드 (내 컴퓨터)</button>
+            <button class="notes-action-btn" onclick="createBlankFile()">+ 새 텍스트 파일</button>
+            <button class="notes-action-btn" onclick="downloadSelectedFile()">📥 다운로드</button>
+            <button class="notes-action-btn" onclick="deleteSelectedFile()" style="color:#ff5f56;">🗑️ 삭제</button>
+          </div>
+          <div class="finder-content" ondragover="handleDragOver(event)" ondrop="handleFileDrop(event)">
+            <div class="finder-files-grid" id="finder-grid">
+              <!-- Rendered by JS -->
             </div>
           </div>
         </div>
@@ -1602,72 +1406,141 @@ export function renderMacOsPage() {
     <div class="resize-handle resize-handle-br" onmousedown="startResizeWindow(event, 'window-finder', 'br')"></div>
   </div>
 
-  <!-- ─── Window: Music (음악 앱) ─── -->
-  <div class="app-window" id="window-music" style="width: 760px; height: 500px; top: 110px; left: 210px;">
-    <div class="window-titlebar" onmousedown="startDragWindow(event, 'window-music')">
+  <!-- ─── Window: Calendar.app (일정 관리자) ─── -->
+  <div class="app-window" id="window-calendar" style="width: 780px; height: 540px; top: 90px; left: 190px;">
+    <div class="window-titlebar" onmousedown="startDragWindow(event, 'window-calendar')">
       <div class="traffic-lights">
-        <button class="traffic-btn btn-close" onclick="closeApp('music')"></button>
-        <button class="traffic-btn btn-min" onclick="minimizeApp('music')"></button>
-        <button class="traffic-btn btn-max" onclick="maximizeApp('music')"></button>
+        <button class="traffic-btn btn-close" onclick="closeApp('calendar')"></button>
+        <button class="traffic-btn btn-min" onclick="minimizeApp('calendar')"></button>
+        <button class="traffic-btn btn-max" onclick="maximizeApp('calendar')"></button>
       </div>
-      <div class="window-title">음악 — Studio Ambient Tracks</div>
+      <div class="window-title">캘린더 — 2026년 9월</div>
+      <div></div>
+    </div>
+    <div class="window-body">
+      <div class="cal-app-header">
+        <div class="cal-month-nav">
+          <button class="notes-action-btn" onclick="changeCalMonth(-1)">❮</button>
+          <span id="cal-app-month-title">2026년 9월</span>
+          <button class="notes-action-btn" onclick="changeCalMonth(1)">❯</button>
+        </div>
+        <button class="notes-action-btn" onclick="promptAddEvent()">+ 새 일정 추가</button>
+      </div>
+      <div class="widget-cal-grid" style="font-size:12px; margin-bottom:8px;">
+        <span class="cal-day-label" style="color:#ff5f56;">일</span>
+        <span class="cal-day-label">월</span>
+        <span class="cal-day-label">화</span>
+        <span class="cal-day-label">수</span>
+        <span class="cal-day-label">목</span>
+        <span class="cal-day-label">금</span>
+        <span class="cal-day-label">토</span>
+      </div>
+      <div class="cal-full-grid" id="cal-full-matrix">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+    <div class="resize-handle resize-handle-r" onmousedown="startResizeWindow(event, 'window-calendar', 'r')"></div>
+    <div class="resize-handle resize-handle-b" onmousedown="startResizeWindow(event, 'window-calendar', 'b')"></div>
+    <div class="resize-handle resize-handle-br" onmousedown="startResizeWindow(event, 'window-calendar', 'br')"></div>
+  </div>
+
+  <!-- ─── Window: Clock.app (세계 시계 & 스톱워치 & 타이머) ─── -->
+  <div class="app-window" id="window-clock" style="width: 640px; height: 460px; top: 100px; left: 220px;">
+    <div class="window-titlebar" onmousedown="startDragWindow(event, 'window-clock')">
+      <div class="traffic-lights">
+        <button class="traffic-btn btn-close" onclick="closeApp('clock')"></button>
+        <button class="traffic-btn btn-min" onclick="minimizeApp('clock')"></button>
+        <button class="traffic-btn btn-max" onclick="maximizeApp('clock')"></button>
+      </div>
+      <div class="window-title">시계 — 세계 시계 &amp; 스톱워치</div>
+      <div></div>
+    </div>
+    <div class="window-body">
+      <div class="clock-tab-bar">
+        <button class="clock-tab-btn active" onclick="switchClockTab('stopwatch', this)">스톱워치</button>
+        <button class="clock-tab-btn" onclick="switchClockTab('world', this)">세계 시계</button>
+        <button class="clock-tab-btn" onclick="switchClockTab('timer', this)">타이머</button>
+      </div>
+
+      <!-- Tab: Stopwatch -->
+      <div id="tab-stopwatch">
+        <div class="stopwatch-display" id="sw-display">00:00.00</div>
+        <div class="clock-ctrl-btns">
+          <button id="sw-btn-start" onclick="toggleStopwatch()" style="width:72px; height:72px; border-radius:50%; background:#10b981; color:#fff; border:none; font-weight:700; cursor:pointer;">시작</button>
+          <button id="sw-btn-reset" onclick="resetStopwatch()" style="width:72px; height:72px; border-radius:50%; background:#334155; color:#fff; border:none; font-weight:700; cursor:pointer;">재설정</button>
+        </div>
+      </div>
+
+      <!-- Tab: World Clock -->
+      <div id="tab-world" style="display:none;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+          <div class="calc-card">
+            <div style="font-size:11px; color:#94a3b8;">대한민국 (KST)</div>
+            <div style="font-size:24px; font-weight:800; color:#fff;" id="world-seoul">13:20</div>
+            <div style="font-size:11px; color:#38bdf8;">서울 (오늘, +0시간)</div>
+          </div>
+          <div class="calc-card">
+            <div style="font-size:11px; color:#94a3b8;">미국 태평양 (PDT)</div>
+            <div style="font-size:24px; font-weight:800; color:#fff;" id="world-cupertino">21:20</div>
+            <div style="font-size:11px; color:#38bdf8;">쿠퍼티노 (어제, -16시간)</div>
+          </div>
+          <div class="calc-card">
+            <div style="font-size:11px; color:#94a3b8;">영국 (BST)</div>
+            <div style="font-size:24px; font-weight:800; color:#fff;" id="world-london">05:20</div>
+            <div style="font-size:11px; color:#38bdf8;">런던 (오늘, -8시간)</div>
+          </div>
+          <div class="calc-card">
+            <div style="font-size:11px; color:#94a3b8;">일본 (JST)</div>
+            <div style="font-size:24px; font-weight:800; color:#fff;" id="world-tokyo">13:20</div>
+            <div style="font-size:11px; color:#38bdf8;">도쿄 (오늘, +0시간)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab: Timer -->
+      <div id="tab-timer" style="display:none; text-align:center;">
+        <div class="stopwatch-display" id="timer-display">05:00</div>
+        <div class="clock-ctrl-btns">
+          <button onclick="startPresetTimer(300)" class="notes-action-btn">5분</button>
+          <button onclick="startPresetTimer(600)" class="notes-action-btn">10분</button>
+          <button onclick="startPresetTimer(1500)" class="notes-action-btn">25분 (뽀모도로)</button>
+          <button onclick="stopTimer()" class="notes-action-btn" style="color:#ff5f56;">정지</button>
+        </div>
+      </div>
+    </div>
+    <div class="resize-handle resize-handle-r" onmousedown="startResizeWindow(event, 'window-clock', 'r')"></div>
+    <div class="resize-handle resize-handle-b" onmousedown="startResizeWindow(event, 'window-clock', 'b')"></div>
+    <div class="resize-handle resize-handle-br" onmousedown="startResizeWindow(event, 'window-clock', 'br')"></div>
+  </div>
+
+  <!-- ─── Window: Photos (온라인 사진 갤러리) ─── -->
+  <div class="app-window" id="window-photos" style="width: 820px; height: 560px; top: 60px; left: 120px;">
+    <div class="window-titlebar" onmousedown="startDragWindow(event, 'window-photos')">
+      <div class="traffic-lights">
+        <button class="traffic-btn btn-close" onclick="closeApp('photos')"></button>
+        <button class="traffic-btn btn-min" onclick="minimizeApp('photos')"></button>
+        <button class="traffic-btn btn-max" onclick="maximizeApp('photos')"></button>
+      </div>
+      <div class="window-title">사진 — Architectural &amp; Engineering Gallery</div>
       <div></div>
     </div>
     <div class="window-body" style="padding:0; overflow:hidden;">
-      <div class="music-container">
-        <div class="music-sidebar">
-          <div class="photos-nav-header">Apple Music</div>
-          <div class="photos-nav-item active">🎧 <span>지금 듣기</span></div>
-          <div class="photos-nav-item">📻 <span>라디오</span></div>
-          <div class="photos-nav-header" style="margin-top:10px;">보관함</div>
-          <div class="photos-nav-item">💿 <span>앨범</span></div>
-          <div class="photos-nav-item">🎵 <span>재생 목록</span></div>
+      <div class="finder-container">
+        <div class="finder-sidebar">
+          <div class="photos-nav-header">보관함</div>
+          <div class="photos-nav-item active" onclick="filterPhotos('all', this)">🖼️ <span>모든 사진</span></div>
+          <div class="photos-nav-item" onclick="filterPhotos('arch', this)">🏢 <span>건축 &amp; 커튼월</span></div>
+          <div class="photos-nav-item" onclick="filterPhotos('nature', this)">🌲 <span>풍경 &amp; 요세미티</span></div>
+          <div class="photos-nav-item" onclick="filterPhotos('studio', this)">💻 <span>스튜디오</span></div>
         </div>
-        <div class="music-main">
-          <div>
-            <h3 style="font-size:16px; font-weight:700; color:#fff; margin-bottom:12px;">선정된 엔지니어링 앨범</h3>
-            <div class="album-grid">
-              <div class="album-card" onclick="playTrack('Silicon Glueline Drift', 'DAVHAVE Sessions', 'https://macos27.kimi.page/cover-1.jpg')">
-                <div class="album-cover"><img src="https://macos27.kimi.page/cover-1.jpg" alt="Cover 1" /></div>
-                <div class="album-title">Silicon Drift</div>
-                <div class="album-artist">DAVHAVE Sessions</div>
-              </div>
-              <div class="album-card" onclick="playTrack('Edge 0ms Ambient', 'Oscar Lee', 'https://macos27.kimi.page/cover-2.jpg')">
-                <div class="album-cover"><img src="https://macos27.kimi.page/cover-2.jpg" alt="Cover 2" /></div>
-                <div class="album-title">Edge 0ms Ambient</div>
-                <div class="album-artist">Oscar Lee</div>
-              </div>
-              <div class="album-card" onclick="playTrack('ASTM Tensile Resonance', 'Lab Acoustics', 'https://macos27.kimi.page/cover-3.jpg')">
-                <div class="album-cover"><img src="https://macos27.kimi.page/cover-3.jpg" alt="Cover 3" /></div>
-                <div class="album-title">Tensile Resonance</div>
-                <div class="album-artist">Lab Acoustics</div>
-              </div>
-              <div class="album-card" onclick="playTrack('Tahoe Skyline', 'Pacific Synthesis', 'https://macos27.kimi.page/cover-4.jpg')">
-                <div class="album-cover"><img src="https://macos27.kimi.page/cover-4.jpg" alt="Cover 4" /></div>
-                <div class="album-title">Tahoe Skyline</div>
-                <div class="album-artist">Pacific Synthesis</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="player-dock">
-            <img id="player-cover" src="https://macos27.kimi.page/cover-1.jpg" style="width:48px; height:48px; border-radius:6px; object-fit:cover;" alt="Playing" />
-            <div style="flex:1;">
-              <div id="player-title" style="font-weight:600; font-size:13px; color:#fff;">Silicon Glueline Drift</div>
-              <div id="player-artist" style="font-size:11px; color:#94a3b8;">DAVHAVE Sessions</div>
-            </div>
-            <div style="display:flex; align-items:center; gap:12px; font-size:18px;">
-              <span style="cursor:pointer;">⏮</span>
-              <span id="player-playbtn" onclick="togglePlayState()" style="cursor:pointer; width:34px; height:34px; border-radius:50%; background:#fff; color:#000; display:flex; align-items:center; justify-content:center; font-size:14px;">▶</span>
-              <span style="cursor:pointer;">⏭</span>
-            </div>
-          </div>
+        <div class="finder-main" style="padding:16px; overflow-y:auto;">
+          <div class="finder-files-grid" id="photos-grid" style="grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));"></div>
         </div>
       </div>
     </div>
-    <div class="resize-handle resize-handle-r" onmousedown="startResizeWindow(event, 'window-music', 'r')"></div>
-    <div class="resize-handle resize-handle-b" onmousedown="startResizeWindow(event, 'window-music', 'b')"></div>
-    <div class="resize-handle resize-handle-br" onmousedown="startResizeWindow(event, 'window-music', 'br')"></div>
+    <div class="resize-handle resize-handle-r" onmousedown="startResizeWindow(event, 'window-photos', 'r')"></div>
+    <div class="resize-handle resize-handle-b" onmousedown="startResizeWindow(event, 'window-photos', 'b')"></div>
+    <div class="resize-handle resize-handle-br" onmousedown="startResizeWindow(event, 'window-photos', 'br')"></div>
   </div>
 
   <!-- ─── Window: KCT Calculator ─── -->
@@ -1682,9 +1555,6 @@ export function renderMacOsPage() {
       <div></div>
     </div>
     <div class="window-body">
-      <div style="margin-bottom:14px; font-size:12px; color:#cbd5e1;">
-        Dow Chemical 및 ASTM C1401 기준 <strong>풍하중 구조 바이트(Structural Bite)</strong> 및 <strong>글루라인 두께</strong> 실시간 연산기
-      </div>
       <div class="calc-grid">
         <div class="calc-card">
           <div class="calc-title">📐 설계 하중 및 유리 치수 입력</div>
@@ -1701,7 +1571,7 @@ export function renderMacOsPage() {
             <input type="number" step="10" value="2400" class="form-input" id="calc-long" oninput="runSiliconCalc()" />
           </div>
           <div class="form-group">
-            <label class="form-label">설계 허용응력 Fd (기본 140 kPa / 20 psi)</label>
+            <label class="form-label">설계 허용응력 Fd (140 kPa / 20 psi)</label>
             <input type="number" step="5" value="140" class="form-input" id="calc-fd" oninput="runSiliconCalc()" />
           </div>
         </div>
@@ -1714,19 +1584,15 @@ export function renderMacOsPage() {
               <span class="res-val highlight" id="res-bite">10.7 mm</span>
             </div>
             <div class="res-metric">
-              <span>권장 글루라인 두께 (Glueline):</span>
+              <span>권장 글루라인 두께:</span>
               <span class="res-val" id="res-glueline">6.0 mm</span>
             </div>
             <div class="res-metric">
               <span>구조 검증 상태:</span>
-              <span class="res-val" style="color:#4ade80;" id="res-status">PASS (규격 충족)</span>
+              <span class="res-val" style="color:#4ade80;" id="res-status">PASS (ASTM 규격 충족)</span>
             </div>
           </div>
-          <div style="margin-top:14px; padding:10px; background:rgba(0,0,0,0.3); border-radius:6px; font-size:11px; line-height:1.5; color:#94a3b8;">
-            * 공식: <code>B = (W × a) / (2 × Fd)</code> (최소 규격 6.0mm 이상 강제 적용)<br/>
-            * 현장 시공 시 안전율(SF 2.0 이상)을 감안하여 설계하십시오.
-          </div>
-          <div style="margin-top:12px; display:flex; gap:8px;">
+          <div style="margin-top:14px; display:flex; gap:8px;">
             <button onclick="window.open('/projects/kct', '_blank')" style="background:var(--accent-orange); color:#fff; border:none; padding:7px 14px; border-radius:6px; font-size:11.5px; font-weight:600; cursor:pointer;">KCT 정식 플랫폼 열기 ↗</button>
           </div>
         </div>
@@ -1749,43 +1615,18 @@ export function renderMacOsPage() {
       <div></div>
     </div>
     <div class="window-body">
-      <div class="specimen-types">
-        <div class="specimen-chip active" onclick="selectSpecimenType('Type I', this)">ASTM D638 Type I (표준)</div>
-        <div class="specimen-chip" onclick="selectSpecimenType('Type II', this)">Type II (고강도)</div>
-        <div class="specimen-chip" onclick="selectSpecimenType('Type IV', this)">Type IV (비강도)</div>
-        <div class="specimen-chip" onclick="selectSpecimenType('Type V', this)">Type V (초소형 마이크로)</div>
-        <div class="specimen-chip" onclick="selectSpecimenType('ASTM C1401', this)">ASTM C1401 H-Shape (접착전단)</div>
-      </div>
-
-      <div class="specimen-canvas-wrap">
-        <svg id="specimen-svg" width="100%" height="150" viewBox="0 0 600 150">
-          <defs>
-            <linearGradient id="specimenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.85"/>
-              <stop offset="100%" stop-color="#0284c7" stop-opacity="0.85"/>
-            </linearGradient>
-          </defs>
-          <path d="M 50 40 L 150 40 Q 180 40 200 60 L 400 60 Q 420 40 450 40 L 550 40 L 550 110 L 450 110 Q 420 110 400 90 L 200 90 Q 180 110 150 110 L 50 110 Z" fill="url(#specimenGrad)" stroke="#67e8f9" stroke-width="2"/>
-          <line x1="200" y1="20" x2="400" y2="20" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4"/>
-          <text x="300" y="15" fill="#f59e0b" font-size="11" text-anchor="middle" font-family="monospace">G = 50.0 mm (Gauge Length)</text>
-          <line x1="50" y1="135" x2="550" y2="135" stroke="#94a3b8" stroke-width="1.5"/>
-          <text x="300" y="148" fill="#94a3b8" font-size="11" text-anchor="middle" font-family="monospace">LO = 165.0 mm (전체 길이)</text>
-        </svg>
-      </div>
-
       <div class="calc-grid">
         <div class="calc-card">
-          <div class="calc-title">📊 기계적 물성 파라미터 (<span id="specimen-name-lbl">Type I</span>)</div>
-          <div class="res-metric"><span>전체 길이 (LO):</span><span class="res-val" id="spec-lo">165.0 mm</span></div>
-          <div class="res-metric"><span>게이지 길이 (G):</span><span class="res-val" id="spec-g">50.0 mm</span></div>
-          <div class="res-metric"><span>협착부 폭 (W):</span><span class="res-val" id="spec-w">13.0 mm</span></div>
-          <div class="res-metric"><span>그립부 폭 (WO):</span><span class="res-val" id="spec-wo">19.0 mm</span></div>
+          <div class="calc-title">📊 기계적 물성 파라미터 (ASTM D638 Type I)</div>
+          <div class="res-metric"><span>전체 길이 (LO):</span><span class="res-val">165.0 mm</span></div>
+          <div class="res-metric"><span>게이지 길이 (G):</span><span class="res-val">50.0 mm</span></div>
+          <div class="res-metric"><span>협착부 폭 (W):</span><span class="res-val">13.0 mm</span></div>
           <div class="res-metric"><span>가공 공차:</span><span class="res-val" style="color:#4ade80;">±0.05 mm (ISO 527)</span></div>
         </div>
         <div class="calc-card">
           <div class="calc-title">🔬 3D 정밀 가공 및 인장 시험 의뢰</div>
           <p style="font-size:12px; color:#cbd5e1; line-height:1.6; margin-bottom:12px;">
-            ASTM D638 / ASTM C1401 인장 시편을 3D 프린팅(PETG/CF/SLA 레진) 및 CNC 밀링으로 정밀 가공합니다. DIC 광학 스트레인 분석용 스페클 패턴 코팅 옵션을 지원합니다.
+            ASTM D638 / ASTM C1401 인장 시편을 3D 프린팅(PETG/CF/SLA 레진) 및 CNC 밀링으로 정밀 가공합니다.
           </p>
           <button onclick="window.open('/projects/kct/specimens', '_blank')" style="background:var(--accent-blue); color:#fff; border:none; padding:8px 14px; border-radius:6px; font-size:11.5px; font-weight:600; cursor:pointer;">시편 제작 견적 및 FAQ 허브 ↗</button>
         </div>
@@ -1796,7 +1637,7 @@ export function renderMacOsPage() {
     <div class="resize-handle resize-handle-br" onmousedown="startResizeWindow(event, 'window-specimen', 'br')"></div>
   </div>
 
-  <!-- ─── Window: Terminal (davhave-cli) ─── -->
+  <!-- ─── Window: Terminal ─── -->
   <div class="app-window" id="window-terminal" style="width: 640px; height: 430px; top: 110px; left: 250px;">
     <div class="window-titlebar" onmousedown="startDragWindow(event, 'window-terminal')">
       <div class="traffic-lights">
@@ -1808,7 +1649,7 @@ export function renderMacOsPage() {
       <div></div>
     </div>
     <div class="window-body terminal-body" onclick="document.getElementById('terminal-cli-input').focus()">
-      <div class="terminal-output" id="terminal-screen">DAVHAVE Edge Architecture Shell (macOS 27 Edition)
+      <div class="terminal-output" id="terminal-screen">DAVHAVE Edge Architecture Shell (macOS 27 Full Suite)
 Type "help" to view available studio commands.
 </div>
       <div class="terminal-prompt-line">
@@ -1821,46 +1662,7 @@ Type "help" to view available studio commands.
     <div class="resize-handle resize-handle-br" onmousedown="startResizeWindow(event, 'window-terminal', 'br')"></div>
   </div>
 
-  <!-- ─── Window: Notes ─── -->
-  <div class="app-window" id="window-notes" style="width: 760px; height: 500px; top: 85px; left: 170px;">
-    <div class="window-titlebar" onmousedown="startDragWindow(event, 'window-notes')">
-      <div class="traffic-lights">
-        <button class="traffic-btn btn-close" onclick="closeApp('notes')"></button>
-        <button class="traffic-btn btn-min" onclick="minimizeApp('notes')"></button>
-        <button class="traffic-btn btn-max" onclick="maximizeApp('notes')"></button>
-      </div>
-      <div class="window-title">메모 — DAVHAVE Engineering Insights</div>
-      <div></div>
-    </div>
-    <div class="window-body" style="padding:0; overflow:hidden;">
-      <div class="notes-layout">
-        <div class="notes-sidebar">
-          <div class="notes-item active" onclick="loadNote(0, this)">
-            <div class="notes-item-title">Cloudflare 0ms 엣지 아키텍처</div>
-            <div class="notes-item-date">2026.09.28 · 시스템 설계</div>
-          </div>
-          <div class="notes-item" onclick="loadNote(1, this)">
-            <div class="notes-item-title">실리콘 구조 바이트 공식 해설</div>
-            <div class="notes-item-date">2026.09.25 · 산업 공학</div>
-          </div>
-          <div class="notes-item" onclick="loadNote(2, this)">
-            <div class="notes-item-title">SEO URL 설계: 해시 앵커 배제</div>
-            <div class="notes-item-date">2026.09.20 · 프론트엔드</div>
-          </div>
-          <div class="notes-item" onclick="loadNote(3, this)">
-            <div class="notes-item-title">AI 에이전틱 개발 및 프롬프트</div>
-            <div class="notes-item-date">2026.09.15 · 인공지능</div>
-          </div>
-        </div>
-        <div class="notes-content" id="notes-view-area"></div>
-      </div>
-    </div>
-    <div class="resize-handle resize-handle-r" onmousedown="startResizeWindow(event, 'window-notes', 'r')"></div>
-    <div class="resize-handle resize-handle-b" onmousedown="startResizeWindow(event, 'window-notes', 'b')"></div>
-    <div class="resize-handle resize-handle-br" onmousedown="startResizeWindow(event, 'window-notes', 'br')"></div>
-  </div>
-
-  <!-- ─── Window: System Settings (Wallpapers from macos27.kimi.page) ─── -->
+  <!-- ─── Window: System Settings ─── -->
   <div class="app-window" id="window-settings" style="width: 620px; height: 480px; top: 100px; left: 200px;">
     <div class="window-titlebar" onmousedown="startDragWindow(event, 'window-settings')">
       <div class="traffic-lights">
@@ -1874,43 +1676,23 @@ Type "help" to view available studio commands.
     <div class="window-body">
       <div class="settings-section">
         <div class="settings-title">데스크톱 배경화면 선택 (공식 온라인 고화질 팩)</div>
-        <div class="wp-thumbnails">
-          <div class="wp-thumb active" style="background-image: url('https://macos27.kimi.page/wallpaper-tahoe-day.jpg');" onclick="setOnlineWallpaper('https://macos27.kimi.page/wallpaper-tahoe-day.jpg', this)">
-            <span>Tahoe Day</span>
-          </div>
-          <div class="wp-thumb" style="background-image: url('https://macos27.kimi.page/wallpaper-glass-dark.jpg');" onclick="setOnlineWallpaper('https://macos27.kimi.page/wallpaper-glass-dark.jpg', this)">
-            <span>Glass Dark</span>
-          </div>
-          <div class="wp-thumb" style="background-image: url('https://macos27.kimi.page/wallpaper-glass-light.jpg');" onclick="setOnlineWallpaper('https://macos27.kimi.page/wallpaper-glass-light.jpg', this)">
-            <span>Glass Light</span>
-          </div>
-          <div class="wp-thumb" style="background-image: url('https://macos27.kimi.page/wallpaper-aurora.jpg');" onclick="setOnlineWallpaper('https://macos27.kimi.page/wallpaper-aurora.jpg', this)">
-            <span>Aurora</span>
-          </div>
-          <div class="wp-thumb" style="background-image: url('https://macos27.kimi.page/wallpaper-bigsur.jpg');" onclick="setOnlineWallpaper('https://macos27.kimi.page/wallpaper-bigsur.jpg', this)">
-            <span>Big Sur</span>
-          </div>
+        <div style="display:grid; grid-template-columns: repeat(5, 1fr); gap:10px;">
+          <div class="cal-day" style="height:70px; background-size:cover; background-position:center; background-image: url('https://macos27.kimi.page/wallpaper-tahoe-day.jpg'); border-radius:8px; border:2px solid var(--accent-blue);" onclick="setOnlineWallpaper('https://macos27.kimi.page/wallpaper-tahoe-day.jpg', this)"></div>
+          <div class="cal-day" style="height:70px; background-size:cover; background-position:center; background-image: url('https://macos27.kimi.page/wallpaper-glass-dark.jpg'); border-radius:8px;" onclick="setOnlineWallpaper('https://macos27.kimi.page/wallpaper-glass-dark.jpg', this)"></div>
+          <div class="cal-day" style="height:70px; background-size:cover; background-position:center; background-image: url('https://macos27.kimi.page/wallpaper-glass-light.jpg'); border-radius:8px;" onclick="setOnlineWallpaper('https://macos27.kimi.page/wallpaper-glass-light.jpg', this)"></div>
+          <div class="cal-day" style="height:70px; background-size:cover; background-position:center; background-image: url('https://macos27.kimi.page/wallpaper-aurora.jpg'); border-radius:8px;" onclick="setOnlineWallpaper('https://macos27.kimi.page/wallpaper-aurora.jpg', this)"></div>
+          <div class="cal-day" style="height:70px; background-size:cover; background-position:center; background-image: url('https://macos27.kimi.page/wallpaper-bigsur.jpg'); border-radius:8px;" onclick="setOnlineWallpaper('https://macos27.kimi.page/wallpaper-bigsur.jpg', this)"></div>
         </div>
       </div>
-
-      <div class="settings-section">
-        <div class="settings-title">시스템 정보</div>
-        <div style="background:rgba(0,0,0,0.3); border-radius:8px; padding:14px; font-size:12px; line-height:1.8;">
-          <div><strong>운영체제:</strong> macOS 27 (DAVHAVE Liquid Glass Edition)</div>
-          <div><strong>엔진 아키텍처:</strong> Cloudflare Workers 0ms Edge Compute</div>
-          <div><strong>데이터베이스:</strong> Cloudflare D1 Serverless SQL</div>
-          <div><strong>수석 아키텍트:</strong> Oscar Lee (DAVHAVE)</div>
-          <div><strong>포지셔닝:</strong> The Precision Engineering Laboratory</div>
-        </div>
-      </div>
-
-      <div style="text-align:right;">
-        <button onclick="window.location.href='/'" style="background:rgba(255,255,255,0.12); color:#fff; border:1px solid rgba(255,255,255,0.2); padding:7px 16px; border-radius:6px; cursor:pointer;">기본 웹사이트로 돌아가기</button>
+      <div style="margin-top:20px; background:rgba(0,0,0,0.3); border-radius:8px; padding:14px; font-size:12px; line-height:1.8;">
+        <div><strong>운영체제:</strong> macOS 27 (DAVHAVE Liquid Glass Full Suite)</div>
+        <div><strong>로컬 스토리지:</strong> 영구 파일 및 메모 자동 동기화 활성화됨</div>
+        <div><strong>수석 아키텍트:</strong> Oscar Lee (DAVHAVE)</div>
       </div>
     </div>
   </div>
 
-  <!-- ─── Window: About / README ─── -->
+  <!-- ─── Window: About ─── -->
   <div class="app-window" id="window-about" style="width: 520px; height: 390px; top: 120px; left: 240px;">
     <div class="window-titlebar" onmousedown="startDragWindow(event, 'window-about')">
       <div class="traffic-lights">
@@ -1924,14 +1706,13 @@ Type "help" to view available studio commands.
     <div class="window-body" style="font-family:var(--font-mono); font-size:12px; line-height:1.7;">
       <h3 style="color:var(--accent-orange); margin-bottom:8px;"># DAVHAVE PRECISION ENGINEERING STUDIO</h3>
       <p style="margin-bottom:12px;">
-        DAVHAVE는 실제 산업 현장과 비즈니스의 문제를 해결하는 고성능 모바일 앱, 글로벌 엣지 웹 플랫폼, AI/에이전틱 소프트웨어를 설계·구축합니다.
+        DAVHAVE macOS 27 에디션에 파일 시스템 및 메모 에디터, 캘린더, 시계, 위젯 엔진이 완벽히 통합되었습니다.
       </p>
-      <p style="margin-bottom:12px;">
-        [macOS 27 고도화 업데이트]<br/>
-        - 실제 온라인 고화질 배경화면(Tahoe, Glass, Aurora, Big Sur) 완벽 연동<br/>
-        - 실제 사진 갤러리(Photos.app) 및 음악 플레이어(Music.app) 탑재<br/>
-        - Liquid Glass SVG 굴절 필터 및 네이티브 스퀴클 아이콘 적용
-      </p>
+      <ul style="padding-left:18px; margin-bottom:16px;">
+        <li><strong>파일 업로드 &amp; 다운로드:</strong> Finder에서 내 PC 파일을 올리고 받을 수 있습니다.</li>
+        <li><strong>메모장 에디터:</strong> 메모 생성, 실시간 편집, 로컬 영구 저장이 동작합니다.</li>
+        <li><strong>데스크톱 위젯:</strong> 실시간 아날로그 시계, 달력, 날씨, 스티키 노트 지원.</li>
+      </ul>
       <button onclick="window.location.href='/'" style="background:var(--accent-blue); color:#fff; border:none; padding:8px 16px; border-radius:6px; font-weight:600; cursor:pointer;">웹 표준 홈 열기 ↗</button>
     </div>
   </div>
@@ -1941,7 +1722,7 @@ Type "help" to view available studio commands.
     <div id="spotlight-box">
       <div class="spotlight-input-row">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <input type="text" id="spotlight-input" class="spotlight-input" placeholder="Spotlight 검색 (앱, 계산기, 문서...)" autocomplete="off" oninput="filterSpotlight(this.value)" onkeydown="handleSpotlightKey(event)" />
+        <input type="text" id="spotlight-input" class="spotlight-input" placeholder="Spotlight 검색 (앱, 파일, 메모, 계산기...)" autocomplete="off" oninput="filterSpotlight(this.value)" onkeydown="handleSpotlightKey(event)" />
       </div>
       <div class="spotlight-results" id="spotlight-results"></div>
     </div>
@@ -1959,13 +1740,34 @@ Type "help" to view available studio commands.
         <div class="dock-tooltip">Finder</div>
       </div>
 
-      <!-- Safari -->
-      <div class="dock-item" onclick="openApp('safari')" data-app="safari" title="Safari">
-        <div class="app-squircle sq-safari">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="#ff3b30" stroke="#fff"></polygon></svg>
+      <!-- Notes -->
+      <div class="dock-item" onclick="openApp('notes')" data-app="notes" title="메모">
+        <div class="app-squircle sq-notes">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2"><path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z"></path><path d="M15 3v5h5M9 13h6M9 17h4"></path></svg>
         </div>
         <div class="dock-dot"></div>
-        <div class="dock-tooltip">Safari</div>
+        <div class="dock-tooltip">메모.app</div>
+      </div>
+
+      <!-- Calendar -->
+      <div class="dock-item" onclick="openApp('calendar')" data-app="calendar" title="캘린더">
+        <div class="app-squircle sq-calendar">
+          <div style="text-align:center;">
+            <div style="font-size:7px; font-weight:800; color:#ff3b30; text-transform:uppercase;">SEP</div>
+            <div style="font-size:15px; font-weight:800; color:#1c1c1e; line-height:1;">29</div>
+          </div>
+        </div>
+        <div class="dock-dot"></div>
+        <div class="dock-tooltip">캘린더.app</div>
+      </div>
+
+      <!-- Clock -->
+      <div class="dock-item" onclick="openApp('clock')" data-app="clock" title="시계">
+        <div class="app-squircle sq-clock">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        </div>
+        <div class="dock-dot"></div>
+        <div class="dock-tooltip">시계.app</div>
       </div>
 
       <!-- Photos -->
@@ -1977,22 +1779,13 @@ Type "help" to view available studio commands.
         <div class="dock-tooltip">사진</div>
       </div>
 
-      <!-- Music -->
-      <div class="dock-item" onclick="openApp('music')" data-app="music" title="음악">
-        <div class="app-squircle sq-music">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3" fill="#fff"></circle><circle cx="18" cy="16" r="3" fill="#fff"></circle></svg>
-        </div>
-        <div class="dock-dot"></div>
-        <div class="dock-tooltip">음악</div>
-      </div>
-
       <!-- KCT Calculator -->
       <div class="dock-item" onclick="openApp('calc')" data-app="calc" title="KCT 실리콘 계산기">
         <div class="app-squircle sq-calc">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="16" y1="14" x2="16" y2="18"></line><path d="M16 10h.01M12 10h.01M8 10h.01M12 14h.01M8 14h.01M12 18h.01M8 18h.01"></path></svg>
         </div>
         <div class="dock-dot"></div>
-        <div class="dock-tooltip">KCT 실리콘 계산기</div>
+        <div class="dock-tooltip">KCT 계산기</div>
       </div>
 
       <!-- ASTM Specimen Lab -->
@@ -2013,28 +1806,19 @@ Type "help" to view available studio commands.
         <div class="dock-tooltip">Terminal.app</div>
       </div>
 
-      <!-- Notes -->
-      <div class="dock-item" onclick="openApp('notes')" data-app="notes" title="엔지니어링 메모">
-        <div class="app-squircle sq-notes">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2"><path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z"></path><path d="M15 3v5h5M9 13h6M9 17h4"></path></svg>
-        </div>
-        <div class="dock-dot"></div>
-        <div class="dock-tooltip">엔지니어링 메모</div>
-      </div>
-
-      <!-- System Settings -->
+      <!-- Settings -->
       <div class="dock-item" onclick="openApp('settings')" data-app="settings" title="시스템 설정">
         <div class="app-squircle sq-settings">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
         </div>
         <div class="dock-dot"></div>
-        <div class="dock-tooltip">시스템 설정</div>
+        <div class="dock-tooltip">설정</div>
       </div>
 
       <div class="dock-separator"></div>
 
       <!-- Return to Web Standard -->
-      <div class="dock-item" onclick="window.location.href='/'" title="웹 표준 버전으로 돌아가기">
+      <div class="dock-item" onclick="window.location.href='/'" title="웹 표준 홈으로">
         <div class="app-squircle sq-web">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
         </div>
@@ -2046,58 +1830,61 @@ Type "help" to view available studio commands.
 
   <!-- ─── Client Scripts ─── -->
   <script>
-    // State
+    // System State
     let highestZ = 100;
-    const runningApps = new Set(['photos']);
-    let activeApp = 'photos';
-    let isPlaying = false;
+    const runningApps = new Set(['finder']);
+    let activeApp = 'finder';
 
-    // Real Online Photos Data (from macos27.kimi.page)
-    const PHOTOS_DATA = [
-      { id: 'p1', cat: 'nature', title: 'Yosemite Sunrise', url: 'https://macos27.kimi.page/photo-1.jpg', desc: '캘리포니아 요세미티 국립공원의 황혼 풍경 (1600x1067)' },
-      { id: 'p2', cat: 'arch', title: 'Lake Architecture Glass', url: 'https://macos27.kimi.page/photo-2.jpg', desc: '호숫가 수면에 반사되는 모던 글래스 파빌리온 구조체' },
-      { id: 'p3', cat: 'arch', title: 'Modern Glass Pavilion', url: 'https://macos27.kimi.page/photo-3.jpg', desc: '미니멀 노출 콘크리트 및 구조용 실리콘 글레이징 설계' },
-      { id: 'p4', cat: 'arch', title: 'Curtain Wall Facade', url: 'https://macos27.kimi.page/photo-4.jpg', desc: '고층 빌딩 4변 지지 구조용 실리콘 커튼월 패널' },
-      { id: 'p5', cat: 'nature', title: 'Redwood Mist Trail', url: 'https://macos27.kimi.page/photo-5.jpg', desc: '태평양 연안 안개 속 삼나무 원시림 트레일' },
-      { id: 'p6', cat: 'studio', title: 'Engineering Studio Setup', url: 'https://macos27.kimi.page/photo-6.jpg', desc: 'Oscar Lee 고성능 엣지 소프트웨어 연구 환경' },
-      { id: 'p7', cat: 'studio', title: 'Tokyo Neon Skyline', url: 'https://macos27.kimi.page/photo-7.jpg', desc: '글로벌 엣지 인프라 분산 노드 도쿄 야경' },
-      { id: 'p8', cat: 'arch', title: 'Precision Joinery & Sealant', url: 'https://macos27.kimi.page/photo-8.jpg', desc: 'ASTM C1401 인장 접착 접합부 디테일' }
-    ];
+    // ─── LocalStorage Key Constants ───
+    const STORAGE_KEY_NOTES = 'davhave_macos_notes_v1';
+    const STORAGE_KEY_FILES = 'davhave_macos_files_v1';
+    const STORAGE_KEY_STICKY = 'davhave_macos_sticky_v1';
+    const STORAGE_KEY_EVENTS = 'davhave_macos_events_v1';
 
-    // Notes Data
-    const NOTES_DATA = [
+    // ─── Default Notes ───
+    const DEFAULT_NOTES = [
       {
+        id: 'note-1',
         title: "Cloudflare 0ms 엣지 아키텍처의 비밀",
         date: "2026.09.28",
-        content: "<h3>단 1ms도 허비하지 않는 글로벌 엣지 컴퓨팅</h3><p>기존 컨테이너나 가상머신 기반의 백엔드는 콜드 스타트 지연시간(100ms~1s)이 발생하지만, Cloudflare Workers는 V8 Isolate 기반으로 전 세계 300+ 엣지 데이터센터에서 0ms 콜드스타트로 즉시 실행됩니다.</p><p>DAVHAVE는 D1 SQL 데이터베이스 및 R2 오브젝트 스토리지를 글로벌 엣지와 직접 바인딩하여 지연을 최소화합니다.</p>"
+        content: "단 1ms도 허비하지 않는 글로벌 엣지 컴퓨팅\\n\\n기존 컨테이너나 가상머신 기반의 백엔드는 콜드 스타트 지연시간(100ms~1s)이 발생하지만, Cloudflare Workers는 V8 Isolate 기반으로 전 세계 300+ 엣지 데이터센터에서 0ms 콜드스타트로 즉시 실행됩니다.\\n\\nDAVHAVE는 D1 SQL 데이터베이스 및 R2 오브젝트 스토리지를 글로벌 엣지와 직접 바인딩하여 지연을 최소화합니다."
       },
       {
-        title: "Dow Chemical 실리콘 구조 바이트 공식 해설",
+        id: 'note-2',
+        title: "Dow Chemical 실리콘 구조 바이트 산정 공식",
         date: "2026.09.25",
-        content: "<h3>ASTM C1401 기준 구조용 실리콘 바이트 산정</h3><p>커튼월 유리 패널에 가해지는 풍하중을 실리콘 실란트가 지탱하기 위한 최소 접착 폭(Bite) 산정 공식:</p><pre style='background:#111; padding:10px; border-radius:6px; color:#38bdf8;'>B = (W × a) / (2 × Fd)</pre><p>여기서 W는 설계 풍하중(kPa), a는 유리 단변 길이(mm), Fd는 설계 허용 응력(통상 140 kPa)입니다. ASTM 규정에 따라 어떠한 경우에도 6.0mm 미만은 허용되지 않습니다.</p>"
+        content: "ASTM C1401 기준 구조용 실리콘 바이트 산정 공식:\\n\\nB = (W * a) / (2 * Fd)\\n\\n여기서 W는 설계 풍하중(kPa), a는 유리 단변 길이(mm), Fd는 설계 허용 응력(통상 140 kPa)입니다. ASTM 규정에 따라 어떠한 경우에도 6.0mm 미만은 허용되지 않습니다."
       },
       {
+        id: 'note-3',
         title: "SEO URL 설계: 해시 앵커(#)를 배제해야 하는 이유",
         date: "2026.09.20",
-        content: "<h3>색인 가능한 전용 URL(Canonical Route)의 중요성</h3><p>단일 페이지 애플리케이션(SPA)에서 자주 사용하는 해시 앵커(/#section)는 브라우저 내부 스크롤용 프래그먼트에 불과하며, 검색엔진 로봇은 이를 별개의 페이지로 색인하지 않습니다.</p><p>SEO 가치가 있는 모든 콘텐츠는 반드시 고유한 SSR 전용 라우트를 가져야 합니다.</p>"
-      },
-      {
-        title: "AI 에이전틱 개발 및 프롬프트 엔지니어링 교훈",
-        date: "2026.09.15",
-        content: "<h3>자율 에이전트와 페어 프로그래밍의 실무 패턴</h3><p>단순한 일회성 챗봇 질문을 넘어, 파일 시스템과 도구를 직접 다루는 에이전트에게는 명확한 명세서와 엄격한 검증 피드백 루프가 성공의 핵심입니다.</p>"
+        content: "색인 가능한 전용 URL(Canonical Route)의 중요성\\n\\n단일 페이지 애플리케이션(SPA)에서 자주 사용하는 해시 앵커(/#section)는 브라우저 내부 스크롤용 프래그먼트에 불과하며, 검색엔진 로봇은 이를 별개의 페이지로 색인하지 않습니다.\\n\\nSEO 가치가 있는 모든 콘텐츠는 반드시 고유한 SSR 전용 라우트를 가져야 합니다."
       }
     ];
 
-    // Initialize
-    window.addEventListener('DOMContentLoaded', () => {
-      updateClock();
-      setInterval(updateClock, 1000);
-      renderPhotosGrid('all');
-      loadNote(0, document.querySelector('.notes-item'));
-      runSiliconCalc();
+    // ─── Default Virtual Files ───
+    const DEFAULT_FILES = [
+      { id: 'f1', name: 'Curtain_Wall_Detail.jpg', type: 'image', url: 'https://macos27.kimi.page/photo-4.jpg', size: '395 KB' },
+      { id: 'f2', name: 'Yosemite_Sunrise.jpg', type: 'image', url: 'https://macos27.kimi.page/photo-1.jpg', size: '708 KB' },
+      { id: 'f3', name: 'KCT_Silicon_Spec.txt', type: 'text', content: 'Dow Chemical 6대 실리콘 공학 연산 규격서 v2.4\\n- 풍하중 바이트 공식: B = (W * a) / (2 * Fd)\\n- 글루라인 최소 기준: G >= 6.0mm', size: '12 KB' },
+      { id: 'f4', name: 'ASTM_D638_Specimen.txt', type: 'text', content: 'ASTM D638 Type I 인장 시편 가공 규격\\n- 전체 길이: 165.0mm\\n- 게이지 길이: 50.0mm\\n- 폭: 13.0mm', size: '8 KB' }
+    ];
 
-      // Launch Photos app on start
-      openApp('photos');
+    let notes = [];
+    let currentNoteId = null;
+    let files = [];
+    let selectedFileId = null;
+
+    // ─── Initialize ───
+    window.addEventListener('DOMContentLoaded', () => {
+      loadStorageData();
+      initClocksAndWidgets();
+      renderFinderFiles();
+      renderCalendarDays();
+
+      // Launch Finder on start
+      openApp('finder');
 
       // Apple Menu toggle
       const appleBtn = document.getElementById('apple-menu-btn');
@@ -2120,28 +1907,492 @@ Type "help" to view available studio commands.
         }
         if (e.key === 'Escape') {
           closeSpotlight();
-          closeLightbox();
           document.getElementById('control-center').classList.remove('show');
           appleDropdown.classList.remove('show');
         }
       });
     });
 
-    // Real-time Clock
-    function updateClock() {
-      const now = new Date();
-      const days = ['일', '월', '화', '수', '목', '금', '토'];
-      const day = days[now.getDay()];
-      const month = now.getMonth() + 1;
-      const date = now.getDate();
-      let hours = now.getHours();
-      const minutes = String(now.getMinutes()).padStart(2, '0');
-      const ampm = hours >= 12 ? '오후' : '오전';
-      hours = hours % 12 || 12;
-      document.getElementById('clock-display').textContent = \`\${day} \${month}월 \${date}일 \${ampm} \${hours}:\${minutes}\`;
+    // ─── LocalStorage Management ───
+    function loadStorageData() {
+      try {
+        const storedNotes = localStorage.getItem(STORAGE_KEY_NOTES);
+        notes = storedNotes ? JSON.parse(storedNotes) : DEFAULT_NOTES;
+      } catch {
+        notes = DEFAULT_NOTES;
+      }
+
+      try {
+        const storedFiles = localStorage.getItem(STORAGE_KEY_FILES);
+        files = storedFiles ? JSON.parse(storedFiles) : DEFAULT_FILES;
+      } catch {
+        files = DEFAULT_FILES;
+      }
+
+      const storedSticky = localStorage.getItem(STORAGE_KEY_STICKY);
+      if (storedSticky) {
+        document.getElementById('sticky-note-input').value = storedSticky;
+      }
+
+      renderNotesList();
+      if (notes.length > 0) {
+        selectNote(notes[0].id);
+      }
     }
 
-    // App Management
+    function saveNotesToStorage() {
+      try {
+        localStorage.setItem(STORAGE_KEY_NOTES, JSON.stringify(notes));
+      } catch (err) {
+        console.warn('Storage save failed:', err);
+      }
+    }
+
+    function saveFilesToStorage() {
+      try {
+        localStorage.setItem(STORAGE_KEY_FILES, JSON.stringify(files));
+      } catch (err) {
+        console.warn('Storage save failed:', err);
+      }
+    }
+
+    function saveStickyNote(val) {
+      localStorage.setItem(STORAGE_KEY_STICKY, val);
+    }
+
+    // ─── Notes App Logic (생성, 저장, 불러오기, 편집, 다운로드) ───
+    function renderNotesList() {
+      const listEl = document.getElementById('notes-items-list');
+      listEl.innerHTML = notes.map(n => \`
+        <div class="notes-item \${n.id === currentNoteId ? 'active' : ''}" onclick="selectNote('\${n.id}')">
+          <div class="notes-item-title">\${escapeHtml(n.title || '무제 메모')}</div>
+          <div class="notes-item-date">\${n.date}</div>
+        </div>
+      \`).join('');
+    }
+
+    function selectNote(id) {
+      currentNoteId = id;
+      const note = notes.find(n => n.id === id);
+      if (!note) return;
+
+      document.getElementById('note-title-input').value = note.title;
+      document.getElementById('note-body-input').value = note.content;
+      document.getElementById('note-save-status').textContent = '저장됨';
+      renderNotesList();
+    }
+
+    function createNewNote() {
+      const newId = 'note-' + Date.now();
+      const newNote = {
+        id: newId,
+        title: '새 메모',
+        date: new Date().toISOString().slice(0, 10).replace(/-/g, '.'),
+        content: ''
+      };
+      notes.unshift(newNote);
+      saveNotesToStorage();
+      selectNote(newId);
+      document.getElementById('note-title-input').focus();
+    }
+
+    function handleNoteEdit() {
+      if (!currentNoteId) return;
+      const note = notes.find(n => n.id === currentNoteId);
+      if (!note) return;
+
+      note.title = document.getElementById('note-title-input').value;
+      note.content = document.getElementById('note-body-input').value;
+      note.date = new Date().toISOString().slice(0, 10).replace(/-/g, '.');
+
+      document.getElementById('note-save-status').textContent = '저장 중...';
+      saveNotesToStorage();
+      renderNotesList();
+
+      setTimeout(() => {
+        document.getElementById('note-save-status').textContent = '자동 저장됨';
+      }, 300);
+    }
+
+    function deleteCurrentNote() {
+      if (!currentNoteId) return;
+      if (!confirm('이 메모를 삭제하시겠습니까?')) return;
+
+      notes = notes.filter(n => n.id !== currentNoteId);
+      saveNotesToStorage();
+
+      if (notes.length > 0) {
+        selectNote(notes[0].id);
+      } else {
+        createNewNote();
+      }
+    }
+
+    function exportCurrentNote() {
+      if (!currentNoteId) return;
+      const note = notes.find(n => n.id === currentNoteId);
+      if (!note) return;
+
+      const blob = new Blob([\`# \${note.title}\\n\\n\${note.content}\`], { type: 'text/markdown;charset=utf-8' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = \`\${note.title.replace(/[^a-zA-Z0-9가-힣]/g, '_') || 'note'}.md\`;
+      a.click();
+    }
+
+    // ─── Real File System & Finder (업로드, 다운로드, 삭제) ───
+    function renderFinderFiles() {
+      const grid = document.getElementById('finder-grid');
+      grid.innerHTML = files.map(f => \`
+        <div class="finder-file \${f.id === selectedFileId ? 'selected' : ''}" onclick="selectFinderFile('\${f.id}')" ondblclick="openFinderFile('\${f.id}')">
+          <div class="finder-file-icon">
+            \${f.type === 'image' ? \`<img src="\${f.url}" alt="\${f.name}" />\` : (f.name.endsWith('.txt') ? '📄' : '📁')}
+          </div>
+          <div class="finder-file-name">\${escapeHtml(f.name)}</div>
+        </div>
+      \`).join('');
+    }
+
+    function selectFinderFile(id) {
+      selectedFileId = id;
+      renderFinderFiles();
+    }
+
+    function openFinderFile(id) {
+      const file = files.find(f => f.id === id);
+      if (!file) return;
+
+      if (file.type === 'image') {
+        openApp('photos');
+      } else if (file.type === 'text') {
+        // Open inside notes
+        const existing = notes.find(n => n.title === file.name);
+        if (existing) {
+          selectNote(existing.id);
+        } else {
+          const newId = 'note-' + Date.now();
+          notes.unshift({ id: newId, title: file.name, date: '2026.09.29', content: file.content || '' });
+          saveNotesToStorage();
+          selectNote(newId);
+        }
+        openApp('notes');
+      }
+    }
+
+    function triggerRealFileUpload() {
+      document.getElementById('real-file-uploader').click();
+    }
+
+    function handleRealFileUpload(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      const isImg = file.type.startsWith('image/');
+
+      reader.onload = (event) => {
+        const newFile = {
+          id: 'file-' + Date.now(),
+          name: file.name,
+          type: isImg ? 'image' : 'text',
+          url: isImg ? event.target.result : null,
+          content: !isImg ? event.target.result : null,
+          size: (file.size / 1024).toFixed(1) + ' KB'
+        };
+        files.unshift(newFile);
+        saveFilesToStorage();
+        renderFinderFiles();
+        alert(\`파일 "\${file.name}"이 Finder에 성공적으로 업로드되었습니다!\`);
+      };
+
+      if (isImg) {
+        reader.readAsDataURL(file);
+      } else {
+        reader.readAsText(file);
+      }
+    }
+
+    function createBlankFile() {
+      const name = prompt('새 텍스트 파일 이름을 입력하세요:', '새문서.txt');
+      if (!name) return;
+
+      files.unshift({
+        id: 'file-' + Date.now(),
+        name: name.endsWith('.txt') ? name : name + '.txt',
+        type: 'text',
+        content: '새로 작성된 텍스트 파일입니다.',
+        size: '1 KB'
+      });
+      saveFilesToStorage();
+      renderFinderFiles();
+    }
+
+    function downloadSelectedFile() {
+      if (!selectedFileId) {
+        alert('다운로드할 파일을 먼저 선택해주세요.');
+        return;
+      }
+      const file = files.find(f => f.id === selectedFileId);
+      if (!file) return;
+
+      const a = document.createElement('a');
+      if (file.url) {
+        a.href = file.url;
+      } else {
+        const blob = new Blob([file.content || ''], { type: 'text/plain;charset=utf-8' });
+        a.href = URL.createObjectURL(blob);
+      }
+      a.download = file.name;
+      a.click();
+    }
+
+    function deleteSelectedFile() {
+      if (!selectedFileId) return;
+      const file = files.find(f => f.id === selectedFileId);
+      if (!file) return;
+
+      if (!confirm(\`"\${file.name}" 파일을 삭제하시겠습니까?\`)) return;
+      files = files.filter(f => f.id !== selectedFileId);
+      selectedFileId = null;
+      saveFilesToStorage();
+      renderFinderFiles();
+    }
+
+    function handleDragOver(e) { e.preventDefault(); }
+    function handleFileDrop(e) {
+      e.preventDefault();
+      if (e.dataTransfer.files.length > 0) {
+        document.getElementById('real-file-uploader').files = e.dataTransfer.files;
+        handleRealFileUpload({ target: { files: e.dataTransfer.files } });
+      }
+    }
+
+    // ─── Clocks & Widgets (Analog Clock & World Clock) ───
+    function initClocksAndWidgets() {
+      updateClocks();
+      setInterval(updateClocks, 1000);
+      animateCpuPulse();
+    }
+
+    function updateClocks() {
+      const now = new Date();
+      const sec = now.getSeconds();
+      const min = now.getMinutes();
+      const hr = now.getHours();
+
+      // Analog clock hands
+      const secDeg = (sec / 60) * 360;
+      const minDeg = ((min + sec / 60) / 60) * 360;
+      const hrDeg = ((hr % 12 + min / 60) / 12) * 360;
+
+      const secHand = document.getElementById('hand-sec');
+      const minHand = document.getElementById('hand-min');
+      const hrHand = document.getElementById('hand-hour');
+
+      if (secHand) secHand.style.transform = \`rotate(\${secDeg}deg)\`;
+      if (minHand) minHand.style.transform = \`rotate(\${minDeg}deg)\`;
+      if (hrHand) hrHand.style.transform = \`rotate(\${hrDeg}deg)\`;
+
+      // Digital strings
+      const timeStr = String(hr).padStart(2, '0') + ':' + String(min).padStart(2, '0') + ':' + String(sec).padStart(2, '0');
+      const menubarTime = (hr >= 12 ? '오후 ' : '오전 ') + (hr % 12 || 12) + ':' + String(min).padStart(2, '0');
+
+      document.getElementById('clock-display').textContent = menubarTime;
+      const digEl = document.getElementById('widget-digital-clock');
+      if (digEl) digEl.textContent = timeStr;
+
+      // World clock
+      const wcSeoul = document.getElementById('world-seoul');
+      if (wcSeoul) wcSeoul.textContent = String(hr).padStart(2, '0') + ':' + String(min).padStart(2, '0');
+
+      const wcCup = document.getElementById('world-cupertino');
+      if (wcCup) {
+        const cupHr = (hr - 16 + 24) % 24;
+        wcCup.textContent = String(cupHr).padStart(2, '0') + ':' + String(min).padStart(2, '0');
+      }
+
+      const wcLon = document.getElementById('world-london');
+      if (wcLon) {
+        const lonHr = (hr - 8 + 24) % 24;
+        wcLon.textContent = String(lonHr).padStart(2, '0') + ':' + String(min).padStart(2, '0');
+      }
+
+      const wcTok = document.getElementById('world-tokyo');
+      if (wcTok) wcTok.textContent = String(hr).padStart(2, '0') + ':' + String(min).padStart(2, '0');
+    }
+
+    function animateCpuPulse() {
+      setInterval(() => {
+        const val = Math.floor(8 + Math.random() * 8);
+        const el = document.getElementById('cpu-pulse');
+        if (el) el.textContent = val + '%';
+      }, 2500);
+    }
+
+    // ─── Calendar Widget & App ───
+    let calViewYear = 2026;
+    let calViewMonth = 8; // 0-indexed (8 = September)
+
+    function renderCalendarDays() {
+      // Widget mini calendar
+      const widgetGrid = document.getElementById('widget-cal-days');
+      if (widgetGrid) {
+        let html = \`
+          <span class="cal-day-label">일</span><span class="cal-day-label">월</span>
+          <span class="cal-day-label">화</span><span class="cal-day-label">수</span>
+          <span class="cal-day-label">목</span><span class="cal-day-label">금</span>
+          <span class="cal-day-label">토</span>
+        \`;
+        // Pad for September 2026 (Starts on Tuesday = index 2)
+        for (let i = 0; i < 2; i++) html += '<span></span>';
+        for (let d = 1; d <= 30; d++) {
+          const isToday = d === 29;
+          html += \`<span class="cal-day \${isToday ? 'today' : ''}" onclick="alert('2026년 9월 \${d}일')">\${d}</span>\`;
+        }
+        widgetGrid.innerHTML = html;
+      }
+
+      // Full Calendar App matrix
+      const fullGrid = document.getElementById('cal-full-matrix');
+      if (fullGrid) {
+        let html = '';
+        for (let i = 0; i < 2; i++) html += '<div class="cal-full-cell" style="opacity:0.3;"></div>';
+        for (let d = 1; d <= 30; d++) {
+          const isToday = d === 29;
+          let event = '';
+          if (d === 10) event = '<div class="cal-event-tag">KCT 계산기 배포</div>';
+          if (d === 15) event = '<div class="cal-event-tag">ASTM 인장 시험</div>';
+          if (d === 29) event = '<div class="cal-event-tag" style="background:#007aff;">macOS 에디션 출시</div>';
+
+          html += \`
+            <div class="cal-full-cell \${isToday ? 'current-day' : ''}" onclick="openDaySchedule(\${d})">
+              <div class="cal-cell-num">\${d}</div>
+              \${event}
+            </div>
+          \`;
+        }
+        fullGrid.innerHTML = html;
+      }
+    }
+
+    function changeCalMonth(delta) {
+      calViewMonth += delta;
+      const d = new Date(calViewYear, calViewMonth, 1);
+      document.getElementById('cal-app-month-title').textContent = \`\${d.getFullYear()}년 \${d.getMonth() + 1}월\`;
+    }
+
+    function promptAddEvent() {
+      const title = prompt('추가할 일정 제목을 입력하세요:', '실리콘 풍하중 현장 검측');
+      if (!title) return;
+      alert(\`일정 "\${title}"이 캘린더에 성공적으로 등록되었습니다.\`);
+    }
+
+    function openDaySchedule(d) {
+      alert(\`2026년 9월 \${d}일 일정 상세 보기\`);
+    }
+
+    // ─── Stopwatch & Timer Logic ───
+    let swRunning = false;
+    let swTime = 0;
+    let swTimerId = null;
+
+    function toggleStopwatch() {
+      const btn = document.getElementById('sw-btn-start');
+      if (swRunning) {
+        clearInterval(swTimerId);
+        swRunning = false;
+        btn.textContent = '시작';
+        btn.style.background = '#10b981';
+      } else {
+        swRunning = true;
+        btn.textContent = '중단';
+        btn.style.background = '#ef4444';
+        swTimerId = setInterval(() => {
+          swTime += 10;
+          const ms = Math.floor((swTime % 1000) / 10);
+          const s = Math.floor((swTime / 1000) % 60);
+          const m = Math.floor(swTime / 60000);
+          document.getElementById('sw-display').textContent =
+            String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0') + '.' + String(ms).padStart(2, '0');
+        }, 10);
+      }
+    }
+
+    function resetStopwatch() {
+      clearInterval(swTimerId);
+      swRunning = false;
+      swTime = 0;
+      document.getElementById('sw-display').textContent = '00:00.00';
+      const btn = document.getElementById('sw-btn-start');
+      btn.textContent = '시작';
+      btn.style.background = '#10b981';
+    }
+
+    function switchClockTab(tab, elem) {
+      document.querySelectorAll('.clock-tab-btn').forEach(b => b.classList.remove('active'));
+      if (elem) elem.classList.add('active');
+
+      document.getElementById('tab-stopwatch').style.display = tab === 'stopwatch' ? 'block' : 'none';
+      document.getElementById('tab-world').style.display = tab === 'world' ? 'block' : 'none';
+      document.getElementById('tab-timer').style.display = tab === 'timer' ? 'block' : 'none';
+    }
+
+    let timerRemain = 300;
+    let timerInterval = null;
+
+    function startPresetTimer(sec) {
+      clearInterval(timerInterval);
+      timerRemain = sec;
+      updateTimerDisplay();
+      timerInterval = setInterval(() => {
+        timerRemain--;
+        updateTimerDisplay();
+        if (timerRemain <= 0) {
+          clearInterval(timerInterval);
+          alert('⏰ 설정한 타이머 시간이 완료되었습니다!');
+        }
+      }, 1000);
+    }
+
+    function stopTimer() {
+      clearInterval(timerInterval);
+    }
+
+    function updateTimerDisplay() {
+      const m = Math.floor(timerRemain / 60);
+      const s = timerRemain % 60;
+      document.getElementById('timer-display').textContent = String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+    }
+
+    // ─── Photos App Logic ───
+    const PHOTOS_DATA = [
+      { id: 'p1', cat: 'nature', title: 'Yosemite Sunrise', url: 'https://macos27.kimi.page/photo-1.jpg' },
+      { id: 'p2', cat: 'arch', title: 'Lake Architecture Glass', url: 'https://macos27.kimi.page/photo-2.jpg' },
+      { id: 'p3', cat: 'arch', title: 'Modern Glass Pavilion', url: 'https://macos27.kimi.page/photo-3.jpg' },
+      { id: 'p4', cat: 'arch', title: 'Curtain Wall Facade', url: 'https://macos27.kimi.page/photo-4.jpg' },
+      { id: 'p5', cat: 'nature', title: 'Redwood Mist Trail', url: 'https://macos27.kimi.page/photo-5.jpg' },
+      { id: 'p6', cat: 'studio', title: 'Engineering Studio Setup', url: 'https://macos27.kimi.page/photo-6.jpg' },
+      { id: 'p7', cat: 'studio', title: 'Tokyo Neon Skyline', url: 'https://macos27.kimi.page/photo-7.jpg' },
+      { id: 'p8', cat: 'arch', title: 'Precision Joinery & Sealant', url: 'https://macos27.kimi.page/photo-8.jpg' }
+    ];
+
+    function filterPhotos(cat, elem) {
+      document.querySelectorAll('.photos-nav-item').forEach(i => i.classList.remove('active'));
+      if (elem) elem.classList.add('active');
+
+      const grid = document.getElementById('photos-grid');
+      const filtered = cat === 'all' ? PHOTOS_DATA : PHOTOS_DATA.filter(p => p.cat === cat);
+      grid.innerHTML = filtered.map(p => \`
+        <div class="finder-file" onclick="window.open('\${p.url}', '_blank')">
+          <div class="finder-file-icon" style="width:100%; height:120px;">
+            <img src="\${p.url}" alt="\${p.title}" style="width:100%; height:100%; object-fit:cover; border-radius:8px;" />
+          </div>
+          <div class="finder-file-name" style="margin-top:6px;">\${p.title}</div>
+        </div>
+      \`).join('');
+    }
+
+    // ─── App Window Management ───
     function openApp(id) {
       const win = document.getElementById('window-' + id);
       if (!win) return;
@@ -2208,13 +2459,13 @@ Type "help" to view available studio commands.
 
       const titles = {
         finder: 'Finder',
+        notes: 'Notes',
+        calendar: 'Calendar',
+        clock: 'Clock',
         photos: 'Photos',
-        safari: 'Safari',
-        music: 'Music',
         calc: 'KCT Calculator',
         specimen: 'ASTM Specimen Lab',
         terminal: 'Terminal',
-        notes: 'Notes',
         settings: 'System Settings',
         about: 'About Studio'
       };
@@ -2233,14 +2484,11 @@ Type "help" to view available studio commands.
       });
     }
 
-    // Window Dragging
-    let isDragging = false;
-    let dragTarget = null;
-    let dragOffsetX = 0;
-    let dragOffsetY = 0;
+    // ─── Window Dragging & Resizing ───
+    let isDragging = false, dragTarget = null, dragOffsetX = 0, dragOffsetY = 0;
 
     function startDragWindow(e, winId) {
-      if (e.target.classList.contains('traffic-btn')) return;
+      if (e.target.classList.contains('traffic-btn') || e.target.tagName === 'BUTTON') return;
       const win = document.getElementById(winId);
       dragTarget = win;
       isDragging = true;
@@ -2250,7 +2498,6 @@ Type "help" to view available studio commands.
       dragOffsetY = e.clientY - rect.top;
 
       bringToFront(win, winId.replace('window-', ''));
-
       document.addEventListener('mousemove', onDragWindow);
       document.addEventListener('mouseup', stopDragWindow);
     }
@@ -2271,11 +2518,7 @@ Type "help" to view available studio commands.
       document.removeEventListener('mouseup', stopDragWindow);
     }
 
-    // Window Resizing
-    let isResizing = false;
-    let resizeTarget = null;
-    let resizeType = null;
-    let startW = 0, startH = 0, startX = 0, startY = 0;
+    let isResizing = false, resizeTarget = null, resizeType = null, startW = 0, startH = 0, startX = 0, startY = 0;
 
     function startResizeWindow(e, winId, type) {
       e.stopPropagation();
@@ -2313,7 +2556,7 @@ Type "help" to view available studio commands.
       document.removeEventListener('mouseup', stopResizeWindow);
     }
 
-    // Dock Magnification Effect (Smooth Parabolic Scaling)
+    // ─── Dock Magnification (Parabolic Curve) ───
     function handleDockMouseMove(e) {
       if (window.innerWidth < 768) return;
       const dock = document.getElementById('dock');
@@ -2346,62 +2589,7 @@ Type "help" to view available studio commands.
       });
     }
 
-    // Photos App Logic
-    function renderPhotosGrid(cat) {
-      const grid = document.getElementById('photos-grid');
-      const filtered = cat === 'all' ? PHOTOS_DATA : PHOTOS_DATA.filter(p => p.cat === cat);
-
-      grid.innerHTML = filtered.map(p => \`
-        <div class="photo-card" onclick="openLightbox('\${p.url}', '\${p.title}')">
-          <img src="\${p.url}" alt="\${p.title}" loading="lazy" />
-          <div class="photo-badge">\${p.title}</div>
-        </div>
-      \`).join('');
-    }
-
-    function filterPhotos(cat, elem) {
-      document.querySelectorAll('.photos-nav-item').forEach(i => i.classList.remove('active'));
-      if (elem) elem.classList.add('active');
-      renderPhotosGrid(cat);
-    }
-
-    function openLightbox(url, title) {
-      document.getElementById('lb-img').src = url;
-      document.getElementById('lb-title').textContent = title;
-      document.getElementById('photo-lightbox').classList.add('show');
-    }
-
-    function closeLightbox() {
-      document.getElementById('photo-lightbox').classList.remove('show');
-    }
-
-    // Music Player Logic
-    function playTrack(title, artist, coverUrl) {
-      document.getElementById('player-title').textContent = title;
-      document.getElementById('player-artist').textContent = artist;
-      document.getElementById('player-cover').src = coverUrl;
-      isPlaying = true;
-      document.getElementById('player-playbtn').textContent = '⏸';
-    }
-
-    function togglePlayState() {
-      isPlaying = !isPlaying;
-      document.getElementById('player-playbtn').textContent = isPlaying ? '⏸' : '▶';
-    }
-
-    // Safari App Logic
-    function safariHome() {
-      const frame = document.getElementById('safari-frame');
-      frame.src = '/projects/kct';
-      document.getElementById('safari-url-text').textContent = 'https://davhave.com/projects/kct';
-    }
-
-    function safariReload() {
-      const frame = document.getElementById('safari-frame');
-      frame.src = frame.src;
-    }
-
-    // KCT Silicone Calculator Engine
+    // ─── KCT Silicone Calculator Engine ───
     function runSiliconCalc() {
       const w = parseFloat(document.getElementById('calc-wind').value) || 2.5;
       const a = parseFloat(document.getElementById('calc-short').value) || 1200;
@@ -2409,7 +2597,6 @@ Type "help" to view available studio commands.
 
       let bite = (w * a) / (2 * fd);
       if (bite < 6.0) bite = 6.0;
-
       let glueline = Math.max(6.0, bite / 2);
 
       document.getElementById('res-bite').textContent = bite.toFixed(1) + ' mm';
@@ -2417,28 +2604,7 @@ Type "help" to view available studio commands.
       document.getElementById('res-status').textContent = bite >= 6.0 ? 'PASS (ASTM 규격 충족)' : '주의 (최소 6mm 권장)';
     }
 
-    // ASTM Specimen Lab Type Selector
-    function selectSpecimenType(type, elem) {
-      document.querySelectorAll('.specimen-chip').forEach(c => c.classList.remove('active'));
-      elem.classList.add('active');
-      document.getElementById('specimen-name-lbl').textContent = type;
-
-      const specs = {
-        'Type I': { lo: '165.0 mm', g: '50.0 mm', w: '13.0 mm', wo: '19.0 mm' },
-        'Type II': { lo: '183.0 mm', g: '50.0 mm', w: '6.0 mm', wo: '19.0 mm' },
-        'Type IV': { lo: '115.0 mm', g: '25.0 mm', w: '6.0 mm', wo: '19.0 mm' },
-        'Type V': { lo: '63.5 mm', g: '7.6 mm', w: '3.18 mm', wo: '9.5 mm' },
-        'ASTM C1401': { lo: '50.0 mm (H-Shape)', g: '12.0 mm', w: '12.0 mm', wo: '25.0 mm' }
-      };
-
-      const s = specs[type] || specs['Type I'];
-      document.getElementById('spec-lo').textContent = s.lo;
-      document.getElementById('spec-g').textContent = s.g;
-      document.getElementById('spec-w').textContent = s.w;
-      document.getElementById('spec-wo').textContent = s.wo;
-    }
-
-    // Terminal Emulator (davhave-cli)
+    // ─── Terminal (davhave-cli) ───
     function handleTerminalKey(e) {
       if (e.key !== 'Enter') return;
       const input = document.getElementById('terminal-cli-input');
@@ -2447,7 +2613,6 @@ Type "help" to view available studio commands.
 
       const screen = document.getElementById('terminal-screen');
       screen.textContent += \`\\noscar@davhave-edge ~ % \${cmd}\\n\`;
-
       if (!cmd) return;
 
       const lower = cmd.toLowerCase();
@@ -2455,45 +2620,24 @@ Type "help" to view available studio commands.
 
       if (lower === 'help') {
         response = \`Available commands:
-  whoami     - Display studio architect profile
-  photos     - Open online photo gallery
-  music      - Launch ambient studio music player
+  whoami     - Studio architect profile
+  notes      - Open persistent notes editor
+  files      - List files in virtual filesystem
   calc       - Calculate silicone bite [e.g. calc 2.5 1200]
-  stack      - Show edge & engineering tech stack
-  projects   - List live production systems
-  open <app> - Open window (photos, safari, music, calc, specimen, notes)
-  date       - Show current edge timestamp
-  clear      - Clear terminal screen
-  exit       - Close terminal window\`;
+  clock      - Open clock & stopwatch app
+  calendar   - Open calendar app
+  open <app> - Open app window
+  clear      - Clear terminal screen\`;
       } else if (lower === 'whoami') {
         response = "Oscar Lee (DAVHAVE) — Lead Architect in High-Performance Edge Systems & Industrial Computing.";
-      } else if (lower === 'photos') {
-        openApp('photos');
-        response = "Opening Photos.app with high-resolution online gallery...";
-      } else if (lower === 'music') {
-        openApp('music');
-        response = "Launching Music.app...";
-      } else if (lower === 'stack') {
-        response = "Cloudflare Workers, D1 Serverless SQL, R2 Media Bucket, Web Standards (0ms Cold Start), Flutter, Swift.";
-      } else if (lower === 'projects') {
-        response = "1. KCT Silicon Engineering Suite (/projects/kct)\\n2. ASTM D638 Tensile Specimen Lab (/projects/kct/specimens)\\n3. RetroBoy Mobile App (/privacy/retroboy)";
-      } else if (lower.startsWith('calc')) {
-        const parts = lower.split(' ');
-        const w = parseFloat(parts[1]) || 2.5;
-        const a = parseFloat(parts[2]) || 1200;
-        const bite = Math.max(6.0, (w * a) / (2 * 140));
-        response = \`Calculated Silicone Bite: \${bite.toFixed(1)} mm (W=\${w}kPa, a=\${a}mm, Fd=140kPa)\`;
+      } else if (lower === 'files') {
+        response = files.map(f => \`- \${f.name} (\${f.size})\`).join('\\n');
       } else if (lower.startsWith('open ')) {
         const app = lower.split(' ')[1];
         openApp(app);
         response = \`Opened \${app}.app\`;
-      } else if (lower === 'date') {
-        response = new Date().toISOString();
       } else if (lower === 'clear') {
         screen.textContent = 'DAVHAVE Edge Architecture Shell (v2.7.0)\\n';
-        return;
-      } else if (lower === 'exit') {
-        closeApp('terminal');
         return;
       } else {
         response = \`zsh: command not found: \${cmd}. Type "help" for a list of commands.\`;
@@ -2504,30 +2648,16 @@ Type "help" to view available studio commands.
       body.scrollTop = body.scrollHeight;
     }
 
-    // Notes Reader
-    function loadNote(idx, elem) {
-      document.querySelectorAll('.notes-item').forEach(n => n.classList.remove('active'));
-      if (elem) elem.classList.add('active');
-
-      const note = NOTES_DATA[idx];
-      const area = document.getElementById('notes-view-area');
-      area.innerHTML = \`
-        <div style="font-size:11px; color:#94a3b8; margin-bottom:6px;">\${note.date}</div>
-        <h2 style="font-size:18px; font-weight:700; color:#fff; margin-bottom:14px;">\${note.title}</h2>
-        <div style="font-size:13px; color:#e2e8f0; line-height:1.75;">\${note.content}</div>
-      \`;
-    }
-
-    // Spotlight Search
+    // ─── Spotlight Search ───
     const SEARCH_ITEMS = [
+      { name: 'Finder (파일 관리자)', type: 'App', icon: '📁', action: () => openApp('finder') },
+      { name: '메모 (Notes)', type: 'App', icon: '📝', action: () => openApp('notes') },
+      { name: '캘린더 (Calendar)', type: 'App', icon: '📅', action: () => openApp('calendar') },
+      { name: '시계 (Clock & Stopwatch)', type: 'App', icon: '⏰', action: () => openApp('clock') },
       { name: '사진 (Photos)', type: 'App', icon: '🖼️', action: () => openApp('photos') },
-      { name: 'Safari 브라우저', type: 'App', icon: '🧭', action: () => openApp('safari') },
-      { name: '음악 (Music)', type: 'App', icon: '🎵', action: () => openApp('music') },
-      { name: 'Finder', type: 'App', icon: '📁', action: () => openApp('finder') },
       { name: 'KCT 실리콘 계산기', type: 'App', icon: '🧮', action: () => openApp('calc') },
       { name: 'ASTM 인장 시편 연구소', type: 'App', icon: '🧪', action: () => openApp('specimen') },
       { name: 'Terminal (davhave-cli)', type: 'App', icon: '💻', action: () => openApp('terminal') },
-      { name: '엔지니어링 메모', type: 'App', icon: '📝', action: () => openApp('notes') },
       { name: '시스템 설정 (Wallpaper)', type: 'App', icon: '⚙️', action: () => openApp('settings') },
       { name: '웹 표준 홈으로 이동', type: 'Web', icon: '🏠', action: () => window.location.href = '/' }
     ];
@@ -2576,15 +2706,16 @@ Type "help" to view available studio commands.
     }
 
     function handleSpotlightKey(e) {
-      if (e.key === 'Enter') {
-        executeSpotlightItem(0);
-      }
+      if (e.key === 'Enter') executeSpotlightItem(0);
     }
 
-    // Control Center
     function toggleControlCenter() {
-      const cc = document.getElementById('control-center');
-      cc.classList.toggle('show');
+      document.getElementById('control-center').classList.toggle('show');
+    }
+
+    function toggleWidgets() {
+      const w = document.getElementById('desktop-widgets');
+      w.style.display = (w.style.display === 'none') ? 'flex' : 'none';
     }
 
     function adjustBrightness(val) {
@@ -2592,19 +2723,17 @@ Type "help" to view available studio commands.
       document.body.style.filter = \`brightness(\${val}%)\`;
     }
 
-    // Online Wallpaper Switcher (Directly from macos27.kimi.page)
     function setOnlineWallpaper(url, elem) {
-      const wp = document.getElementById('desktop-wallpaper');
-      wp.style.backgroundImage = \`url('\${url}')\`;
-
-      document.querySelectorAll('.wp-thumb').forEach(t => t.classList.remove('active'));
-      if (elem) elem.classList.add('active');
+      document.getElementById('desktop-wallpaper').style.backgroundImage = \`url('\${url}')\`;
     }
 
-    // Desktop Icon Select
     function selectDesktopIcon(elem) {
       document.querySelectorAll('.desktop-icon').forEach(i => i.classList.remove('selected'));
       elem.classList.add('selected');
+    }
+
+    function escapeHtml(str) {
+      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
   </script>
 </body>
