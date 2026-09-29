@@ -43,6 +43,7 @@ import { renderKctColorPage } from "./lib/kct-color-render.js";
 import { renderKctSpecimenPage } from "./lib/kct-specimen-render.js";
 import { renderKctPermitsPage } from "./lib/kct-permits-render.js";
 import { renderProjectsHub } from "./lib/projects-hub-render.js";
+import { renderMacOsPage } from "./lib/macos-render.js";
 import { INDEXNOW_KEY, submitUrls, urlsForPost } from "./lib/indexnow.js";
 
 const TEMPLATE_SLUG_REDIRECTS = {
@@ -529,6 +530,13 @@ export default {
 
     if (pathname === "/projects") {
       const raw = new Response(renderProjectsHub(), {
+        headers: { "content-type": "text/html; charset=utf-8" },
+      });
+      return withSecurityHeaders(raw, { "Cache-Control": "public, max-age=3600, s-maxage=86400" });
+    }
+
+    if (pathname === "/macos") {
+      const raw = new Response(renderMacOsPage(), {
         headers: { "content-type": "text/html; charset=utf-8" },
       });
       return withSecurityHeaders(raw, { "Cache-Control": "public, max-age=3600, s-maxage=86400" });

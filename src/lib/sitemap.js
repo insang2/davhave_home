@@ -38,6 +38,7 @@ export function renderSitemap({ blogPosts = [], projects = [], educationPosts = 
 
   const entries = [
     urlEntry("https://davhave.com/", { lastmod: today, changefreq: "monthly", priority: "1.0" }),
+    urlEntry("https://davhave.com/macos", { lastmod: today, changefreq: "weekly", priority: "0.8" }),
     urlEntry("https://davhave.com/projects", { lastmod: today, changefreq: "weekly", priority: "0.9" }),
     urlEntry("https://davhave.com/projects/kct", { lastmod: today, changefreq: "weekly", priority: "0.9" }),
     urlEntry("https://davhave.com/projects/kct/specimens", { lastmod: today, changefreq: "weekly", priority: "0.9" }),
