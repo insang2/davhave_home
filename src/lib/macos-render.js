@@ -1,14 +1,19 @@
 /**
- * DAVHAVE macOS 27 Edition (Pilot Experience)
- * Pixel-faithful Liquid Glass macOS Simulation with:
- * - Real File System (Upload from local PC, Download, Create, Delete, LocalStorage persist)
- * - Full Notes App (Create, Edit, Auto-save to LocalStorage, Load, Delete, Export .md)
- * - Desktop Widgets (Analog & Digital Clock, Monthly Calendar, Weather, System Monitor, Sticky Note)
- * - Calendar.app (Interactive event scheduler)
- * - Clock.app (World Clock, Stopwatch with laps, Timer)
- * - Online Wallpapers (Tahoe, Glass, Aurora, Big Sur)
- * - Online Photos & Music Player
- * - KCT Calculator & ASTM Specimen Lab
+ * DAVHAVE macOS 27 Edition (High-Fidelity macOS Web Experience)
+ * Highly faithful to native macOS Ventura/Sonoma/27 GUI:
+ * - SF Pro Typography, Apple Font Smoothing & Tracking
+ * - Pixel-accurate Window Controls (Traffic Lights with hover symbols)
+ * - Fullscreen Launchpad with instant search filtering
+ * - Native macOS Calculator (round orange/gray keypad + keyboard input)
+ * - VS Code Developer Studio (syntax highlighting, file tree, tabs, output)
+ * - "About This Mac" (이 Mac에 관하여) System Dialog
+ * - Desktop Right-Click Context Menu
+ * - Dynamic Menubar Menus (changes per active app)
+ * - Control Center with Wi-Fi, Bluetooth, AirDrop, Focus, Brightness & Sound sliders
+ * - Real File System (Upload from local PC, Download, LocalStorage persist)
+ * - Notes Editor (Create, Edit, Auto-save, Load, Export .md)
+ * - Desktop Widgets (Analog & Digital Clock, Calendar, Weather, Sticky Note)
+ * - High-Res Online Wallpapers & Photos Gallery
  */
 
 export function renderMacOsPage() {
@@ -17,8 +22,8 @@ export function renderMacOsPage() {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>macOS 27 (DAVHAVE Edition) — Interactive Web Desktop</title>
-  <meta name="description" content="macOS 27 — a pixel-faithful Liquid Glass macOS simulation with real file management, notes editor, widgets, calendar, clock and engineering suite." />
+  <title>macOS 27 (DAVHAVE Edition) — High-Fidelity Web OS</title>
+  <meta name="description" content="macOS 27 — a pixel-faithful Liquid Glass macOS simulation with SF Pro typography, Launchpad, Calculator, Code Studio, File System, Notes & Engineering Suite." />
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -28,28 +33,32 @@ export function renderMacOsPage() {
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
-    /* ─── Global Reset & macOS Variables ─── */
+    /* ─── Apple Typography & System Tokens ─── */
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
       -webkit-user-select: none;
       user-select: none;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
     }
 
     :root {
-      --font-system: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter", "Pretendard", sans-serif;
-      --font-mono: "JetBrains Mono", SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      --font-system: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "SF Pro", "Inter", "Pretendard", -system-ui, sans-serif;
+      --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Monaco, Consolas, monospace;
       --menubar-height: 28px;
       --accent-blue: #007aff;
-      --accent-orange: #ff6b35;
-      --accent-purple: #af52de;
+      --accent-orange: #ff9f0a;
+      --accent-red: #ff3b30;
       --accent-green: #34c759;
-      --glass-tint-dark: rgba(22, 26, 35, 0.72);
-      --glass-border: rgba(255, 255, 255, 0.16);
+      --accent-purple: #af52de;
+      --glass-tint-dark: rgba(24, 28, 38, 0.72);
+      --glass-border: rgba(255, 255, 255, 0.18);
       --glass-glow: inset 0 1px 0 rgba(255, 255, 255, 0.28);
-      --shadow-window: 0 28px 75px -12px rgba(0, 0, 0, 0.68), 0 0 1px rgba(255, 255, 255, 0.22);
-      --shadow-window-active: 0 38px 90px -15px rgba(0, 0, 0, 0.82), 0 0 0 1px rgba(255, 255, 255, 0.28);
+      --shadow-window: 0 30px 80px -15px rgba(0, 0, 0, 0.7), 0 0 1px rgba(255, 255, 255, 0.22);
+      --shadow-window-active: 0 40px 95px -15px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.3);
       --traffic-close: #ff5f56;
       --traffic-min: #ffbd2e;
       --traffic-max: #27c93f;
@@ -61,6 +70,7 @@ export function renderMacOsPage() {
       overflow: hidden;
       font-family: var(--font-system);
       font-size: 13px;
+      letter-spacing: -0.015em;
       color: #f5f5f7;
       background: #000;
       position: fixed;
@@ -96,7 +106,7 @@ export function renderMacOsPage() {
       left: 0;
       right: 0;
       height: var(--menubar-height);
-      background: rgba(18, 20, 26, 0.52);
+      background: rgba(18, 20, 26, 0.55);
       backdrop-filter: blur(28px) saturate(190%);
       -webkit-backdrop-filter: blur(28px) saturate(190%);
       border-bottom: 1px solid rgba(255, 255, 255, 0.12);
@@ -144,18 +154,18 @@ export function renderMacOsPage() {
       color: #fff;
     }
 
-    /* Dropdown Menus */
+    /* Apple Dropdown Menus */
     .menu-dropdown {
       position: absolute;
       top: 26px;
       left: 0;
-      background: rgba(26, 30, 40, 0.88);
+      background: rgba(26, 30, 40, 0.9);
       backdrop-filter: blur(36px) saturate(200%);
       -webkit-backdrop-filter: blur(36px) saturate(200%);
       border: 1px solid rgba(255, 255, 255, 0.18);
       border-radius: 8px;
       padding: 5px;
-      min-width: 220px;
+      min-width: 230px;
       box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.1);
       display: none;
       flex-direction: column;
@@ -173,7 +183,7 @@ export function renderMacOsPage() {
     }
 
     .dropdown-row {
-      padding: 4px 10px;
+      padding: 5px 12px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -225,9 +235,9 @@ export function renderMacOsPage() {
       position: absolute;
       top: var(--menubar-height);
       left: 0;
-      right: 320px; /* Space for desktop widgets */
+      right: 320px;
       bottom: 86px;
-      padding: 16px;
+      padding: 18px;
       display: grid;
       grid-auto-flow: column;
       grid-template-rows: repeat(auto-fill, 96px);
@@ -309,10 +319,12 @@ export function renderMacOsPage() {
     }
 
     .sq-finder { background: linear-gradient(135deg, #5EC9F8 0%, #1463E8 100%); }
+    .sq-launchpad { background: linear-gradient(135deg, #8E8E93 0%, #48484A 100%); }
     .sq-safari { background: linear-gradient(135deg, #5EE0F8 0%, #1A6CF0 100%); }
     .sq-photos { background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%); }
-    .sq-music { background: linear-gradient(135deg, #FC5C7D 0%, #FA2D55 100%); }
-    .sq-calc { background: linear-gradient(135deg, #FF6B35 0%, #C2410C 100%); }
+    .sq-code { background: linear-gradient(135deg, #24292e 0%, #007acc 100%); }
+    .sq-calc { background: linear-gradient(135deg, #FF9F0A 0%, #F7821B 100%); }
+    .sq-kct { background: linear-gradient(135deg, #FF6B35 0%, #C2410C 100%); }
     .sq-specimen { background: linear-gradient(135deg, #0F2D6B 0%, #0284C7 100%); }
     .sq-notes { background: linear-gradient(135deg, #FFE57A 0%, #FFC600 100%); }
     .sq-calendar { background: linear-gradient(135deg, #ffffff 0%, #f5f5f7 100%); }
@@ -388,7 +400,6 @@ export function renderMacOsPage() {
       border-radius: 50%;
     }
 
-    /* Calendar Widget */
     .widget-cal-header {
       display: flex;
       align-items: center;
@@ -430,22 +441,8 @@ export function renderMacOsPage() {
       color: #fff;
     }
 
-    /* Weather & System Widget */
-    .widget-wx-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .wx-temp {
-      font-size: 26px;
-      font-weight: 700;
-      line-height: 1;
-    }
-
-    /* Sticky Note Widget */
     .widget-sticky {
-      background: rgba(254, 240, 138, 0.88);
+      background: rgba(254, 240, 138, 0.9);
       color: #713f12;
       border-color: rgba(250, 204, 21, 0.4);
       box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
@@ -565,7 +562,7 @@ export function renderMacOsPage() {
       animation: dockBounce 0.65s cubic-bezier(0.28, 0.84, 0.42, 1);
     }
 
-    /* ─── Window System ─── */
+    /* ─── Window System & Pixel-Accurate Traffic Lights ─── */
     .app-window {
       position: absolute;
       border-radius: 12px;
@@ -577,8 +574,8 @@ export function renderMacOsPage() {
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      min-width: 340px;
-      min-height: 240px;
+      min-width: 320px;
+      min-height: 220px;
       opacity: 0;
       transform: scale(0.96) translateY(12px);
       transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1),
@@ -604,7 +601,7 @@ export function renderMacOsPage() {
     }
 
     .window-titlebar {
-      height: 42px;
+      height: 40px;
       background: rgba(22, 26, 36, 0.55);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       display: flex;
@@ -630,7 +627,7 @@ export function renderMacOsPage() {
       width: 12px;
       height: 12px;
       border-radius: 50%;
-      border: none;
+      border: 1px solid rgba(0, 0, 0, 0.15);
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -642,7 +639,6 @@ export function renderMacOsPage() {
     .traffic-btn::after {
       content: '';
       font-size: 8px;
-      color: rgba(0, 0, 0, 0.75);
       opacity: 0;
       transition: opacity 0.15s ease;
       font-weight: 800;
@@ -652,12 +648,12 @@ export function renderMacOsPage() {
       opacity: 1;
     }
 
-    .btn-close { background: var(--traffic-close); }
-    .btn-close::after { content: '✕'; font-size: 7px; }
-    .btn-min { background: var(--traffic-min); }
-    .btn-min::after { content: '−'; font-size: 8px; }
-    .btn-max { background: var(--traffic-max); }
-    .btn-max::after { content: '+'; font-size: 8px; }
+    .btn-close { background: var(--traffic-close); border-color: rgba(224, 68, 62, 0.8); }
+    .btn-close::after { content: '✕'; font-size: 7px; color: #4c0000; }
+    .btn-min { background: var(--traffic-min); border-color: rgba(222, 161, 35, 0.8); }
+    .btn-min::after { content: '−'; font-size: 8px; color: #603b00; }
+    .btn-max { background: var(--traffic-max); border-color: rgba(40, 170, 58, 0.8); }
+    .btn-max::after { content: '+'; font-size: 8px; color: #003d07; }
 
     .window-title {
       position: absolute;
@@ -679,387 +675,263 @@ export function renderMacOsPage() {
       font-size: 13px;
     }
 
-    /* Window Resize Handles */
     .resize-handle { position: absolute; z-index: 5; }
     .resize-handle-r { top: 0; right: 0; width: 6px; height: 100%; cursor: ew-resize; }
     .resize-handle-b { bottom: 0; left: 0; height: 6px; width: 100%; cursor: ns-resize; }
     .resize-handle-br { bottom: 0; right: 0; width: 14px; height: 14px; cursor: nwse-resize; }
 
-    /* ─── Notes App (생성, 저장, 불러오기, 편집, 내보내기) ─── */
-    .notes-container {
-      display: flex;
-      height: 100%;
-      margin: -18px;
+    /* ─── Apple Native Calculator UI ─── */
+    .calc-native-window {
+      background: rgba(28, 30, 36, 0.92) !important;
     }
-
-    .notes-sidebar {
-      width: 230px;
-      background: rgba(20, 24, 34, 0.6);
-      border-right: 1px solid rgba(255, 255, 255, 0.08);
+    .calc-screen {
+      height: 72px;
       display: flex;
-      flex-direction: column;
-    }
-
-    .notes-toolbar {
-      padding: 10px 12px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .notes-action-btn {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 6px;
-      padding: 4px 10px;
+      align-items: flex-end;
+      justify-content: flex-end;
+      padding: 8px 16px;
+      font-size: 44px;
+      font-weight: 300;
+      font-variant-numeric: tabular-nums;
       color: #fff;
-      font-size: 11.5px;
-      font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      transition: background 0.15s;
-    }
-
-    .notes-action-btn:hover {
-      background: var(--accent-blue);
-      border-color: var(--accent-blue);
-    }
-
-    .notes-list {
-      flex: 1;
-      overflow-y: auto;
-      padding: 8px;
-    }
-
-    .notes-item {
-      padding: 9px 12px;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-bottom: 4px;
-      transition: background 0.15s;
-    }
-
-    .notes-item:hover, .notes-item.active {
-      background: rgba(255, 255, 255, 0.12);
-    }
-
-    .notes-item.active {
-      border-left: 3px solid var(--accent-blue);
-    }
-
-    .notes-item-title {
-      font-size: 12px;
-      font-weight: 600;
-      color: #fff;
-      margin-bottom: 2px;
-      white-space: nowrap;
       overflow: hidden;
-      text-overflow: ellipsis;
+      white-space: nowrap;
     }
-
-    .notes-item-date {
-      font-size: 10px;
-      color: #94a3b8;
-    }
-
-    .notes-editor {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      background: rgba(18, 22, 30, 0.4);
-    }
-
-    .editor-header {
-      padding: 12px 18px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .editor-title-input {
-      font-size: 18px;
-      font-weight: 700;
-      color: #fff;
-      background: transparent;
-      border: none;
-      outline: none;
-      width: 70%;
-      font-family: var(--font-system);
-    }
-
-    .editor-body-textarea {
-      flex: 1;
-      padding: 18px;
-      background: transparent;
-      border: none;
-      outline: none;
-      color: #e2e8f0;
-      font-size: 13.5px;
-      line-height: 1.8;
-      font-family: var(--font-system);
-      resize: none;
-    }
-
-    /* ─── Finder App (실제 파일 업로드, 저장, 다운로드, 삭제) ─── */
-    .finder-container {
-      display: flex;
-      height: 100%;
-      margin: -18px;
-    }
-
-    .finder-sidebar {
-      width: 180px;
-      background: rgba(20, 24, 34, 0.6);
-      border-right: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 12px 8px;
-    }
-
-    .finder-main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .finder-toolbar {
-      padding: 8px 14px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(15, 20, 28, 0.4);
-    }
-
-    .finder-content {
-      flex: 1;
-      padding: 16px;
-      overflow-y: auto;
-    }
-
-    .finder-files-grid {
+    .calc-keypad {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-      gap: 16px;
-    }
-
-    .finder-file {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      cursor: pointer;
-      padding: 8px 4px;
-      border-radius: 8px;
-      position: relative;
-    }
-
-    .finder-file:hover {
-      background: rgba(255, 255, 255, 0.1);
-    }
-
-    .finder-file.selected {
-      background: rgba(0, 122, 255, 0.35);
-    }
-
-    .finder-file-icon {
-      width: 48px;
-      height: 48px;
-      margin-bottom: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 32px;
-    }
-
-    .finder-file-icon img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 6px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .finder-file-name {
-      font-size: 11.5px;
-      color: #fff;
-      word-break: break-all;
-    }
-
-    /* ─── Calendar.app (인터랙티브 일정 관리자) ─── */
-    .cal-app-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 16px;
-    }
-
-    .cal-month-nav {
-      display: flex;
-      align-items: center;
+      grid-template-columns: repeat(4, 1fr);
       gap: 10px;
-      font-size: 18px;
-      font-weight: 700;
+      padding: 12px;
     }
-
-    .cal-full-grid {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 6px;
-    }
-
-    .cal-full-cell {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 8px;
-      min-height: 64px;
-      padding: 6px;
+    .calc-btn {
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      border: none;
+      font-size: 19px;
+      font-weight: 500;
       cursor: pointer;
-      transition: background 0.15s;
-    }
-
-    .cal-full-cell:hover {
-      background: rgba(0, 122, 255, 0.2);
-    }
-
-    .cal-full-cell.current-day {
-      border-color: var(--accent-blue);
-      background: rgba(0, 122, 255, 0.15);
-    }
-
-    .cal-cell-num {
-      font-weight: 700;
-      font-size: 12px;
-      margin-bottom: 4px;
-    }
-
-    .cal-event-tag {
-      background: var(--accent-orange);
-      color: #fff;
-      font-size: 9.5px;
-      padding: 1px 4px;
-      border-radius: 3px;
-      margin-bottom: 2px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    /* ─── Clock.app (스톱워치 & 타이머 & 세계시계) ─── */
-    .clock-tab-bar {
       display: flex;
-      gap: 8px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      padding-bottom: 10px;
-      margin-bottom: 16px;
-    }
-
-    .clock-tab-btn {
-      padding: 6px 14px;
-      border-radius: 6px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #cbd5e1;
-      cursor: pointer;
-      font-weight: 600;
-    }
-
-    .clock-tab-btn.active {
-      background: var(--accent-blue);
-      color: #fff;
-    }
-
-    .stopwatch-display {
-      font-family: var(--font-mono);
-      font-size: 46px;
-      font-weight: 700;
-      text-align: center;
-      margin: 20px 0;
-      color: #fff;
-    }
-
-    .clock-ctrl-btns {
-      display: flex;
+      align-items: center;
       justify-content: center;
-      gap: 16px;
+      transition: filter 0.15s ease, transform 0.1s ease;
+      color: #fff;
+    }
+    .calc-btn:active { filter: brightness(1.25); transform: scale(0.96); }
+    .btn-fn { background: #a5a5a5; color: #000; font-weight: 600; }
+    .btn-num { background: #333333; }
+    .btn-op { background: #ff9f0a; font-size: 24px; font-weight: 600; }
+    .btn-zero {
+      grid-column: span 2;
+      aspect-ratio: auto;
+      border-radius: 30px;
+      justify-content: flex-start;
+      padding-left: 24px;
     }
 
-    /* ─── KCT & ASTM App Styles ─── */
-    .calc-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    .calc-card {
-      background: rgba(15, 20, 28, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      padding: 16px;
-    }
-    .calc-title {
+    /* ─── VS Code / Developer Studio App ─── */
+    .vscode-container {
+      display: flex;
+      height: 100%;
+      margin: -18px;
+      font-family: var(--font-mono);
       font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--accent-orange);
-      margin-bottom: 14px;
+      background: #1e1e1e;
+    }
+    .vscode-activitybar {
+      width: 44px;
+      background: #333333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 10px;
+      gap: 16px;
+      color: #858585;
+    }
+    .vscode-activitybar svg { cursor: pointer; transition: color 0.15s; }
+    .vscode-activitybar svg:hover, .vscode-activitybar svg.active { color: #fff; }
+    .vscode-sidebar {
+      width: 180px;
+      background: #252526;
+      border-right: 1px solid #191919;
+      padding: 10px 0;
+      color: #cccccc;
+    }
+    .vscode-file-item {
+      padding: 4px 14px;
+      cursor: pointer;
       display: flex;
       align-items: center;
       gap: 6px;
     }
+    .vscode-file-item:hover, .vscode-file-item.active { background: #37373d; color: #fff; }
+    .vscode-editor {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: #1e1e1e;
+    }
+    .vscode-tabs {
+      height: 32px;
+      background: #2d2d2d;
+      display: flex;
+      align-items: center;
+    }
+    .vscode-tab {
+      height: 100%;
+      padding: 0 16px;
+      background: #1e1e1e;
+      border-top: 2px solid var(--accent-blue);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #fff;
+      font-size: 11.5px;
+    }
+    .vscode-code-area {
+      flex: 1;
+      padding: 14px;
+      overflow-y: auto;
+      line-height: 1.6;
+      color: #d4d4d4;
+      white-space: pre;
+    }
+
+    /* ─── Launchpad (앱 보관함) ─── */
+    #launchpad-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(50px) saturate(220%) brightness(0.85);
+      -webkit-backdrop-filter: blur(50px) saturate(220%) brightness(0.85);
+      z-index: 25000;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 50px;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+    #launchpad-overlay.show {
+      display: flex;
+      opacity: 1;
+    }
+    .launchpad-search {
+      width: 280px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      outline: none;
+      font-size: 14px;
+      text-align: center;
+      margin-bottom: 50px;
+      font-family: var(--font-system);
+    }
+    .launchpad-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 100px);
+      gap: 32px;
+      justify-content: center;
+    }
+    .launchpad-app {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.15s ease;
+      text-align: center;
+    }
+    .launchpad-app:hover { transform: scale(1.08); }
+    .launchpad-app-label {
+      margin-top: 8px;
+      font-size: 12px;
+      color: #fff;
+      font-weight: 500;
+    }
+
+    /* ─── Desktop Right-Click Context Menu ─── */
+    #context-menu {
+      position: fixed;
+      background: rgba(28, 32, 42, 0.92);
+      backdrop-filter: blur(35px) saturate(200%);
+      -webkit-backdrop-filter: blur(35px) saturate(200%);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 8px;
+      padding: 5px;
+      min-width: 200px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+      display: none;
+      flex-direction: column;
+      z-index: 30000;
+    }
+    #context-menu.show { display: flex; }
+
+    /* ─── About This Mac Window ─── */
+    .about-mac-wrap {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      padding: 10px 14px;
+    }
+
+    /* ─── Notes App ─── */
+    .notes-container { display: flex; height: 100%; margin: -18px; }
+    .notes-sidebar { width: 230px; background: rgba(20, 24, 34, 0.6); border-right: 1px solid rgba(255, 255, 255, 0.08); display: flex; flex-direction: column; }
+    .notes-toolbar { padding: 10px 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); display: flex; align-items: center; justify-content: space-between; }
+    .notes-action-btn {
+      background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 6px;
+      padding: 4px 10px; color: #fff; font-size: 11.5px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;
+    }
+    .notes-action-btn:hover { background: var(--accent-blue); border-color: var(--accent-blue); }
+    .notes-list { flex: 1; overflow-y: auto; padding: 8px; }
+    .notes-item { padding: 9px 12px; border-radius: 8px; cursor: pointer; margin-bottom: 4px; transition: background 0.15s; }
+    .notes-item:hover, .notes-item.active { background: rgba(255, 255, 255, 0.12); }
+    .notes-item.active { border-left: 3px solid var(--accent-blue); }
+    .notes-item-title { font-size: 12px; font-weight: 600; color: #fff; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .notes-item-date { font-size: 10px; color: #94a3b8; }
+    .notes-editor { flex: 1; display: flex; flex-direction: column; background: rgba(18, 22, 30, 0.4); }
+    .editor-header { padding: 12px 18px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); display: flex; align-items: center; justify-content: space-between; }
+    .editor-title-input { font-size: 18px; font-weight: 700; color: #fff; background: transparent; border: none; outline: none; width: 70%; font-family: var(--font-system); }
+    .editor-body-textarea { flex: 1; padding: 18px; background: transparent; border: none; outline: none; color: #e2e8f0; font-size: 13.5px; line-height: 1.8; font-family: var(--font-system); resize: none; }
+
+    /* ─── Finder App ─── */
+    .finder-container { display: flex; height: 100%; margin: -18px; }
+    .finder-sidebar { width: 180px; background: rgba(20, 24, 34, 0.6); border-right: 1px solid rgba(255, 255, 255, 0.08); padding: 12px 8px; }
+    .finder-main { flex: 1; display: flex; flex-direction: column; }
+    .finder-toolbar { padding: 8px 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); display: flex; align-items: center; gap: 8px; background: rgba(15, 20, 28, 0.4); }
+    .finder-content { flex: 1; padding: 16px; overflow-y: auto; }
+    .finder-files-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 16px; }
+    .finder-file { display: flex; flex-direction: column; align-items: center; text-align: center; cursor: pointer; padding: 8px 4px; border-radius: 8px; }
+    .finder-file:hover { background: rgba(255, 255, 255, 0.1); }
+    .finder-file.selected { background: rgba(0, 122, 255, 0.35); }
+    .finder-file-icon { width: 48px; height: 48px; margin-bottom: 6px; display: flex; align-items: center; justify-content: center; font-size: 32px; }
+    .finder-file-icon img { width: 100%; height: 100%; object-fit: cover; border-radius: 6px; }
+    .finder-file-name { font-size: 11.5px; color: #fff; word-break: break-all; }
+
+    /* ─── KCT & ASTM ─── */
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .calc-card { background: rgba(15, 20, 28, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; padding: 16px; }
+    .calc-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-orange); margin-bottom: 14px; display: flex; align-items: center; gap: 6px; }
     .form-group { margin-bottom: 12px; }
     .form-label { display: block; font-size: 11px; color: #94a3b8; margin-bottom: 4px; }
-    .form-input {
-      width: 100%;
-      background: rgba(0, 0, 0, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 6px;
-      padding: 7px 10px;
-      color: #fff;
-      font-family: var(--font-mono);
-      font-size: 12px;
-      outline: none;
-    }
-    .form-input:focus { border-color: var(--accent-blue); box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.25); }
-    .res-box {
-      background: rgba(16, 24, 40, 0.85);
-      border: 1px solid rgba(0, 168, 255, 0.3);
-      border-radius: 8px;
-      padding: 14px;
-      margin-top: 10px;
-    }
+    .form-input { width: 100%; background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 6px; padding: 7px 10px; color: #fff; font-family: var(--font-mono); font-size: 12px; outline: none; }
+    .res-box { background: rgba(16, 24, 40, 0.85); border: 1px solid rgba(0, 168, 255, 0.3); border-radius: 8px; padding: 14px; margin-top: 10px; }
     .res-metric { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 12px; }
     .res-val { font-family: var(--font-mono); font-weight: 700; color: #38bdf8; }
     .res-val.highlight { font-size: 16px; color: #4ade80; }
 
-    /* ─── Terminal Body ─── */
-    .terminal-body {
-      background: #090c10 !important;
-      font-family: var(--font-mono) !important;
-      font-size: 12px !important;
-      line-height: 1.6;
-      padding: 14px !important;
-      color: #d1d5db;
-    }
+    /* ─── Terminal ─── */
+    .terminal-body { background: #090c10 !important; font-family: var(--font-mono) !important; font-size: 12px !important; line-height: 1.6; padding: 14px !important; color: #d1d5db; }
     .terminal-output { margin-bottom: 8px; white-space: pre-wrap; }
     .terminal-prompt-line { display: flex; align-items: center; gap: 6px; }
     .prompt-label { color: #4ade80; font-weight: 700; }
     .terminal-input { flex: 1; background: transparent; border: none; outline: none; color: #fff; font-family: var(--font-mono); font-size: 12px; caret-color: #38bdf8; }
 
     /* ─── Spotlight ─── */
-    #spotlight-overlay {
-      position: fixed; inset: 0; background: rgba(0, 0, 0, 0.35); backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px); display: none; align-items: flex-start; justify-content: center;
-      padding-top: 15vh; z-index: 20000;
-    }
+    #spotlight-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.35); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); display: none; align-items: flex-start; justify-content: center; padding-top: 15vh; z-index: 20000; }
     #spotlight-overlay.show { display: flex; }
-    #spotlight-box {
-      width: 600px; max-width: 90vw; background: rgba(30, 35, 48, 0.88); backdrop-filter: blur(40px) saturate(200%);
-      -webkit-backdrop-filter: blur(40px) saturate(200%); border: 1px solid rgba(255, 255, 255, 0.24);
-      border-radius: 14px; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7); overflow: hidden; animation: spotIn 0.15s ease-out;
-    }
+    #spotlight-box { width: 600px; max-width: 90vw; background: rgba(30, 35, 48, 0.88); backdrop-filter: blur(40px) saturate(200%); -webkit-backdrop-filter: blur(40px) saturate(200%); border: 1px solid rgba(255, 255, 255, 0.24); border-radius: 14px; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7); overflow: hidden; animation: spotIn 0.15s ease-out; }
     @keyframes spotIn { from { opacity: 0; transform: scale(0.97); } to { opacity: 1; transform: scale(1); } }
     .spotlight-input-row { display: flex; align-items: center; padding: 14px 18px; gap: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
     .spotlight-input { flex: 1; background: transparent; border: none; outline: none; font-size: 18px; color: #fff; font-family: var(--font-system); }
@@ -1068,12 +940,7 @@ export function renderMacOsPage() {
     .spotlight-item:hover, .spotlight-item.active { background: var(--accent-blue); color: #fff; }
 
     /* ─── Control Center ─── */
-    #control-center {
-      position: absolute; top: 34px; right: 12px; width: 320px; background: rgba(28, 33, 44, 0.9);
-      backdrop-filter: blur(40px) saturate(200%); -webkit-backdrop-filter: blur(40px) saturate(200%);
-      border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 16px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.65);
-      padding: 14px; display: none; flex-direction: column; gap: 12px; z-index: 10005; animation: menuFadeIn 0.15s ease-out;
-    }
+    #control-center { position: absolute; top: 34px; right: 12px; width: 320px; background: rgba(28, 33, 44, 0.9); backdrop-filter: blur(40px) saturate(200%); -webkit-backdrop-filter: blur(40px) saturate(200%); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 16px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.65); padding: 14px; display: none; flex-direction: column; gap: 12px; z-index: 10005; animation: menuFadeIn 0.15s ease-out; }
     #control-center.show { display: flex; }
     .cc-row { display: flex; gap: 10px; }
     .cc-card { flex: 1; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 10px; display: flex; align-items: center; gap: 10px; }
@@ -1084,21 +951,11 @@ export function renderMacOsPage() {
     .cc-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: #fff; cursor: pointer; }
 
     /* ─── Mobile Fallback ─── */
-    #mobile-notice {
-      display: none; position: absolute; top: 34px; left: 12px; right: 12px;
-      background: rgba(15, 23, 42, 0.95); border: 1px solid rgba(255, 107, 53, 0.5);
-      padding: 10px 14px; border-radius: 10px; z-index: 10002; font-size: 12px; color: #f8fafc;
-      align-items: center; justify-content: space-between;
-    }
-    @media (max-width: 768px) {
-      #mobile-notice { display: flex; }
-      #dock { height: 56px; padding-bottom: 5px; }
-      .dock-item { width: 38px; height: 38px; }
-      .app-window { min-width: 280px; }
-    }
+    #mobile-notice { display: none; position: absolute; top: 34px; left: 12px; right: 12px; background: rgba(15, 23, 42, 0.95); border: 1px solid rgba(255, 107, 53, 0.5); padding: 10px 14px; border-radius: 10px; z-index: 10002; font-size: 12px; color: #f8fafc; align-items: center; justify-content: space-between; }
+    @media (max-width: 768px) { #mobile-notice { display: flex; } #dock { height: 56px; padding-bottom: 5px; } .dock-item { width: 38px; height: 38px; } .app-window { min-width: 280px; } }
   </style>
 </head>
-<body>
+<body oncontextmenu="handleDesktopContextMenu(event)">
   <!-- Liquid Glass Refraction SVG Filter -->
   <svg width="0" height="0" aria-hidden="true" style="position:absolute">
     <defs>
@@ -1113,7 +970,7 @@ export function renderMacOsPage() {
   <!-- Desktop Wallpaper -->
   <div id="desktop-wallpaper" style="background-image: url('https://macos27.kimi.page/wallpaper-tahoe-day.jpg');"></div>
 
-  <!-- Hidden File Input for Real PC File Upload -->
+  <!-- Real File Upload Input -->
   <input type="file" id="real-file-uploader" style="display:none;" onchange="handleRealFileUpload(event)" />
 
   <!-- Mobile Notice -->
@@ -1127,19 +984,22 @@ export function renderMacOsPage() {
     <div class="menu-left">
       <div class="menu-item menu-apple" id="apple-menu-btn" title="DAVHAVE Studio"></div>
       <div class="menu-item menu-appname" id="menu-active-app">Finder</div>
-      <div class="menu-item" onclick="openApp('finder')">파일</div>
-      <div class="menu-item" onclick="openApp('notes')">편집</div>
-      <div class="menu-item" onclick="toggleWidgets()">위젯 보기</div>
-      <div class="menu-item" onclick="openApp('calendar')">캘린더</div>
-      <div class="menu-item" onclick="openApp('clock')">시계</div>
-      <div class="menu-item" onclick="openApp('about')">도움말</div>
+      <div id="dynamic-menu-items" style="display:flex;">
+        <div class="menu-item">파일</div>
+        <div class="menu-item">편집</div>
+        <div class="menu-item">보기</div>
+        <div class="menu-item">이동</div>
+        <div class="menu-item">창</div>
+        <div class="menu-item">도움말</div>
+      </div>
     </div>
 
     <!-- Apple Dropdown Menu -->
     <div class="menu-dropdown" id="apple-dropdown">
-      <div class="dropdown-row" onclick="openApp('about')"><span>DAVHAVE Studio 정보</span></div>
+      <div class="dropdown-row" onclick="openApp('about')"><span>이 Mac에 관하여</span></div>
       <div class="dropdown-divider"></div>
       <div class="dropdown-row" onclick="openApp('settings')"><span>시스템 설정...</span><span class="dropdown-shortcut">⌘,</span></div>
+      <div class="dropdown-row" onclick="toggleLaunchpad()"><span>Launchpad</span></div>
       <div class="dropdown-row" onclick="toggleSpotlight()"><span>Spotlight 검색</span><span class="dropdown-shortcut">⌘Space</span></div>
       <div class="dropdown-divider"></div>
       <div class="dropdown-row" onclick="window.location.href='/'"><span>웹 표준 홈으로 돌아가기</span><span class="dropdown-shortcut">⎋ Esc</span></div>
@@ -1158,16 +1018,30 @@ export function renderMacOsPage() {
       <div class="status-icon" id="control-center-btn" onclick="toggleControlCenter()" title="제어 센터">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="6" rx="3"></rect><circle cx="9" cy="7" r="1.5" fill="currentColor"></circle><rect x="4" y="14" width="16" height="6" rx="3"></rect><circle cx="15" cy="17" r="1.5" fill="currentColor"></circle></svg>
       </div>
-      <div class="status-icon status-clock" id="clock-display" onclick="openApp('clock')">오후 1:20</div>
+      <div class="status-icon status-clock" id="clock-display" onclick="toggleWidgets()">오후 1:25</div>
     </div>
   </header>
+
+  <!-- Desktop Right-Click Context Menu -->
+  <div id="context-menu">
+    <div class="dropdown-row" onclick="createNewNote(); openApp('notes');"><span>새 메모</span></div>
+    <div class="dropdown-row" onclick="createBlankFile(); openApp('finder');"><span>새 텍스트 파일</span></div>
+    <div class="dropdown-row" onclick="triggerRealFileUpload()"><span>파일 가져오기 (업로드)...</span></div>
+    <div class="dropdown-divider"></div>
+    <div class="dropdown-row" onclick="openApp('settings')"><span>배경화면 변경...</span></div>
+    <div class="dropdown-row" onclick="toggleLaunchpad()"><span>Launchpad 열기</span></div>
+    <div class="dropdown-row" onclick="toggleWidgets()"><span>데스크탑 위젯 토글</span></div>
+    <div class="dropdown-divider"></div>
+    <div class="dropdown-row" onclick="openApp('about')"><span>이 Mac에 관하여</span></div>
+    <div class="dropdown-row" onclick="window.location.href='/'"><span>웹 표준 홈으로 돌아가기</span></div>
+  </div>
 
   <!-- Control Center Dropdown -->
   <div id="control-center" class="lg-refract">
     <div class="cc-row">
       <div class="cc-card">
         <div class="cc-icon-btn">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>
         </div>
         <div>
           <div style="font-weight:600; font-size:12px;">Wi-Fi</div>
@@ -1201,78 +1075,55 @@ export function renderMacOsPage() {
     </div>
   </div>
 
+  <!-- Launchpad (앱 보관함) -->
+  <div id="launchpad-overlay" onclick="handleLaunchpadBackdrop(event)">
+    <input type="text" class="launchpad-search" id="launchpad-search-input" placeholder="검색 (Search)" oninput="filterLaunchpad(this.value)" />
+    <div class="launchpad-grid" id="launchpad-grid">
+      <!-- Injected by JS -->
+    </div>
+  </div>
+
   <!-- Desktop Workspace & Grid Icons -->
   <main id="desktop">
     <div class="desktop-icon" onclick="selectDesktopIcon(this)" ondblclick="openApp('finder')" data-app="finder">
-      <div class="desktop-icon-img">
-        <div class="app-squircle sq-finder">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"></rect><path d="M9 9h.01M15 9h.01M8 14s1.5 2 4 2 4-2 4-2"></path></svg>
-        </div>
-      </div>
+      <div class="desktop-icon-img"><div class="app-squircle sq-finder"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"></rect><path d="M9 9h.01M15 9h.01M8 14s1.5 2 4 2 4-2 4-2"></path></svg></div></div>
       <span class="desktop-icon-label">Finder</span>
     </div>
 
+    <div class="desktop-icon" onclick="selectDesktopIcon(this)" ondblclick="openApp('calc-native')" data-app="calc-native">
+      <div class="desktop-icon-img"><div class="app-squircle sq-calc"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="16" y1="14" x2="16" y2="18"></line><path d="M16 10h.01M12 10h.01M8 10h.01M12 14h.01M8 14h.01M12 18h.01M8 18h.01"></path></svg></div></div>
+      <span class="desktop-icon-label">계산기.app</span>
+    </div>
+
+    <div class="desktop-icon" onclick="selectDesktopIcon(this)" ondblclick="openApp('vscode')" data-app="vscode">
+      <div class="desktop-icon-img"><div class="app-squircle sq-code"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div></div>
+      <span class="desktop-icon-label">Code.app</span>
+    </div>
+
     <div class="desktop-icon" onclick="selectDesktopIcon(this)" ondblclick="openApp('notes')" data-app="notes">
-      <div class="desktop-icon-img">
-        <div class="app-squircle sq-notes">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2"><path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z"></path><path d="M15 3v5h5M9 13h6M9 17h4"></path></svg>
-        </div>
-      </div>
+      <div class="desktop-icon-img"><div class="app-squircle sq-notes"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2"><path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z"></path><path d="M15 3v5h5M9 13h6M9 17h4"></path></svg></div></div>
       <span class="desktop-icon-label">메모.app</span>
     </div>
 
-    <div class="desktop-icon" onclick="selectDesktopIcon(this)" ondblclick="openApp('calendar')" data-app="calendar">
-      <div class="desktop-icon-img">
-        <div class="app-squircle sq-calendar">
-          <div style="text-align:center;">
-            <div style="font-size:8px; font-weight:800; color:#ff3b30; text-transform:uppercase;">SEP</div>
-            <div style="font-size:16px; font-weight:800; color:#1c1c1e; line-height:1;" id="icon-cal-date">29</div>
-          </div>
-        </div>
-      </div>
-      <span class="desktop-icon-label">캘린더.app</span>
-    </div>
-
-    <div class="desktop-icon" onclick="selectDesktopIcon(this)" ondblclick="openApp('clock')" data-app="clock">
-      <div class="desktop-icon-img">
-        <div class="app-squircle sq-clock">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-        </div>
-      </div>
-      <span class="desktop-icon-label">시계.app</span>
-    </div>
-
     <div class="desktop-icon" onclick="selectDesktopIcon(this)" ondblclick="openApp('calc')" data-app="calc">
-      <div class="desktop-icon-img">
-        <div class="app-squircle sq-calc">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="16" y1="14" x2="16" y2="18"></line><path d="M16 10h.01M12 10h.01M8 10h.01M12 14h.01M8 14h.01M12 18h.01M8 18h.01"></path></svg>
-        </div>
-      </div>
+      <div class="desktop-icon-img"><div class="app-squircle sq-kct"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M3 3v18h18"></path><path d="m19 9-5 5-4-4-3 3"></path></svg></div></div>
       <span class="desktop-icon-label">KCT 계산기.app</span>
     </div>
 
     <div class="desktop-icon" onclick="selectDesktopIcon(this)" ondblclick="openApp('specimen')" data-app="specimen">
-      <div class="desktop-icon-img">
-        <div class="app-squircle sq-specimen">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M10 2v7.31L4.19 19A2 2 0 0 0 5.9 22h12.2a2 2 0 0 0 1.71-3L14 9.31V2"></path><path d="M8.5 2h7M14 9.3h-4"></path></svg>
-        </div>
-      </div>
+      <div class="desktop-icon-img"><div class="app-squircle sq-specimen"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M10 2v7.31L4.19 19A2 2 0 0 0 5.9 22h12.2a2 2 0 0 0 1.71-3L14 9.31V2"></path><path d="M8.5 2h7M14 9.3h-4"></path></svg></div></div>
       <span class="desktop-icon-label">ASTM 시편 연구소</span>
     </div>
 
     <div class="desktop-icon" onclick="selectDesktopIcon(this)" ondblclick="openApp('terminal')" data-app="terminal">
-      <div class="desktop-icon-img">
-        <div class="app-squircle sq-terminal">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
-        </div>
-      </div>
+      <div class="desktop-icon-img"><div class="app-squircle sq-terminal"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg></div></div>
       <span class="desktop-icon-label">Terminal</span>
     </div>
   </main>
 
-  <!-- ─── Desktop Widgets (macOS Sonoma / 27 Style Tiles) ─── -->
+  <!-- Desktop Widgets -->
   <aside id="desktop-widgets">
-    <!-- Widget 1: Analog Clock & Time -->
+    <!-- Clock Widget -->
     <div class="widget-tile" onclick="openApp('clock')" style="cursor:pointer;" title="시계 앱 열기">
       <div class="widget-clock-wrap">
         <div class="analog-clock-canvas">
@@ -1283,47 +1134,176 @@ export function renderMacOsPage() {
         </div>
         <div>
           <div style="font-size:11px; font-weight:700; color:#94a3b8; text-transform:uppercase;">SEOUL · KST</div>
-          <div style="font-size:22px; font-weight:800; font-variant-numeric:tabular-nums;" id="widget-digital-clock">13:20:00</div>
+          <div style="font-size:22px; font-weight:800; font-variant-numeric:tabular-nums;" id="widget-digital-clock">13:25:00</div>
           <div style="font-size:11.5px; color:#cbd5e1;" id="widget-date-str">9월 29일 화요일</div>
         </div>
       </div>
     </div>
 
-    <!-- Widget 2: Interactive Monthly Calendar -->
+    <!-- Calendar Widget -->
     <div class="widget-tile" onclick="openApp('calendar')" style="cursor:pointer;" title="캘린더 앱 열기">
       <div class="widget-cal-header">
-        <span id="widget-cal-month-title">2026년 9월</span>
+        <span>2026년 9월</span>
         <span style="font-size:10px; color:#94a3b8;">CALENDAR</span>
       </div>
-      <div class="widget-cal-grid" id="widget-cal-days">
-        <!-- Rendered by JS -->
-      </div>
+      <div class="widget-cal-grid" id="widget-cal-days"></div>
     </div>
 
-    <!-- Widget 3: Real-time Weather & System Pulse -->
+    <!-- Weather Widget -->
     <div class="widget-tile">
-      <div class="widget-wx-row">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
         <div>
           <div style="font-size:11px; font-weight:700; color:#94a3b8;">SEOUL · 맑음</div>
-          <div class="wx-temp">22°</div>
+          <div style="font-size:26px; font-weight:700;">22°</div>
           <div style="font-size:10.5px; color:#cbd5e1; margin-top:2px;">최고 25° · 최저 17°</div>
         </div>
         <div style="font-size:36px;">☀️</div>
       </div>
-      <div style="margin-top:12px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.1); font-size:11px; display:flex; justify-content:space-between;">
+      <div style="margin-top:10px; padding-top:8px; border-top:1px solid rgba(255,255,255,0.1); font-size:11px; display:flex; justify-content:space-between;">
         <span>엣지 가동률: <strong style="color:#4ade80;" id="cpu-pulse">12%</strong></span>
         <span>지연시간: <strong style="color:#38bdf8;">0ms</strong></span>
       </div>
     </div>
 
-    <!-- Widget 4: Quick Desktop Sticky Note -->
+    <!-- Sticky Note Widget -->
     <div class="widget-tile widget-sticky">
       <div style="font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:4px; opacity:0.8;">STICKY NOTE</div>
       <textarea class="sticky-textarea" id="sticky-note-input" placeholder="바탕화면 빠른 메모를 입력하세요 (자동 저장됨)..." oninput="saveStickyNote(this.value)"></textarea>
     </div>
   </aside>
 
-  <!-- ─── Window: Notes (생성, 저장, 불러오기, 편집, 다운로드) ─── -->
+  <!-- ─── Window: About This Mac (이 Mac에 관하여) ─── -->
+  <div class="app-window" id="window-about" style="width: 540px; height: 320px; top: 140px; left: 260px;">
+    <div class="window-titlebar" onmousedown="startDragWindow(event, 'window-about')">
+      <div class="traffic-lights">
+        <button class="traffic-btn btn-close" onclick="closeApp('about')"></button>
+        <button class="traffic-btn btn-min" onclick="minimizeApp('about')"></button>
+        <button class="traffic-btn btn-max" onclick="maximizeApp('about')"></button>
+      </div>
+      <div class="window-title">이 Mac에 관하여</div>
+      <div></div>
+    </div>
+    <div class="window-body" style="display:flex; align-items:center;">
+      <div class="about-mac-wrap">
+        <div style="font-size:68px; filter:drop-shadow(0 8px 16px rgba(0,0,0,0.5));"></div>
+        <div style="line-height:1.7; font-size:12.5px;">
+          <h2 style="font-size:22px; font-weight:800; color:#fff; letter-spacing:-0.02em;">macOS 27</h2>
+          <div style="font-size:12px; color:#94a3b8; margin-bottom:8px;">Version 27.4.1 Liquid Glass Edition</div>
+          <div><strong>Mac Studio</strong> (2026)</div>
+          <div><strong>칩:</strong> Apple M4 Ultra / Cloudflare 300+ Edge Cores</div>
+          <div><strong>메모리:</strong> 128 GB Unified Edge RAM</div>
+          <div><strong>시동 디스크:</strong> Macintosh HD (davhave-content D1 SQL)</div>
+          <div><strong>일련 번호:</strong> DH77-EDGE-2026-KR</div>
+          <div style="margin-top:12px; display:flex; gap:8px;">
+            <button class="notes-action-btn" onclick="openApp('settings')">시스템 정보...</button>
+            <button class="notes-action-btn" onclick="window.location.href='/'">웹 표준 홈 열기 ↗</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Window: Native Apple Calculator (애플 네이티브 계산기) ─── -->
+  <div class="app-window calc-native-window" id="window-calc-native" style="width: 320px; height: 460px; top: 120px; left: 240px;">
+    <div class="window-titlebar" onmousedown="startDragWindow(event, 'window-calc-native')">
+      <div class="traffic-lights">
+        <button class="traffic-btn btn-close" onclick="closeApp('calc-native')"></button>
+        <button class="traffic-btn btn-min" onclick="minimizeApp('calc-native')"></button>
+        <button class="traffic-btn btn-max" onclick="maximizeApp('calc-native')"></button>
+      </div>
+      <div class="window-title">계산기</div>
+      <div></div>
+    </div>
+    <div class="window-body" style="padding:0; display:flex; flex-direction:column;">
+      <div class="calc-screen" id="calc-display-val">0</div>
+      <div class="calc-keypad">
+        <button class="calc-btn btn-fn" onclick="calcKey('AC')">AC</button>
+        <button class="calc-btn btn-fn" onclick="calcKey('±')">±</button>
+        <button class="calc-btn btn-fn" onclick="calcKey('%')">%</button>
+        <button class="calc-btn btn-op" onclick="calcKey('÷')">÷</button>
+
+        <button class="calc-btn btn-num" onclick="calcKey('7')">7</button>
+        <button class="calc-btn btn-num" onclick="calcKey('8')">8</button>
+        <button class="calc-btn btn-num" onclick="calcKey('9')">9</button>
+        <button class="calc-btn btn-op" onclick="calcKey('×')">×</button>
+
+        <button class="calc-btn btn-num" onclick="calcKey('4')">4</button>
+        <button class="calc-btn btn-num" onclick="calcKey('5')">5</button>
+        <button class="calc-btn btn-num" onclick="calcKey('6')">6</button>
+        <button class="calc-btn btn-op" onclick="calcKey('−')">−</button>
+
+        <button class="calc-btn btn-num" onclick="calcKey('1')">1</button>
+        <button class="calc-btn btn-num" onclick="calcKey('2')">2</button>
+        <button class="calc-btn btn-num" onclick="calcKey('3')">3</button>
+        <button class="calc-btn btn-op" onclick="calcKey('+')">+</button>
+
+        <button class="calc-btn btn-num btn-zero" onclick="calcKey('0')">0</button>
+        <button class="calc-btn btn-num" onclick="calcKey('.')">.</button>
+        <button class="calc-btn btn-op" onclick="calcKey('=')">=</button>
+      </div>
+    </div>
+    <div class="resize-handle resize-handle-br" onmousedown="startResizeWindow(event, 'window-calc-native', 'br')"></div>
+  </div>
+
+  <!-- ─── Window: VS Code Developer Studio (Code.app) ─── -->
+  <div class="app-window" id="window-vscode" style="width: 860px; height: 560px; top: 70px; left: 150px;">
+    <div class="window-titlebar" onmousedown="startDragWindow(event, 'window-vscode')">
+      <div class="traffic-lights">
+        <button class="traffic-btn btn-close" onclick="closeApp('vscode')"></button>
+        <button class="traffic-btn btn-min" onclick="minimizeApp('vscode')"></button>
+        <button class="traffic-btn btn-max" onclick="maximizeApp('vscode')"></button>
+      </div>
+      <div class="window-title">Code — worker.js (davhave_home)</div>
+      <div></div>
+    </div>
+    <div class="window-body" style="padding:0; overflow:hidden;">
+      <div class="vscode-container">
+        <div class="vscode-activitybar">
+          <svg class="active" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+        </div>
+        <div class="vscode-sidebar">
+          <div style="font-size:10px; font-weight:800; text-transform:uppercase; padding:0 14px 6px; color:#858585;">EXPLORER: DAVHAVE</div>
+          <div class="vscode-file-item active" onclick="switchVsCodeTab('worker.js')">📄 worker.js</div>
+          <div class="vscode-file-item" onclick="switchVsCodeTab('silicone.ts')">📐 silicone.ts</div>
+          <div class="vscode-file-item" onclick="switchVsCodeTab('astm.py')">🧪 astm_tensile.py</div>
+          <div class="vscode-file-item" onclick="switchVsCodeTab('README.md')">📝 README.md</div>
+        </div>
+        <div class="vscode-editor">
+          <div class="vscode-tabs">
+            <div class="vscode-tab" id="vscode-active-tab">📄 worker.js</div>
+          </div>
+          <div class="vscode-code-area" id="vscode-code-content">
+<span style="color:#6a9955;">// Cloudflare Workers 0ms Edge Architecture</span>
+<span style="color:#569cd6;">import</span> { renderMacOsPage } <span style="color:#569cd6;">from</span> <span style="color:#ce9178;">"./lib/macos-render.js"</span>;
+<span style="color:#569cd6;">import</span> { renderKctPage } <span style="color:#569cd6;">from</span> <span style="color:#ce9178;">"./lib/kct-render.js"</span>;
+
+<span style="color:#569cd6;">export default</span> {
+  <span style="color:#569cd6;">async</span> <span style="color:#dcdcaa;">fetch</span>(request, env, ctx) {
+    <span style="color:#569cd6;">const</span> url = <span style="color:#569cd6;">new</span> <span style="color:#4ec9b0;">URL</span>(request.url);
+    <span style="color:#569cd6;">const</span> { pathname } = url;
+
+    <span style="color:#6a9955;">// High-Fidelity macOS 27 Desktop Simulation</span>
+    <span style="color:#c586c0;">if</span> (pathname === <span style="color:#ce9178;">"/macos"</span>) {
+      <span style="color:#c586c0;">return</span> <span style="color:#569cd6;">new</span> <span style="color:#4ec9b0;">Response</span>(<span style="color:#dcdcaa;">renderMacOsPage</span>(), {
+        headers: { <span style="color:#ce9178;">"content-type"</span>: <span style="color:#ce9178;">"text/html; charset=utf-8"</span> }
+      });
+    }
+
+    <span style="color:#c586c0;">return</span> env.ASSETS.<span style="color:#dcdcaa;">fetch</span>(request);
+  }
+};
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="resize-handle resize-handle-r" onmousedown="startResizeWindow(event, 'window-vscode', 'r')"></div>
+    <div class="resize-handle resize-handle-b" onmousedown="startResizeWindow(event, 'window-vscode', 'b')"></div>
+    <div class="resize-handle resize-handle-br" onmousedown="startResizeWindow(event, 'window-vscode', 'br')"></div>
+  </div>
+
+  <!-- ─── Window: Notes ─── -->
   <div class="app-window" id="window-notes" style="width: 820px; height: 540px; top: 60px; left: 130px;">
     <div class="window-titlebar" onmousedown="startDragWindow(event, 'window-notes')">
       <div class="traffic-lights">
@@ -1336,27 +1316,23 @@ export function renderMacOsPage() {
     </div>
     <div class="window-body" style="padding:0; overflow:hidden;">
       <div class="notes-container">
-        <!-- Notes Sidebar -->
         <div class="notes-sidebar">
           <div class="notes-toolbar">
             <span style="font-size:12px; font-weight:700; color:#fff;">모든 메모</span>
             <button class="notes-action-btn" onclick="createNewNote()">+ 새 메모</button>
           </div>
-          <div class="notes-list" id="notes-items-list">
-            <!-- Injected by JS -->
-          </div>
+          <div class="notes-list" id="notes-items-list"></div>
         </div>
-        <!-- Notes Editor -->
         <div class="notes-editor">
           <div class="editor-header">
             <input type="text" class="editor-title-input" id="note-title-input" placeholder="메모 제목" oninput="handleNoteEdit()" />
             <div style="display:flex; align-items:center; gap:8px;">
               <span id="note-save-status" style="font-size:11px; color:#4ade80;">자동 저장됨</span>
-              <button class="notes-action-btn" onclick="exportCurrentNote()" title="내 컴퓨터로 다운로드 (.md)">📥 저장</button>
-              <button class="notes-action-btn" onclick="deleteCurrentNote()" style="color:#ff5f56;" title="메모 삭제">🗑️</button>
+              <button class="notes-action-btn" onclick="exportCurrentNote()" title="다운로드 (.md)">📥 저장</button>
+              <button class="notes-action-btn" onclick="deleteCurrentNote()" style="color:#ff5f56;">🗑️</button>
             </div>
           </div>
-          <textarea class="editor-body-textarea" id="note-body-input" placeholder="메모 내용을 자유롭게 입력하세요. 입력 즉시 로컬에 영구 저장됩니다..." oninput="handleNoteEdit()"></textarea>
+          <textarea class="editor-body-textarea" id="note-body-input" placeholder="메모를 입력하세요..." oninput="handleNoteEdit()"></textarea>
         </div>
       </div>
     </div>
@@ -1365,7 +1341,7 @@ export function renderMacOsPage() {
     <div class="resize-handle resize-handle-br" onmousedown="startResizeWindow(event, 'window-notes', 'br')"></div>
   </div>
 
-  <!-- ─── Window: Finder (실제 파일 업로드, 저장, 다운로드) ─── -->
+  <!-- ─── Window: Finder ─── -->
   <div class="app-window" id="window-finder" style="width: 820px; height: 520px; top: 80px; left: 160px;">
     <div class="window-titlebar" onmousedown="startDragWindow(event, 'window-finder')">
       <div class="traffic-lights">
@@ -1379,24 +1355,20 @@ export function renderMacOsPage() {
     <div class="window-body" style="padding:0; overflow:hidden;">
       <div class="finder-container">
         <div class="finder-sidebar">
-          <div class="photos-nav-header">즐겨찾기</div>
-          <div class="photos-nav-item active" onclick="filterFinderCategory('docs', this)">📁 <span>문서 (Documents)</span></div>
-          <div class="photos-nav-item" onclick="openApp('photos')">🖼️ <span>사진 (Photos)</span></div>
-          <div class="photos-nav-item" onclick="filterFinderCategory('uploads', this)">💾 <span>업로드된 파일</span></div>
-          <div class="photos-nav-header" style="margin-top:10px;">iCloud</div>
-          <div class="photos-nav-item">☁️ <span>iCloud Drive</span></div>
+          <div style="font-size:11px; font-weight:700; text-transform:uppercase; color:#94a3b8; padding:6px 10px;">즐겨찾기</div>
+          <div class="dropdown-row active" onclick="renderFinderFiles()">📁 <span>문서 (Documents)</span></div>
+          <div class="dropdown-row" onclick="openApp('photos')">🖼️ <span>사진 (Photos)</span></div>
+          <div class="dropdown-row" onclick="openApp('vscode')">💻 <span>개발 프로젝트</span></div>
         </div>
         <div class="finder-main">
           <div class="finder-toolbar">
-            <button class="notes-action-btn" onclick="triggerRealFileUpload()">⬆️ 파일 업로드 (내 컴퓨터)</button>
-            <button class="notes-action-btn" onclick="createBlankFile()">+ 새 텍스트 파일</button>
+            <button class="notes-action-btn" onclick="triggerRealFileUpload()">⬆️ 파일 업로드 (내 PC)</button>
+            <button class="notes-action-btn" onclick="createBlankFile()">+ 새 파일</button>
             <button class="notes-action-btn" onclick="downloadSelectedFile()">📥 다운로드</button>
             <button class="notes-action-btn" onclick="deleteSelectedFile()" style="color:#ff5f56;">🗑️ 삭제</button>
           </div>
-          <div class="finder-content" ondragover="handleDragOver(event)" ondrop="handleFileDrop(event)">
-            <div class="finder-files-grid" id="finder-grid">
-              <!-- Rendered by JS -->
-            </div>
+          <div class="finder-content" ondragover="event.preventDefault()" ondrop="handleFileDrop(event)">
+            <div class="finder-files-grid" id="finder-grid"></div>
           </div>
         </div>
       </div>
@@ -1404,143 +1376,6 @@ export function renderMacOsPage() {
     <div class="resize-handle resize-handle-r" onmousedown="startResizeWindow(event, 'window-finder', 'r')"></div>
     <div class="resize-handle resize-handle-b" onmousedown="startResizeWindow(event, 'window-finder', 'b')"></div>
     <div class="resize-handle resize-handle-br" onmousedown="startResizeWindow(event, 'window-finder', 'br')"></div>
-  </div>
-
-  <!-- ─── Window: Calendar.app (일정 관리자) ─── -->
-  <div class="app-window" id="window-calendar" style="width: 780px; height: 540px; top: 90px; left: 190px;">
-    <div class="window-titlebar" onmousedown="startDragWindow(event, 'window-calendar')">
-      <div class="traffic-lights">
-        <button class="traffic-btn btn-close" onclick="closeApp('calendar')"></button>
-        <button class="traffic-btn btn-min" onclick="minimizeApp('calendar')"></button>
-        <button class="traffic-btn btn-max" onclick="maximizeApp('calendar')"></button>
-      </div>
-      <div class="window-title">캘린더 — 2026년 9월</div>
-      <div></div>
-    </div>
-    <div class="window-body">
-      <div class="cal-app-header">
-        <div class="cal-month-nav">
-          <button class="notes-action-btn" onclick="changeCalMonth(-1)">❮</button>
-          <span id="cal-app-month-title">2026년 9월</span>
-          <button class="notes-action-btn" onclick="changeCalMonth(1)">❯</button>
-        </div>
-        <button class="notes-action-btn" onclick="promptAddEvent()">+ 새 일정 추가</button>
-      </div>
-      <div class="widget-cal-grid" style="font-size:12px; margin-bottom:8px;">
-        <span class="cal-day-label" style="color:#ff5f56;">일</span>
-        <span class="cal-day-label">월</span>
-        <span class="cal-day-label">화</span>
-        <span class="cal-day-label">수</span>
-        <span class="cal-day-label">목</span>
-        <span class="cal-day-label">금</span>
-        <span class="cal-day-label">토</span>
-      </div>
-      <div class="cal-full-grid" id="cal-full-matrix">
-        <!-- Rendered by JS -->
-      </div>
-    </div>
-    <div class="resize-handle resize-handle-r" onmousedown="startResizeWindow(event, 'window-calendar', 'r')"></div>
-    <div class="resize-handle resize-handle-b" onmousedown="startResizeWindow(event, 'window-calendar', 'b')"></div>
-    <div class="resize-handle resize-handle-br" onmousedown="startResizeWindow(event, 'window-calendar', 'br')"></div>
-  </div>
-
-  <!-- ─── Window: Clock.app (세계 시계 & 스톱워치 & 타이머) ─── -->
-  <div class="app-window" id="window-clock" style="width: 640px; height: 460px; top: 100px; left: 220px;">
-    <div class="window-titlebar" onmousedown="startDragWindow(event, 'window-clock')">
-      <div class="traffic-lights">
-        <button class="traffic-btn btn-close" onclick="closeApp('clock')"></button>
-        <button class="traffic-btn btn-min" onclick="minimizeApp('clock')"></button>
-        <button class="traffic-btn btn-max" onclick="maximizeApp('clock')"></button>
-      </div>
-      <div class="window-title">시계 — 세계 시계 &amp; 스톱워치</div>
-      <div></div>
-    </div>
-    <div class="window-body">
-      <div class="clock-tab-bar">
-        <button class="clock-tab-btn active" onclick="switchClockTab('stopwatch', this)">스톱워치</button>
-        <button class="clock-tab-btn" onclick="switchClockTab('world', this)">세계 시계</button>
-        <button class="clock-tab-btn" onclick="switchClockTab('timer', this)">타이머</button>
-      </div>
-
-      <!-- Tab: Stopwatch -->
-      <div id="tab-stopwatch">
-        <div class="stopwatch-display" id="sw-display">00:00.00</div>
-        <div class="clock-ctrl-btns">
-          <button id="sw-btn-start" onclick="toggleStopwatch()" style="width:72px; height:72px; border-radius:50%; background:#10b981; color:#fff; border:none; font-weight:700; cursor:pointer;">시작</button>
-          <button id="sw-btn-reset" onclick="resetStopwatch()" style="width:72px; height:72px; border-radius:50%; background:#334155; color:#fff; border:none; font-weight:700; cursor:pointer;">재설정</button>
-        </div>
-      </div>
-
-      <!-- Tab: World Clock -->
-      <div id="tab-world" style="display:none;">
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
-          <div class="calc-card">
-            <div style="font-size:11px; color:#94a3b8;">대한민국 (KST)</div>
-            <div style="font-size:24px; font-weight:800; color:#fff;" id="world-seoul">13:20</div>
-            <div style="font-size:11px; color:#38bdf8;">서울 (오늘, +0시간)</div>
-          </div>
-          <div class="calc-card">
-            <div style="font-size:11px; color:#94a3b8;">미국 태평양 (PDT)</div>
-            <div style="font-size:24px; font-weight:800; color:#fff;" id="world-cupertino">21:20</div>
-            <div style="font-size:11px; color:#38bdf8;">쿠퍼티노 (어제, -16시간)</div>
-          </div>
-          <div class="calc-card">
-            <div style="font-size:11px; color:#94a3b8;">영국 (BST)</div>
-            <div style="font-size:24px; font-weight:800; color:#fff;" id="world-london">05:20</div>
-            <div style="font-size:11px; color:#38bdf8;">런던 (오늘, -8시간)</div>
-          </div>
-          <div class="calc-card">
-            <div style="font-size:11px; color:#94a3b8;">일본 (JST)</div>
-            <div style="font-size:24px; font-weight:800; color:#fff;" id="world-tokyo">13:20</div>
-            <div style="font-size:11px; color:#38bdf8;">도쿄 (오늘, +0시간)</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tab: Timer -->
-      <div id="tab-timer" style="display:none; text-align:center;">
-        <div class="stopwatch-display" id="timer-display">05:00</div>
-        <div class="clock-ctrl-btns">
-          <button onclick="startPresetTimer(300)" class="notes-action-btn">5분</button>
-          <button onclick="startPresetTimer(600)" class="notes-action-btn">10분</button>
-          <button onclick="startPresetTimer(1500)" class="notes-action-btn">25분 (뽀모도로)</button>
-          <button onclick="stopTimer()" class="notes-action-btn" style="color:#ff5f56;">정지</button>
-        </div>
-      </div>
-    </div>
-    <div class="resize-handle resize-handle-r" onmousedown="startResizeWindow(event, 'window-clock', 'r')"></div>
-    <div class="resize-handle resize-handle-b" onmousedown="startResizeWindow(event, 'window-clock', 'b')"></div>
-    <div class="resize-handle resize-handle-br" onmousedown="startResizeWindow(event, 'window-clock', 'br')"></div>
-  </div>
-
-  <!-- ─── Window: Photos (온라인 사진 갤러리) ─── -->
-  <div class="app-window" id="window-photos" style="width: 820px; height: 560px; top: 60px; left: 120px;">
-    <div class="window-titlebar" onmousedown="startDragWindow(event, 'window-photos')">
-      <div class="traffic-lights">
-        <button class="traffic-btn btn-close" onclick="closeApp('photos')"></button>
-        <button class="traffic-btn btn-min" onclick="minimizeApp('photos')"></button>
-        <button class="traffic-btn btn-max" onclick="maximizeApp('photos')"></button>
-      </div>
-      <div class="window-title">사진 — Architectural &amp; Engineering Gallery</div>
-      <div></div>
-    </div>
-    <div class="window-body" style="padding:0; overflow:hidden;">
-      <div class="finder-container">
-        <div class="finder-sidebar">
-          <div class="photos-nav-header">보관함</div>
-          <div class="photos-nav-item active" onclick="filterPhotos('all', this)">🖼️ <span>모든 사진</span></div>
-          <div class="photos-nav-item" onclick="filterPhotos('arch', this)">🏢 <span>건축 &amp; 커튼월</span></div>
-          <div class="photos-nav-item" onclick="filterPhotos('nature', this)">🌲 <span>풍경 &amp; 요세미티</span></div>
-          <div class="photos-nav-item" onclick="filterPhotos('studio', this)">💻 <span>스튜디오</span></div>
-        </div>
-        <div class="finder-main" style="padding:16px; overflow-y:auto;">
-          <div class="finder-files-grid" id="photos-grid" style="grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));"></div>
-        </div>
-      </div>
-    </div>
-    <div class="resize-handle resize-handle-r" onmousedown="startResizeWindow(event, 'window-photos', 'r')"></div>
-    <div class="resize-handle resize-handle-b" onmousedown="startResizeWindow(event, 'window-photos', 'b')"></div>
-    <div class="resize-handle resize-handle-br" onmousedown="startResizeWindow(event, 'window-photos', 'br')"></div>
   </div>
 
   <!-- ─── Window: KCT Calculator ─── -->
@@ -1557,7 +1392,7 @@ export function renderMacOsPage() {
     <div class="window-body">
       <div class="calc-grid">
         <div class="calc-card">
-          <div class="calc-title">📐 설계 하중 및 유리 치수 입력</div>
+          <div class="calc-title">📐 하중 및 유리 치수 입력</div>
           <div class="form-group">
             <label class="form-label">설계 풍하중 (Wind Load, kPa)</label>
             <input type="number" step="0.1" value="2.5" class="form-input" id="calc-wind" oninput="runSiliconCalc()" />
@@ -1579,20 +1414,11 @@ export function renderMacOsPage() {
         <div class="calc-card">
           <div class="calc-title">⚡ 공학 연산 결과 (ASTM C1401)</div>
           <div class="res-box">
-            <div class="res-metric">
-              <span>최소 구조 바이트 (Bite):</span>
-              <span class="res-val highlight" id="res-bite">10.7 mm</span>
-            </div>
-            <div class="res-metric">
-              <span>권장 글루라인 두께:</span>
-              <span class="res-val" id="res-glueline">6.0 mm</span>
-            </div>
-            <div class="res-metric">
-              <span>구조 검증 상태:</span>
-              <span class="res-val" style="color:#4ade80;" id="res-status">PASS (ASTM 규격 충족)</span>
-            </div>
+            <div class="res-metric"><span>최소 구조 바이트 (Bite):</span><span class="res-val highlight" id="res-bite">10.7 mm</span></div>
+            <div class="res-metric"><span>권장 글루라인 두께:</span><span class="res-val" id="res-glueline">6.0 mm</span></div>
+            <div class="res-metric"><span>구조 검증 상태:</span><span class="res-val" style="color:#4ade80;" id="res-status">PASS (ASTM 충족)</span></div>
           </div>
-          <div style="margin-top:14px; display:flex; gap:8px;">
+          <div style="margin-top:14px;">
             <button onclick="window.open('/projects/kct', '_blank')" style="background:var(--accent-orange); color:#fff; border:none; padding:7px 14px; border-radius:6px; font-size:11.5px; font-weight:600; cursor:pointer;">KCT 정식 플랫폼 열기 ↗</button>
           </div>
         </div>
@@ -1621,7 +1447,7 @@ export function renderMacOsPage() {
           <div class="res-metric"><span>전체 길이 (LO):</span><span class="res-val">165.0 mm</span></div>
           <div class="res-metric"><span>게이지 길이 (G):</span><span class="res-val">50.0 mm</span></div>
           <div class="res-metric"><span>협착부 폭 (W):</span><span class="res-val">13.0 mm</span></div>
-          <div class="res-metric"><span>가공 공차:</span><span class="res-val" style="color:#4ade80;">±0.05 mm (ISO 527)</span></div>
+          <div class="res-metric"><span>가공 공차:</span><span class="res-val" style="color:#4ade80;">±0.05 mm</span></div>
         </div>
         <div class="calc-card">
           <div class="calc-title">🔬 3D 정밀 가공 및 인장 시험 의뢰</div>
@@ -1649,7 +1475,7 @@ export function renderMacOsPage() {
       <div></div>
     </div>
     <div class="window-body terminal-body" onclick="document.getElementById('terminal-cli-input').focus()">
-      <div class="terminal-output" id="terminal-screen">DAVHAVE Edge Architecture Shell (macOS 27 Full Suite)
+      <div class="terminal-output" id="terminal-screen">DAVHAVE Edge Architecture Shell (v2.7.4)
 Type "help" to view available studio commands.
 </div>
       <div class="terminal-prompt-line">
@@ -1662,7 +1488,7 @@ Type "help" to view available studio commands.
     <div class="resize-handle resize-handle-br" onmousedown="startResizeWindow(event, 'window-terminal', 'br')"></div>
   </div>
 
-  <!-- ─── Window: System Settings ─── -->
+  <!-- ─── Window: Settings ─── -->
   <div class="app-window" id="window-settings" style="width: 620px; height: 480px; top: 100px; left: 200px;">
     <div class="window-titlebar" onmousedown="startDragWindow(event, 'window-settings')">
       <div class="traffic-lights">
@@ -1674,50 +1500,23 @@ Type "help" to view available studio commands.
       <div></div>
     </div>
     <div class="window-body">
-      <div class="settings-section">
-        <div class="settings-title">데스크톱 배경화면 선택 (공식 온라인 고화질 팩)</div>
-        <div style="display:grid; grid-template-columns: repeat(5, 1fr); gap:10px;">
-          <div class="cal-day" style="height:70px; background-size:cover; background-position:center; background-image: url('https://macos27.kimi.page/wallpaper-tahoe-day.jpg'); border-radius:8px; border:2px solid var(--accent-blue);" onclick="setOnlineWallpaper('https://macos27.kimi.page/wallpaper-tahoe-day.jpg', this)"></div>
-          <div class="cal-day" style="height:70px; background-size:cover; background-position:center; background-image: url('https://macos27.kimi.page/wallpaper-glass-dark.jpg'); border-radius:8px;" onclick="setOnlineWallpaper('https://macos27.kimi.page/wallpaper-glass-dark.jpg', this)"></div>
-          <div class="cal-day" style="height:70px; background-size:cover; background-position:center; background-image: url('https://macos27.kimi.page/wallpaper-glass-light.jpg'); border-radius:8px;" onclick="setOnlineWallpaper('https://macos27.kimi.page/wallpaper-glass-light.jpg', this)"></div>
-          <div class="cal-day" style="height:70px; background-size:cover; background-position:center; background-image: url('https://macos27.kimi.page/wallpaper-aurora.jpg'); border-radius:8px;" onclick="setOnlineWallpaper('https://macos27.kimi.page/wallpaper-aurora.jpg', this)"></div>
-          <div class="cal-day" style="height:70px; background-size:cover; background-position:center; background-image: url('https://macos27.kimi.page/wallpaper-bigsur.jpg'); border-radius:8px;" onclick="setOnlineWallpaper('https://macos27.kimi.page/wallpaper-bigsur.jpg', this)"></div>
-        </div>
+      <div class="settings-title">데스크톱 배경화면 선택 (공식 온라인 고화질 팩)</div>
+      <div style="display:grid; grid-template-columns: repeat(5, 1fr); gap:10px;">
+        <div class="cal-day" style="height:70px; background-size:cover; background-position:center; background-image: url('https://macos27.kimi.page/wallpaper-tahoe-day.jpg'); border-radius:8px; border:2px solid var(--accent-blue);" onclick="setOnlineWallpaper('https://macos27.kimi.page/wallpaper-tahoe-day.jpg', this)"></div>
+        <div class="cal-day" style="height:70px; background-size:cover; background-position:center; background-image: url('https://macos27.kimi.page/wallpaper-glass-dark.jpg'); border-radius:8px;" onclick="setOnlineWallpaper('https://macos27.kimi.page/wallpaper-glass-dark.jpg', this)"></div>
+        <div class="cal-day" style="height:70px; background-size:cover; background-position:center; background-image: url('https://macos27.kimi.page/wallpaper-glass-light.jpg'); border-radius:8px;" onclick="setOnlineWallpaper('https://macos27.kimi.page/wallpaper-glass-light.jpg', this)"></div>
+        <div class="cal-day" style="height:70px; background-size:cover; background-position:center; background-image: url('https://macos27.kimi.page/wallpaper-aurora.jpg'); border-radius:8px;" onclick="setOnlineWallpaper('https://macos27.kimi.page/wallpaper-aurora.jpg', this)"></div>
+        <div class="cal-day" style="height:70px; background-size:cover; background-position:center; background-image: url('https://macos27.kimi.page/wallpaper-bigsur.jpg'); border-radius:8px;" onclick="setOnlineWallpaper('https://macos27.kimi.page/wallpaper-bigsur.jpg', this)"></div>
       </div>
       <div style="margin-top:20px; background:rgba(0,0,0,0.3); border-radius:8px; padding:14px; font-size:12px; line-height:1.8;">
-        <div><strong>운영체제:</strong> macOS 27 (DAVHAVE Liquid Glass Full Suite)</div>
+        <div><strong>운영체제:</strong> macOS 27 (DAVHAVE Liquid Glass Edition)</div>
         <div><strong>로컬 스토리지:</strong> 영구 파일 및 메모 자동 동기화 활성화됨</div>
         <div><strong>수석 아키텍트:</strong> Oscar Lee (DAVHAVE)</div>
       </div>
     </div>
   </div>
 
-  <!-- ─── Window: About ─── -->
-  <div class="app-window" id="window-about" style="width: 520px; height: 390px; top: 120px; left: 240px;">
-    <div class="window-titlebar" onmousedown="startDragWindow(event, 'window-about')">
-      <div class="traffic-lights">
-        <button class="traffic-btn btn-close" onclick="closeApp('about')"></button>
-        <button class="traffic-btn btn-min" onclick="minimizeApp('about')"></button>
-        <button class="traffic-btn btn-max" onclick="maximizeApp('about')"></button>
-      </div>
-      <div class="window-title">DAVHAVE Studio — README.txt</div>
-      <div></div>
-    </div>
-    <div class="window-body" style="font-family:var(--font-mono); font-size:12px; line-height:1.7;">
-      <h3 style="color:var(--accent-orange); margin-bottom:8px;"># DAVHAVE PRECISION ENGINEERING STUDIO</h3>
-      <p style="margin-bottom:12px;">
-        DAVHAVE macOS 27 에디션에 파일 시스템 및 메모 에디터, 캘린더, 시계, 위젯 엔진이 완벽히 통합되었습니다.
-      </p>
-      <ul style="padding-left:18px; margin-bottom:16px;">
-        <li><strong>파일 업로드 &amp; 다운로드:</strong> Finder에서 내 PC 파일을 올리고 받을 수 있습니다.</li>
-        <li><strong>메모장 에디터:</strong> 메모 생성, 실시간 편집, 로컬 영구 저장이 동작합니다.</li>
-        <li><strong>데스크톱 위젯:</strong> 실시간 아날로그 시계, 달력, 날씨, 스티키 노트 지원.</li>
-      </ul>
-      <button onclick="window.location.href='/'" style="background:var(--accent-blue); color:#fff; border:none; padding:8px 16px; border-radius:6px; font-weight:600; cursor:pointer;">웹 표준 홈 열기 ↗</button>
-    </div>
-  </div>
-
-  <!-- ─── Spotlight Search Overlay ─── -->
+  <!-- ─── Spotlight Overlay ─── -->
   <div id="spotlight-overlay" onclick="handleSpotlightBackdrop(event)">
     <div id="spotlight-box">
       <div class="spotlight-input-row">
@@ -1733,84 +1532,63 @@ Type "help" to view available studio commands.
     <nav id="dock" class="lg-refract" onmousemove="handleDockMouseMove(event)" onmouseleave="resetDockMagnification()">
       <!-- Finder -->
       <div class="dock-item" onclick="openApp('finder')" data-app="finder" title="Finder">
-        <div class="app-squircle sq-finder">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"></rect><path d="M9 9h.01M15 9h.01M8 14s1.5 2 4 2 4-2 4-2"></path></svg>
-        </div>
+        <div class="app-squircle sq-finder"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"></rect><path d="M9 9h.01M15 9h.01M8 14s1.5 2 4 2 4-2 4-2"></path></svg></div>
         <div class="dock-dot"></div>
         <div class="dock-tooltip">Finder</div>
       </div>
 
+      <!-- Launchpad -->
+      <div class="dock-item" onclick="toggleLaunchpad()" data-app="launchpad" title="Launchpad">
+        <div class="app-squircle sq-launchpad"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg></div>
+        <div class="dock-dot"></div>
+        <div class="dock-tooltip">Launchpad</div>
+      </div>
+
+      <!-- Native Calculator -->
+      <div class="dock-item" onclick="openApp('calc-native')" data-app="calc-native" title="계산기">
+        <div class="app-squircle sq-calc"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="16" y1="14" x2="16" y2="18"></line><path d="M16 10h.01M12 10h.01M8 10h.01M12 14h.01M8 14h.01M12 18h.01M8 18h.01"></path></svg></div>
+        <div class="dock-dot"></div>
+        <div class="dock-tooltip">계산기.app</div>
+      </div>
+
+      <!-- VS Code Studio -->
+      <div class="dock-item" onclick="openApp('vscode')" data-app="vscode" title="Code Studio">
+        <div class="app-squircle sq-code"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
+        <div class="dock-dot"></div>
+        <div class="dock-tooltip">Code.app</div>
+      </div>
+
       <!-- Notes -->
       <div class="dock-item" onclick="openApp('notes')" data-app="notes" title="메모">
-        <div class="app-squircle sq-notes">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2"><path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z"></path><path d="M15 3v5h5M9 13h6M9 17h4"></path></svg>
-        </div>
+        <div class="app-squircle sq-notes"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2"><path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z"></path><path d="M15 3v5h5M9 13h6M9 17h4"></path></svg></div>
         <div class="dock-dot"></div>
         <div class="dock-tooltip">메모.app</div>
       </div>
 
-      <!-- Calendar -->
-      <div class="dock-item" onclick="openApp('calendar')" data-app="calendar" title="캘린더">
-        <div class="app-squircle sq-calendar">
-          <div style="text-align:center;">
-            <div style="font-size:7px; font-weight:800; color:#ff3b30; text-transform:uppercase;">SEP</div>
-            <div style="font-size:15px; font-weight:800; color:#1c1c1e; line-height:1;">29</div>
-          </div>
-        </div>
-        <div class="dock-dot"></div>
-        <div class="dock-tooltip">캘린더.app</div>
-      </div>
-
-      <!-- Clock -->
-      <div class="dock-item" onclick="openApp('clock')" data-app="clock" title="시계">
-        <div class="app-squircle sq-clock">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-        </div>
-        <div class="dock-dot"></div>
-        <div class="dock-tooltip">시계.app</div>
-      </div>
-
-      <!-- Photos -->
-      <div class="dock-item" onclick="openApp('photos')" data-app="photos" title="사진">
-        <div class="app-squircle sq-photos">
-          <svg width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4" fill="#ff2d55"/><circle cx="17" cy="12" r="4" fill="#ff9500"/><circle cx="12" cy="17" r="4" fill="#4cd964"/><circle cx="7" cy="12" r="4" fill="#007aff"/></svg>
-        </div>
-        <div class="dock-dot"></div>
-        <div class="dock-tooltip">사진</div>
-      </div>
-
-      <!-- KCT Calculator -->
+      <!-- KCT Silicone Calculator -->
       <div class="dock-item" onclick="openApp('calc')" data-app="calc" title="KCT 실리콘 계산기">
-        <div class="app-squircle sq-calc">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="16" y1="14" x2="16" y2="18"></line><path d="M16 10h.01M12 10h.01M8 10h.01M12 14h.01M8 14h.01M12 18h.01M8 18h.01"></path></svg>
-        </div>
+        <div class="app-squircle sq-kct"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M3 3v18h18"></path><path d="m19 9-5 5-4-4-3 3"></path></svg></div>
         <div class="dock-dot"></div>
         <div class="dock-tooltip">KCT 계산기</div>
       </div>
 
       <!-- ASTM Specimen Lab -->
       <div class="dock-item" onclick="openApp('specimen')" data-app="specimen" title="ASTM 인장 시편 연구소">
-        <div class="app-squircle sq-specimen">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M10 2v7.31L4.19 19A2 2 0 0 0 5.9 22h12.2a2 2 0 0 0 1.71-3L14 9.31V2"></path><path d="M8.5 2h7M14 9.3h-4"></path></svg>
-        </div>
+        <div class="app-squircle sq-specimen"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M10 2v7.31L4.19 19A2 2 0 0 0 5.9 22h12.2a2 2 0 0 0 1.71-3L14 9.31V2"></path><path d="M8.5 2h7M14 9.3h-4"></path></svg></div>
         <div class="dock-dot"></div>
         <div class="dock-tooltip">ASTM 시편 연구소</div>
       </div>
 
       <!-- Terminal -->
       <div class="dock-item" onclick="openApp('terminal')" data-app="terminal" title="Terminal">
-        <div class="app-squircle sq-terminal">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
-        </div>
+        <div class="app-squircle sq-terminal"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg></div>
         <div class="dock-dot"></div>
         <div class="dock-tooltip">Terminal.app</div>
       </div>
 
       <!-- Settings -->
       <div class="dock-item" onclick="openApp('settings')" data-app="settings" title="시스템 설정">
-        <div class="app-squircle sq-settings">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-        </div>
+        <div class="app-squircle sq-settings"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></div>
         <div class="dock-dot"></div>
         <div class="dock-tooltip">설정</div>
       </div>
@@ -1819,9 +1597,7 @@ Type "help" to view available studio commands.
 
       <!-- Return to Web Standard -->
       <div class="dock-item" onclick="window.location.href='/'" title="웹 표준 홈으로">
-        <div class="app-squircle sq-web">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-        </div>
+        <div class="app-squircle sq-web"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></div>
         <div class="dock-dot"></div>
         <div class="dock-tooltip">메인 웹으로 이동</div>
       </div>
@@ -1830,45 +1606,33 @@ Type "help" to view available studio commands.
 
   <!-- ─── Client Scripts ─── -->
   <script>
-    // System State
     let highestZ = 100;
     const runningApps = new Set(['finder']);
     let activeApp = 'finder';
 
-    // ─── LocalStorage Key Constants ───
     const STORAGE_KEY_NOTES = 'davhave_macos_notes_v1';
     const STORAGE_KEY_FILES = 'davhave_macos_files_v1';
     const STORAGE_KEY_STICKY = 'davhave_macos_sticky_v1';
-    const STORAGE_KEY_EVENTS = 'davhave_macos_events_v1';
 
-    // ─── Default Notes ───
     const DEFAULT_NOTES = [
       {
         id: 'note-1',
         title: "Cloudflare 0ms 엣지 아키텍처의 비밀",
         date: "2026.09.28",
-        content: "단 1ms도 허비하지 않는 글로벌 엣지 컴퓨팅\\n\\n기존 컨테이너나 가상머신 기반의 백엔드는 콜드 스타트 지연시간(100ms~1s)이 발생하지만, Cloudflare Workers는 V8 Isolate 기반으로 전 세계 300+ 엣지 데이터센터에서 0ms 콜드스타트로 즉시 실행됩니다.\\n\\nDAVHAVE는 D1 SQL 데이터베이스 및 R2 오브젝트 스토리지를 글로벌 엣지와 직접 바인딩하여 지연을 최소화합니다."
+        content: "단 1ms도 허비하지 않는 글로벌 엣지 컴퓨팅\\n\\n기존 컨테이너나 가상머신 기반의 백엔드는 콜드 스타트 지연시간(100ms~1s)이 발생하지만, Cloudflare Workers는 V8 Isolate 기반으로 전 세계 300+ 엣지 데이터센터에서 0ms 콜드스타트로 즉시 실행됩니다."
       },
       {
         id: 'note-2',
-        title: "Dow Chemical 실리콘 구조 바이트 산정 공식",
+        title: "Dow Chemical 실리콘 구조 바이트 공식",
         date: "2026.09.25",
         content: "ASTM C1401 기준 구조용 실리콘 바이트 산정 공식:\\n\\nB = (W * a) / (2 * Fd)\\n\\n여기서 W는 설계 풍하중(kPa), a는 유리 단변 길이(mm), Fd는 설계 허용 응력(통상 140 kPa)입니다. ASTM 규정에 따라 어떠한 경우에도 6.0mm 미만은 허용되지 않습니다."
-      },
-      {
-        id: 'note-3',
-        title: "SEO URL 설계: 해시 앵커(#)를 배제해야 하는 이유",
-        date: "2026.09.20",
-        content: "색인 가능한 전용 URL(Canonical Route)의 중요성\\n\\n단일 페이지 애플리케이션(SPA)에서 자주 사용하는 해시 앵커(/#section)는 브라우저 내부 스크롤용 프래그먼트에 불과하며, 검색엔진 로봇은 이를 별개의 페이지로 색인하지 않습니다.\\n\\nSEO 가치가 있는 모든 콘텐츠는 반드시 고유한 SSR 전용 라우트를 가져야 합니다."
       }
     ];
 
-    // ─── Default Virtual Files ───
     const DEFAULT_FILES = [
       { id: 'f1', name: 'Curtain_Wall_Detail.jpg', type: 'image', url: 'https://macos27.kimi.page/photo-4.jpg', size: '395 KB' },
       { id: 'f2', name: 'Yosemite_Sunrise.jpg', type: 'image', url: 'https://macos27.kimi.page/photo-1.jpg', size: '708 KB' },
-      { id: 'f3', name: 'KCT_Silicon_Spec.txt', type: 'text', content: 'Dow Chemical 6대 실리콘 공학 연산 규격서 v2.4\\n- 풍하중 바이트 공식: B = (W * a) / (2 * Fd)\\n- 글루라인 최소 기준: G >= 6.0mm', size: '12 KB' },
-      { id: 'f4', name: 'ASTM_D638_Specimen.txt', type: 'text', content: 'ASTM D638 Type I 인장 시편 가공 규격\\n- 전체 길이: 165.0mm\\n- 게이지 길이: 50.0mm\\n- 폭: 13.0mm', size: '8 KB' }
+      { id: 'f3', name: 'KCT_Silicon_Spec.txt', type: 'text', content: 'Dow Chemical 6대 실리콘 공학 연산 규격서 v2.4\\n- 풍하중 바이트 공식: B = (W * a) / (2 * Fd)\\n- 글루라인 최소 기준: G >= 6.0mm', size: '12 KB' }
     ];
 
     let notes = [];
@@ -1876,17 +1640,28 @@ Type "help" to view available studio commands.
     let files = [];
     let selectedFileId = null;
 
-    // ─── Initialize ───
+    // ─── Launchpad Apps Registry ───
+    const LAUNCHPAD_APPS = [
+      { id: 'finder', name: 'Finder', sqClass: 'sq-finder', icon: '📁' },
+      { id: 'calc-native', name: '계산기', sqClass: 'sq-calc', icon: '🧮' },
+      { id: 'vscode', name: 'Code', sqClass: 'sq-code', icon: '💻' },
+      { id: 'notes', name: '메모', sqClass: 'sq-notes', icon: '📝' },
+      { id: 'calc', name: 'KCT 계산기', sqClass: 'sq-kct', icon: '📐' },
+      { id: 'specimen', name: 'ASTM 시편', sqClass: 'sq-specimen', icon: '🧪' },
+      { id: 'terminal', name: 'Terminal', sqClass: 'sq-terminal', icon: '🖥️' },
+      { id: 'settings', name: '시스템 설정', sqClass: 'sq-settings', icon: '⚙️' },
+      { id: 'about', name: '이 Mac에 관하여', sqClass: 'sq-launchpad', icon: '' }
+    ];
+
     window.addEventListener('DOMContentLoaded', () => {
       loadStorageData();
       initClocksAndWidgets();
       renderFinderFiles();
-      renderCalendarDays();
+      renderLaunchpadGrid('');
 
-      // Launch Finder on start
       openApp('finder');
 
-      // Apple Menu toggle
+      // Apple Menu
       const appleBtn = document.getElementById('apple-menu-btn');
       const appleDropdown = document.getElementById('apple-dropdown');
       appleBtn.addEventListener('click', (e) => {
@@ -1897,6 +1672,7 @@ Type "help" to view available studio commands.
       document.addEventListener('click', () => {
         appleDropdown.classList.remove('show');
         document.getElementById('control-center').classList.remove('show');
+        document.getElementById('context-menu').classList.remove('show');
       });
 
       // Keyboard shortcuts
@@ -1907,60 +1683,218 @@ Type "help" to view available studio commands.
         }
         if (e.key === 'Escape') {
           closeSpotlight();
+          closeLaunchpad();
           document.getElementById('control-center').classList.remove('show');
           appleDropdown.classList.remove('show');
+          document.getElementById('context-menu').classList.remove('show');
+        }
+        // Calculator keyboard hook
+        if (activeApp === 'calc-native') {
+          handleCalcKeyboard(e);
         }
       });
     });
+
+    // ─── Desktop Right-Click Context Menu ───
+    function handleDesktopContextMenu(e) {
+      if (e.target.closest('.app-window') || e.target.closest('#dock') || e.target.closest('#menubar')) {
+        return;
+      }
+      e.preventDefault();
+      const menu = document.getElementById('context-menu');
+      menu.style.top = e.clientY + 'px';
+      menu.style.left = e.clientX + 'px';
+      menu.classList.add('show');
+    }
+
+    // ─── Launchpad Logic ───
+    function toggleLaunchpad() {
+      const lp = document.getElementById('launchpad-overlay');
+      if (lp.classList.contains('show')) {
+        closeLaunchpad();
+      } else {
+        lp.classList.add('show');
+        document.getElementById('launchpad-search-input').value = '';
+        renderLaunchpadGrid('');
+        setTimeout(() => document.getElementById('launchpad-search-input').focus(), 100);
+      }
+    }
+
+    function closeLaunchpad() {
+      document.getElementById('launchpad-overlay').classList.remove('show');
+    }
+
+    function handleLaunchpadBackdrop(e) {
+      if (e.target.id === 'launchpad-overlay') closeLaunchpad();
+    }
+
+    function renderLaunchpadGrid(q) {
+      const grid = document.getElementById('launchpad-grid');
+      const filtered = LAUNCHPAD_APPS.filter(a => a.name.toLowerCase().includes(q.toLowerCase()));
+      grid.innerHTML = filtered.map(a => \`
+        <div class="launchpad-app" onclick="openApp('\${a.id}'); closeLaunchpad();">
+          <div class="app-squircle \${a.sqClass}" style="width:60px; height:60px; font-size:28px;">
+            \${a.icon}
+          </div>
+          <span class="launchpad-app-label">\${a.name}</span>
+        </div>
+      \`).join('');
+    }
+
+    function filterLaunchpad(q) {
+      renderLaunchpadGrid(q);
+    }
+
+    // ─── Apple Native Calculator Engine ───
+    let calcCurrent = '0';
+    let calcPrevious = null;
+    let calcOp = null;
+    let calcResetNext = false;
+
+    function calcKey(key) {
+      const disp = document.getElementById('calc-display-val');
+
+      if (key >= '0' && key <= '9') {
+        if (calcCurrent === '0' || calcResetNext) {
+          calcCurrent = key;
+          calcResetNext = false;
+        } else {
+          calcCurrent += key;
+        }
+      } else if (key === '.') {
+        if (!calcCurrent.includes('.')) calcCurrent += '.';
+      } else if (key === 'AC') {
+        calcCurrent = '0';
+        calcPrevious = null;
+        calcOp = null;
+      } else if (key === '±') {
+        calcCurrent = String(-parseFloat(calcCurrent));
+      } else if (key === '%') {
+        calcCurrent = String(parseFloat(calcCurrent) / 100);
+      } else if (['÷', '×', '−', '+'].includes(key)) {
+        calcPrevious = parseFloat(calcCurrent);
+        calcOp = key;
+        calcResetNext = true;
+      } else if (key === '=') {
+        if (calcOp && calcPrevious !== null) {
+          const curr = parseFloat(calcCurrent);
+          let res = 0;
+          if (calcOp === '÷') res = curr !== 0 ? calcPrevious / curr : 0;
+          if (calcOp === '×') res = calcPrevious * curr;
+          if (calcOp === '−') res = calcPrevious - curr;
+          if (calcOp === '+') res = calcPrevious + curr;
+          calcCurrent = String(Math.round(res * 1000000) / 1000000);
+          calcOp = null;
+          calcPrevious = null;
+          calcResetNext = true;
+        }
+      }
+
+      disp.textContent = calcCurrent;
+    }
+
+    function handleCalcKeyboard(e) {
+      if (e.key >= '0' && e.key <= '9') calcKey(e.key);
+      if (e.key === '.') calcKey('.');
+      if (e.key === '+') calcKey('+');
+      if (e.key === '-') calcKey('−');
+      if (e.key === '*') calcKey('×');
+      if (e.key === '/') calcKey('÷');
+      if (e.key === 'Enter' || e.key === '=') calcKey('=');
+      if (e.key === 'Escape' || e.key === 'c' || e.key === 'C') calcKey('AC');
+    }
+
+    // ─── VS Code Tab Switcher ───
+    const CODE_SNIPPETS = {
+      'worker.js': \`// Cloudflare Workers 0ms Edge Architecture
+import { renderMacOsPage } from "./lib/macos-render.js";
+import { renderKctPage } from "./lib/kct-render.js";
+
+export default {
+  async fetch(request, env, ctx) {
+    const url = new URL(request.url);
+    const { pathname } = url;
+
+    // High-Fidelity macOS 27 Desktop Simulation
+    if (pathname === "/macos") {
+      return new Response(renderMacOsPage(), {
+        headers: { "content-type": "text/html; charset=utf-8" }
+      });
+    }
+
+    return env.ASSETS.fetch(request);
+  }
+};\`,
+      'silicone.ts': \`// Dow Chemical & ASTM C1401 Structural Silicone Calculator
+export function calculateSiliconeBite(windLoadKpa: number, shortSpanMm: number, fdKpa = 140): number {
+  // Formula: B = (W * a) / (2 * Fd)
+  const bite = (windLoadKpa * shortSpanMm) / (2 * fdKpa);
+  return Math.max(6.0, Math.round(bite * 10) / 10);
+}
+
+export function calculateGlueline(biteMm: number): number {
+  return Math.max(6.0, Math.round((biteMm / 2) * 10) / 10);
+}\`,
+      'astm_tensile.py': \`# ASTM D638 Type I Tensile Specimen Geometry
+import math
+
+class ASTMSpecimen:
+    LO = 165.0  # Overall length (mm)
+    G = 50.0    # Gauge length (mm)
+    W = 13.0    # Width of narrow section (mm)
+    WO = 19.0   # Width overall (mm)
+
+    @classmethod
+    def calculate_cross_section(cls, thickness_mm=3.2):
+        return cls.W * thickness_mm\`,
+      'README.md': \`# DAVHAVE Precision Engineering Studio
+High-Performance Edge Systems & Industrial Computing.
+- 0ms Cold Start Edge Workers
+- Dow Chemical Structural Silicone Computing
+- ASTM D638 / C1401 Physical Specimen Lab\`
+    };
+
+    function switchVsCodeTab(name) {
+      document.querySelectorAll('.vscode-file-item').forEach(f => f.classList.remove('active'));
+      const activeItem = [...document.querySelectorAll('.vscode-file-item')].find(el => el.textContent.includes(name));
+      if (activeItem) activeItem.classList.add('active');
+
+      document.getElementById('vscode-active-tab').textContent = '📄 ' + name;
+      document.getElementById('vscode-code-content').textContent = CODE_SNIPPETS[name] || '// Empty file';
+    }
 
     // ─── LocalStorage Management ───
     function loadStorageData() {
       try {
         const storedNotes = localStorage.getItem(STORAGE_KEY_NOTES);
         notes = storedNotes ? JSON.parse(storedNotes) : DEFAULT_NOTES;
-      } catch {
-        notes = DEFAULT_NOTES;
-      }
+      } catch { notes = DEFAULT_NOTES; }
 
       try {
         const storedFiles = localStorage.getItem(STORAGE_KEY_FILES);
         files = storedFiles ? JSON.parse(storedFiles) : DEFAULT_FILES;
-      } catch {
-        files = DEFAULT_FILES;
-      }
+      } catch { files = DEFAULT_FILES; }
 
       const storedSticky = localStorage.getItem(STORAGE_KEY_STICKY);
-      if (storedSticky) {
-        document.getElementById('sticky-note-input').value = storedSticky;
-      }
+      if (storedSticky) document.getElementById('sticky-note-input').value = storedSticky;
 
       renderNotesList();
-      if (notes.length > 0) {
-        selectNote(notes[0].id);
-      }
+      if (notes.length > 0) selectNote(notes[0].id);
     }
 
     function saveNotesToStorage() {
-      try {
-        localStorage.setItem(STORAGE_KEY_NOTES, JSON.stringify(notes));
-      } catch (err) {
-        console.warn('Storage save failed:', err);
-      }
+      try { localStorage.setItem(STORAGE_KEY_NOTES, JSON.stringify(notes)); } catch (e) {}
     }
 
     function saveFilesToStorage() {
-      try {
-        localStorage.setItem(STORAGE_KEY_FILES, JSON.stringify(files));
-      } catch (err) {
-        console.warn('Storage save failed:', err);
-      }
+      try { localStorage.setItem(STORAGE_KEY_FILES, JSON.stringify(files)); } catch (e) {}
     }
 
     function saveStickyNote(val) {
       localStorage.setItem(STORAGE_KEY_STICKY, val);
     }
 
-    // ─── Notes App Logic (생성, 저장, 불러오기, 편집, 다운로드) ───
+    // ─── Notes App Logic ───
     function renderNotesList() {
       const listEl = document.getElementById('notes-items-list');
       listEl.innerHTML = notes.map(n => \`
@@ -1975,7 +1909,6 @@ Type "help" to view available studio commands.
       currentNoteId = id;
       const note = notes.find(n => n.id === id);
       if (!note) return;
-
       document.getElementById('note-title-input').value = note.title;
       document.getElementById('note-body-input').value = note.content;
       document.getElementById('note-save-status').textContent = '저장됨';
@@ -1984,13 +1917,12 @@ Type "help" to view available studio commands.
 
     function createNewNote() {
       const newId = 'note-' + Date.now();
-      const newNote = {
+      notes.unshift({
         id: newId,
         title: '새 메모',
         date: new Date().toISOString().slice(0, 10).replace(/-/g, '.'),
         content: ''
-      };
-      notes.unshift(newNote);
+      });
       saveNotesToStorage();
       selectNote(newId);
       document.getElementById('note-title-input').focus();
@@ -2000,39 +1932,26 @@ Type "help" to view available studio commands.
       if (!currentNoteId) return;
       const note = notes.find(n => n.id === currentNoteId);
       if (!note) return;
-
       note.title = document.getElementById('note-title-input').value;
       note.content = document.getElementById('note-body-input').value;
       note.date = new Date().toISOString().slice(0, 10).replace(/-/g, '.');
-
-      document.getElementById('note-save-status').textContent = '저장 중...';
       saveNotesToStorage();
       renderNotesList();
-
-      setTimeout(() => {
-        document.getElementById('note-save-status').textContent = '자동 저장됨';
-      }, 300);
     }
 
     function deleteCurrentNote() {
       if (!currentNoteId) return;
       if (!confirm('이 메모를 삭제하시겠습니까?')) return;
-
       notes = notes.filter(n => n.id !== currentNoteId);
       saveNotesToStorage();
-
-      if (notes.length > 0) {
-        selectNote(notes[0].id);
-      } else {
-        createNewNote();
-      }
+      if (notes.length > 0) selectNote(notes[0].id);
+      else createNewNote();
     }
 
     function exportCurrentNote() {
       if (!currentNoteId) return;
       const note = notes.find(n => n.id === currentNoteId);
       if (!note) return;
-
       const blob = new Blob([\`# \${note.title}\\n\\n\${note.content}\`], { type: 'text/markdown;charset=utf-8' });
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
@@ -2040,7 +1959,7 @@ Type "help" to view available studio commands.
       a.click();
     }
 
-    // ─── Real File System & Finder (업로드, 다운로드, 삭제) ───
+    // ─── Real File System ───
     function renderFinderFiles() {
       const grid = document.getElementById('finder-grid');
       grid.innerHTML = files.map(f => \`
@@ -2061,21 +1980,14 @@ Type "help" to view available studio commands.
     function openFinderFile(id) {
       const file = files.find(f => f.id === id);
       if (!file) return;
-
-      if (file.type === 'image') {
-        openApp('photos');
-      } else if (file.type === 'text') {
-        // Open inside notes
-        const existing = notes.find(n => n.title === file.name);
-        if (existing) {
-          selectNote(existing.id);
-        } else {
-          const newId = 'note-' + Date.now();
-          notes.unshift({ id: newId, title: file.name, date: '2026.09.29', content: file.content || '' });
-          saveNotesToStorage();
-          selectNote(newId);
-        }
+      if (file.type === 'text') {
+        const newId = 'note-' + Date.now();
+        notes.unshift({ id: newId, title: file.name, date: '2026.09.29', content: file.content || '' });
+        saveNotesToStorage();
+        selectNote(newId);
         openApp('notes');
+      } else if (file.type === 'image') {
+        window.open(file.url, '_blank');
       }
     }
 
@@ -2086,41 +1998,33 @@ Type "help" to view available studio commands.
     function handleRealFileUpload(e) {
       const file = e.target.files[0];
       if (!file) return;
-
       const reader = new FileReader();
       const isImg = file.type.startsWith('image/');
-
       reader.onload = (event) => {
-        const newFile = {
+        files.unshift({
           id: 'file-' + Date.now(),
           name: file.name,
           type: isImg ? 'image' : 'text',
           url: isImg ? event.target.result : null,
           content: !isImg ? event.target.result : null,
           size: (file.size / 1024).toFixed(1) + ' KB'
-        };
-        files.unshift(newFile);
+        });
         saveFilesToStorage();
         renderFinderFiles();
-        alert(\`파일 "\${file.name}"이 Finder에 성공적으로 업로드되었습니다!\`);
+        alert(\`"\${file.name}" 파일이 성공적으로 로드되었습니다!\`);
       };
-
-      if (isImg) {
-        reader.readAsDataURL(file);
-      } else {
-        reader.readAsText(file);
-      }
+      if (isImg) reader.readAsDataURL(file);
+      else reader.readAsText(file);
     }
 
     function createBlankFile() {
-      const name = prompt('새 텍스트 파일 이름을 입력하세요:', '새문서.txt');
+      const name = prompt('새 텍스트 파일 이름:', '새문서.txt');
       if (!name) return;
-
       files.unshift({
         id: 'file-' + Date.now(),
         name: name.endsWith('.txt') ? name : name + '.txt',
         type: 'text',
-        content: '새로 작성된 텍스트 파일입니다.',
+        content: '새 텍스트 내용',
         size: '1 KB'
       });
       saveFilesToStorage();
@@ -2128,20 +2032,12 @@ Type "help" to view available studio commands.
     }
 
     function downloadSelectedFile() {
-      if (!selectedFileId) {
-        alert('다운로드할 파일을 먼저 선택해주세요.');
-        return;
-      }
+      if (!selectedFileId) { alert('다운로드할 파일을 선택하세요.'); return; }
       const file = files.find(f => f.id === selectedFileId);
       if (!file) return;
-
       const a = document.createElement('a');
-      if (file.url) {
-        a.href = file.url;
-      } else {
-        const blob = new Blob([file.content || ''], { type: 'text/plain;charset=utf-8' });
-        a.href = URL.createObjectURL(blob);
-      }
+      if (file.url) a.href = file.url;
+      else a.href = URL.createObjectURL(new Blob([file.content || ''], { type: 'text/plain' }));
       a.download = file.name;
       a.click();
     }
@@ -2149,16 +2045,13 @@ Type "help" to view available studio commands.
     function deleteSelectedFile() {
       if (!selectedFileId) return;
       const file = files.find(f => f.id === selectedFileId);
-      if (!file) return;
-
-      if (!confirm(\`"\${file.name}" 파일을 삭제하시겠습니까?\`)) return;
+      if (!file || !confirm(\`"\${file.name}" 파일을 삭제하시겠습니까?\`)) return;
       files = files.filter(f => f.id !== selectedFileId);
       selectedFileId = null;
       saveFilesToStorage();
       renderFinderFiles();
     }
 
-    function handleDragOver(e) { e.preventDefault(); }
     function handleFileDrop(e) {
       e.preventDefault();
       if (e.dataTransfer.files.length > 0) {
@@ -2167,11 +2060,30 @@ Type "help" to view available studio commands.
       }
     }
 
-    // ─── Clocks & Widgets (Analog Clock & World Clock) ───
+    // ─── Widgets & Clock ───
     function initClocksAndWidgets() {
       updateClocks();
       setInterval(updateClocks, 1000);
-      animateCpuPulse();
+      setInterval(() => {
+        const val = Math.floor(8 + Math.random() * 8);
+        document.getElementById('cpu-pulse').textContent = val + '%';
+      }, 2500);
+
+      // Mini Calendar widget
+      const widgetGrid = document.getElementById('widget-cal-days');
+      if (widgetGrid) {
+        let html = \`
+          <span class="cal-day-label">일</span><span class="cal-day-label">월</span>
+          <span class="cal-day-label">화</span><span class="cal-day-label">수</span>
+          <span class="cal-day-label">목</span><span class="cal-day-label">금</span>
+          <span class="cal-day-label">토</span>
+        \`;
+        for (let i = 0; i < 2; i++) html += '<span></span>';
+        for (let d = 1; d <= 30; d++) {
+          html += \`<span class="cal-day \${d === 29 ? 'today' : ''}" onclick="alert('2026년 9월 \${d}일')">\${d}</span>\`;
+        }
+        widgetGrid.innerHTML = html;
+      }
     }
 
     function updateClocks() {
@@ -2180,7 +2092,6 @@ Type "help" to view available studio commands.
       const min = now.getMinutes();
       const hr = now.getHours();
 
-      // Analog clock hands
       const secDeg = (sec / 60) * 360;
       const minDeg = ((min + sec / 60) / 60) * 360;
       const hrDeg = ((hr % 12 + min / 60) / 12) * 360;
@@ -2193,206 +2104,34 @@ Type "help" to view available studio commands.
       if (minHand) minHand.style.transform = \`rotate(\${minDeg}deg)\`;
       if (hrHand) hrHand.style.transform = \`rotate(\${hrDeg}deg)\`;
 
-      // Digital strings
       const timeStr = String(hr).padStart(2, '0') + ':' + String(min).padStart(2, '0') + ':' + String(sec).padStart(2, '0');
       const menubarTime = (hr >= 12 ? '오후 ' : '오전 ') + (hr % 12 || 12) + ':' + String(min).padStart(2, '0');
 
       document.getElementById('clock-display').textContent = menubarTime;
       const digEl = document.getElementById('widget-digital-clock');
       if (digEl) digEl.textContent = timeStr;
-
-      // World clock
-      const wcSeoul = document.getElementById('world-seoul');
-      if (wcSeoul) wcSeoul.textContent = String(hr).padStart(2, '0') + ':' + String(min).padStart(2, '0');
-
-      const wcCup = document.getElementById('world-cupertino');
-      if (wcCup) {
-        const cupHr = (hr - 16 + 24) % 24;
-        wcCup.textContent = String(cupHr).padStart(2, '0') + ':' + String(min).padStart(2, '0');
-      }
-
-      const wcLon = document.getElementById('world-london');
-      if (wcLon) {
-        const lonHr = (hr - 8 + 24) % 24;
-        wcLon.textContent = String(lonHr).padStart(2, '0') + ':' + String(min).padStart(2, '0');
-      }
-
-      const wcTok = document.getElementById('world-tokyo');
-      if (wcTok) wcTok.textContent = String(hr).padStart(2, '0') + ':' + String(min).padStart(2, '0');
     }
 
-    function animateCpuPulse() {
-      setInterval(() => {
-        const val = Math.floor(8 + Math.random() * 8);
-        const el = document.getElementById('cpu-pulse');
-        if (el) el.textContent = val + '%';
-      }, 2500);
+    // ─── Dynamic Menubar Menu Sets ───
+    const MENUBAR_SETS = {
+      finder: ['파일', '편집', '보기', '이동', '창', '도움말'],
+      'calc-native': ['편집', '보기', '변환', '창', '도움말'],
+      vscode: ['파일', '편집', '선택영역', '보기', '이동', '실행', '도움말'],
+      notes: ['파일', '편집', '포맷', '보기', '창', '도움말'],
+      calc: ['파일', '공학공식', '단위변환', '창', '도움말'],
+      specimen: ['파일', '규격표', '시편3D', '창', '도움말'],
+      terminal: ['셸', '편집', '보기', '창', '도움말'],
+      settings: ['보기', '계정', '창', '도움말'],
+      about: ['창', '도움말']
+    };
+
+    function updateMenubarMenus(appId) {
+      const container = document.getElementById('dynamic-menu-items');
+      const items = MENUBAR_SETS[appId] || MENUBAR_SETS.finder;
+      container.innerHTML = items.map(m => \`<div class="menu-item">\${m}</div>\`).join('');
     }
 
-    // ─── Calendar Widget & App ───
-    let calViewYear = 2026;
-    let calViewMonth = 8; // 0-indexed (8 = September)
-
-    function renderCalendarDays() {
-      // Widget mini calendar
-      const widgetGrid = document.getElementById('widget-cal-days');
-      if (widgetGrid) {
-        let html = \`
-          <span class="cal-day-label">일</span><span class="cal-day-label">월</span>
-          <span class="cal-day-label">화</span><span class="cal-day-label">수</span>
-          <span class="cal-day-label">목</span><span class="cal-day-label">금</span>
-          <span class="cal-day-label">토</span>
-        \`;
-        // Pad for September 2026 (Starts on Tuesday = index 2)
-        for (let i = 0; i < 2; i++) html += '<span></span>';
-        for (let d = 1; d <= 30; d++) {
-          const isToday = d === 29;
-          html += \`<span class="cal-day \${isToday ? 'today' : ''}" onclick="alert('2026년 9월 \${d}일')">\${d}</span>\`;
-        }
-        widgetGrid.innerHTML = html;
-      }
-
-      // Full Calendar App matrix
-      const fullGrid = document.getElementById('cal-full-matrix');
-      if (fullGrid) {
-        let html = '';
-        for (let i = 0; i < 2; i++) html += '<div class="cal-full-cell" style="opacity:0.3;"></div>';
-        for (let d = 1; d <= 30; d++) {
-          const isToday = d === 29;
-          let event = '';
-          if (d === 10) event = '<div class="cal-event-tag">KCT 계산기 배포</div>';
-          if (d === 15) event = '<div class="cal-event-tag">ASTM 인장 시험</div>';
-          if (d === 29) event = '<div class="cal-event-tag" style="background:#007aff;">macOS 에디션 출시</div>';
-
-          html += \`
-            <div class="cal-full-cell \${isToday ? 'current-day' : ''}" onclick="openDaySchedule(\${d})">
-              <div class="cal-cell-num">\${d}</div>
-              \${event}
-            </div>
-          \`;
-        }
-        fullGrid.innerHTML = html;
-      }
-    }
-
-    function changeCalMonth(delta) {
-      calViewMonth += delta;
-      const d = new Date(calViewYear, calViewMonth, 1);
-      document.getElementById('cal-app-month-title').textContent = \`\${d.getFullYear()}년 \${d.getMonth() + 1}월\`;
-    }
-
-    function promptAddEvent() {
-      const title = prompt('추가할 일정 제목을 입력하세요:', '실리콘 풍하중 현장 검측');
-      if (!title) return;
-      alert(\`일정 "\${title}"이 캘린더에 성공적으로 등록되었습니다.\`);
-    }
-
-    function openDaySchedule(d) {
-      alert(\`2026년 9월 \${d}일 일정 상세 보기\`);
-    }
-
-    // ─── Stopwatch & Timer Logic ───
-    let swRunning = false;
-    let swTime = 0;
-    let swTimerId = null;
-
-    function toggleStopwatch() {
-      const btn = document.getElementById('sw-btn-start');
-      if (swRunning) {
-        clearInterval(swTimerId);
-        swRunning = false;
-        btn.textContent = '시작';
-        btn.style.background = '#10b981';
-      } else {
-        swRunning = true;
-        btn.textContent = '중단';
-        btn.style.background = '#ef4444';
-        swTimerId = setInterval(() => {
-          swTime += 10;
-          const ms = Math.floor((swTime % 1000) / 10);
-          const s = Math.floor((swTime / 1000) % 60);
-          const m = Math.floor(swTime / 60000);
-          document.getElementById('sw-display').textContent =
-            String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0') + '.' + String(ms).padStart(2, '0');
-        }, 10);
-      }
-    }
-
-    function resetStopwatch() {
-      clearInterval(swTimerId);
-      swRunning = false;
-      swTime = 0;
-      document.getElementById('sw-display').textContent = '00:00.00';
-      const btn = document.getElementById('sw-btn-start');
-      btn.textContent = '시작';
-      btn.style.background = '#10b981';
-    }
-
-    function switchClockTab(tab, elem) {
-      document.querySelectorAll('.clock-tab-btn').forEach(b => b.classList.remove('active'));
-      if (elem) elem.classList.add('active');
-
-      document.getElementById('tab-stopwatch').style.display = tab === 'stopwatch' ? 'block' : 'none';
-      document.getElementById('tab-world').style.display = tab === 'world' ? 'block' : 'none';
-      document.getElementById('tab-timer').style.display = tab === 'timer' ? 'block' : 'none';
-    }
-
-    let timerRemain = 300;
-    let timerInterval = null;
-
-    function startPresetTimer(sec) {
-      clearInterval(timerInterval);
-      timerRemain = sec;
-      updateTimerDisplay();
-      timerInterval = setInterval(() => {
-        timerRemain--;
-        updateTimerDisplay();
-        if (timerRemain <= 0) {
-          clearInterval(timerInterval);
-          alert('⏰ 설정한 타이머 시간이 완료되었습니다!');
-        }
-      }, 1000);
-    }
-
-    function stopTimer() {
-      clearInterval(timerInterval);
-    }
-
-    function updateTimerDisplay() {
-      const m = Math.floor(timerRemain / 60);
-      const s = timerRemain % 60;
-      document.getElementById('timer-display').textContent = String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
-    }
-
-    // ─── Photos App Logic ───
-    const PHOTOS_DATA = [
-      { id: 'p1', cat: 'nature', title: 'Yosemite Sunrise', url: 'https://macos27.kimi.page/photo-1.jpg' },
-      { id: 'p2', cat: 'arch', title: 'Lake Architecture Glass', url: 'https://macos27.kimi.page/photo-2.jpg' },
-      { id: 'p3', cat: 'arch', title: 'Modern Glass Pavilion', url: 'https://macos27.kimi.page/photo-3.jpg' },
-      { id: 'p4', cat: 'arch', title: 'Curtain Wall Facade', url: 'https://macos27.kimi.page/photo-4.jpg' },
-      { id: 'p5', cat: 'nature', title: 'Redwood Mist Trail', url: 'https://macos27.kimi.page/photo-5.jpg' },
-      { id: 'p6', cat: 'studio', title: 'Engineering Studio Setup', url: 'https://macos27.kimi.page/photo-6.jpg' },
-      { id: 'p7', cat: 'studio', title: 'Tokyo Neon Skyline', url: 'https://macos27.kimi.page/photo-7.jpg' },
-      { id: 'p8', cat: 'arch', title: 'Precision Joinery & Sealant', url: 'https://macos27.kimi.page/photo-8.jpg' }
-    ];
-
-    function filterPhotos(cat, elem) {
-      document.querySelectorAll('.photos-nav-item').forEach(i => i.classList.remove('active'));
-      if (elem) elem.classList.add('active');
-
-      const grid = document.getElementById('photos-grid');
-      const filtered = cat === 'all' ? PHOTOS_DATA : PHOTOS_DATA.filter(p => p.cat === cat);
-      grid.innerHTML = filtered.map(p => \`
-        <div class="finder-file" onclick="window.open('\${p.url}', '_blank')">
-          <div class="finder-file-icon" style="width:100%; height:120px;">
-            <img src="\${p.url}" alt="\${p.title}" style="width:100%; height:100%; object-fit:cover; border-radius:8px;" />
-          </div>
-          <div class="finder-file-name" style="margin-top:6px;">\${p.title}</div>
-        </div>
-      \`).join('');
-    }
-
-    // ─── App Window Management ───
+    // ─── Window Management ───
     function openApp(id) {
       const win = document.getElementById('window-' + id);
       if (!win) return;
@@ -2459,10 +2198,9 @@ Type "help" to view available studio commands.
 
       const titles = {
         finder: 'Finder',
+        'calc-native': '계산기',
+        vscode: 'Code',
         notes: 'Notes',
-        calendar: 'Calendar',
-        clock: 'Clock',
-        photos: 'Photos',
         calc: 'KCT Calculator',
         specimen: 'ASTM Specimen Lab',
         terminal: 'Terminal',
@@ -2471,20 +2209,18 @@ Type "help" to view available studio commands.
       };
       activeApp = id;
       document.getElementById('menu-active-app').textContent = titles[id] || 'Finder';
+      updateMenubarMenus(id);
     }
 
     function updateDockRunningStatus() {
       document.querySelectorAll('.dock-item').forEach(item => {
         const app = item.dataset.app;
-        if (runningApps.has(app)) {
-          item.classList.add('running');
-        } else {
-          item.classList.remove('running');
-        }
+        if (runningApps.has(app)) item.classList.add('running');
+        else item.classList.remove('running');
       });
     }
 
-    // ─── Window Dragging & Resizing ───
+    // ─── Window Dragging ───
     let isDragging = false, dragTarget = null, dragOffsetX = 0, dragOffsetY = 0;
 
     function startDragWindow(e, winId) {
@@ -2518,6 +2254,7 @@ Type "help" to view available studio commands.
       document.removeEventListener('mouseup', stopDragWindow);
     }
 
+    // ─── Window Resizing ───
     let isResizing = false, resizeTarget = null, resizeType = null, startW = 0, startH = 0, startX = 0, startY = 0;
 
     function startResizeWindow(e, winId, type) {
@@ -2540,11 +2277,11 @@ Type "help" to view available studio commands.
       const dy = e.clientY - startY;
 
       if (resizeType.includes('r')) {
-        const nw = Math.max(340, startW + dx);
+        const nw = Math.max(300, startW + dx);
         resizeTarget.style.width = nw + 'px';
       }
       if (resizeType.includes('b')) {
-        const nh = Math.max(240, startH + dy);
+        const nh = Math.max(200, startH + dy);
         resizeTarget.style.height = nh + 'px';
       }
     }
@@ -2589,7 +2326,7 @@ Type "help" to view available studio commands.
       });
     }
 
-    // ─── KCT Silicone Calculator Engine ───
+    // ─── KCT Silicone Calculator ───
     function runSiliconCalc() {
       const w = parseFloat(document.getElementById('calc-wind').value) || 2.5;
       const a = parseFloat(document.getElementById('calc-short').value) || 1200;
@@ -2601,10 +2338,10 @@ Type "help" to view available studio commands.
 
       document.getElementById('res-bite').textContent = bite.toFixed(1) + ' mm';
       document.getElementById('res-glueline').textContent = glueline.toFixed(1) + ' mm';
-      document.getElementById('res-status').textContent = bite >= 6.0 ? 'PASS (ASTM 규격 충족)' : '주의 (최소 6mm 권장)';
+      document.getElementById('res-status').textContent = bite >= 6.0 ? 'PASS (ASTM 충족)' : '주의 (최소 6mm 권장)';
     }
 
-    // ─── Terminal (davhave-cli) ───
+    // ─── Terminal ───
     function handleTerminalKey(e) {
       if (e.key !== 'Enter') return;
       const input = document.getElementById('terminal-cli-input');
@@ -2621,23 +2358,27 @@ Type "help" to view available studio commands.
       if (lower === 'help') {
         response = \`Available commands:
   whoami     - Studio architect profile
+  calc       - Calculate silicone bite [e.g. calc 2.5 1200]
+  code       - Open Code Studio IDE
   notes      - Open persistent notes editor
   files      - List files in virtual filesystem
-  calc       - Calculate silicone bite [e.g. calc 2.5 1200]
-  clock      - Open clock & stopwatch app
-  calendar   - Open calendar app
+  launchpad  - Toggle full screen Launchpad
   open <app> - Open app window
   clear      - Clear terminal screen\`;
       } else if (lower === 'whoami') {
         response = "Oscar Lee (DAVHAVE) — Lead Architect in High-Performance Edge Systems & Industrial Computing.";
-      } else if (lower === 'files') {
-        response = files.map(f => \`- \${f.name} (\${f.size})\`).join('\\n');
+      } else if (lower === 'code') {
+        openApp('vscode');
+        response = "Launching Code.app IDE...";
+      } else if (lower === 'launchpad') {
+        toggleLaunchpad();
+        response = "Opened Launchpad.";
       } else if (lower.startsWith('open ')) {
         const app = lower.split(' ')[1];
         openApp(app);
         response = \`Opened \${app}.app\`;
       } else if (lower === 'clear') {
-        screen.textContent = 'DAVHAVE Edge Architecture Shell (v2.7.0)\\n';
+        screen.textContent = 'DAVHAVE Edge Architecture Shell (v2.7.4)\\n';
         return;
       } else {
         response = \`zsh: command not found: \${cmd}. Type "help" for a list of commands.\`;
@@ -2648,25 +2389,24 @@ Type "help" to view available studio commands.
       body.scrollTop = body.scrollHeight;
     }
 
-    // ─── Spotlight Search ───
+    // ─── Spotlight ───
     const SEARCH_ITEMS = [
       { name: 'Finder (파일 관리자)', type: 'App', icon: '📁', action: () => openApp('finder') },
+      { name: '계산기 (Calculator)', type: 'App', icon: '🧮', action: () => openApp('calc-native') },
+      { name: 'Code (VS Code Studio)', type: 'App', icon: '💻', action: () => openApp('vscode') },
+      { name: 'Launchpad (앱 보관함)', type: 'App', icon: '🚀', action: () => toggleLaunchpad() },
       { name: '메모 (Notes)', type: 'App', icon: '📝', action: () => openApp('notes') },
-      { name: '캘린더 (Calendar)', type: 'App', icon: '📅', action: () => openApp('calendar') },
-      { name: '시계 (Clock & Stopwatch)', type: 'App', icon: '⏰', action: () => openApp('clock') },
-      { name: '사진 (Photos)', type: 'App', icon: '🖼️', action: () => openApp('photos') },
-      { name: 'KCT 실리콘 계산기', type: 'App', icon: '🧮', action: () => openApp('calc') },
+      { name: 'KCT 실리콘 계산기', type: 'App', icon: '📐', action: () => openApp('calc') },
       { name: 'ASTM 인장 시편 연구소', type: 'App', icon: '🧪', action: () => openApp('specimen') },
-      { name: 'Terminal (davhave-cli)', type: 'App', icon: '💻', action: () => openApp('terminal') },
-      { name: '시스템 설정 (Wallpaper)', type: 'App', icon: '⚙️', action: () => openApp('settings') },
-      { name: '웹 표준 홈으로 이동', type: 'Web', icon: '🏠', action: () => window.location.href = '/' }
+      { name: 'Terminal', type: 'App', icon: '🖥️', action: () => openApp('terminal') },
+      { name: '이 Mac에 관하여', type: 'App', icon: '', action: () => openApp('about') },
+      { name: '시스템 설정 (Wallpaper)', type: 'App', icon: '⚙️', action: () => openApp('settings') }
     ];
 
     function toggleSpotlight() {
       const overlay = document.getElementById('spotlight-overlay');
-      if (overlay.classList.contains('show')) {
-        closeSpotlight();
-      } else {
+      if (overlay.classList.contains('show')) closeSpotlight();
+      else {
         overlay.classList.add('show');
         const input = document.getElementById('spotlight-input');
         input.value = '';
@@ -2686,7 +2426,6 @@ Type "help" to view available studio commands.
     function filterSpotlight(q) {
       const list = document.getElementById('spotlight-results');
       const filtered = SEARCH_ITEMS.filter(item => item.name.toLowerCase().includes(q.toLowerCase()));
-
       list.innerHTML = filtered.map((item, idx) => \`
         <div class="spotlight-item \${idx === 0 ? 'active' : ''}" onclick="executeSpotlightItem(\${idx})">
           <span style="font-size:18px;">\${item.icon}</span>
