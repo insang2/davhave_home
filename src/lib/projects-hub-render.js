@@ -373,6 +373,9 @@ export function renderProjectsHub() {
             <a href="/projects/kct/permits" class="sublink-item">
               <i class="bi bi-building-check"></i> 전국 건축 허가/착공 현장 리드 데이터베이스 →
             </a>
+            <a href="/projects/kct/catalog" class="sublink-item" style="color:var(--accent); font-weight:700;">
+              <i class="bi bi-grid-3x3-gap-fill"></i> 아이패드 최적화 디지털 제품 카탈로그 →
+            </a>
             <a href="/projects/kct#calculator" class="sublink-item">
               <i class="bi bi-calculator-fill"></i> Dow 기준 6대 실리콘 공학 계산기 허브 →
             </a>

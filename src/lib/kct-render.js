@@ -283,6 +283,7 @@ export function renderKctPage() {
         <a href="/projects/kct/color-samples"><i class="bi bi-palette-fill text-accent"></i> <strong>색상칩 & 샘플요청</strong></a>
         <a href="/projects/kct/technical"><i class="bi bi-file-earmark-arrow-down-fill text-primary"></i> 기술자료 센터</a>
         <a href="/projects/kct/permits"><i class="bi bi-building-check text-primary"></i> 허가/착공 현장DB</a>
+        <a href="/projects/kct/catalog"><i class="bi bi-grid-3x3-gap-fill text-accent"></i> <strong>디지털 카탈로그</strong></a>
         <a href="https://smartstore.naver.com/kconstrade/" target="_blank" rel="noopener"><i class="bi bi-bag-check"></i> 스마트스토어</a>
         <a href="/projects/kct#b2b-form"><i class="bi bi-chat-left-text-fill"></i> 온라인 견적문의</a>
         <a href="mailto:sales@kconstrade.com"><i class="bi bi-envelope-fill"></i> sales@kconstrade.com</a>
@@ -612,6 +613,7 @@ export function renderKctPage() {
         <div class="nav-item"><a href="/projects/kct/color-samples" class="nav-link highlight"><i class="bi bi-palette-fill"></i> 색상칩 & 샘플요청</a></div>
         <div class="nav-item"><a href="/projects/kct/technical" class="nav-link"><i class="bi bi-file-earmark-arrow-down-fill text-primary"></i> 기술자료 센터</a></div>
         <div class="nav-item"><a href="/projects/kct/permits" class="nav-link"><i class="bi bi-building-check text-primary"></i> 허가/착공 현장DB</a></div>
+        <div class="nav-item"><a href="/projects/kct/catalog" class="nav-link highlight"><i class="bi bi-grid-3x3-gap-fill"></i> 디지털 카탈로그</a></div>
         <div class="nav-item"><a href="#products" class="nav-link">제품스펙 비교</a></div>
         <div class="nav-item"><a href="#calculator" class="nav-link">실리콘 계산기</a></div>
         <div class="nav-item"><a href="#process" class="nav-link">발주 프로세스</a></div>
@@ -644,6 +646,7 @@ export function renderKctPage() {
         <li class="drawer-nav-item"><a href="/projects/kct/color-samples" class="highlight"><i class="bi bi-palette-fill"></i> <span>색상칩 시편 & 무료 샘플관</span> <span>→</span></a></li>
         <li class="drawer-nav-item"><a href="/projects/kct/technical" style="background:#F0F9FF; color:#0369A1;"><i class="bi bi-file-earmark-pdf-fill"></i> <span>기술자료(TDS/MSDS) 센터</span> <span>→</span></a></li>
         <li class="drawer-nav-item"><a href="/projects/kct/permits"><i class="bi bi-building-check"></i> <span>허가/착공 현장DB</span> <span>→</span></a></li>
+        <li class="drawer-nav-item"><a href="/projects/kct/catalog" class="highlight"><i class="bi bi-grid-3x3-gap-fill"></i> <span>디지털 카탈로그 (아이패드 최적화)</span> <span>→</span></a></li>
         <li class="drawer-nav-item"><a href="#calculator" onclick="closeKctDrawer()"><i class="bi bi-calculator"></i> <span>실리콘 조인트 계산기 2.0</span> <span>→</span></a></li>
         <li class="drawer-nav-item"><a href="#applications" onclick="closeKctDrawer()"><i class="bi bi-grid-3x3-gap-fill"></i> <span>17대 적용분야 솔루션</span> <span>→</span></a></li>
         <li class="drawer-nav-item"><a href="#products" onclick="closeKctDrawer()"><i class="bi bi-table"></i> <span>DOWSIL™ 제품스펙 비교</span> <span>→</span></a></li>

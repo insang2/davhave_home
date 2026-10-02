@@ -171,6 +171,7 @@ export function renderKctTechPage() {
         <a href="/projects/kct"><i class="bi bi-house-door-fill"></i> 메인 포털</a>
         <a href="/projects/kct/color-samples"><i class="bi bi-palette-fill text-accent"></i> 색상칩 & 샘플요청</a>
         <a href="/projects/kct/permits"><i class="bi bi-building-check"></i> 허가/착공 현장DB</a>
+        <a href="/projects/kct/catalog"><i class="bi bi-grid-3x3-gap-fill"></i> 디지털 카탈로그</a>
         <a href="https://smartstore.naver.com/kconstrade/" target="_blank" rel="noopener"><i class="bi bi-bag-check"></i> 스마트스토어</a>
         <a href="/projects/kct#b2b-form"><i class="bi bi-chat-left-text-fill"></i> 온라인 견적문의</a>
         <a href="mailto:sales@kconstrade.com"><i class="bi bi-envelope-fill"></i> sales@kconstrade.com</a>
@@ -189,6 +190,7 @@ export function renderKctTechPage() {
         <a href="/projects/kct" class="btn-nav-link"><i class="bi bi-house"></i> KCT 메인 포털</a>
         <a href="/projects/kct/color-samples" class="btn-nav-link"><i class="bi bi-palette"></i> 색상칩 & 샘플요청</a>
         <a href="/projects/kct/permits" class="btn-nav-link"><i class="bi bi-building-check"></i> 허가/착공 현장DB</a>
+        <a href="/projects/kct/catalog" class="btn-nav-link"><i class="bi bi-grid-3x3-gap-fill"></i> 디지털 카탈로그</a>
         <a href="/projects/kct#calculator" class="btn-nav-link"><i class="bi bi-calculator"></i> 실리콘 계산기</a>
         <a href="/projects/kct#b2b-form" class="btn-quote"><i class="bi bi-send-fill"></i> B2B 견적요청</a>
       </div>
@@ -215,6 +217,7 @@ export function renderKctTechPage() {
         <li class="drawer-nav-item"><a href="/projects/kct"><i class="bi bi-house-door-fill"></i> <span>KCT 메인 포털</span> <span>→</span></a></li>
         <li class="drawer-nav-item"><a href="/projects/kct/color-samples"><i class="bi bi-palette-fill"></i> <span>색상칩 시편 & 샘플관</span> <span>→</span></a></li>
         <li class="drawer-nav-item"><a href="/projects/kct/permits"><i class="bi bi-building-check"></i> <span>허가/착공 현장DB</span> <span>→</span></a></li>
+        <li class="drawer-nav-item"><a href="/projects/kct/catalog"><i class="bi bi-grid-3x3-gap-fill"></i> <span>디지털 카탈로그</span> <span>→</span></a></li>
         <li class="drawer-nav-item"><a href="/projects/kct#calculator"><i class="bi bi-calculator"></i> <span>실리콘 조인트 계산기</span> <span>→</span></a></li>
         <li class="drawer-nav-item"><a href="/projects"><i class="bi bi-grid-fill"></i> <span>DAVHAVE Projects 허브</span> <span>↗</span></a></li>
       </ul>

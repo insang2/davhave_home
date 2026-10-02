@@ -42,6 +42,7 @@ import { renderKctTechPage } from "./lib/kct-tech-render.js";
 import { renderKctColorPage } from "./lib/kct-color-render.js";
 import { renderKctSpecimenPage } from "./lib/kct-specimen-render.js";
 import { renderKctPermitsPage } from "./lib/kct-permits-render.js";
+import { renderKctCatalogPage } from "./lib/kct-catalog-render.js";
 import { renderProjectsHub } from "./lib/projects-hub-render.js";
 import { renderMacOsPage } from "./lib/macos-render.js";
 import { INDEXNOW_KEY, submitUrls, urlsForPost } from "./lib/indexnow.js";
@@ -113,6 +114,10 @@ const CANONICAL_ALIASES = {
   "/projects/kct/permit": "/projects/kct/permits",
   "/pjt/kct/permit": "/projects/kct/permits",
   "/projects/kct/leads": "/projects/kct/permits",
+  "/pjt/kct/catalog": "/projects/kct/catalog",
+  "/projects/kct/digital-catalog": "/projects/kct/catalog",
+  "/pjt/kct/digital-catalog": "/projects/kct/catalog",
+  "/projects/kct/brochure": "/projects/kct/catalog",
 };
 
 function json(data, status = 200) {
@@ -516,6 +521,13 @@ export default {
 
     if (pathname === "/projects/kct/permits") {
       const raw = new Response(renderKctPermitsPage(), {
+        headers: { "content-type": "text/html; charset=utf-8" },
+      });
+      return withSecurityHeaders(raw, { "Cache-Control": "public, max-age=3600, s-maxage=86400" });
+    }
+
+    if (pathname === "/projects/kct/catalog") {
+      const raw = new Response(renderKctCatalogPage(), {
         headers: { "content-type": "text/html; charset=utf-8" },
       });
       return withSecurityHeaders(raw, { "Cache-Control": "public, max-age=3600, s-maxage=86400" });

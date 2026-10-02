@@ -643,6 +643,7 @@ export function renderKctSpecimenPage() {
         <a href="/projects/kct/color-samples"><i class="bi bi-palette"></i> 색상칩 시편관</a>
         <a href="/projects/kct/technical"><i class="bi bi-file-earmark-pdf"></i> 기술자료 센터</a>
         <a href="/projects/kct/permits"><i class="bi bi-building-check"></i> 허가/착공 현장DB</a>
+        <a href="/projects/kct/catalog"><i class="bi bi-grid-3x3-gap-fill"></i> 디지털 카탈로그</a>
         <a href="/projects/kct#calculator"><i class="bi bi-calculator"></i> 6대 계산기</a>
         <a href="mailto:sales@kconstrade.com"><i class="bi bi-envelope"></i> sales@kconstrade.com</a>
       </div>
@@ -663,6 +664,7 @@ export function renderKctSpecimenPage() {
         <a href="/projects/kct/color-samples" class="nav-link"><i class="bi bi-palette"></i> 색상칩 시편</a>
         <a href="/projects/kct/technical" class="nav-link"><i class="bi bi-file-earmark-arrow-down"></i> 기술자료 센터</a>
         <a href="/projects/kct/permits" class="nav-link"><i class="bi bi-building-check"></i> 허가/착공 현장DB</a>
+        <a href="/projects/kct/catalog" class="nav-link"><i class="bi bi-grid-3x3-gap-fill"></i> 디지털 카탈로그</a>
         <a href="/projects/kct#calculator" class="nav-link">실리콘 계산기</a>
         <a href="#estimator" class="nav-link highlight"><i class="bi bi-calculator-fill"></i> 소요시간 계산기</a>
       </nav>
