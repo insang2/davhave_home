@@ -120,8 +120,8 @@ export function renderKctCatalogPage() {
     .p-card { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; cursor: pointer; transition: all 0.25s; display: flex; flex-direction: column; -webkit-tap-highlight-color: transparent; }
     .p-card:active { transform: scale(0.98); }
     .p-card:hover { border-color: var(--border-strong); background: var(--panel-strong); transform: translateY(-2px); }
-    .p-card .img-wrap { position: relative; aspect-ratio: 4/3; overflow: hidden; background: #0C0F1C; }
-    .p-card .img-wrap img { width: 100%; height: 100%; object-fit: cover; opacity: 0.92; }
+    .p-card .img-wrap { position: relative; width: 100%; height: 0; padding-bottom: 75%; overflow: hidden; background: #0C0F1C; flex-shrink: 0; }
+    .p-card .img-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.92; }
     .p-card .cat-chip { position: absolute; top: 0.6rem; left: 0.6rem; font-family: var(--font-en); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em; padding: 0.25rem 0.55rem; border-radius: 50px; backdrop-filter: blur(6px); background: rgba(5,6,12,0.55); border: 1px solid rgba(255,255,255,0.18); }
     .p-card .body { padding: 0.85rem 0.95rem 1rem; display: flex; flex-direction: column; gap: 0.3rem; flex: 1; }
     .p-card h3 { font-size: 0.88rem; font-weight: 700; line-height: 1.35; }
