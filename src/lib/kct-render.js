@@ -736,7 +736,7 @@ export function renderKctPage() {
         
         <div class="app-card" data-cat="specialty-silicone" data-sub="spec-marine">
           <div class="app-img-wrap">
-            <img src="https://images.unsplash.com/photo-1544427920-c49ccfb85579?auto=format&fit=crop&w=800&q=80" alt="조선·해양 선박용 실란트" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80';" />
+            <img src="https://images.unsplash.com/photo-1697982889214-c6e8984833b5?auto=format&fit=crop&w=800&q=80" alt="조선·해양 선박용 실란트" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80';" />
             <span class="app-badge">특수</span>
           </div>
           <div class="app-body">
@@ -776,7 +776,7 @@ export function renderKctPage() {
 
         <div class="app-card" data-cat="specialty-silicone" data-sub="spec-cleanroom">
           <div class="app-img-wrap">
-            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" alt="반도체 FAB & 제약 클린룸 실란트" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80';" />
+            <img src="https://images.unsplash.com/photo-1748349221526-33b51820b21e?auto=format&fit=crop&w=800&q=80" alt="반도체 FAB & 제약 클린룸 실란트" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80';" />
             <span class="app-badge">특수</span>
           </div>
           <div class="app-body">
@@ -796,7 +796,7 @@ export function renderKctPage() {
 
         <div class="app-card" data-cat="specialty-silicone" data-sub="spec-hydrogen">
           <div class="app-img-wrap">
-            <img src="https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&w=800&q=80" alt="수소 모빌리티 & 연료전지 실란트" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80';" />
+            <img src="https://images.unsplash.com/photo-1654334036169-840615ab6a34?auto=format&fit=crop&w=800&q=80" alt="수소 모빌리티 & 연료전지 실란트" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80';" />
             <span class="app-badge">특수</span>
           </div>
           <div class="app-body">
@@ -856,7 +856,7 @@ export function renderKctPage() {
 
         <div class="app-card" data-cat="specialty-silicone" data-sub="spec-timber">
           <div class="app-img-wrap">
-            <img src="https://images.unsplash.com/photo-1541123437800-1bb1317badc2?auto=format&fit=crop&w=800&q=80" alt="친환경 목조 건축 & CLT 패널 실란트" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80';" />
+            <img src="https://images.unsplash.com/photo-1769721143812-3cb8ae1ca8ed?auto=format&fit=crop&w=800&q=80" alt="친환경 목조 건축 & CLT 패널 실란트" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80';" />
             <span class="app-badge">특수</span>
           </div>
           <div class="app-body">
@@ -976,7 +976,7 @@ export function renderKctPage() {
 
         <div class="app-card" data-cat="ess-ev" data-sub="ess-immersion-coolant">
           <div class="app-img-wrap">
-            <img src="https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&w=800&q=80" alt="대용량 ESS용 침지식 실리콘 쿨런트 & 씰" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80';" />
+            <img src="https://images.unsplash.com/photo-1742899273038-67ff67477663?auto=format&fit=crop&w=800&q=80" alt="대용량 ESS용 침지식 실리콘 쿨런트 & 씰" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80';" />
             <span class="app-badge">ESS</span>
           </div>
           <div class="app-body">
@@ -996,7 +996,7 @@ export function renderKctPage() {
 
         <div class="app-card" data-cat="ess-ev" data-sub="ev-thermal-barrier">
           <div class="app-img-wrap">
-            <img src="https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=800&q=80" alt="배터리 모듈 내화 단열시트 & 절연 테이프" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80';" />
+            <img src="https://images.unsplash.com/photo-1717386255773-1e3037c81788?auto=format&fit=crop&w=800&q=80" alt="배터리 모듈 내화 단열시트 & 절연 테이프" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80';" />
             <span class="app-badge">ESS</span>
           </div>
           <div class="app-body">
@@ -1116,7 +1116,7 @@ export function renderKctPage() {
 
         <div class="app-card" data-cat="electronics" data-sub="elec-led">
           <div class="app-img-wrap">
-            <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=800&q=80" alt="LED용 실리콘" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80';" />
+            <img src="https://images.unsplash.com/photo-1572249930263-64fc5bbdb14b?auto=format&fit=crop&w=800&q=80" alt="LED용 실리콘" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80';" />
             <span class="app-badge">전자</span>
           </div>
           <div class="app-body">
@@ -1356,7 +1356,7 @@ export function renderKctPage() {
 
         <div class="app-card" data-cat="building" data-sub="bldg-structural">
           <div class="app-img-wrap">
-            <img src="https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=800&q=80" alt="구조 글레이징용 (SSG)" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80';" />
+            <img src="https://images.unsplash.com/photo-1523477593243-78bbf626fd3b?auto=format&fit=crop&w=800&q=80" alt="구조 글레이징용 (SSG)" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80';" />
             <span class="app-badge">건축</span>
           </div>
           <div class="app-body">
@@ -1496,7 +1496,7 @@ export function renderKctPage() {
 
         <div class="app-card" data-cat="building" data-sub="bldg-water-repellent">
           <div class="app-img-wrap">
-            <img src="https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=800&q=80" alt="발수제" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80';" />
+            <img src="https://images.unsplash.com/photo-1711291067433-7de89a073168?auto=format&fit=crop&w=800&q=80" alt="발수제" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80';" />
             <span class="app-badge">건축</span>
           </div>
           <div class="app-body">
