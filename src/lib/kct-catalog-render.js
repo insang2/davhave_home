@@ -115,7 +115,8 @@ export function renderKctCatalogPage() {
     .stage-header .cat-dot { width: 10px; height: 10px; border-radius: 3px; }
     .stage-count { font-family: var(--font-en); font-size: 0.78rem; color: var(--text-faint); }
 
-    .card-grid { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 0.25rem 1.25rem 2rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; align-content: start; }
+    .card-grid { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 0.25rem 1.25rem 2rem; display: flex; flex-wrap: wrap; gap: 1rem; align-content: flex-start; }
+    .card-grid .p-card { flex: 1 1 calc(33.333% - 0.667rem); min-width: 230px; }
 
     .p-card { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; cursor: pointer; transition: all 0.25s; display: flex; flex-direction: column; -webkit-tap-highlight-color: transparent; }
     .p-card:active { transform: scale(0.98); }
@@ -165,7 +166,7 @@ export function renderKctCatalogPage() {
 
     /* ===== iPad landscape (1024–1366) ===== */
     @media (min-width: 1024px) {
-      .card-grid { grid-template-columns: repeat(4, 1fr); }
+      .card-grid .p-card { flex-basis: calc(25% - 0.75rem); }
     }
 
     /* ===== iPad portrait / narrower (≤ 900px) ===== */
@@ -174,7 +175,8 @@ export function renderKctCatalogPage() {
       .cat-rail-h { display: flex; gap: 0.6rem; padding: 0 1.25rem 0.9rem; overflow-x: auto; -webkit-overflow-scrolling: touch; flex-shrink: 0; }
       .cat-rail-h .cat-chip-btn { flex-shrink: 0; display: flex; align-items: center; gap: 0.4rem; padding: 0.6rem 1rem; border-radius: 50px; background: var(--panel); border: 1px solid var(--border); color: var(--text-dim); font-size: 0.8rem; font-weight: 700; min-height: 42px; }
       .cat-rail-h .cat-chip-btn.active { background: var(--panel-strong); border-color: var(--border-strong); color: var(--white); }
-      .card-grid { grid-template-columns: repeat(2, 1fr); padding-bottom: 1.25rem; }
+      .card-grid { padding-bottom: 1.25rem; }
+      .card-grid .p-card { flex-basis: calc(50% - 0.5rem); min-width: 0; }
       .detail-body { flex-direction: column; }
       .detail-visual { flex: 0 0 38%; }
       .detail-info { padding: 1.5rem 1.4rem 6rem; }
@@ -183,7 +185,8 @@ export function renderKctCatalogPage() {
     }
 
     @media (max-width: 600px) {
-      .card-grid { grid-template-columns: repeat(2, 1fr); gap: 0.7rem; padding: 0.25rem 1rem 1.5rem; }
+      .card-grid { gap: 0.7rem; padding: 0.25rem 1rem 1.5rem; }
+      .card-grid .p-card { flex-basis: calc(50% - 0.35rem); }
       .top-strip { padding: 0.7rem 1rem; }
       .hero-strip { padding: 0.9rem 1rem 0.2rem; }
       .stage-header { padding: 0.7rem 1rem; }
